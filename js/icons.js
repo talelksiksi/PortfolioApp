@@ -114,6 +114,31 @@
       <path fill="#e7a982" d="M11 7h4v4h-4zM10 12h6v3h-6z"/>
       <path fill="#3d6d78" d="M19 10h5v1h-5zM19 13h5v1h-5zM9 18h15v1H9zM9 21h15v1H9zM9 24h11v1H9z"/>
       <path fill="#c0392b" d="M18 26h8v4h-8z"/><path fill="#fff" d="M19 27h1v2h-1zM21 27h1v2h-1zM23 27h2v1h-2z"/>`),
+    trophy: S(`
+      <path fill="${K}" d="M8 3h16v3h5v6l-4 4h-2l-3 3v4h4v3h2v3H8v-3h2v-3h4v-4l-3-3H9l-4-4V6h3z"/>
+      <path fill="#f6d36b" d="M9 4h14v9l-3 4h-8l-3-4zM6 7h2v5H7l-1-1zM24 7h2v4l-1 1h-1z"/>
+      <path fill="#e2b143" d="M18 4h5v9l-3 4h-2z"/><path fill="#fbe7a2" d="M11 6h2v6h-2z"/>
+      <path fill="#8b5a3c" d="M11 26h10v2H11z"/><path fill="#e2b143" d="M15 19h2v4h-2z"/>`),
+    calendar: S(`
+      <path fill="${K}" d="M3 5h26v24H3z"/>
+      <path fill="#fff" d="M4 11h24v17H4z"/><path fill="#c0392b" d="M4 6h24v5H4z"/>
+      <path fill="${K}" d="M8 3h2v5H8zM22 3h2v5h-2z"/>
+      <path fill="#cfd8dc" d="M7 14h4v3H7zM14 14h4v3h-4zM21 14h4v3h-4zM7 20h4v3H7zM21 20h4v3h-4z"/>
+      <path fill="#3d6d78" d="M14 20h4v3h-4z"/><path fill="#e7a982" d="M15 21h2v1h-2z"/>`),
+    game: S(`
+      <path fill="${K}" d="M2 2h28v28H2z"/><path fill="#c0c0c0" d="M3 3h26v26H3z"/>
+      <path fill="#fff" d="M3 3h26v1H3zM3 3h1v26H3z"/><path fill="#808488" d="M3 16h26v1H3zM16 3h1v26h-1z"/>
+      <path fill="#dfe3e6" d="M17 17h12v12H17z"/>
+      <path fill="#1d4f9c" d="M7 7h3v6H7zM6 12h5v1H6z"/>
+      <path fill="#c0392b" d="M21 6h1v8h-1zM22 6h4v3h-4z"/><path fill="${K}" d="M19 14h5v1h-5z"/>
+      <path fill="#2e7d32" d="M7 20h5v1H7zM11 21h1v2h-1zM7 23h5v1H7zM7 24h1v2H7zM7 26h5v1H7z"/>
+      <path fill="${K}" d="M22 20h2v2h2v2h-2v2h-2v-2h-2v-2h2z"/>`),
+    quick: S(`
+      <path fill="${K}" d="M5 2h18l4 4v24H5z"/><path fill="#fff" d="M6 3h16v4h4v22H6z"/>
+      <path fill="#3d6d78" d="M8 6h11v3H8z"/><path fill="#cfd8dc" d="M8 11h16v1H8zM8 14h12v1H8zM8 17h16v1H8zM8 20h10v1H8z"/>
+      <path fill="${K}" d="M19 14h7l-4 6h4l-9 10 3-8h-4z"/><path fill="#f6d36b" d="M20 15h4l-4 6h4l-6 7 2-6h-4z"/>`),
+    speaker: '<svg viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" aria-hidden="true"><path fill="#1b1b1b" d="M2 5h3l4-3h1v12H9l-4-3H2z"/><path fill="none" stroke="#1b1b1b" d="M11.5 5.5c1 1.4 1 3.6 0 5M13 4c2 2.2 2 5.8 0 8"/></svg>',
+    speakerOff: '<svg viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" aria-hidden="true"><path fill="#1b1b1b" d="M2 5h3l4-3h1v12H9l-4-3H2z"/><path fill="#c0392b" d="M11 5h1l1 1 1-1h1v1l-1 1 1 1v1h-1l-1-1-1 1h-1V8l1-1-1-1z"/></svg>',
     /** Language badge showing the code you switch TO. */
     lang: (code) => S(`
       <circle cx="13" cy="13" r="11" fill="${K}"/><circle cx="13" cy="13" r="10" fill="#7fb3d5"/>

@@ -36,9 +36,13 @@
       { label: t("cv"), icon: "cv", open: Apps.openCv },
       { label: t("about"), icon: "notepad", open: Apps.openNotepad },
       { label: t("hire"), icon: "briefcase", open: Apps.openServices },
+      { label: t("track"), icon: "trophy", open: Apps.openTrack },
       { label: t("contact"), icon: "mail", open: () => Apps.openMail() },
+      { label: t("book"), icon: "calendar", open: Apps.openBook },
       ...PROJECTS.map((p) => ({ label: p.file, icon: p.icon, open: () => Apps.openProject(p.id), title: p.name })),
+      { label: t("quick"), icon: "quick", open: () => { location.href = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : ""); } },
       { label: t("terminal"), icon: "terminal", open: Apps.openTerminal },
+      { label: t("game"), icon: "game", open: Apps.openGame },
       { label: t("langIcon"), icon: ICONS.lang(other()), open: () => Lang.toggle(), title: t("langTip") },
       { label: t("trash"), icon: "trashFull", open: Apps.openTrash },
     ];
@@ -73,8 +77,12 @@
       [t("smAbout"), "notepad", Apps.openNotepad],
       [t("smCv"), "cv", Apps.openCv],
       [t("smServices"), "briefcase", Apps.openServices],
+      [t("track").replace(/\.doc$/, "").replace(/_/g, " "), "trophy", Apps.openTrack],
       [t("smContact"), "mail", () => Apps.openMail()],
+      [t("book").replace(/\.exe$/, "").replace(/_/g, " "), "calendar", Apps.openBook],
       [t("terminal"), "terminal", Apps.openTerminal],
+      [t("game").replace(/\.exe$/, ""), "game", Apps.openGame],
+      [t("smQuick"), "quick", () => { location.href = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : ""); }],
       [t("smDisplay"), "display", Apps.openDisplay],
       [t("smLang"), ICONS.lang(other()), () => Lang.toggle()],
       [t("smHelp"), "help", Apps.openHelp],
@@ -117,6 +125,13 @@
   // ---------------------------------------------------------------- Tray
   const mailBtn = document.getElementById("tray-mail");
   const langBtn = document.getElementById("tray-lang");
+  const soundBtn = document.getElementById("tray-sound");
+  const paintSound = () => {
+    soundBtn.innerHTML = Sound.muted ? ICONS.speakerOff : ICONS.speaker;
+    soundBtn.title = soundBtn.ariaLabel = Sound.muted ? t("soundOff") : t("soundOn");
+  };
+  soundBtn.addEventListener("click", () => { Sound.setMuted(!Sound.muted); if (!Sound.muted) Sound.click(); });
+  window.addEventListener("sound:change", paintSound);
   mailBtn.innerHTML = ICONS.mail;
   mailBtn.addEventListener("click", () => Apps.openMail());
   langBtn.addEventListener("click", () => Lang.toggle());
@@ -130,6 +145,7 @@
     langBtn.textContent = Lang.get().toUpperCase();
     langBtn.title = langBtn.ariaLabel = t("langTray");
     mailBtn.title = mailBtn.ariaLabel = t("contactTip");
+    paintSound();
     tick();
   }
   renderShell();
@@ -140,6 +156,9 @@
   });
 
   // ---------------------------------------------------------------- Deep links
+  const qLang = new URLSearchParams(location.search).get("lang");
+  if ((qLang === "en" || qLang === "fr") && qLang !== Lang.get()) Lang.set(qLang);
+
   function route() {
     const hash = decodeURIComponent(location.hash.slice(1));
     if (!hash) return false;
@@ -147,6 +166,7 @@
     const map = {
       projects: Apps.openProjects, about: Apps.openNotepad, contact: () => Apps.openMail(),
       terminal: Apps.openTerminal, trash: Apps.openTrash, services: Apps.openServices,
+      track: Apps.openTrack, book: Apps.openBook, game: Apps.openGame,
       cv: () => (SITE.cv && SITE.cv[id] ? Apps.openCvViewer(id) : Apps.openCv()),
       project: () => Apps.openProject(id),
       en: () => Lang.set("en"), fr: () => Lang.set("fr"),
@@ -170,6 +190,7 @@
     finished = true;
     Apps.sessionStorageSafe.set("booted", "1");
     boot.classList.add("done");
+    Sound.chime();
     setTimeout(() => boot.remove(), 500);
     if (!route()) setTimeout(Apps.openWelcome, quick ? 50 : 350);
   }

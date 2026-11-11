@@ -29,6 +29,10 @@ Every window has a shareable URL, handy for proposals and outreach emails:
 | `/#terminal` | Command Prompt |
 | `/#trash` | Recycle Bin |
 | `/#cv/en`, `/#cv/fr` | The CV in English or French |
+| `/#track` | Track record |
+| `/#book` | Book a call |
+| `/#game` | TraySweeper |
+| `/quick.html` | One-page quick view (add `?lang=fr` for French) |
 | `/#fr`, `/#en` | Switch the whole desktop to French or English |
 
 ## Editing content
@@ -52,6 +56,21 @@ entering that address. The key is public by design (it can only send to our
 inbox). With no key, or if sending fails, visitors are offered their own mail
 app instead.
 
+## Extras
+
+- **Book a call** sends the chosen day, time window, time zone and call type
+  through the same Web3Forms key as the contact form. Swap it for a Calendly or
+  Cal.com link later if you prefer self-service booking.
+- **Sound**: start-up chime and game sounds are synthesised with Web Audio (no
+  files). The speaker in the taskbar mutes them; the choice is remembered.
+- **Analytics**: both pages load Vercel Web Analytics. It starts collecting once
+  Analytics is enabled for the project in the Vercel dashboard.
+- **Link previews**: `assets/og.png` (1200x630). The `og:image` tags use an
+  absolute URL, so update them in `index.html` and `quick.html` when the site
+  moves to its own domain.
+- **Project screenshots** live in `assets/shots/`; set `shot` on a project in
+  `js/data.js` to show one.
+
 ## Deploy
 
 Static site: import the repo in Vercel with framework preset "Other", no build
@@ -66,6 +85,8 @@ js/i18n.js        language state and interface strings (EN/FR)
 js/data.js        content
 js/icons.js       pixel icons (inline SVG)
 js/wallpaper.js   animated pixel-art sunset wallpaper
+js/extras.js      sound, Track Record, Book a Call, TraySweeper
+quick.html        one-page quick view
 js/wm.js          window manager: focus, drag, resize, minimise, taskbar
 js/apps.js        the programs
 js/main.js        boot, desktop icons, start menu, deep links

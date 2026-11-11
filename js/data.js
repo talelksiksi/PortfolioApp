@@ -58,6 +58,7 @@ window.PROJECTS = [
     },
     stack: ["React 18", "SVG", "CSS3", "Vercel"],
     live: "https://integration-toolkit-eight.vercel.app",
+    shot: "assets/shots/integration-toolkit.jpg",
   },
   {
     id: "tray-store-controller",
@@ -97,6 +98,7 @@ window.PROJECTS = [
     stack: ["JavaScript", "HTML5", "CSS", { en: "PLC protocol design", fr: "Conception de protocole automate" }],
     demo: "telegram",
     live: "https://tray-store-controller.vercel.app",
+    shot: "assets/shots/tray-store-controller.jpg",
   },
   {
     id: "opcua-connector",
@@ -224,53 +226,129 @@ window.PROJECTS = [
   },
 ];
 
-// The Recycle Bin. Real lessons, mostly learned the hard way.
+// The Recycle Bin: approaches we threw away, and what replaced them.
 window.TRASH = [
   {
     file: "resend_on_timeout.js",
     what: {
-      en: "First tray-store controller: when the PLC didn't answer, resend the move.",
-      fr: "Premier contrôleur de magasin à plateaux : quand l'automate ne répondait pas, renvoyer le mouvement.",
+      en: "The naive tray-store controller: when the PLC doesn't answer, resend the move.",
+      fr: "Le contrôleur naïf de magasin à plateaux : quand l'automate ne répond pas, renvoyer le mouvement.",
     },
     lesson: {
-      en: "If the link drops after the PLC executed the move, a resend moves the tray twice. Now the controller asks the PLC for the status of the last move instead.",
-      fr: "Si la liaison tombe après l'exécution du mouvement, un renvoi déplace le plateau deux fois. Désormais, le contrôleur demande à l'automate l'état du dernier mouvement.",
+      en: "If the link drops after the PLC executed the move, a resend moves the tray twice. Our controller asks the PLC for the status of the last move instead.",
+      fr: "Si la liaison tombe après l'exécution du mouvement, un renvoi déplace le plateau deux fois. Notre contrôleur demande plutôt à l'automate l'état du dernier mouvement.",
+    },
+  },
+  {
+    file: "functions_without_search_path.sql",
+    what: {
+      en: "An inherited warehouse database where 125 of 128 stored functions never declared their search path, alongside out-of-sync sequences and stuck orders.",
+      fr: "Une base d'entrepôt héritée où 125 des 128 fonctions stockées ne déclaraient pas leur search path, avec des séquences désynchronisées et des commandes bloquées.",
+    },
+    lesson: {
+      en: "Pin the search path in every function. And a live system can be repaired without stopping it: we fixed all of it with zero downtime.",
+      fr: "Fixer le search path dans chaque fonction. Et un système en production peut se réparer sans l'arrêter : nous avons tout corrigé sans interruption de service.",
+    },
+  },
+  {
+    file: "pallets_stacked_by_eye.txt",
+    what: {
+      en: "Mixed pallets built by eye at a packing station, carton by carton.",
+      fr: "Des palettes mixtes montées à l'œil au poste d'emballage, carton par carton.",
+    },
+    lesson: {
+      en: "Compute the load plan from order data and carton dimensions, then project a laser onto the exact spot for each carton. Stable pallets that survive transit.",
+      fr: "Calculer le plan de chargement à partir des commandes et des dimensions, puis projeter au laser l'emplacement exact de chaque carton. Des palettes stables qui tiennent au transport.",
     },
   },
   {
     file: "auto_trust_all_certs.cs",
     what: {
-      en: "Early OPC UA adapter that auto-accepted every server certificate to make demos connect faster.",
-      fr: "Premier adaptateur OPC UA qui acceptait automatiquement tous les certificats serveur pour connecter les démos plus vite.",
+      en: "The tempting shortcut: auto-accept every OPC UA server certificate so demos connect faster.",
+      fr: "Le raccourci tentant : accepter automatiquement tous les certificats de serveur OPC UA pour que les démos se connectent plus vite.",
     },
     lesson: {
-      en: "That defeats the whole point of OPC UA security. AutoAcceptUntrustedCertificates now defaults to false.",
-      fr: "Cela annule tout l'intérêt de la sécurité OPC UA. AutoAcceptUntrustedCertificates vaut désormais false par défaut.",
-    },
-  },
-  {
-    file: "dashboard_polls_every_500ms.js",
-    what: {
-      en: "Warehouse dashboard v0 that polled the REST API twice a second.",
-      fr: "Version 0 du tableau de bord, qui interrogeait l'API REST deux fois par seconde.",
-    },
-    lesson: {
-      en: "Hammered the server and still felt laggy. WebSockets push changes only when the floor changes.",
-      fr: "Le serveur saturait et l'affichage restait lent. Les WebSockets ne poussent un changement que lorsque le terrain change.",
-    },
-  },
-  {
-    file: "portfolio_v1_scroll_forever.html",
-    what: {
-      en: "A portfolio that was one very long scrolling page.",
-      fr: "Un portfolio fait d'une seule page interminable.",
-    },
-    lesson: {
-      en: "Nobody scrolled past the hero. You're looking at the replacement.",
-      fr: "Personne ne dépassait le premier écran. Vous êtes en train de regarder son remplaçant.",
+      en: "That defeats the whole point of OPC UA security, so AutoAcceptUntrustedCertificates defaults to false in our connector.",
+      fr: "Cela annule tout l'intérêt de la sécurité OPC UA : AutoAcceptUntrustedCertificates vaut donc false par défaut dans notre connecteur.",
     },
   },
 ];
+
+// Track record from the founder's CV. Client names are deliberately left out.
+window.TRACK = {
+  stats: [
+    { n: "10", en: "years building industrial control software", fr: "ans de logiciel de conduite industrielle" },
+    { n: "7", en: "live sites supported today", fr: "sites en exploitation supportés aujourd'hui" },
+    { n: "3", en: "continents with running installations", fr: "continents avec des installations en service" },
+    { n: "8", en: "industries, from pharma to airports", fr: "secteurs, de la pharmacie aux aéroports" },
+  ],
+  work: [
+    {
+      sector: { en: "Automated storage", fr: "Stockage automatisé" },
+      title: { en: "Control software for an elevator-type storage and retrieval system", fr: "Logiciel de conduite d'un système de stockage automatisé de type ascenseur" },
+      text: {
+        en: "Architected and built from a whiteboard idea to live installations in Europe, the US and Asia: machine model, PLC layers from socket telegrams to OPC UA, product-flow and fault-recovery strategies, live monitoring, operator HMI and the WMS interface.",
+        fr: "Conçu et développé d'une idée au tableau jusqu'à des installations en Europe, aux États-Unis et en Asie : modèle machine, couches automate du télégramme sur socket à OPC UA, stratégies de flux et de reprise sur défaut, supervision, IHM opérateur et interface WMS.",
+      },
+    },
+    {
+      sector: { en: "Food & beverage · USA", fr: "Agroalimentaire · États-Unis" },
+      title: { en: "Two projects for a major US craft brewer", fr: "Deux projets pour un grand brasseur américain" },
+      text: {
+        en: "Integrated our storage control software with the WMS supplied by a tier-one US systems integrator.",
+        fr: "Intégration de notre logiciel de stockage avec le WMS fourni par un intégrateur américain de premier plan.",
+      },
+    },
+    {
+      sector: { en: "Pharma · Laundry · Fashion", fr: "Pharmacie · Blanchisserie · Mode" },
+      title: { en: "Seven live sites, from one machine to two installations of six", fr: "Sept sites en exploitation, d'une machine à deux installations de six" },
+      text: {
+        en: "Lead support across sites in pharmaceutical distribution, industrial laundry and fashion retail. On the two six-machine sites we delivered the whole chain: WMS logic, conveyor control over OPC and the tray buffers.",
+        fr: "Responsable du support sur des sites en distribution pharmaceutique, blanchisserie industrielle et distribution de mode. Sur les deux sites à six machines, nous avons livré toute la chaîne : logique WMS, convoyage via OPC et tampons de plateaux.",
+      },
+    },
+    {
+      sector: { en: "Aviation", fr: "Aérien" },
+      title: { en: "Robotic baggage loading at a major European airport", fr: "Chargement robotisé de bagages dans un grand aéroport européen" },
+      text: {
+        en: "A push-arm robot that stacks baggage into ULD containers autonomously, now running in the baggage halls. Development and project management.",
+        fr: "Un robot à bras pousseur qui empile les bagages dans les conteneurs ULD de façon autonome, en service dans les halls bagages. Développement et gestion de projet.",
+      },
+    },
+    {
+      sector: { en: "Beverage production", fr: "Production de boissons" },
+      title: { en: "Plant-wide WMS with SAP integration", fr: "WMS de site avec intégration SAP" },
+      text: {
+        en: "Pallets from the end of the production line through storage to shipping, synchronised with SAP over IDoc: inbound orders, movement confirmations and stock.",
+        fr: "Les palettes de la sortie de ligne au stockage puis à l'expédition, synchronisées avec SAP par IDoc : ordres entrants, confirmations de mouvement et stock.",
+      },
+    },
+    {
+      sector: { en: "Retail logistics", fr: "Logistique retail" },
+      title: { en: "Mixed palletising with laser guidance", fr: "Palettisation mixte guidée par laser" },
+      text: {
+        en: "Load-carrier optimisation from order data and business rules, with a station that projects each carton's exact position. Installed for a national retailer; proposal delivered to a global logistics group.",
+        fr: "Optimisation du support de charge à partir des commandes et de règles métier, avec un poste qui projette la position exacte de chaque carton. Installé chez une enseigne nationale ; proposition remise à un groupe logistique mondial.",
+      },
+    },
+    {
+      sector: { en: "Robotics", fr: "Robotique" },
+      title: { en: "Robotic storage with AMRs and pick stations", fr: "Stockage robotisé avec AMR et postes de prélèvement" },
+      text: {
+        en: "Application framework and AMR communication layer, plus touchscreen pick stations guided by LED strips for trays with up to eight compartments.",
+        fr: "Framework applicatif et couche de communication AMR, plus des postes de prélèvement tactiles guidés par LED pour des plateaux jusqu'à huit compartiments.",
+      },
+    },
+    {
+      sector: { en: "Distribution", fr: "Distribution" },
+      title: { en: "Warehouse management web app replacing a legacy system", fr: "Application web de gestion d'entrepôt remplaçant un système historique" },
+      text: {
+        en: "ASP.NET Core, PostgreSQL and EF Core: orders, stock per batch and location with cost tracking, KPI dashboard. Started with a zero-downtime rescue of the legacy database.",
+        fr: "ASP.NET Core, PostgreSQL et EF Core : commandes, stock par lot et emplacement avec suivi des coûts, tableau de bord. A commencé par le sauvetage sans interruption de la base historique.",
+      },
+    },
+  ],
+};
 
 window.SERVICES = [
   {

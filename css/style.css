@@ -380,3 +380,61 @@ iframe.pdf { flex: 1; width: 100%; border: 0; background: #525659; }
   .task { flex-basis: 44px; } .task span { display: none; }
   #start-btn span { display: none; }
 }
+
+/* ---------- Tray sound ---------- */
+#tray-sound { border: 0; background: none; padding: 0; width: 18px; height: 18px; cursor: pointer; display: grid; place-items: center; }
+
+/* ---------- Project screenshot ---------- */
+.shot { display: block; margin: 0 0 12px; padding: 3px; line-height: 0; }
+.shot img { width: 100%; height: auto; display: block; }
+
+/* ---------- Track record ---------- */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 14px 0 6px; }
+.stat { padding: 12px; background: var(--teal-dark); color: #fff; box-shadow: inset -1px -1px var(--shadow), inset 1px 1px var(--teal); }
+.stat b { display: block; font-size: 30px; line-height: 1; color: var(--sun); margin-bottom: 6px; }
+.stat span { font-size: 12px; color: var(--mist); }
+.work-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.work { padding: 12px; background: #fff; box-shadow: inset -1px -1px var(--hi), inset 1px 1px var(--lo); }
+.work h3 { margin: 2px 0 6px; font-size: 14px; }
+.work p { margin: 0; font-size: 12.5px; }
+
+/* ---------- Book a call ---------- */
+.book-form fieldset { border: 0; padding: 0; margin: 0 0 12px; }
+.book-form legend { font-weight: 700; margin-bottom: 6px; padding: 0; }
+.book-form small { display: block; margin-top: 4px; color: #555; }
+.chips-pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-block; padding: 5px 10px; cursor: pointer; background: var(--face);
+  box-shadow: inset -1px -1px var(--shadow), inset 1px 1px var(--hi), inset -2px -2px var(--lo); }
+.chip input:checked + span { background: var(--teal-dark); color: #fff; box-shadow: inset 1px 1px var(--shadow), inset -1px -1px var(--teal); }
+.chip input:focus-visible + span { outline: 2px dotted var(--ink); outline-offset: 1px; }
+.book-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.book-fields textarea { grid-column: 1 / -1; min-height: 90px; resize: vertical; font: 13px/1.5 var(--font); }
+.book-fields input[name=company] { grid-column: 1 / -1; }
+@media (max-width: 520px) { .book-fields { grid-template-columns: 1fr; } }
+
+/* ---------- TraySweeper ---------- */
+.sweep { padding: 10px 12px; background: var(--face); }
+.sweep-intro { font-size: 12px; margin: 0 0 8px; }
+.sweep-head { display: flex; justify-content: space-between; align-items: center; padding: 5px 6px; background: var(--face); }
+.lcd { font: 700 22px/1 var(--mono); color: #ff3b30; background: #200; padding: 2px 4px; letter-spacing: 1px; min-width: 52px; text-align: center; }
+.face { min-width: 0; width: 34px; height: 34px; padding: 0; font-size: 18px; }
+.sweep-board { display: grid; grid-template-columns: repeat(var(--cols), 1fr); margin-top: 8px; padding: 3px; aspect-ratio: 1;
+  box-shadow: inset 1px 1px var(--lo), inset -1px -1px var(--hi), inset 2px 2px var(--shadow); background: var(--lo); gap: 0; touch-action: manipulation; }
+.cell { border: 0; padding: 0; aspect-ratio: 1; font: 700 15px var(--mono); cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  background: linear-gradient(var(--face), var(--face)) padding-box;
+  box-shadow: inset -2px -2px var(--lo), inset 2px 2px var(--hi);
+  position: relative; display: grid; place-items: center; }
+.cell:not(.open)::after { /* tray front lip */
+  content: ""; position: absolute; left: 22%; right: 22%; bottom: 24%; height: 12%; background: var(--sun); opacity: .65; }
+.cell.flag::after { display: none; }
+.cell.flag { color: #c0392b; }
+.cell.open { background: #d9dcdf; box-shadow: inset 1px 1px var(--lo); cursor: default; }
+.cell.mine { color: #111; }
+.cell.boom { background: #e74c3c; }
+.cell.n1 { color: #1d4f9c; } .cell.n2 { color: #2e7d32; } .cell.n3 { color: #c0392b; } .cell.n4 { color: #283593; }
+.cell.n5 { color: #8b1a1a; } .cell.n6 { color: #00838f; } .cell.n7 { color: #111; } .cell.n8 { color: #666; }
+.sweep-tools { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.sweep-tools small { color: #444; }
+.sweep-tools .btn.pressed { background: var(--teal-dark); color: #fff; }
+.sweep-msg p { margin: 10px 0 8px; }

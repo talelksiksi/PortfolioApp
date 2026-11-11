@@ -44,6 +44,8 @@
     if (!p) return;
     const tabs = [
       [t("tabOverview"), () => [
+        p.shot ? h("a", { class: "shot sunken", href: p.live || p.shot, target: "_blank", rel: "noopener" },
+          h("img", { src: p.shot, alt: p.name, loading: "lazy", width: 1280, height: 800 })) : null,
         h("p", {}, L(p.summary)),
         h("div", { class: "ps" },
           h("div", { class: "sunken" }, h("h2", {}, t("problem")), h("p", {}, L(p.problem))),
@@ -212,6 +214,26 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
   }
 
   // ---------------------------------------------------------------- Mail
+  /** Deliver a form to our inbox through Web3Forms. Throws on any failure. */
+  async function submitForm(fields) {
+    if (!SITE.web3formsKey) throw new Error("no key");
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: SITE.web3formsKey,
+        from_name: `${fields.name} via portfolio`,
+        replyto: fields.email,
+        language: Lang.get(),
+        botcheck: "",
+        ...fields,
+      }),
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || out.success === false) throw new Error(out.message || res.status);
+    return out;
+  }
+
   function openMail(subject, keep) {
     const existing = WM.get("mail");
     if (existing) {
@@ -259,21 +281,10 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       sendBtn.disabled = true;
       show("info", t("sending"));
       try {
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: SITE.web3formsKey,
-            subject: `[Portfolio] ${d.subject}`,
-            from_name: `${d.name} via portfolio`,
-            replyto: d.email,
-            name: d.name, email: d.email, company: d.company, budget: d.budget, message: d.message,
-            language: Lang.get(),
-            botcheck: "",
-          }),
+        await submitForm({
+          subject: `[Portfolio] ${d.subject}`,
+          name: d.name, email: d.email, company: d.company, budget: d.budget, message: d.message,
         });
-        const out = await res.json().catch(() => ({}));
-        if (!res.ok || out.success === false) throw new Error(out.message || res.status);
         form.reset();
         const [b, rest] = t("sent");
         show("info", h("b", {}, b), rest);
@@ -580,6 +591,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
         h("h2", { style: "margin-top:0" }, t("welcomeH")),
         h("p", {}, t("welcomeP", owner, studio, isTouch())),
         h("div", { class: "tip" }, h("b", {}, t("tipH")), a, h("code", {}, "sudo"), b),
+        h("p", { style: "margin:10px 0 0" }, t("quickTip"), h("a", { href: "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : "") }, t("quickTipLink"))),
       ],
       buttons: [[t("showWork"), openProjects, true], [t("whoAreYou"), openNotepad], [t("close"), null]],
     });
@@ -612,6 +624,6 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
 
   window.Apps = {
     iconButton, openProjects, openProject, openNotepad, openMail, openTerminal, openTrash, openCv, openCvViewer,
-    openServices, openDisplay, openWelcome, openHelp, openShutdown, dialog, setHash, sessionStorageSafe, isTouch,
+    openServices, openDisplay, openWelcome, submitForm, openHelp, openShutdown, dialog, setHash, sessionStorageSafe, isTouch,
   };
 })();
