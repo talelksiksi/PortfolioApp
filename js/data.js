@@ -15,8 +15,8 @@ window.SITE = {
   github: "https://github.com/talelksiksi",
   // CV files, relative to the site root. Leave a value "" to hide that language.
   cv: {
-    en: "",
-    fr: "",
+    en: "assets/cv/Talel-Ksiksi-CV-EN.pdf",
+    fr: "assets/cv/Talel-Ksiksi-CV-FR.pdf",
   },
 };
 
