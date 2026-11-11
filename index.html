@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Talel Ksiksi · CICTNA RDC</title>
+  <meta name="description" content="Portfolio of Talel Ksiksi (CICTNA RDC): industrial automation, OPC UA and PLC integration, real-time dashboards and web apps. Explore it as a retro desktop.">
+  <meta name="theme-color" content="#3d6d78">
+  <meta property="og:title" content="Talel Ksiksi · CICTNA RDC">
+  <meta property="og:description" content="Industrial software, integrations and web apps. Boot the desktop and open the project folders.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Boot sequence -->
+  <div id="boot" aria-hidden="true">
+    <pre id="boot-log"></pre>
+    <div id="splash" hidden>
+      <img src="assets/logo.svg" alt="" width="96" height="96">
+      <div class="splash-title">CICTNA<span>OS</span></div>
+      <div class="splash-sub">Industrial Edition</div>
+      <div class="splash-bar"><i></i></div>
+    </div>
+    <button id="boot-skip" type="button">Press any key to skip</button>
+  </div>
+
+  <main id="desktop" aria-label="Desktop">
+    <ul id="icons" role="list"></ul>
+    <div id="windows"></div>
+  </main>
+
+  <nav id="taskbar" aria-label="Taskbar">
+    <button id="start-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+      <img src="assets/logo.svg" alt="" width="18" height="18"><span>Start</span>
+    </button>
+    <div id="tasks" role="list"></div>
+    <div id="tray">
+      <button id="tray-mail" type="button" title="Contact us" aria-label="Open contact form"></button>
+      <span id="clock" aria-live="off"></span>
+    </div>
+  </nav>
+
+  <div id="start-menu" role="menu" hidden>
+    <div class="start-side"><span>CICTNA<b>OS</b></span></div>
+    <ul id="start-list"></ul>
+  </div>
+
+  <noscript>
+    <div class="noscript">
+      <h1>Talel Ksiksi · CICTNA RDC</h1>
+      <p>Industrial software, integrations and web apps. This portfolio is an interactive desktop and needs JavaScript.</p>
+      <p>Projects: Integration Toolkit (<a href="https://integration-toolkit-eight.vercel.app">live demo</a>), Tray Store Controller, OPC UA Connector, Warehouse Dashboard, Warehouse Portal, Dental Clinic Platform.</p>
+      <p>Contact: <a href="mailto:contact@cictnardc.net">contact@cictnardc.net</a></p>
+    </div>
+  </noscript>
+
+  <script src="js/data.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/wm.js"></script>
+  <script src="js/apps.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
