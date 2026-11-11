@@ -60,6 +60,7 @@ window.PROJECTS = [
     ],
     stack: ["JavaScript", "HTML5", "CSS", "PLC protocol design"],
     demo: "telegram",
+    live: "https://tray-store-controller.vercel.app",
   },
   {
     id: "opcua-connector",
@@ -101,7 +102,8 @@ window.PROJECTS = [
       "WebSocket push for live updates, no polling",
       "Companion to the Integration Toolkit",
     ],
-    stack: ["Express.js", "WebSockets", "Node.js", "JavaScript"],
+    stack: ["React", "Express.js", "WebSockets", "Node.js"],
+    live: "https://warehouse-dashboard-umber.vercel.app",
   },
   {
     id: "warehouse-portal",
@@ -121,6 +123,7 @@ window.PROJECTS = [
       "Shares its data model with the internal dashboard",
     ],
     stack: ["JavaScript", "Web"],
+    live: "https://warehouse-portal-demo.vercel.app",
   },
   {
     id: "dental-clinic",
