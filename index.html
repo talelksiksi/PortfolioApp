@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Talel Ksiksi (CICTNA RDC): industrial automation, OPC UA and PLC integration, real-time dashboards and web apps. Explore it as a retro desktop.">
   <meta name="theme-color" content="#3d6d78">
   <meta property="og:title" content="Talel Ksiksi · CICTNA RDC">
-  <meta property="og:description" content="Industrial software, integrations and web apps. Boot the desktop and open the project folders.">
+  <meta property="og:description" content="Industrial software, integrations and web apps. Boot the desktop and open the project folders. Also in French.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
@@ -17,10 +17,12 @@
   <div id="boot" aria-hidden="true">
     <pre id="boot-log"></pre>
     <div id="splash" hidden>
-      <img src="assets/logo.svg" alt="" width="96" height="96">
-      <div class="splash-title">CICTNA<span>OS</span></div>
-      <div class="splash-sub">Industrial Edition</div>
+      <img src="assets/logo.svg" alt="" width="104" height="104">
+      <div class="splash-brand">CICTNA<span>RDC</span></div>
+      <h1 id="splash-hello"></h1>
+      <p id="splash-sub"></p>
       <div class="splash-bar"><i></i></div>
+      <p id="splash-line"></p>
     </div>
     <button id="boot-skip" type="button">Press any key to skip</button>
   </div>
@@ -36,7 +38,8 @@
     </button>
     <div id="tasks" role="list"></div>
     <div id="tray">
-      <button id="tray-mail" type="button" title="Contact us" aria-label="Open contact form"></button>
+      <button id="tray-lang" type="button"></button>
+      <button id="tray-mail" type="button"></button>
       <span id="clock" aria-live="off"></span>
     </div>
   </nav>
@@ -50,13 +53,15 @@
     <div class="noscript">
       <h1>Talel Ksiksi · CICTNA RDC</h1>
       <p>Industrial software, integrations and web apps. This portfolio is an interactive desktop and needs JavaScript.</p>
-      <p>Projects: Integration Toolkit (<a href="https://integration-toolkit-eight.vercel.app">live demo</a>), Tray Store Controller, OPC UA Connector, Warehouse Dashboard, Warehouse Portal, Dental Clinic Platform.</p>
+      <p>Projects: <a href="https://integration-toolkit-eight.vercel.app">Integration Toolkit</a>, <a href="https://tray-store-controller.vercel.app">Tray Store Controller</a>, OPC UA Connector, <a href="https://warehouse-dashboard-umber.vercel.app">Warehouse Dashboard</a>, <a href="https://warehouse-portal-demo.vercel.app">Warehouse Portal</a>, Dental Clinic Platform.</p>
       <p>Contact: <a href="mailto:contact@cictnardc.net">contact@cictnardc.net</a></p>
     </div>
   </noscript>
 
+  <script src="js/i18n.js"></script>
   <script src="js/data.js"></script>
   <script src="js/icons.js"></script>
+  <script src="js/wallpaper.js"></script>
   <script src="js/wm.js"></script>
   <script src="js/apps.js"></script>
   <script src="js/main.js"></script>

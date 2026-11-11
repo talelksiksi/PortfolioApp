@@ -102,7 +102,13 @@
       h("span", { html: iconSvg, style: "display:contents" }), h("span", {}, opts.title));
 
     const win = {
-      id, el, body, task, z: 0, minimized: false, maximized: false,
+      id, el, body, task, z: 0, minimized: false, maximized: false, reopen: opts.reopen,
+      /** Remove instantly, without onClose or animation (used when relaunching). */
+      destroy() {
+        wins.delete(id);
+        task.remove();
+        el.remove();
+      },
       focus() {
         if (win.minimized) win.restore();
         win.z = ++z;
@@ -212,8 +218,27 @@
     grip.addEventListener("pointerup", () => { on = false; });
   }
 
+  /** Close every window and reopen the ones that know how, keeping their geometry. */
+  function relaunchAll() {
+    const list = [...wins.values()].sort((a, b) => a.z - b.z).map((w) => ({
+      w, reopen: w.reopen, max: w.maximized, min: w.minimized,
+      geo: { left: w.el.style.left, top: w.el.style.top, width: w.el.style.width, height: w.el.style.height },
+    }));
+    list.forEach((x) => x.w.destroy());
+    list.forEach((x) => {
+      if (!x.reopen) return;
+      const w = x.reopen();
+      if (!w || !w.el) return;
+      Object.assign(w.el.style, x.geo);
+      if (x.max && !w.maximized) w.toggleMax();
+      if (x.min) w.minimize();
+    });
+    refreshActive();
+  }
+
   window.WM = {
     open,
+    relaunchAll,
     get: (id) => wins.get(id),
     active,
     all: () => [...wins.values()],

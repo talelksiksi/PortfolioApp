@@ -106,5 +106,23 @@
       <path fill="#fff" d="M14 8h4v4h-4zM13 14h5v8h2v3h-7v-3h2v-5h-2z"/>`),
     warn: S(`<path fill="${K}" d="M16 2L31 29H1z"/><path fill="#f6d36b" d="M16 5l12.5 22.5h-25z"/>
       <path fill="${K}" d="M14.5 11h3v9h-3zM14.5 22h3v3h-3z"/>`),
+    cv: S(`
+      <path fill="${K}" d="M6 2h16l5 5v23H6z"/>
+      <path fill="#fff" d="M7 3h14v5h5v21H7z"/>
+      <path fill="#cfd8dc" d="M21 3l5 5h-5z"/>
+      <path fill="#3d6d78" d="M9 6h8v9H9z"/>
+      <path fill="#e7a982" d="M11 7h4v4h-4zM10 12h6v3h-6z"/>
+      <path fill="#3d6d78" d="M19 10h5v1h-5zM19 13h5v1h-5zM9 18h15v1H9zM9 21h15v1H9zM9 24h11v1H9z"/>
+      <path fill="#c0392b" d="M18 26h8v4h-8z"/><path fill="#fff" d="M19 27h1v2h-1zM21 27h1v2h-1zM23 27h2v1h-2z"/>`),
+    /** Language badge showing the code you switch TO. */
+    lang: (code) => S(`
+      <circle cx="13" cy="13" r="11" fill="${K}"/><circle cx="13" cy="13" r="10" fill="#7fb3d5"/>
+      <path fill="#58b06a" d="M6 7h5v3h3v3h-3l-2 4H6v-4L4 11V8zM15 15h4v3l-2 3h-2z"/>
+      <path fill="${K}" d="M12 15h19v14H12z"/>
+      <path fill="${code === "FR" ? "#fff" : "#fff"}" d="M13 16h17v12H13z"/>
+      ${code === "FR"
+        ? `<path fill="#1f4fa3" d="M13 16h6v12h-6z"/><path fill="#d63a3a" d="M24 16h6v12h-6z"/>`
+        : `<path fill="#1f3f8f" d="M13 16h17v12H13z"/><path fill="#fff" d="M13 21h17v2H13zM20 16h3v12h-3z"/><path fill="#c8102e" d="M13 21.5h17v1H13zM21 16h1v12h-1z"/>`}
+      <text x="21.5" y="25.5" font-family="Verdana,sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#111" stroke="#fff" stroke-width="2" paint-order="stroke">${code}</text>`),
   };
 })();
