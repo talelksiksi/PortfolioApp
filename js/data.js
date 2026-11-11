@@ -10,7 +10,7 @@ window.SITE = {
   // Contact form delivery via Web3Forms (https://web3forms.com). The access
   // key only lets visitors send mail TO our inbox, so it is safe to publish.
   // Leave it "" and the form opens the visitor's own mail app instead.
-  web3formsKey: "",
+  web3formsKey: "6ec4d65c-5286-4a3a-9db2-1b870d8a7333",
   github: "https://github.com/talelksiksi",
 };
 
