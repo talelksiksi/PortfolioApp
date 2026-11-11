@@ -210,17 +210,25 @@ ${email}. Tell me what's slowing your operation down.
       if (!/^\S+@\S+\.\S+$/.test(d.email)) missing.push("a valid email");
       if (!d.message.trim()) missing.push("a message");
       if (missing.length) return show("warn", "Please add " + missing.join(", ") + ".");
-      if (!SITE.contactEndpoint) { mailtoFallback(d); return show("info", "Your mail app should open with the message ready to send."); }
+      if (!SITE.web3formsKey) { mailtoFallback(d); return show("info", "Your mail app should open with the message ready to send."); }
 
       sendBtn.disabled = true;
       show("info", "Sending…");
       try {
-        const res = await fetch(SITE.contactEndpoint, {
+        const res = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ ...d, _subject: `[Portfolio] ${d.subject}`, _template: "table", _captcha: "false" }),
+          body: JSON.stringify({
+            access_key: SITE.web3formsKey,
+            subject: `[Portfolio] ${d.subject}`,
+            from_name: `${d.name} via portfolio`,
+            replyto: d.email,
+            name: d.name, email: d.email, company: d.company, budget: d.budget, message: d.message,
+            botcheck: "",
+          }),
         });
-        if (!res.ok) throw new Error(res.status);
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || out.success === false) throw new Error(out.message || res.status);
         form.reset();
         show("info", h("b", {}, "Message sent."), " Thanks — we reply within one business day.");
       } catch {

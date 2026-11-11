@@ -7,10 +7,10 @@ window.SITE = {
   studio: "CICTNA RDC",
   tagline: "Industrial software, integrations and web apps that ship.",
   email: "contact@cictnardc.net",
-  // Contact form delivery. FormSubmit forwards AJAX posts to the address in
-  // the URL; the very first submission triggers a one-time activation email
-  // to that inbox. Set to "" to fall back to opening the visitor's mail app.
-  contactEndpoint: "https://formsubmit.co/ajax/contact@cictnardc.net",
+  // Contact form delivery via Web3Forms (https://web3forms.com). The access
+  // key only lets visitors send mail TO our inbox, so it is safe to publish.
+  // Leave it "" and the form opens the visitor's own mail app instead.
+  web3formsKey: "",
   github: "https://github.com/talelksiksi",
 };
 

@@ -36,11 +36,11 @@ contact settings. The bio text is `ABOUT` in `js/apps.js`.
 
 ## Contact form
 
-The form posts to FormSubmit (`SITE.contactEndpoint` in `js/data.js`), which
-forwards to `contact@cictnardc.net`. The first submission sends a one-time
-activation email to that inbox; click the link in it and later messages arrive
-normally. If the endpoint fails, the visitor is offered their own mail app.
-Set `contactEndpoint` to `""` to always use the mail app.
+The form posts to Web3Forms, which emails `contact@cictnardc.net`. The access
+key is `SITE.web3formsKey` in `js/data.js`; get one at https://web3forms.com by
+entering that address. The key is public by design (it can only send to our
+inbox). With no key, or if sending fails, visitors are offered their own mail
+app instead.
 
 ## Deploy
 
