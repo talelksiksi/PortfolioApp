@@ -370,7 +370,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       ? `Commandes disponibles :
   whoami            qui fait tourner cette machine
   ls / dir          lister les projets
-  open <projet>     ouvrir un projet       (ex. open opcua)
+  open <projet>     ouvrir un projet       (ex. open plant)
   cat about.txt     afficher la bio
   cv                ouvrir le CV
   skills            ce que nous construisons
@@ -384,7 +384,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       : `Available commands:
   whoami            who runs this machine
   ls / dir          list projects
-  open <project>    open a project window   (e.g. open opcua)
+  open <project>    open a project window   (e.g. open plant)
   cat about.txt     print the bio
   cv                open the CV
   skills            what we build

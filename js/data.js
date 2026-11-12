@@ -141,43 +141,6 @@ window.PROJECTS = [
     shot: "assets/shots/plant-data-logger.jpg",
   },
   {
-    id: "opcua-connector",
-    name: "OPC UA Connector",
-    file: "OpcUaConnector.dll",
-    icon: "plug",
-    category: { en: "Industrial library · C#", fr: "Bibliothèque industrielle · C#" },
-    year: "2026",
-    summary: {
-      en: "A C# library built around one interface with two implementations: a realistic in-process simulator for prototyping, and a real opc.tcp:// client verified against a live OPC UA server.",
-      fr: "Une bibliothèque C# construite autour d'une seule interface et de deux implémentations : un simulateur réaliste pour le prototypage, et un vrai client opc.tcp:// vérifié face à un serveur OPC UA réel.",
-    },
-    problem: {
-      en: "Teams building dashboards and alarm logic for factory equipment wait weeks for access to a real PLC, then discover their trigger logic behaves differently on live data.",
-      fr: "Les équipes qui développent tableaux de bord et alarmes pour des équipements industriels attendent des semaines l'accès à un vrai automate, puis découvrent que leurs déclencheurs se comportent autrement sur des données réelles.",
-    },
-    solution: {
-      en: "Code against IOpcUaClient. Prototype with the mock, which drifts realistic values every second, then swap in the real adapter with zero changes: the same 9 trigger types evaluate through the same TriggerManager on both.",
-      fr: "On code contre IOpcUaClient. On prototype avec le simulateur, qui fait varier des valeurs réalistes chaque seconde, puis on branche l'adaptateur réel sans rien changer : les mêmes 9 types de déclencheurs passent par le même TriggerManager.",
-    },
-    highlights: {
-      en: [
-        "9 trigger types: AnyChange, Threshold (hysteresis), Deadband, RateOfChange, Direction, ValueChange, Bit, TimeBased, Connection",
-        "Configurable security: None / Sign / SignAndEncrypt, policies, credentials",
-        "Recursive, cycle-safe address-space browsing and endpoint discovery",
-        "69 tests: 64 unit + real-server integration tests",
-        "Live Blazor Server dashboard with streaming trigger log",
-      ],
-      fr: [
-        "9 types de déclencheurs : AnyChange, Threshold (hystérésis), Deadband, RateOfChange, Direction, ValueChange, Bit, TimeBased, Connection",
-        "Sécurité configurable : None / Sign / SignAndEncrypt, politiques, identifiants",
-        "Parcours récursif de l'espace d'adressage, sans boucle, et découverte des points d'accès",
-        "69 tests : 64 unitaires + tests d'intégration sur serveur réel",
-        "Tableau de bord Blazor Server en direct avec journal des déclenchements",
-      ],
-    },
-    stack: ["C#", ".NET", "OPC UA", "xUnit", "Blazor Server"],
-  },
-  {
     id: "warehouse-dashboard",
     name: "Warehouse Control Room",
     file: "WarehouseDash.app",

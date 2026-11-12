@@ -38,7 +38,7 @@ a { color: #1d4f9c; }
 :focus-visible { outline: 2px dotted var(--ink); outline-offset: 1px; }
 
 /* ---------- Bevels ---------- */
-.raised, .btn, .window, #taskbar, #start-btn, #start-menu, .task {
+.btn, .window, #taskbar, #start-btn, #start-menu, .task {
   background: var(--face);
   box-shadow: inset -1px -1px var(--shadow), inset 1px 1px var(--hi),
               inset -2px -2px var(--lo), inset 2px 2px var(--face-light);

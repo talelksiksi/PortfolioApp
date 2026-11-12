@@ -22,7 +22,7 @@ Every window has a shareable URL, handy for proposals and outreach emails:
 | Link | Opens |
 | --- | --- |
 | `/#projects` | Projects folder |
-| `/#project/<id>` | One project (`integration-toolkit`, `tray-store-controller`, `opcua-connector`, `warehouse-dashboard`, `warehouse-portal`, `dental-clinic`) |
+| `/#project/<id>` | One project (`integration-toolkit`, `tray-store-controller`, `plant-data-logger`, `warehouse-dashboard`, `warehouse-portal`, `gp-office`, `dental-clinic`) |
 | `/#about` | About_Me.txt |
 | `/#services` | Hire_Us.hlp |
 | `/#contact` | Contact form |
@@ -38,7 +38,9 @@ Every window has a shareable URL, handy for proposals and outreach emails:
 ## Editing content
 
 All copy lives in `js/data.js`: projects, Recycle Bin entries, services, the CV
-files and the contact settings. Text that changes with the language is written
+files and the contact settings. Only projects with a public `live` demo are
+shown; add one to `PROJECTS` with its `live` URL and `shot` screenshot and it
+appears in the apps showcase, the desktop and the deep links. Text that changes with the language is written
 as `{ en: "...", fr: "..." }`. Interface strings (menus, buttons, dialogs, the
 boot and welcome screens) are in `js/i18n.js`; the bio text is `ABOUT` in
 `js/apps.js`.
@@ -63,8 +65,9 @@ app instead.
   Cal.com link later if you prefer self-service booking.
 - **Sound**: start-up chime and game sounds are synthesised with Web Audio (no
   files). The speaker in the taskbar mutes them; the choice is remembered.
-- **Analytics**: on cictnardc.net, turn on Cloudflare Web Analytics for the Pages
-  project (no code needed). The vercel.app copy loads Vercel Web Analytics.
+- **Analytics**: on cictnardc.net, turn on Cloudflare Web Analytics for the
+  `cictnardc` Worker (no code needed). The vercel.app copy loads Vercel Web
+  Analytics.
 - **Use my mail app** opens a chooser: the device's mail program (mailto), Gmail
   or Outlook.com in the browser with the message pre-filled, or copy the address.
   A mailto link alone does nothing on computers without a mail program set up.
@@ -109,16 +112,19 @@ out of it.
 ## Layout
 
 ```
-index.html        shell: boot screen, desktop, taskbar, start menu
-css/style.css     the whole look
-js/i18n.js        language state and interface strings (EN/FR)
-js/data.js        content
-js/icons.js       pixel icons (inline SVG)
-js/wallpaper.js   animated pixel-art sunset wallpaper
-js/extras.js      sound, Track Record, Book a Call, TraySweeper
-quick.html        one-page quick view
-js/wm.js          window manager: focus, drag, resize, minimise, taskbar
-js/apps.js        the programs
-js/main.js        boot, desktop icons, start menu, deep links
-assets/logo.svg   CICTNA mark
+index.html               shell: boot screen, desktop, apps showcase, taskbar, start menu
+quick.html               one-page quick view
+css/style.css            the whole look
+js/i18n.js               language state and interface strings (EN/FR)
+js/data.js               content: projects, track record, Recycle Bin, services, settings
+js/icons.js              pixel icons (inline SVG)
+js/wallpaper.js          animated pixel-art wallpaper (the cictnardc.net hero scene)
+js/wm.js                 window manager: focus, drag, resize, minimise, taskbar
+js/apps.js               the programs
+js/extras.js             sound, Track Record, Book a Call, TraySweeper
+js/main.js               boot, desktop icons, apps showcase, start menu, deep links
+assets/                  logo, link preview, CVs, project screenshots
+website/                 the cictnardc.net company website (served at /)
+scripts/                 build and deploy for cictnardc.net
+wrangler.jsonc           the cictnardc Cloudflare Worker
 ```
