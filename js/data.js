@@ -58,7 +58,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["React", "SVG", "Node.js codegen", "OPC UA · Modbus · IDoc · Kafka"],
-    live: "https://integration-toolkit-dner.vercel.app",
+    live: "https://integration-toolkit-eight.vercel.app",
     shot: "assets/shots/integration-toolkit.jpg",
   },
   {
