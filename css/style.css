@@ -456,7 +456,7 @@ iframe.pdf { flex: 1; width: 100%; border: 0; background: #525659; }
 .launcher-body { overflow: auto; padding: 12px; min-height: 0; }
 .app-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .app-tile { position: relative; background: #fff; box-shadow: inset -1px -1px var(--lo), inset 1px 1px var(--hi), 0 0 0 1px var(--lo); }
-.app-open { display: block; width: 100%; border: 0; padding: 6px; background: none; cursor: pointer; text-align: left; }
+.app-open { display: block; width: 100%; border: 0; padding: 6px 6px 8px; background: none; cursor: pointer; text-align: left; }
 .app-thumb { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--teal-dark);
   box-shadow: inset 1px 1px var(--lo), inset -1px -1px var(--hi); }
 .app-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform .35s ease; }
@@ -465,22 +465,23 @@ iframe.pdf { flex: 1; width: 100%; border: 0; background: #525659; }
 .app-bigicon svg { width: 72px; height: 72px; filter: drop-shadow(3px 4px 0 rgba(0,0,0,.35)); transition: transform .35s ease; }
 .app-live { position: absolute; bottom: 6px; left: 6px; font: 800 10px/1 var(--font); letter-spacing: .1em; padding: 4px 6px; background: #c0392b; color: #fff; box-shadow: 1px 1px 0 #000; }
 .app-live::before { content: "● "; animation: blink 1.4s steps(1) infinite; }
-.app-meta { display: flex; align-items: center; gap: 8px; padding: 8px 2px 2px; }
+.app-meta { display: flex; align-items: center; gap: 8px; padding: 2px 8px 8px; }
 .app-icon svg { width: 28px; height: 28px; flex: none; }
-.app-text { display: flex; flex-direction: column; min-width: 0; }
+.app-text { display: flex; flex-direction: column; min-width: 0; flex: 1; border: 0; background: none; padding: 0; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.app-try { flex: none; min-width: 0; padding: 5px 10px; font-weight: 800; font-size: 12.5px; background: var(--sun); white-space: nowrap; }
+.app-try:hover { background: var(--sun-light); }
 .app-text b { font-size: 14px; line-height: 1.2; }
 .app-text small { font-size: 11.5px; color: #4a5a5e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .app-open:hover .app-thumb img, .app-open:focus-visible .app-thumb img { transform: scale(1.04); }
 .app-open:hover .app-bigicon svg, .app-open:focus-visible .app-bigicon svg { transform: translateY(-4px); }
 .app-tile:hover { box-shadow: inset -1px -1px var(--lo), inset 1px 1px var(--hi), 0 0 0 2px var(--teal); }
-.app-demo { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; text-decoration: none; padding: 3px 7px;
-  background: var(--sun); color: #1b1b1b; box-shadow: inset -1px -1px var(--shadow), inset 1px 1px var(--hi); opacity: 0; transition: opacity .2s; }
-.app-tile:hover .app-demo, .app-demo:focus-visible { opacity: 1; }
-.launcher-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.app-tile:hover .launcher-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .app-action svg { width: 20px; height: 20px; }
-@media (hover: none) { .app-demo { opacity: 1; } }
 @media (min-width: 1280px) { .app-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.app-cta .app-thumb { flex-direction: column; gap: 8px; }
+.app-cta { display: flex; flex-direction: column; grid-column: span 2; }
+.app-cta .app-open { flex: 1; display: flex; flex-direction: column; }
+.app-cta .app-thumb { flex: 1; aspect-ratio: auto; min-height: 110px; gap: 8px; }
+@media (max-width: 1279px) and (min-width: 721px) { .app-cta { grid-column: span 3; } .app-cta .app-thumb { min-height: 80px; max-height: 96px; } }
 .app-cta-text { color: #fff; font-weight: 800; font-size: 15px; letter-spacing: .02em; text-shadow: 2px 2px 0 rgba(0,0,0,.35); }
 .app-cta .app-bigicon svg { width: 56px; height: 56px; }
 .app-cta { box-shadow: inset -1px -1px var(--lo), inset 1px 1px var(--hi), 0 0 0 1px var(--lo); background: #fff8f2; }
@@ -512,6 +513,8 @@ iframe.pdf { flex: 1; width: 100%; border: 0; background: #525659; }
   .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .app-text b { font-size: 13px; }
   .app-icon { display: none; }
+  .app-meta { flex-wrap: wrap; padding: 2px 6px 6px; }
+  .app-try { width: 100%; text-align: center; padding: 7px 10px; }
   .launcher-actions .btn { flex: 1 1 calc(50% - 8px); padding: 8px 6px; }
   #icons { height: auto; flex: none; }
   .balloon::after { display: none; }

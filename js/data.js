@@ -58,7 +58,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["React 18", "SVG", "CSS3", "Vercel"],
-    live: "https://integration-toolkit-eight.vercel.app",
+    live: "https://integration-toolkit-dner.vercel.app",
     shot: "assets/shots/integration-toolkit.jpg",
   },
   {
@@ -293,6 +293,10 @@ window.PROJECTS = [
     shot: "assets/shots/dental-clinic.jpg",
   },
 ];
+
+// Only projects with a public live demo are shown. Work in progress stays in
+// the list above without a "live" link and appears once it is deployed.
+window.PROJECTS = window.PROJECTS.filter((p) => p.live);
 
 // The Recycle Bin: approaches we threw away, and what replaced them.
 window.TRASH = [

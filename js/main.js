@@ -53,34 +53,32 @@
   const launcher = document.getElementById("launcher");
   function renderLauncher() {
     const live = PROJECTS.filter((p) => p.live).length;
-    const tiles = PROJECTS.map((p) => {
-      const tile = h("article", { class: "app-tile" },
-        h("button", { class: "app-open", type: "button", "aria-label": `${p.name}: ${t("openApp")}`, onclick: () => Apps.openProject(p.id) },
-          h("span", { class: "app-thumb" + (p.shot ? "" : " noshot") },
-            p.shot ? h("img", { src: p.shot, alt: "", loading: "lazy", width: 1280, height: 800 }) : h("span", { class: "app-bigicon", html: ICONS[p.icon] }),
-            p.live ? h("span", { class: "app-live" }, t("liveBadge")) : null),
-          h("span", { class: "app-meta" },
-            h("span", { class: "app-icon", html: ICONS[p.icon] }),
-            h("span", { class: "app-text" }, h("b", {}, p.name), h("small", {}, L(p.category))))),
-        p.live ? h("a", { class: "app-demo", href: p.live, target: "_blank", rel: "noopener", title: t("openLive") }, t("demoShort")) : null);
-      return tile;
-    });
+    const tiles = PROJECTS.map((p) => h("article", { class: "app-tile" },
+      h("button", { class: "app-open", type: "button", "aria-label": `${p.name}: ${t("openApp")}`, onclick: () => Apps.openProject(p.id) },
+        h("span", { class: "app-thumb" + (p.shot ? "" : " noshot") },
+          p.shot ? h("img", { src: p.shot, alt: "", loading: "lazy", width: 1280, height: 800 }) : h("span", { class: "app-bigicon", html: ICONS[p.icon] }),
+          h("span", { class: "app-live" }, t("liveBadge")))),
+      h("div", { class: "app-meta" },
+        h("span", { class: "app-icon", html: ICONS[p.icon] }),
+        h("button", { class: "app-text", type: "button", onclick: () => Apps.openProject(p.id) }, h("b", {}, p.name), h("small", {}, L(p.category))),
+        h("a", { class: "btn app-try", href: p.live, target: "_blank", rel: "noopener", title: t("openLive") }, t("tryIt")))));
     // Closing tile: an invitation rather than a project.
     tiles.push(h("article", { class: "app-tile app-cta" },
       h("button", { class: "app-open", type: "button", onclick: Apps.openBook },
         h("span", { class: "app-thumb noshot" },
           h("span", { class: "app-bigicon", html: ICONS.briefcase }),
-          h("span", { class: "app-cta-text" }, t("ctaTileBig"))),
-        h("span", { class: "app-meta" },
-          h("span", { class: "app-icon", html: ICONS.calendar }),
-          h("span", { class: "app-text" }, h("b", {}, t("ctaTileTitle")), h("small", {}, t("ctaTileSub")))))));
+          h("span", { class: "app-cta-text" }, t("ctaTileBig")))),
+      h("div", { class: "app-meta" },
+        h("span", { class: "app-icon", html: ICONS.calendar }),
+        h("button", { class: "app-text", type: "button", onclick: Apps.openBook }, h("b", {}, t("ctaTileTitle")), h("small", {}, t("ctaTileSub"))),
+        h("button", { class: "btn app-try", type: "button", onclick: Apps.openBook }, t("bookShort")))));
     const action = (label, icon, fn) => h("button", { class: "btn app-action", type: "button", onclick: fn },
       h("span", { html: ICONS[icon], style: "display:contents" }), label);
     launcher.replaceChildren(
       h("header", { class: "launcher-bar" },
         h("span", { html: ICONS.folderOpen, style: "display:contents" }),
         h("span", { class: "launcher-title" }, t("launcherTitle")),
-        h("span", { class: "launcher-sub" }, t("launcherSub", PROJECTS.length, live))),
+        h("span", { class: "launcher-sub" }, live === PROJECTS.length ? t("launcherSubAll", live) : t("launcherSub", PROJECTS.length, live))),
       h("div", { class: "launcher-body" },
         h("div", { class: "app-grid" }, tiles),
         h("div", { class: "launcher-actions" },
