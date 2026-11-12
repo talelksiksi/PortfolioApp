@@ -214,6 +214,36 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
   }
 
   // ---------------------------------------------------------------- Mail
+  /**
+   * Let the visitor send an email their own way. A mailto: link only works when
+   * the device has a mail program set up (often not the case on Windows), so we
+   * also offer Gmail and Outlook.com in the browser, and copying our address.
+   */
+  function sendVia({ subject = "", body = "" } = {}) {
+    const q = (k, v) => (v ? `${k}=${encodeURIComponent(v)}` : "");
+    const join = (...p) => p.filter(Boolean).join("&");
+    const mailto = `mailto:${email}?${join(q("subject", subject), q("body", body))}`;
+    const gmail = `https://mail.google.com/mail/?${join("view=cm", "fs=1", q("to", email), q("su", subject), q("body", body))}`;
+    const outlook = `https://outlook.live.com/mail/0/deeplink/compose?${join(q("to", email), q("subject", subject), q("body", body))}`;
+    const openTab = (url) => window.open(url, "_blank", "noopener");
+    const copy = async () => {
+      let ok = false;
+      try { await navigator.clipboard.writeText(email); ok = true; } catch {}
+      dialog({ id: "copied", title: t("viaTitle"), icon: ok ? "info" : "warn",
+        text: [h("p", { style: "margin:0" }, ok ? t("viaCopied", email) : t("viaCopyFail"), ok ? null : h("b", { style: "user-select:all" }, email))] });
+    };
+    return dialog({
+      id: "send-via", title: t("viaTitle"), icon: "mail", width: 470,
+      text: [h("p", { style: "margin-top:0" }, t("viaText")), h("p", { class: "tip", style: "margin:0" }, t("viaHint"))],
+      buttons: [
+        [t("viaApp"), () => { location.href = mailto; }, true],
+        ["Gmail", () => openTab(gmail)],
+        ["Outlook.com", () => openTab(outlook)],
+        [t("viaCopy"), copy],
+      ],
+    });
+  }
+
   /** Deliver a form to our inbox through Web3Forms. Throws on any failure. */
   async function submitForm(fields) {
     if (!SITE.web3formsKey) throw new Error("no key");
@@ -264,8 +294,9 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
     const show = (icon, ...msg) => { notice.hidden = false; notice.replaceChildren(svg(icon), h("div", {}, ...msg)); };
 
     const mailtoFallback = (d) => {
-      const body = `${d.message}\n\n— ${d.name}${d.company ? ", " + d.company : ""}\n${d.email}\n${t("budgetLabel")}: ${d.budget}`;
-      location.href = `mailto:${email}?subject=${encodeURIComponent(d.subject)}&body=${encodeURIComponent(body)}`;
+      const sign = [d.name, d.company].filter((x) => x && x.trim()).join(", ");
+      const body = [d.message, "", sign ? "— " + sign : "", d.email, `${t("budgetLabel")}: ${d.budget}`].filter((x, i) => i < 2 || x).join("\n");
+      sendVia({ subject: d.subject, body: body.trim() });
     };
 
     async function send() {
@@ -276,7 +307,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       if (!/^\S+@\S+\.\S+$/.test(d.email)) missing.push(t("needEmail"));
       if (!d.message.trim()) missing.push(t("needMsg"));
       if (missing.length) return show("warn", t("needs", missing));
-      if (!SITE.web3formsKey) { mailtoFallback(d); return show("info", t("mailAppOpening")); }
+      if (!SITE.web3formsKey) return mailtoFallback(d);
 
       sendBtn.disabled = true;
       show("info", t("sending"));
@@ -313,7 +344,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       reopen: () => openMail(null, snapshot()),
       content: h("div", { class: "win-body" },
         h("div", { class: "mail-toolbar" }, sendBtn,
-          h("a", { class: "btn", href: "mailto:" + email }, t("useMailApp"))),
+          h("button", { class: "btn", type: "button", onclick: () => mailtoFallback(Object.fromEntries(new FormData(form))) }, t("useMailApp"))),
         h("div", { class: "scroll sunken content" }, form, notice)),
       status: [t("mailTo", email), t("replies")],
       onOpen: () => setHash("contact"),
@@ -624,6 +655,6 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
 
   window.Apps = {
     iconButton, openProjects, openProject, openNotepad, openMail, openTerminal, openTrash, openCv, openCvViewer,
-    openServices, openDisplay, openWelcome, submitForm, openHelp, openShutdown, dialog, setHash, sessionStorageSafe, isTouch,
+    openServices, openDisplay, openWelcome, submitForm, sendVia, openHelp, openShutdown, dialog, setHash, sessionStorageSafe, isTouch,
   };
 })();

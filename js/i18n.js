@@ -184,6 +184,13 @@
       quickTipLink: "Open the one-page quick view",
       // Sound
       soundOn: "Sound on. Click to mute.",
+      viaTitle: "Send it your way",
+      viaText: "Choose how to send your message to contact@cictnardc.net. What you typed in the form comes along.",
+      viaHint: "\u201cMail app\u201d opens the email program set up on this device (Outlook, Apple Mail, Thunderbird). If nothing happens, your device has none: use Gmail or Outlook.com instead.",
+      viaApp: "Mail app",
+      viaCopy: "Copy address",
+      viaCopied: (e) => `${e} is copied. Paste it into any email.`,
+      viaCopyFail: "Your browser blocked copying. Select the address and copy it: ",
       soundOff: "Sound muted. Click to turn on.",
     },
 
@@ -342,6 +349,13 @@
       quickTip: "Pressé ? ",
       quickTipLink: "Ouvrir la vue rapide sur une page",
       soundOn: "Son activé. Cliquez pour couper.",
+      viaTitle: "Envoyer à votre façon",
+      viaText: "Choisissez comment envoyer votre message à contact@cictnardc.net. Ce que vous avez saisi dans le formulaire est repris.",
+      viaHint: "« Messagerie » ouvre le logiciel de messagerie configuré sur cet appareil (Outlook, Mail, Thunderbird). S'il ne se passe rien, l'appareil n'en a pas : utilisez Gmail ou Outlook.com.",
+      viaApp: "Messagerie",
+      viaCopy: "Copier l'adresse",
+      viaCopied: (e) => `${e} est copiée. Collez-la dans n'importe quel e-mail.`,
+      viaCopyFail: "Votre navigateur a bloqué la copie. Sélectionnez l'adresse et copiez-la : ",
       soundOff: "Son coupé. Cliquez pour l'activer.",
     },
   };

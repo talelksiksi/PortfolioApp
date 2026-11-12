@@ -125,7 +125,7 @@
         Sound.win();
       } catch {
         const [a, btn, c] = t("sendFail");
-        show("warn", a, h("a", { class: "btn", href: `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${f.name}\n${f.email}\n${tz}\n\n${f.topic || ""}`)}` }, btn), c,
+        show("warn", a, h("button", { class: "btn", type: "button", onclick: () => Apps.sendVia({ subject, body: `${f.topic || ""}\n\n— ${f.name}\n${f.email}\n${f.day}, ${f.slot} (${tz})\n${f.type}` }) }, btn), c,
           h("a", { href: "mailto:" + SITE.email }, SITE.email), ".");
       } finally {
         sendBtn.disabled = false;

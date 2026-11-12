@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CICTNA RDC | Full-stack and industrial software engineering</title>
+<meta name="description" content="CICTNA RDC builds web applications, APIs and databases, connects business systems, and writes the software that talks to machines. Remote, in English, French and Arabic.">
+<link rel="canonical" href="https://cictnardc.net/">
+<meta name="theme-color" content="#3d6d78">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CICTNA RDC">
+<meta property="og:url" content="https://cictnardc.net/">
+<meta property="og:title" content="CICTNA RDC | Web apps, APIs, databases. Right down to the machine.">
+<meta property="og:description" content="Full-stack engineering with tech lead experience: web applications, APIs, PostgreSQL, WMS and ERP integration, and software that talks to machines.">
+<meta property="og:image" content="https://cictnardc.net/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CICTNA RDC logo: a sun rising over the sea">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CICTNA RDC | Web apps, APIs, databases. Right down to the machine.">
+<meta name="twitter:description" content="Full-stack engineering with tech lead experience, from the browser down to the machine.">
+<meta name="twitter:image" content="https://cictnardc.net/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"CICTNA RDC","url":"https://cictnardc.net/","logo":"https://cictnardc.net/favicon.png","image":"https://cictnardc.net/og-image.png","email":"contact@cictnardc.net","telephone":"+33651287500","founder":{"@type":"Person","name":"Talel Ksiksi","jobTitle":"Founder and Lead Engineer","sameAs":["https://www.linkedin.com/in/ksiksi"]},"areaServed":["Europe","Middle East","North America"],"knowsLanguage":["en","fr","ar"],"sameAs":["https://www.linkedin.com/in/ksiksi"]}
+</script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Mood: a misty northern shoreline at dawn. Forest on one side, sea on the other, the sun coming up low. */
+:root{
+  --fog:#eef2f1;
+  --mist:#f8faf9;
+  --ink:#1f2e2f;
+  --stone:#5b6b6a;
+  --rule:#d4dddb;
+  --sea:#3d6d78;
+  --sea-deep:#2c5560;
+  --sea-soft:rgba(61,109,120,.11);
+  --pine:#2f5a46;
+  --pine-soft:rgba(47,90,70,.12);
+  --dawn:#e7a982;
+  --dawn-soft:rgba(231,169,130,.22);
+  --on-accent:#ffffff;
+  --shadow:0 22px 44px -26px rgba(31,46,47,.35);
+  --glass:rgba(255,255,255,.62);
+  --glass-edge:rgba(255,255,255,.85);
+  --header:rgba(238,242,241,.78);
+  /* landscape */
+  --sky-top:#d6e2e5; --sky-mid:#e8eeee; --horizon:#f5e2d4;
+  --hill:#c2d0cd; --tree-back:#6f8c81; --tree-front:#2c4d41;
+  --sea-surface:#a8c2c6; --sea-line:rgba(255,255,255,.6); --sun:#f1c09b; --fog-c:rgba(255,255,255,.75);
+  /* closing band */
+  --deep-a:#21414a; --deep-b:#2d5a5d; --deep-ink:#e9f0ef; --deep-stone:#b3c6c4; --deep-rule:rgba(255,255,255,.14);
+  --font:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --fog:#121a1c; --mist:#1a2427; --ink:#e3ebea; --stone:#9db0ae; --rule:#2a3739;
+    --sea:#86b8c1; --sea-deep:#a8cdd4; --sea-soft:rgba(134,184,193,.12);
+    --pine:#86bea2; --pine-soft:rgba(134,190,162,.12);
+    --dawn:#e8a97f; --dawn-soft:rgba(232,169,127,.16);
+    --on-accent:#0f181a;
+    --shadow:0 22px 44px -26px rgba(0,0,0,.7);
+    --glass:rgba(26,36,39,.66); --glass-edge:rgba(255,255,255,.08);
+    --header:rgba(18,26,28,.78);
+    --sky-top:#111a1f; --sky-mid:#16222a; --horizon:#3a2f2c;
+    --hill:#22302f; --tree-back:#273a35; --tree-front:#13221d;
+    --sea-surface:#223639; --sea-line:rgba(255,255,255,.13); --sun:#e6a57b; --fog-c:rgba(190,210,210,.12);
+    --deep-a:#0f1d21; --deep-b:#173034; --deep-ink:#e3ebea; --deep-stone:#9db0ae;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--fog);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:4px}
+html[data-lang="en"] [lang="fr"]{display:none}
+html[data-lang="fr"] [lang="en"]{display:none}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:560px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:20;background:var(--header);backdrop-filter:saturate(1.3) blur(12px);-webkit-backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:760;font-variation-settings:"wdth" 116;letter-spacing:.01em;font-size:1.05rem}
+.mark{width:28px;height:28px;flex:none;display:block}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a.link{text-decoration:none;font-size:.95rem;color:var(--stone);font-weight:520;transition:color .2s}
+.nav a.link:hover{color:var(--ink)}
+.langs{display:flex;gap:2px;border:1px solid var(--rule);border-radius:999px;padding:2px;background:var(--mist)}
+.langs button{font:inherit;font-size:.8rem;font-weight:620;color:var(--stone);background:none;border:0;padding:5px 10px;border-radius:999px;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--ink);color:var(--fog)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:650;text-decoration:none;border-radius:999px;cursor:pointer;border:0;transition:transform .25s ease,box-shadow .25s ease,background .25s}
+.btn-main{background:var(--sea);color:var(--on-accent);padding:13px 24px;box-shadow:0 10px 24px -14px var(--sea)}
+.btn-main:hover{background:var(--sea-deep);transform:translateY(-2px);box-shadow:0 16px 28px -16px var(--sea)}
+.btn-soft{color:var(--ink);padding:12px 22px;border:1px solid var(--rule);background:var(--glass)}
+.btn-soft:hover{border-color:var(--stone);transform:translateY(-2px)}
+.top .btn-main{padding:9px 18px;font-size:.93rem}
+.btn svg{width:16px;height:16px;flex:none}
+@media (max-width:860px){.nav a.link{display:none}}
+@media (max-width:420px){.top .btn-main span.long{display:none}.nav{gap:10px}}
+
+/* ---------- hero: the shoreline ---------- */
+.hero{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 42%,var(--horizon) 82%,var(--sky-mid) 100%)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center;padding-block:80px 250px}
+.land{position:absolute;left:0;right:0;bottom:0;height:260px;z-index:0;pointer-events:none}
+.land svg{display:block;width:100%;height:100%}
+.fog{position:absolute;z-index:1;pointer-events:none;border-radius:50%;background:radial-gradient(ellipse at center,var(--fog-c),transparent 68%);filter:blur(6px)}
+.fog.a{width:70vw;height:140px;left:-10vw;bottom:70px;animation:drift 70s ease-in-out infinite alternate}
+.fog.b{width:60vw;height:120px;right:-12vw;bottom:120px;opacity:.8;animation:drift 90s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-6vw)}to{transform:translateX(8vw)}}
+.status{display:inline-flex;align-items:center;gap:9px;font-size:.9rem;color:var(--stone);border:1px solid var(--rule);border-radius:999px;padding:6px 14px 6px 10px;background:var(--glass)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--pine);animation:breathe 3.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 0 var(--pine-soft)}50%{box-shadow:0 0 0 6px var(--pine-soft)}}
+.hero h1{margin:22px 0 0;font-size:clamp(2.3rem,5.2vw,4rem);line-height:1.04;font-weight:740;font-variation-settings:"wdth" 116;letter-spacing:-.015em;text-wrap:balance}
+.hero h1 .line{display:block}
+.hero h1 .line.b{color:var(--sea);font-weight:520;font-variation-settings:"wdth" 108}
+.lede{margin:24px 0 0;max-width:52ch;font-size:1.15rem;color:var(--stone)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin:34px 0 0;padding:0;list-style:none;font-size:.93rem;color:var(--stone)}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts svg{width:16px;height:16px;color:var(--pine);flex:none}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:44px;padding-block:56px 200px}.land{height:190px}}
+
+/* terminal, frosted like glass in the fog */
+.panel{margin:0;position:relative;background:var(--glass);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid var(--glass-edge);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--rule);font-size:.84rem;color:var(--stone)}
+.lights{display:flex;gap:6px}
+.lights i{width:10px;height:10px;border-radius:50%;background:var(--rule)}
+.lights i:first-child{background:var(--dawn)}
+.panel-head .live{display:flex;align-items:center;gap:8px}
+.term{margin:0;padding:18px 20px 6px;font-family:var(--mono);font-size:.86rem;line-height:1.55;color:var(--ink);min-height:21.5em;background:none}
+.ln{display:block;white-space:pre-wrap;overflow-wrap:anywhere}
+.ln.cmd{margin-top:10px}
+.ln.cmd:first-child{margin-top:0}
+.ln.cmd .p{color:var(--sea);user-select:none}
+.ln.out{color:var(--pine);padding-left:1.15em}
+.ln.out .tag{color:var(--stone)}
+.ln.pending{visibility:hidden}
+.cursor{display:inline-block;width:.55em;height:1.1em;margin-left:2px;vertical-align:-.18em;background:var(--sea);border-radius:1px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.panel figcaption{margin:0 20px;padding:14px 0 18px;border-top:1px dashed var(--rule);font-size:.92rem;color:var(--stone)}
+@media (max-width:480px){.term{font-size:.76rem;padding:14px 14px 4px;min-height:24em}.panel figcaption{margin:0 14px}}
+@media (prefers-reduced-motion:reduce){.cursor,.dot,.fog{animation:none}}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--mist);color:var(--stone);overflow:hidden;border-block:1px solid var(--rule)}
+.ticker-track{display:flex;width:max-content;animation:scroll 60s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker ul{display:flex;margin:0;padding:14px 0;list-style:none;font-weight:560;font-variation-settings:"wdth" 108;font-size:.98rem}
+.ticker li{display:flex;align-items:center;white-space:nowrap;padding:0 20px}
+.ticker li::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--sea);opacity:.45;margin-left:40px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none;width:auto;flex-wrap:wrap}.ticker ul[aria-hidden]{display:none}.ticker ul{flex-wrap:wrap;justify-content:center}}
+
+/* ---------- sections ---------- */
+section{padding-block:96px}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 56px;align-items:end;margin-bottom:44px}
+h2{margin:0;font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.08;font-weight:730;font-variation-settings:"wdth" 112;letter-spacing:-.01em;text-wrap:balance}
+.sec-head p{margin:0;color:var(--stone);max-width:52ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}section{padding-block:72px}}
+p{max-width:68ch}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.svc{position:relative;background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:28px 28px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.svc:hover{transform:translateY(-4px);border-color:var(--sea);box-shadow:var(--shadow)}
+.svc-top{display:flex;align-items:center;gap:14px}
+.icon{width:48px;height:48px;border-radius:50%;background:var(--sea-soft);color:var(--sea-deep);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.svc:hover .icon{background:var(--sea);color:var(--on-accent)}
+.icon svg{width:23px;height:23px}
+.svc h3{margin:0;font-size:1.22rem;line-height:1.25;font-weight:690;font-variation-settings:"wdth" 104}
+.svc .what{margin:0;color:var(--stone)}
+.terms{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:auto 0 0;padding-top:16px;border-top:1px solid var(--rule);font-size:.93rem}
+.terms dt{color:var(--stone)}
+.terms dd{margin:0;font-weight:540}
+@media (max-width:760px){.services{grid-template-columns:1fr}.svc{padding:22px}}
+
+/* range note */
+.note{margin-top:26px;border-radius:18px;background:linear-gradient(100deg,var(--sea-soft),var(--dawn-soft));border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px 24px;padding:24px 28px}
+.note .sun{width:48px;height:48px;flex:none;display:block}
+.note p{margin:0;font-size:1.06rem;max-width:none}
+.note strong{color:var(--sea-deep);font-weight:680}
+.note .btn{white-space:nowrap}
+@media (max-width:760px){.note{grid-template-columns:auto 1fr;padding:20px}.note .btn{grid-column:1 / -1;justify-self:start}}
+
+/* why us */
+.why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.why{background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:26px;position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+.why::before{content:"";position:absolute;left:26px;top:0;width:44px;height:4px;border-radius:0 0 4px 4px;background:var(--pine)}
+.why:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.why h3{margin:6px 0 10px;font-size:1.18rem;font-weight:700;font-variation-settings:"wdth" 106;line-height:1.25}
+.why p{margin:0;color:var(--stone);font-size:.98rem}
+.why .stack-line{margin-top:14px;font-family:var(--mono);font-size:.78rem;color:var(--sea-deep)}
+@media (max-width:860px){.why-grid{grid-template-columns:1fr}}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s;position:relative}
+.steps::before{content:"";position:absolute;left:24px;right:24px;top:23px;height:2px;background:repeating-linear-gradient(90deg,var(--rule) 0 6px,transparent 6px 12px)}
+.steps li{counter-increment:s;position:relative}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--fog);border:1.5px solid var(--sea);color:var(--sea-deep);font-weight:700;font-size:1.1rem;margin-bottom:16px;position:relative;transition:background .3s,color .3s}
+.steps li:hover::before{background:var(--sea);color:var(--on-accent)}
+.steps h3{margin:0 0 6px;font-size:1.06rem;font-weight:680}
+.steps p{margin:0;font-size:.95rem;color:var(--stone)}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:32px}.steps::before{display:none}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* background */
+.bg-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:start}
+.bg-grid p{color:var(--stone);margin:0 0 1em}
+.bg-grid p:first-of-type{color:var(--ink);font-size:1.15rem}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.stack li{font-size:.9rem;font-weight:560;padding:7px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--fog);transition:border-color .2s,background .2s}
+.stack li:hover{border-color:var(--sea);background:var(--sea-soft)}
+.side-card{background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:24px}
+.side-card h3{margin:0 0 14px;font-size:1rem;font-weight:680}
+.side-card .oss{margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);font-size:.95rem;color:var(--stone)}
+.side-card .oss a{color:var(--sea-deep);font-weight:620}
+@media (max-width:860px){.bg-grid{grid-template-columns:1fr}}
+
+/* contact band: deep water at first light */
+.contact{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,var(--deep-a),var(--deep-b));color:var(--deep-ink)}
+.contact::before{content:"";position:absolute;z-index:-1;width:560px;height:560px;right:-120px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(231,169,130,.28),transparent 65%)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+#contactForm{display:flex;flex-direction:column;gap:14px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.frow.end{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:4px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:.85rem;color:var(--deep-stone);font-weight:550}
+.field .opt{font-weight:400;opacity:.8}
+.field input,.field textarea{font:inherit;font-size:1rem;color:var(--deep-ink);background:rgba(255,255,255,.07);border:1px solid var(--deep-rule);border-radius:12px;padding:11px 14px;width:100%;transition:border-color .2s,background .2s}
+.field textarea{resize:vertical;min-height:120px;line-height:1.5}
+.field input:focus,.field textarea:focus{outline:none;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#e7a982}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fstatus{margin:0;font-size:.92rem;color:var(--deep-stone);max-width:none}
+.fstatus.ok{color:#bfe3cf}
+.fstatus.err{color:#f1c09b}
+.contact-card .meta a{color:var(--deep-ink);font-weight:600}
+.contact-card .meta .copy{padding:4px 10px;font-size:.8rem;margin-left:6px}
+@media (max-width:560px){.frow{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(2rem,4.2vw,3rem)}
+.contact p{color:var(--deep-stone);margin:18px 0 0;max-width:46ch}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid var(--deep-rule);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.contact-card .lbl{font-size:.85rem;color:var(--deep-stone)}
+.contact-card .addr{font-family:var(--mono);font-size:1.02rem;word-break:break-all}
+.contact-card .row{display:flex;flex-wrap:wrap;gap:10px}
+.contact .btn-main{background:var(--deep-ink);color:var(--deep-a);box-shadow:none}
+.contact .btn-main:hover{background:#ffffff}
+.copy{font:inherit;font-size:.9rem;font-weight:600;color:var(--deep-ink);background:transparent;border:1px solid var(--deep-rule);border-radius:999px;padding:10px 16px;cursor:pointer;transition:border-color .2s}
+.copy:hover{border-color:var(--deep-stone)}
+.contact-card .meta{font-size:.85rem;color:var(--deep-stone);border-top:1px solid var(--deep-rule);padding-top:14px}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+
+
+/* selected work */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.case{background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:transform .3s ease,box-shadow .3s ease}
+.case:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.case-kind{align-self:flex-start;font-size:.8rem;font-weight:620;color:var(--sea-deep);background:var(--sea-soft);border-radius:999px;padding:4px 12px}
+.case h3{margin:2px 0 0;font-size:1.2rem;line-height:1.3;font-weight:700;font-variation-settings:"wdth" 104}
+.case p{margin:0;color:var(--stone);font-size:.98rem}
+.case-out{list-style:none;margin:auto 0 0;padding:14px 0 0;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:6px;font-size:.93rem;font-weight:540}
+.case-out li{display:flex;gap:10px;align-items:baseline}
+.case-out li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--pine);transform:translateY(-1px)}
+@media (max-width:760px){.cases{grid-template-columns:1fr}.case{padding:22px}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:48px;align-items:start}
+.person{background:var(--mist);border:1px solid var(--rule);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:16px;position:sticky;top:90px}
+.person img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:14px;display:block;max-width:100%}
+.who-name{font-size:1.3rem;font-weight:720;font-variation-settings:"wdth" 108}
+.who-role{color:var(--stone);font-size:.95rem}
+.who-links{display:flex;flex-wrap:wrap;gap:8px}
+.btn.small{padding:9px 14px;font-size:.9rem;gap:8px}
+.btn.small svg{width:16px;height:16px}
+.bio p{color:var(--stone);margin:0 0 1em}
+.bio .bio-lead{color:var(--ink);font-size:1.2rem;line-height:1.5}
+.bio .stack{margin:22px 0 18px}
+.bio .oss{font-size:.95rem}
+.bio .oss a{color:var(--sea-deep);font-weight:620}
+@media (max-width:860px){.about{grid-template-columns:1fr}.person{position:static;max-width:420px}}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:10px;max-width:860px}
+.faq details{background:var(--mist);border:1px solid var(--rule);border-radius:16px;padding:0 22px;transition:border-color .25s}
+.faq details[open]{border-color:var(--sea)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:640;font-size:1.04rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid var(--sea);border-bottom:2px solid var(--sea);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.faq details p{margin:0 0 18px;color:var(--stone)}
+@media (prefers-reduced-motion:reduce){.faq summary::after{transition:none}}
+
+/* contact extras */
+.trust{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;color:var(--deep-ink);font-size:.97rem}
+.trust li{display:flex;gap:12px;align-items:baseline}
+.trust li::before{content:"";flex:none;width:16px;height:9px;border-left:2px solid #bfe3cf;border-bottom:2px solid #bfe3cf;transform:rotate(-45deg) translateY(-3px)}
+.quick{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn-ghost-light{color:var(--deep-ink);border:1px solid var(--deep-rule);background:rgba(255,255,255,.05);padding:11px 18px;font-size:.95rem}
+.btn-ghost-light:hover{border-color:var(--deep-stone);transform:translateY(-2px)}
+.btn-ghost-light svg{width:18px;height:18px}
+.btn-ghost-light .num{color:var(--deep-stone);font-weight:500}
+.btn-ghost-light[hidden]{display:none}
+.privacy{margin:2px 0 0;font-size:.82rem;color:var(--deep-stone);max-width:none}
+
+/* footer */
+footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var(--deep-rule);font-size:.9rem}
+.foot{display:grid;grid-template-columns:minmax(0,1.3fr) auto auto;gap:28px 40px;align-items:center;padding-block:40px 32px}
+.foot-brand{display:flex;align-items:center;gap:14px}
+.foot-brand .mark{width:40px;height:40px}
+.foot-name{color:var(--deep-ink);font-weight:720;font-variation-settings:"wdth" 114;font-size:1.05rem}
+.foot-tag{font-size:.85rem}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+.foot-links a,.foot-social a{color:var(--deep-stone);text-decoration:none;transition:color .2s}
+.foot-links a:hover,.foot-social a:hover{color:var(--deep-ink)}
+.foot-social{display:flex;gap:14px}
+.foot-social svg{width:20px;height:20px;display:block}
+.foot-legal{grid-column:1 / -1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;border-top:1px solid var(--deep-rule);padding-top:20px;font-size:.84rem}
+.foot-legal p{margin:0}
+@media (max-width:860px){.foot{grid-template-columns:1fr}}
+.portfolio-cta{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;padding:24px 26px;border:1px solid var(--rule);border-radius:18px;background:var(--glass)}
+.portfolio-cta h3{margin:0 0 6px}
+.portfolio-cta p{margin:0;max-width:60ch}
+.portfolio-cta-links{display:flex;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="mark" aria-hidden="true" focusable="false"><defs><clipPath id="hm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#hm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g><g stroke="#ffffff" stroke-opacity=".38" stroke-linecap="round" fill="none" stroke-width="2.2"><path d="M75 66h13M12 74h11M70 85h9"/></g></g></svg>CICTNA RDC</a>
+    <nav class="nav" aria-label="Main">
+      <a class="link" href="#services"><span lang="en">Services</span><span lang="fr">Services</span></a>
+      <a class="link" href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span></a>
+      <a class="link" href="/portfolio/"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span></a>
+      <a class="link" href="#about"><span lang="en">About</span><span lang="fr">À propos</span></a>
+      <a class="link" href="#faq">FAQ</a>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="fr" aria-pressed="false">FR</button>
+      </div>
+      <a class="btn btn-main" href="#contact"><span lang="en">Contact <span class="long">us</span></span><span lang="fr">Contact</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="land" aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:var(--sun);stop-opacity:.75"/>
+            <stop offset="45%" style="stop-color:var(--sun);stop-opacity:.22"/>
+            <stop offset="100%" style="stop-color:var(--sun);stop-opacity:0"/>
+          </radialGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" style="stop-color:var(--sea-surface);stop-opacity:.85"/>
+            <stop offset="100%" style="stop-color:var(--sea-surface);stop-opacity:1"/>
+          </linearGradient>
+          <linearGradient id="mistband" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" style="stop-color:var(--fog-c);stop-opacity:0"/>
+            <stop offset="55%" style="stop-color:var(--fog-c);stop-opacity:.55"/>
+            <stop offset="100%" style="stop-color:var(--fog-c);stop-opacity:0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="1110" cy="206" r="190" fill="url(#glow)"/>
+        <circle cx="1110" cy="214" r="30" style="fill:var(--sun)"/>
+        <path d="M1180 216 C1250 196 1320 190 1440 200 L1440 220 L1180 220Z" style="fill:var(--hill)" opacity=".9"/>
+        <rect x="0" y="216" width="1440" height="44" fill="url(#water)"/>
+        <g style="stroke:var(--sea-line)" stroke-width="1.4" stroke-linecap="round">
+          <path d="M820 226h70M930 232h110M1080 226h40M1150 236h90M1290 228h80M880 244h60M1000 248h130M1200 250h70M1330 242h70"/>
+        </g>
+        <g style="stroke:var(--sun)" stroke-width="2" stroke-linecap="round" opacity=".55">
+          <path d="M1092 224h36M1084 232h52M1098 240h24M1080 248h60"/>
+        </g>
+        <path d="M0 168 C 270 176, 540 184, 820 194 C 880 198, 930 222, 975 260 L 0 260Z" style="fill:var(--tree-back)" opacity=".9"/>
+        <path style="fill:var(--tree-back)" opacity=".9" d="M-20.0 105.1L-11.1 125.9L-16.0 123.9L-8.5 146.6L-14.8 144.6L-5.9 167.4L-18.5 169.4L-21.5 169.4L-34.1 167.4L-25.2 144.6L-31.5 146.6L-24.0 123.9L-28.9 125.9ZM2.5 116.9L13.1 134.0L7.3 132.0L16.2 151.0L8.7 149.0L19.3 168.1L4.0 170.1L1.0 170.1L-14.2 168.1L-3.6 149.0L-11.2 151.0L-2.3 132.0L-8.1 134.0ZM20.9 118.1L31.4 135.0L25.7 133.0L34.5 151.8L27.0 149.8L37.5 168.7L22.4 170.7L19.4 170.7L4.4 168.7L14.9 149.8L7.4 151.8L16.2 133.0L10.5 135.0ZM34.7 102.0L43.2 124.4L38.5 122.4L45.7 146.7L39.6 144.7L48.2 169.1L36.2 171.1L33.2 171.1L21.2 169.1L29.7 144.7L23.7 146.7L30.8 122.4L26.1 124.4ZM49.2 102.9L61.1 125.1L54.5 123.1L64.5 147.3L56.1 145.3L68.0 169.6L50.7 171.6L47.7 171.6L30.4 169.6L42.3 145.3L33.8 147.3L43.8 123.1L37.3 125.1ZM64.1 112.2L75.2 131.5L69.1 129.5L78.3 150.8L70.5 148.8L81.5 170.0L65.6 172.0L62.6 172.0L46.7 170.0L57.7 148.8L49.9 150.8L59.2 129.5L53.1 131.5ZM90.9 97.5L100.9 122.0L95.4 120.0L103.8 146.4L96.7 144.4L106.7 170.9L92.4 172.9L89.4 172.9L75.1 170.9L85.1 144.4L78.0 146.4L86.4 120.0L80.9 122.0ZM118.1 121.7L130.1 138.4L123.5 136.4L133.6 155.1L125.0 153.1L137.1 171.7L119.6 173.7L116.6 173.7L99.0 171.7L111.1 153.1L102.5 155.1L112.6 136.4L106.0 138.4ZM135.4 117.9L144.2 136.1L139.3 134.1L146.7 154.2L140.5 152.2L149.2 172.3L136.9 174.3L133.9 174.3L121.6 172.3L130.3 152.2L124.1 154.2L131.5 134.1L126.6 136.1ZM153.0 88.9L162.0 116.9L157.1 114.9L164.7 144.9L158.2 142.9L167.3 172.9L154.5 174.9L151.5 174.9L138.7 172.9L147.8 142.9L141.4 144.9L148.9 114.9L144.0 116.9ZM174.5 97.4L184.4 122.8L179.0 120.8L187.3 148.2L180.3 146.2L190.1 173.5L176.0 175.5L173.0 175.5L158.9 173.5L168.8 146.2L161.8 148.2L170.1 120.8L164.6 122.8ZM195.6 123.4L204.1 140.4L199.4 138.4L206.5 157.3L200.5 155.3L209.0 174.2L197.1 176.2L194.1 176.2L182.1 174.2L190.6 155.3L184.6 157.3L191.7 138.4L187.1 140.4ZM211.7 96.8L221.8 122.8L216.3 120.8L224.8 148.7L217.6 146.7L227.7 174.7L213.2 176.7L210.2 176.7L195.7 174.7L205.8 146.7L198.6 148.7L207.1 120.8L201.6 122.8ZM229.4 101.5L239.6 126.1L234.0 124.1L242.6 150.7L235.3 148.7L245.6 175.3L230.9 177.3L227.9 177.3L213.2 175.3L223.5 148.7L216.2 150.7L224.8 124.1L219.2 126.1ZM246.9 92.9L258.2 120.5L252.0 118.5L261.5 148.2L253.5 146.2L264.8 175.8L248.4 177.8L245.4 177.8L229.0 175.8L240.3 146.2L232.3 148.2L241.8 118.5L235.5 120.5ZM263.6 103.1L274.1 127.5L268.3 125.5L277.2 151.9L269.7 149.9L280.2 176.4L265.1 178.4L262.1 178.4L246.9 176.4L257.4 149.9L250.0 151.9L258.8 125.5L253.0 127.5ZM289.3 97.1L298.8 123.8L293.6 121.8L301.5 150.5L294.8 148.5L304.3 177.2L290.8 179.2L287.8 179.2L274.3 177.2L283.8 148.5L277.0 150.5L285.0 121.8L279.8 123.8ZM316.5 124.8L326.6 142.6L321.0 140.6L329.5 160.3L322.4 158.3L332.4 178.0L318.0 180.0L315.0 180.0L300.6 178.0L310.6 158.3L303.5 160.3L312.0 140.6L306.4 142.6ZM340.5 124.1L350.9 142.3L345.2 140.3L353.9 160.6L346.6 158.6L357.0 178.8L342.0 180.8L339.0 180.8L324.1 178.8L334.5 158.6L327.1 160.6L335.8 140.3L330.1 142.3ZM354.3 101.8L365.9 127.6L359.5 125.6L369.3 153.4L361.0 151.4L372.6 179.2L355.8 181.2L352.8 181.2L335.9 179.2L347.5 151.4L339.3 153.4L349.1 125.6L342.7 127.6ZM375.7 93.4L385.3 122.2L380.0 120.2L388.1 151.1L381.3 149.1L390.9 179.9L377.2 181.9L374.2 181.9L360.5 179.9L370.1 149.1L363.3 151.1L371.4 120.2L366.1 122.2ZM398.8 106.5L409.6 131.2L403.7 129.2L412.8 155.9L405.1 153.9L415.9 180.6L400.3 182.6L397.3 182.6L381.8 180.6L392.6 153.9L384.9 155.9L394.0 129.2L388.0 131.2ZM418.6 96.3L431.0 124.6L424.1 122.6L434.6 153.0L425.8 151.0L438.2 181.3L420.1 183.3L417.1 183.3L398.9 181.3L411.3 151.0L402.5 153.0L413.0 122.6L406.1 124.6ZM438.5 104.7L447.0 130.4L442.4 128.4L449.5 156.2L443.5 154.2L452.0 181.9L440.0 183.9L437.0 183.9L425.1 181.9L433.6 154.2L427.6 156.2L434.7 128.4L430.0 130.4ZM461.8 106.2L474.4 131.7L467.4 129.7L478.1 157.2L469.1 155.2L481.7 182.6L463.3 184.6L460.3 184.6L441.8 182.6L454.4 155.2L445.5 157.2L456.1 129.7L449.1 131.7ZM486.7 122.9L496.7 143.1L491.2 141.1L499.5 163.3L492.5 161.3L502.4 183.4L488.2 185.4L485.2 185.4L471.0 183.4L480.9 161.3L473.9 163.3L482.2 141.1L476.8 143.1ZM509.5 135.2L519.8 151.5L514.1 149.5L522.7 167.8L515.4 165.8L525.7 184.2L511.0 186.2L508.0 186.2L493.2 184.2L503.5 165.8L496.2 167.8L504.9 149.5L499.2 151.5ZM525.1 131.5L533.6 149.2L528.9 147.2L536.0 166.9L530.0 164.9L538.5 184.6L526.6 186.6L523.6 186.6L511.7 184.6L520.2 164.9L514.1 166.9L521.3 147.2L516.6 149.2ZM549.3 131.7L558.6 149.6L553.5 147.6L561.3 167.5L554.7 165.5L564.0 185.4L550.8 187.4L547.8 187.4L534.5 185.4L543.9 165.5L537.2 167.5L545.1 147.6L539.9 149.6ZM568.1 99.7L576.6 128.4L571.9 126.4L579.1 157.2L573.0 155.2L581.6 186.0L569.6 188.0L566.6 188.0L554.5 186.0L563.1 155.2L557.0 157.2L564.2 126.4L559.5 128.4ZM587.7 114.5L599.8 138.5L593.1 136.5L603.3 162.6L594.7 160.6L606.9 186.6L589.2 188.6L586.2 188.6L568.5 186.6L580.6 160.6L572.0 162.6L582.2 136.5L575.5 138.5ZM612.6 101.4L622.1 130.1L616.9 128.1L624.8 158.8L618.1 156.8L627.5 187.4L614.1 189.4L611.1 189.4L597.6 187.4L607.1 156.8L600.4 158.8L608.3 128.1L603.1 130.1ZM631.7 124.2L643.9 145.5L637.2 143.5L647.4 166.8L638.8 164.8L650.9 188.0L633.2 190.0L630.2 190.0L612.5 188.0L624.7 164.8L616.1 166.8L626.3 143.5L619.6 145.5ZM658.6 134.2L667.6 152.5L662.7 150.5L670.3 170.7L663.9 168.7L672.9 188.9L660.1 190.9L657.1 190.9L644.4 188.9L653.4 168.7L647.0 170.7L654.6 150.5L649.6 152.5ZM675.1 131.1L685.5 150.6L679.8 148.6L688.5 170.0L681.2 168.0L691.5 189.4L676.6 191.4L673.6 191.4L658.8 189.4L669.1 168.0L661.8 170.0L670.5 148.6L664.8 150.6ZM696.8 130.5L705.0 150.4L700.5 148.4L707.4 170.2L701.6 168.2L709.8 190.1L698.3 192.1L695.3 192.1L683.7 190.1L692.0 168.2L686.1 170.2L693.1 148.4L688.5 150.4ZM716.0 126.5L726.7 147.9L720.8 145.9L729.8 169.3L722.2 167.3L732.9 190.7L717.5 192.7L714.5 192.7L699.0 190.7L709.7 167.3L702.1 169.3L711.1 145.9L705.2 147.9ZM742.8 113.2L753.3 139.3L747.5 137.3L756.4 165.4L748.9 163.4L759.4 191.6L744.3 193.6L741.3 193.6L726.2 191.6L736.7 163.4L729.2 165.4L738.1 137.3L732.3 139.3ZM764.8 114.5L773.3 140.4L768.6 138.4L775.7 166.3L769.7 164.3L778.2 192.3L766.3 194.3L763.3 194.3L751.4 192.3L759.9 164.3L753.9 166.3L761.0 138.4L756.4 140.4ZM790.9 110.8L803.0 138.2L796.3 136.2L806.5 165.6L797.9 163.6L810.0 193.1L792.4 195.1L789.4 195.1L771.8 193.1L783.9 163.6L775.3 165.6L785.4 136.2L778.8 138.2ZM815.5 128.6L825.5 150.3L820.0 148.3L828.4 172.1L821.3 170.1L831.3 193.9L817.0 195.9L814.0 195.9L799.7 193.9L809.7 170.1L802.6 172.1L811.0 148.3L805.5 150.3Z"/>
+        <path d="M0 186 C 230 192, 470 198, 700 204 C 760 206, 810 226, 850 260 L 0 260Z" style="fill:var(--tree-front)"/>
+        <path style="fill:var(--tree-front)" d="M-20.0 88.0L-10.1 120.5L-15.6 118.5L-7.3 153.0L-14.3 151.0L-4.4 185.5L-18.5 187.5L-21.5 187.5L-35.6 185.5L-25.7 151.0L-32.7 153.0L-24.4 118.5L-29.9 120.5ZM-0.7 112.3L9.7 136.9L4.0 134.9L12.8 161.4L5.4 159.4L15.8 186.0L0.8 188.0L-2.2 188.0L-17.1 186.0L-6.7 159.4L-14.1 161.4L-5.4 134.9L-11.1 136.9ZM23.9 121.7L33.4 143.3L28.2 141.3L36.2 165.0L29.5 163.0L38.9 186.6L25.4 188.6L22.4 188.6L8.9 186.6L18.4 163.0L11.7 165.0L19.7 141.3L14.4 143.3ZM44.9 119.5L56.5 142.0L50.1 140.0L59.8 164.6L51.6 162.6L63.2 187.2L46.4 189.2L43.4 189.2L26.6 187.2L38.2 162.6L30.0 164.6L39.7 140.0L33.3 142.0ZM63.4 76.7L76.4 113.7L69.2 111.7L80.2 150.6L70.9 148.6L83.9 187.6L64.9 189.6L61.9 189.6L42.9 187.6L55.8 148.6L46.6 150.6L57.5 111.7L50.4 113.7ZM84.3 112.0L95.8 137.4L89.5 135.4L99.1 162.8L90.9 160.8L102.4 188.2L85.8 190.2L82.8 190.2L66.2 188.2L77.6 160.8L69.5 162.8L79.1 135.4L72.8 137.4ZM109.4 119.9L123.7 142.9L115.8 140.9L127.9 165.9L117.7 163.9L132.0 188.8L110.9 190.8L107.9 190.8L86.7 188.8L101.1 163.9L90.9 165.9L102.9 140.9L95.1 142.9ZM146.8 101.7L159.0 131.0L152.3 129.0L162.6 160.4L153.9 158.4L166.1 189.8L148.3 191.8L145.3 191.8L127.4 189.8L139.6 158.4L130.9 160.4L141.2 129.0L134.5 131.0ZM166.4 122.6L177.9 145.1L171.6 143.1L181.2 167.7L173.1 165.7L184.5 190.3L167.9 192.3L164.9 192.3L148.3 190.3L159.8 165.7L151.7 167.7L161.3 143.1L155.0 145.1ZM189.6 82.5L200.0 118.6L194.3 116.6L203.0 154.7L195.6 152.7L206.0 190.9L191.1 192.9L188.1 192.9L173.1 190.9L183.5 152.7L176.2 154.7L184.9 116.6L179.2 118.6ZM208.0 76.1L220.6 114.5L213.7 112.5L224.2 152.9L215.3 150.9L227.8 191.3L209.5 193.3L206.5 193.3L188.3 191.3L200.8 150.9L191.9 152.9L202.4 112.5L195.5 114.5ZM228.9 99.5L238.6 130.3L233.2 128.3L241.4 161.1L234.5 159.1L244.1 191.9L230.4 193.9L227.4 193.9L213.7 191.9L223.3 159.1L216.5 161.1L224.6 128.3L219.2 130.3ZM257.2 75.8L271.6 114.7L263.7 112.7L275.8 153.7L265.6 151.7L280.0 192.6L258.7 194.6L255.7 194.6L234.4 192.6L248.8 151.7L238.6 153.7L250.7 112.7L242.8 114.7ZM288.8 116.8L300.4 142.3L294.0 140.3L303.7 167.9L295.5 165.9L307.1 193.4L290.3 195.4L287.3 195.4L270.5 193.4L282.0 165.9L273.8 167.9L283.6 140.3L277.2 142.3ZM310.0 88.7L322.6 123.8L315.7 121.8L326.2 158.9L317.3 156.9L329.8 194.0L311.5 196.0L308.5 196.0L290.2 194.0L302.8 156.9L293.9 158.9L304.4 121.8L297.5 123.8ZM343.2 114.4L354.0 141.2L348.1 139.2L357.1 168.0L349.5 166.0L360.2 194.8L344.7 196.8L341.7 196.8L326.2 194.8L337.0 166.0L329.3 168.0L338.4 139.2L332.5 141.2ZM377.0 78.5L391.4 117.6L383.5 115.6L395.6 156.6L385.4 154.6L399.7 195.7L378.5 197.7L375.5 197.7L354.4 195.7L368.7 154.6L358.5 156.6L370.6 115.6L362.7 117.6ZM410.8 88.7L424.5 124.7L416.9 122.7L428.5 160.6L418.7 158.6L432.4 196.6L412.3 198.6L409.3 198.6L389.1 196.6L402.8 158.6L393.1 160.6L404.6 122.7L397.0 124.7ZM433.2 106.2L444.7 136.5L438.4 134.5L448.1 166.8L439.9 164.8L451.4 197.1L434.7 199.1L431.7 199.1L415.0 197.1L426.5 164.8L418.3 166.8L428.0 134.5L421.7 136.5ZM451.8 134.1L462.8 155.2L456.7 153.2L466.1 176.4L458.2 174.4L469.3 197.6L453.3 199.6L450.3 199.6L434.2 197.6L445.3 174.4L437.4 176.4L446.8 153.2L440.7 155.2ZM474.8 97.4L489.8 131.0L481.5 129.0L494.1 164.6L483.5 162.6L498.4 198.2L476.3 200.2L473.3 200.2L451.2 198.2L466.1 162.6L455.5 164.6L468.1 129.0L459.9 131.0ZM501.5 84.4L516.7 122.6L508.3 120.6L521.0 160.7L510.3 158.7L525.4 198.9L503.0 200.9L500.0 200.9L477.6 198.9L492.7 158.7L482.0 160.7L494.7 120.6L486.4 122.6ZM538.2 117.4L548.9 144.9L543.0 142.9L552.0 172.4L544.4 170.4L555.1 199.8L539.7 201.8L536.7 201.8L521.2 199.8L531.9 170.4L524.3 172.4L533.3 142.9L527.4 144.9ZM560.6 127.4L571.2 151.7L565.4 149.7L574.3 176.1L566.8 174.1L577.4 200.4L562.1 202.4L559.1 202.4L543.7 200.4L554.4 174.1L546.8 176.1L555.8 149.7L549.9 151.7ZM590.7 88.8L605.0 126.2L597.2 124.2L609.2 163.7L599.0 161.7L613.3 201.2L592.2 203.2L589.2 203.2L568.2 201.2L582.5 161.7L572.3 163.7L584.3 124.2L576.5 126.2ZM618.1 103.3L632.2 136.2L624.4 134.2L636.2 169.0L626.3 167.0L640.3 201.9L619.6 203.9L616.6 203.9L595.9 201.9L609.9 167.0L600.0 169.0L611.8 134.2L604.0 136.2ZM637.7 103.4L652.4 136.4L644.4 134.4L656.7 169.4L646.3 167.4L660.9 202.4L639.2 204.4L636.2 204.4L614.6 202.4L629.2 167.4L618.8 169.4L631.1 134.4L623.1 136.4ZM671.0 99.2L683.2 133.9L676.5 131.9L686.8 168.6L678.1 166.6L690.3 203.3L672.5 205.3L669.5 205.3L651.7 203.3L663.9 166.6L655.2 168.6L665.5 131.9L658.8 133.9ZM692.5 97.6L703.9 133.0L697.6 131.0L707.2 168.4L699.1 166.4L710.5 203.8L694.0 205.8L691.0 205.8L674.5 203.8L685.9 166.4L677.8 168.4L687.4 131.0L681.1 133.0Z"/>
+        <rect x="0" y="150" width="1440" height="110" fill="url(#mistband)"/>
+      </svg>
+    </div>
+    <div class="fog a" aria-hidden="true"></div>
+    <div class="fog b" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div>
+        <div class="status"><span class="dot" aria-hidden="true"></span><span lang="en">Taking on new projects</span><span lang="fr">Disponible pour de nouveaux projets</span></div>
+        <h1 lang="en"><span class="line">Web apps, APIs, databases.</span><span class="line b">Right down to the machine.</span></h1>
+        <h1 lang="fr"><span class="line">Applis web, API, bases de données.</span><span class="line b">Jusqu'à la machine.</span></h1>
+        <p class="lede" lang="en">Full-stack engineering with tech lead experience. We build web applications and APIs, fix the databases behind them and connect the business systems around them. Our home ground is the hardest layer of all: software that talks to machines on the warehouse floor.</p>
+        <p class="lede" lang="fr">De l'ingénierie full stack, avec une expérience de tech lead. Nous développons des applications web et des API, remettons en état les bases de données qui les portent et connectons les systèmes de gestion qui les entourent. Notre terrain de prédilection, c'est la couche la plus exigeante : le logiciel qui dialogue avec les machines sur le terrain.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="#contact">
+            <span lang="en">Tell us about your project</span><span lang="fr">Parlez-nous de votre projet</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a class="btn btn-soft" href="#services"><span lang="en">See what we do</span><span lang="fr">Nos services</span></a>
+        </div>
+        <ul class="facts">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">Full stack, from browser to machine</span><span lang="fr">Full stack, du navigateur à la machine</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">Tech lead experience</span><span lang="fr">Expérience de tech lead</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">10 years on production systems</span><span lang="fr">10 ans sur des systèmes en production</span></li>
+        </ul>
+      </div>
+
+      <figure class="panel" aria-labelledby="termcap">
+        <div class="panel-head">
+          <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="live"><span class="dot" aria-hidden="true"></span><span lang="en">From browser to machine</span><span lang="fr">Du navigateur à la machine</span></div>
+        </div>
+        <pre class="term" id="term" aria-label="Example terminal session"><span class="ln cmd"><span class="p">$ </span><span class="t">npm run build --prefix customer-portal</span></span><span class="ln out">✓ React build ready in 9.8 s</span><span class="ln cmd"><span class="p">$ </span><span class="t">dotnet test Api.Orders</span></span><span class="ln out">✓ 212 passed <span class="tag">·</span> 0 failed</span><span class="ln cmd"><span class="p">$ </span><span class="t">psql orders -f slow_queries.sql</span></span><span class="ln out">✓ 2 indexes added <span class="tag">·</span> 4.2 s → 38 ms</span><span class="ln cmd"><span class="p">$ </span><span class="t">send-idoc ORDERS05 --to wms</span></span><span class="ln out">✓ 36 orders acknowledged by the WMS</span><span class="ln cmd"><span class="p">$ </span><span class="t">opcua connect opc.tcp://plc-07:4840</span></span><span class="ln out">✓ 312 tags live <span class="tag">·</span> machine online</span></pre>
+        <figcaption id="termcap">
+          <span lang="en">Front end, APIs, databases, business systems, and finally the machines. We work every layer, and the closer it gets to the machine, the more at home we are.</span>
+          <span lang="fr">Front end, API, bases de données, systèmes de gestion, et enfin les machines. Nous travaillons à chaque niveau, et plus on s'approche de la machine, plus nous sommes chez nous.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="ticker" aria-label="Technologies">
+    <div class="ticker-track">
+      <ul><li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>XML and JSON</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC telegrams</li></ul>
+      <ul aria-hidden="true"><li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>XML and JSON</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC telegrams</li></ul>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">What we take on</span><span lang="fr">Ce que nous prenons en charge</span></h2>
+        <p lang="en">Four kinds of work, from the browser down to the machine. Each one starts with a clear scope we agree on together, so you know what you get before anything begins.</p>
+        <p lang="fr">Quatre types de missions, du navigateur jusqu'à la machine. Chacune commence par un périmètre clair, défini ensemble, pour savoir ce que vous obtenez avant de démarrer.</p>
+      </div>
+
+      <div class="services">
+        <article class="svc">
+          <div class="svc-top">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/><path d="M13.5 5l-3 14"/></svg></div>
+            <h3><span lang="en">Web applications, APIs and .NET</span><span lang="fr">Applications web, API et .NET</span></h3>
+          </div>
+          <p class="what" lang="en">New web applications and APIs in ASP.NET Core with JavaScript and React front ends, and care for older .NET Framework applications whose original developers have moved on: stabilised, documented, fixed and extended.</p>
+          <p class="what" lang="fr">Nouvelles applications web et API en ASP.NET Core avec des interfaces JavaScript et React, et reprise d'applications .NET Framework dont les développeurs d'origine sont partis : stabilisées, documentées, corrigées et enrichies.</p>
+          <dl class="terms">
+            <dt lang="en">You get</dt><dd lang="en">Working, tested features and code your team can take over</dd>
+            <dt lang="fr">Livrable</dt><dd lang="fr">Des fonctionnalités testées et un code que votre équipe peut reprendre</dd>
+            <dt lang="en">Format</dt><dd lang="en">Per feature, in blocks of days, or as a monthly retainer</dd>
+            <dt lang="fr">Format</dt><dd lang="fr">Par fonctionnalité, par blocs de jours ou au mois</dd>
+          </dl>
+        </article>
+
+        <article class="svc">
+          <div class="svc-top">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V5.5"/><path d="M4.5 12v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V12"/></svg></div>
+            <h3><span lang="en">PostgreSQL health check and rescue</span><span lang="fr">Audit et remise en état PostgreSQL</span></h3>
+          </div>
+          <p class="what" lang="en">Slow queries, bloated tables, a legacy database nobody wants to touch. We review configuration, indexes, queries, backups and access rights, then fix what matters most.</p>
+          <p class="what" lang="fr">Requêtes lentes, tables qui gonflent, une base historique que personne n'ose toucher. Nous passons en revue configuration, index, requêtes, sauvegardes et droits d'accès, puis nous corrigeons l'essentiel.</p>
+          <dl class="terms">
+            <dt lang="en">You get</dt><dd lang="en">A written report and the three highest-impact fixes, applied</dd>
+            <dt lang="fr">Livrable</dt><dd lang="fr">Un rapport écrit et les trois corrections les plus utiles, appliquées</dd>
+            <dt lang="en">Format</dt><dd lang="en">About one week</dd>
+            <dt lang="fr">Format</dt><dd lang="fr">Environ une semaine</dd>
+          </dl>
+        </article>
+
+        <article class="svc">
+          <div class="svc-top">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M10 7h4a3 3 0 0 1 3 3v4"/><path d="M14 17h-4a3 3 0 0 1-3-3v-4"/><path d="M15 12l2 2 2-2"/><path d="M5 12l2-2 2 2"/></svg></div>
+            <h3><span lang="en">WMS and ERP integration</span><span lang="fr">Intégration WMS et ERP</span></h3>
+          </div>
+          <p class="what" lang="en">Keeping orders, stock and movements in step between a warehouse management system, an ERP and the equipment on the floor. New interfaces over REST, XML and JSON, SAP IDoc or file exchange, and repairs to existing ones that keep breaking.</p>
+          <p class="what" lang="fr">Garder commandes, stocks et mouvements cohérents entre un WMS, un ERP et les équipements du site. Nouvelles interfaces en REST, XML et JSON, SAP IDoc ou échange de fichiers, et remise en état d'interfaces qui cassent régulièrement.</p>
+          <dl class="terms">
+            <dt lang="en">You get</dt><dd lang="en">A working interface with error handling, logging and documentation</dd>
+            <dt lang="fr">Livrable</dt><dd lang="fr">Une interface opérationnelle, avec gestion des erreurs, journalisation et documentation</dd>
+            <dt lang="en">Format</dt><dd lang="en">Per interface, or by the day for repairs</dd>
+            <dt lang="fr">Format</dt><dd lang="fr">Par interface, ou à la journée pour les corrections</dd>
+          </dl>
+        </article>
+
+        <article class="svc">
+          <div class="svc-top">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="12" rx="1.5"/><path d="M6 10h4M6 14h2"/><path d="M13 9h3M13 15h3"/><circle cx="18.5" cy="9" r="2"/><circle cx="18.5" cy="15" r="2"/></svg></div>
+            <h3><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></h3>
+          </div>
+          <p class="what" lang="en">Reading data from PLCs and OPC UA servers and getting it reliably into a database, a dashboard or a business system. OPC UA subscriptions and events, socket telegram protocols, and logging that tells you when a signal stops arriving.</p>
+          <p class="what" lang="fr">Lire les données des automates et des serveurs OPC UA et les acheminer de façon fiable vers une base, un tableau de bord ou un système de gestion. Abonnements et événements OPC UA, télégrammes sur socket, et une journalisation qui signale quand une donnée cesse d'arriver.</p>
+          <dl class="terms">
+            <dt lang="en">You get</dt><dd lang="en">A tested connector, deployed and documented</dd>
+            <dt lang="fr">Livrable</dt><dd lang="fr">Un connecteur testé, déployé et documenté</dd>
+            <dt lang="en">Format</dt><dd lang="en">Per integration</dd>
+            <dt lang="fr">Format</dt><dd lang="fr">Par intégration</dd>
+          </dl>
+        </article>
+      </div>
+
+      <div class="note">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="sun" aria-hidden="true" focusable="false"><defs><clipPath id="nm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#nm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g><g stroke="#ffffff" stroke-opacity=".38" stroke-linecap="round" fill="none" stroke-width="2.2"><path d="M75 66h13M12 74h11M70 85h9"/></g></g></svg>
+        <p lang="en"><strong>From a single slow query to a complete platform.</strong> A stubborn interface, a signal that stopped arriving, a feature your team has no time for: every piece of work gets the same care and the same written scope.</p>
+        <p lang="fr"><strong>D'une requête lente à une plateforme complète.</strong> Une interface capricieuse, une donnée qui ne remonte plus, une fonctionnalité que votre équipe n'a pas le temps de faire : chaque mission reçoit le même soin et le même périmètre écrit.</p>
+        <a class="btn btn-main" href="#contact"><span lang="en">Tell us what you need</span><span lang="fr">Dites-nous ce qu'il vous faut</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">Selected work</span><span lang="fr">Réalisations</span></h2>
+        <p lang="en">A few projects from the last ten years. Client names stay private, the work speaks for itself.</p>
+        <p lang="fr">Quelques projets des dix dernières années. Les noms des clients restent confidentiels, le travail parle de lui-même.</p>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <div class="case-kind"><span lang="en">Industrial software</span><span lang="fr">Logiciel industriel</span></div>
+          <h3><span lang="en">Control software for automated storage machines</span><span lang="fr">Logiciel de pilotage de machines de stockage automatisées</span></h3>
+          <p lang="en">Designed and built the full control software for a vertical automated storage system, from an empty whiteboard to live sites: the machine model, PLC telegrams over TCP, OPC UA events, storage and retrieval strategies per client, recovery from machine faults, and the interface to each site's WMS.</p>
+          <p lang="fr">Conception et développement de tout le logiciel de pilotage d'un système de stockage vertical automatisé, du tableau blanc vide jusqu'aux sites en production : modèle de la machine, télégrammes automate sur TCP, événements OPC UA, stratégies de stockage et de sortie par client, reprise sur incident machine et interface avec le WMS de chaque site.</p>
+          <ul class="case-out"><li lang="en">Running on sites in Europe, the US and China</li><li lang="fr">En service en Europe, aux États-Unis et en Chine</li><li lang="en">7 sites supported today, up to 6 machines each</li><li lang="fr">7 sites suivis aujourd'hui, jusqu'à 6 machines chacun</li></ul>
+        </article>
+        <article class="case">
+          <div class="case-kind"><span lang="en">PostgreSQL rescue</span><span lang="fr">Remise en état PostgreSQL</span></div>
+          <h3><span lang="en">Bringing a failing logistics database back to health</span><span lang="fr">Remettre sur pied la base d'un logisticien</span></h3>
+          <p lang="en">A warehouse system was losing stock accuracy and leaving orders stuck. A forensic review found a missing search path in 125 of 128 database functions, a wrong table reference, out-of-sync sequences and stale stock reservations. Every fix was made backup first and verified after.</p>
+          <p lang="fr">Un système d'entrepôt perdait la justesse de ses stocks et laissait des commandes bloquées. Une analyse approfondie a révélé un search path manquant dans 125 des 128 fonctions, une mauvaise référence de table, des séquences désynchronisées et des réservations obsolètes. Chaque correction a été faite sauvegarde d'abord, vérification ensuite.</p>
+          <ul class="case-out"><li lang="en">Stuck orders cleared, stock back in line</li><li lang="fr">Commandes débloquées, stocks remis d'aplomb</li><li lang="en">Led to the client commissioning a new system</li><li lang="fr">A conduit le client à commander un nouveau système</li></ul>
+        </article>
+        <article class="case">
+          <div class="case-kind"><span lang="en">Web application</span><span lang="fr">Application web</span></div>
+          <h3><span lang="en">A new warehouse management web application</span><span lang="fr">Une nouvelle application web de gestion d'entrepôt</span></h3>
+          <p lang="en">After the rescue, we proposed a replacement, built the mock-ups and presentations that won the client over, then wrote the specification and the application: ASP.NET Core, Entity Framework Core and PostgreSQL, with historised stock movements per product, batch and location.</p>
+          <p lang="fr">Après le sauvetage, nous avons proposé un remplaçant, réalisé les maquettes et les présentations qui ont convaincu le client, puis rédigé la spécification et développé l'application : ASP.NET Core, Entity Framework Core et PostgreSQL, avec des mouvements de stock historisés par produit, lot et emplacement.</p>
+          <ul class="case-out"><li lang="en">From idea to delivery by one engineer</li><li lang="fr">De l'idée à la livraison par un seul ingénieur</li><li lang="en">Client change requests handled through a written spec</li><li lang="fr">Demandes d'évolution gérées par une spécification écrite</li></ul>
+        </article>
+        <article class="case">
+          <div class="case-kind"><span lang="en">ERP integration</span><span lang="fr">Intégration ERP</span></div>
+          <h3><span lang="en">SAP to warehouse floor for a beverage producer</span><span lang="fr">De SAP au terrain pour un producteur de boissons</span></h3>
+          <p lang="en">Site warehouse software following pallets of bottles from production to storage to shipping, with SAP acting as the WMS. Orders and confirmations travel between SAP and the floor as IDocs, so planners and operators always see the same stock.</p>
+          <p lang="fr">Logiciel d'entrepôt de site qui suit les palettes de bouteilles de la production au stockage puis à l'expédition, avec SAP dans le rôle du WMS. Ordres et confirmations circulent entre SAP et le terrain sous forme d'IDocs, pour que planificateurs et opérateurs voient le même stock.</p>
+          <ul class="case-out"><li lang="en">Production, storage and shipping in one flow</li><li lang="fr">Production, stockage et expédition dans un seul flux</li><li lang="en">SAP IDoc in both directions</li><li lang="fr">IDoc SAP dans les deux sens</li></ul>
+        </article>
+      </div>
+      <div class="portfolio-cta">
+        <div>
+          <h3><span lang="en">See it running, not just described</span><span lang="fr">Voyez-le tourner, pas seulement décrit</span></h3>
+          <p lang="en">Our interactive portfolio is a retro desktop you can click through: live demos, a working PLC telegram encoder, our track record and a CV in English or French.</p>
+          <p lang="fr">Notre portfolio interactif est un bureau rétro à explorer : démos en ligne, un encodeur de télégrammes automate fonctionnel, nos références et un CV en français ou en anglais.</p>
+        </div>
+        <div class="portfolio-cta-links">
+          <a class="btn btn-main" href="/portfolio/"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="btn btn-soft" href="/portfolio/quick.html"><span lang="en">One-page version</span><span lang="fr">Version une page</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">Why teams bring us in</span><span lang="fr">Pourquoi on fait appel à nous</span></h2>
+        <p lang="en">Most projects stall at the seams between systems, where no single specialist feels at home. That is where we spend most of our time.</p>
+        <p lang="fr">La plupart des projets bloquent à la jonction entre deux systèmes, là où aucun spécialiste ne se sent chez lui. C'est là que nous passons l'essentiel de notre temps.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why">
+          <h3><span lang="en">Full stack, end to end</span><span lang="fr">Full stack, de bout en bout</span></h3>
+          <p lang="en">From JavaScript and React front ends, through C# services, APIs and PostgreSQL, down to PLC protocols. One person who sees the whole chain instead of one layer of it.</p>
+          <p lang="fr">Des interfaces JavaScript et React, en passant par les services C#, les API et PostgreSQL, jusqu'aux protocoles automates. Une seule personne qui voit toute la chaîne, pas une seule couche.</p>
+          <div class="stack-line">React · REST · C# · .NET · PostgreSQL · OPC UA · PLC</div>
+        </article>
+        <article class="why">
+          <h3><span lang="en">Tech lead experience</span><span lang="fr">Expérience de tech lead</span></h3>
+          <p lang="en">Years of owning architecture, setting standards, reviewing code and leading support for sites that run around the clock. We can lead a piece of work, not only carry it out.</p>
+          <p lang="fr">Des années à porter l'architecture, fixer les standards, relire le code et piloter le support de sites qui tournent jour et nuit. Nous pouvons mener un chantier, pas seulement l'exécuter.</p>
+          <div class="stack-line"><span lang="en">architecture · code review · support lead</span><span lang="fr">architecture · revue de code · pilotage du support</span></div>
+        </article>
+        <article class="why">
+          <h3><span lang="en">The complicated stuff</span><span lang="fr">Les sujets compliqués</span></h3>
+          <p lang="en">Undocumented legacy code, systems that cannot stop for maintenance, bugs that only show up under load. The problems other people have given up on are usually the ones we like best.</p>
+          <p lang="fr">Du code historique sans documentation, des systèmes qu'on ne peut pas arrêter, des bugs qui n'apparaissent qu'en charge. Les problèmes que d'autres ont abandonnés sont souvent ceux que nous préférons.</p>
+          <div class="stack-line"><span lang="en">legacy · 24/7 sites · hard bugs</span><span lang="fr">legacy · sites 24/7 · bugs difficiles</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">How a project runs</span><span lang="fr">Déroulement d'un projet</span></h2>
+        <p lang="en">No open-ended hours and no surprises. You see the scope and the price in writing before any work begins.</p>
+        <p lang="fr">Pas d'heures sans fin ni de surprises. Vous voyez le périmètre et le prix par écrit avant que le travail commence.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3><span lang="en">A short call</span><span lang="fr">Un court échange</span></h3>
+          <p lang="en">Thirty minutes to understand the problem and what done looks like.</p>
+          <p lang="fr">Trente minutes pour comprendre le problème et le résultat attendu.</p>
+        </li>
+        <li>
+          <h3><span lang="en">A clear proposal</span><span lang="fr">Une proposition claire</span></h3>
+          <p lang="en">A written scope, a price and a delivery date.</p>
+          <p lang="fr">Un périmètre écrit, un prix et une date de livraison.</p>
+        </li>
+        <li>
+          <h3><span lang="en">The work</span><span lang="fr">La réalisation</span></h3>
+          <p lang="en">Short progress notes as it moves, so you are never guessing.</p>
+          <p lang="fr">De courts points d'avancement, pour que vous ne soyez jamais dans le flou.</p>
+        </li>
+        <li>
+          <h3><span lang="en">Handover</span><span lang="fr">La remise</span></h3>
+          <p lang="en">Documentation your team can use, and support afterwards if you want it.</p>
+          <p lang="fr">Une documentation exploitable par votre équipe, et un support ensuite si besoin.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="about" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">About</span><span lang="fr">À propos</span></h2>
+      </div>
+      <div class="about">
+        <div class="person">
+          <img src="talel.jpg" width="320" height="320" alt="Talel Ksiksi">
+          <div class="who">
+            <div class="who-name">Talel Ksiksi</div>
+            <div class="who-role"><span lang="en">Founder and lead engineer</span><span lang="fr">Fondateur et ingénieur principal</span></div>
+          </div>
+          <div class="who-links">
+            <a class="btn btn-soft small" href="https://www.linkedin.com/in/ksiksi" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.55 4.77 5.86v5.59h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.61v5.05h-4v-11z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="bio">
+          <p class="bio-lead" lang="en">CICTNA RDC is the company of Talel Ksiksi, a software engineer who has spent ten years building and running the software behind automated warehouses.</p>
+          <p class="bio-lead" lang="fr">CICTNA RDC est la société de Talel Ksiksi, ingénieur logiciel qui conçoit et fait tourner depuis dix ans le logiciel d'entrepôts automatisés.</p>
+          <p lang="en">He joined a Dutch automation company when its flagship control software was only a name on a whiteboard, and took it all the way to live sites in Europe, the United States and China as its architect, developer and support lead. Along the way came the web portals operators use, the statistics pages managers read, the WMS and SAP interfaces, and the PostgreSQL databases underneath.</p>
+          <p lang="fr">Il a rejoint une société néerlandaise d'automatisation quand son logiciel de pilotage phare n'était encore qu'un nom sur un tableau blanc, et l'a mené jusqu'aux sites en production en Europe, aux États-Unis et en Chine, comme architecte, développeur et responsable du support. En chemin sont venus les portails web des opérateurs, les pages de statistiques des responsables, les interfaces WMS et SAP, et les bases PostgreSQL qui portent le tout.</p>
+          <p lang="en">That background shapes how every job is handled: when a site runs around the clock, software has to keep working when nobody is watching. He works in English, French and Arabic, with clients across Europe, the Gulf and North America.</p>
+          <p lang="fr">C'est ce qui guide chaque mission : quand un site tourne jour et nuit, le logiciel doit tenir sans surveillance. Il travaille en français, en anglais et en arabe, avec des clients en Europe, dans le Golfe et en Amérique du Nord.</p>
+          <ul class="stack">
+            <li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">Questions clients ask</span><span lang="fr">Questions fréquentes</span></h2>
+        <p lang="en">The practical side, answered up front.</p>
+        <p lang="fr">Le côté pratique, répondu d'avance.</p>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><span lang="en">How do you charge?</span><span lang="fr">Comment facturez-vous ?</span></summary>
+          <p lang="en">Whichever way suits you. A well-defined task gets one agreed price before we start. Larger projects are split into phases, each priced up front and invoiced when you accept it, so you only ever pay for work you have seen. For ongoing help we work at a day rate or a monthly block of days, invoiced at the end of each month with a short summary of the time spent.</p>
+          <p lang="fr">Comme cela vous arrange. Une tâche bien définie a un prix convenu avant de commencer. Les projets plus larges sont découpés en phases, chacune chiffrée d'avance et facturée à sa validation, pour ne payer que ce que vous avez vu livré. Pour un accompagnement continu, nous travaillons au tarif journalier ou par bloc de jours mensuel, facturé en fin de mois avec un court récapitulatif du temps passé.</p>
+        </details>
+        <details>
+          <summary><span lang="en">How do invoices and payment work?</span><span lang="fr">Comment se passent la facturation et le paiement ?</span></summary>
+          <p lang="en">Invoices are issued in euros by CICTNA RDC and paid by bank transfer. Payment terms are agreed with you at the start, usually 14 days.</p>
+          <p lang="fr">Les factures sont émises en euros par CICTNA RDC et réglées par virement bancaire. Le délai de paiement est convenu avec vous au départ, généralement 14 jours.</p>
+        </details>
+        <details>
+          <summary><span lang="en">How soon can you start?</span><span lang="fr">Sous quel délai pouvez-vous commencer ?</span></summary>
+          <p lang="en">Usually straight away. Once the scope is agreed, work can begin within days.</p>
+          <p lang="fr">En général tout de suite. Une fois le périmètre validé, le travail peut démarrer sous quelques jours.</p>
+        </details>
+        <details>
+          <summary><span lang="en">Will you sign an NDA?</span><span lang="fr">Signez-vous un accord de confidentialité ?</span></summary>
+          <p lang="en">Yes, gladly, and before we see any of your code or data. Client names never appear on this site or anywhere else without permission.</p>
+          <p lang="fr">Oui, volontiers, et avant de voir votre code ou vos données. Les noms de nos clients n'apparaissent jamais, ici ou ailleurs, sans leur accord.</p>
+        </details>
+        <details>
+          <summary><span lang="en">Which time zone and hours do you work?</span><span lang="fr">Quel fuseau horaire et quels horaires ?</span></summary>
+          <p lang="en">Central European time (UTC+1), which overlaps comfortably with business hours in Europe and the Gulf. For live systems that cannot wait, we are reachable around the clock.</p>
+          <p lang="fr">Heure d'Europe centrale (UTC+1), ce qui recoupe largement les horaires de bureau en Europe et dans le Golfe. Pour les systèmes en production qui ne peuvent pas attendre, nous sommes joignables jour et nuit.</p>
+        </details>
+        <details>
+          <summary><span lang="en">Which languages do you work in?</span><span lang="fr">Dans quelles langues travaillez-vous ?</span></summary>
+          <p lang="en">English, French and Arabic, for calls, documentation and code comments alike.</p>
+          <p lang="fr">Français, anglais et arabe, pour les échanges, la documentation comme les commentaires de code.</p>
+        </details>
+        <details>
+          <summary><span lang="en">How do you work on our systems remotely?</span><span lang="fr">Comment travaillez-vous à distance sur nos systèmes ?</span></summary>
+          <p lang="en">Through whatever access you already use: your VPN, remote desktop, your Git repositories and ticketing. Changes to production go through your approval, with backups taken first.</p>
+          <p lang="fr">Avec les accès que vous utilisez déjà : votre VPN, le bureau à distance, vos dépôts Git et votre outil de tickets. Les changements en production passent par votre validation, sauvegarde faite au préalable.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <h2><span lang="en">Tell us what is broken, or what you need built.</span><span lang="fr">Dites-nous ce qui ne fonctionne pas, ou ce qu'il faut construire.</span></h2>
+        <p lang="en">A few lines are enough to start. We reply within one working day with questions or a first estimate.</p>
+        <p lang="fr">Quelques lignes suffisent pour commencer. Nous répondons sous un jour ouvré avec des questions ou une première estimation.</p>
+        <ul class="trust">
+          <li><span lang="en">NDA before we see your code</span><span lang="fr">Confidentialité signée avant d'accéder à votre code</span></li>
+          <li><span lang="en">Reply within one working day</span><span lang="fr">Réponse sous un jour ouvré</span></li>
+          <li><span lang="en">Invoices in euros from our company</span><span lang="fr">Factures en euros émises par notre société</span></li>
+          <li><span lang="en">Reachable around the clock for live systems</span><span lang="fr">Joignables jour et nuit pour les systèmes en production</span></li>
+        </ul>
+        <div class="quick">
+          <a class="btn btn-ghost-light" href="https://wa.me/33651287500" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.13-1.35A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.04.8.81-2.97-.2-.3a8.2 8.2 0 1 1 6.91 3.8zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62 1.52.66 2.12.71 2.88.6.46-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/></svg>
+            WhatsApp <span class="num">+33 6 51 28 75 00</span>
+          </a>
+          <a class="btn btn-ghost-light" id="bookLink" href="#" target="_blank" rel="noopener" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+            <span lang="en">Book a 30-minute call</span><span lang="fr">Réserver un appel de 30 minutes</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <form id="contactForm" novalidate>
+          <div class="frow">
+            <div class="field">
+              <label for="cf-name"><span lang="en">Your name</span><span lang="fr">Votre nom</span></label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cf-email"><span lang="en">Your email</span><span lang="fr">Votre e-mail</span></label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-company"><span lang="en">Company</span><span lang="fr">Entreprise</span> <span class="opt"><span lang="en">(optional)</span><span lang="fr">(facultatif)</span></span></label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="cf-msg"><span lang="en">What do you need?</span><span lang="fr">De quoi avez-vous besoin ?</span></label>
+            <textarea id="cf-msg" name="message" rows="5" required></textarea>
+          </div>
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="frow end">
+            <button class="btn btn-main" type="submit" id="cf-send">
+              <span lang="en">Send message</span><span lang="fr">Envoyer le message</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+            <p class="fstatus" id="cf-status" role="status" aria-live="polite"></p>
+          </div>
+          <p class="privacy" lang="en">We use your details only to reply to your message. They are never shared, sold or added to a mailing list.</p>
+          <p class="privacy" lang="fr">Vos coordonnées servent uniquement à répondre à votre message. Elles ne sont jamais partagées, vendues ni ajoutées à une liste de diffusion.</p>
+        </form>
+        <div class="meta">
+          <span lang="en">Or write to us directly at</span><span lang="fr">Ou écrivez-nous directement à</span>
+          <a href="mailto:contact@cictnardc.net" id="addr">contact@cictnardc.net</a>
+          <button class="copy" type="button" id="copyBtn"><span lang="en">Copy</span><span lang="fr">Copier</span></button>
+          <br><span lang="en">Central European time (UTC+1). English, French and Arabic.</span><span lang="fr">Heure d'Europe centrale (UTC+1). Français, anglais et arabe.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><clipPath id="fm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#fm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g></g></svg>
+      <div>
+        <div class="foot-name">CICTNA RDC</div>
+        <div class="foot-tag"><span lang="en">Web apps, APIs, databases. Right down to the machine.</span><span lang="fr">Applis web, API, bases de données. Jusqu'à la machine.</span></div>
+      </div>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="#services"><span lang="en">Services</span><span lang="fr">Services</span></a>
+      <a href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span></a>
+      <a href="/portfolio/"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span></a>
+      <a href="#about"><span lang="en">About</span><span lang="fr">À propos</span></a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact"><span lang="en">Contact</span><span lang="fr">Contact</span></a>
+    </nav>
+    <div class="foot-social">
+      <a href="https://www.linkedin.com/in/ksiksi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.55 4.77 5.86v5.59h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.61v5.05h-4v-11z"/></svg></a>
+      <a href="https://wa.me/33651287500" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.13-1.35A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.04.8.81-2.97-.2-.3a8.2 8.2 0 1 1 6.91 3.8zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62 1.52.66 2.12.71 2.88.6.46-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/></svg></a>
+      <a href="mailto:contact@cictnardc.net" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></a>
+    </div>
+    <div class="foot-legal">
+      <p>&copy; <span id="yr">2026</span> CICTNA RDC. <span lang="en">All rights reserved.</span><span lang="fr">Tous droits réservés.</span></p>
+      <p lang="en">Working with clients in Europe, the Gulf and North America.</p>
+      <p lang="fr">Avec des clients en Europe, dans le Golfe et en Amérique du Nord.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btns=document.querySelectorAll('.langs button');
+  function set(l){
+    root.setAttribute('data-lang',l); root.setAttribute('lang',l);
+    btns.forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.set===l));});
+    try{localStorage.setItem('lang',l);}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('lang');}catch(e){}
+  set(saved || ((navigator.language||'').toLowerCase().indexOf('fr')===0 ? 'fr' : 'en'));
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set);});});
+
+  /* terminal typing loop */
+  (function(){
+    var term=document.getElementById('term');
+    if(!term) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var lines=[].slice.call(term.querySelectorAll('.ln'));
+    var cmds=lines.map(function(l){ var t=l.querySelector('.t'); return t ? t.textContent : null; });
+    var cursor=document.createElement('span'); cursor.className='cursor'; cursor.setAttribute('aria-hidden','true');
+    function wait(ms){ return new Promise(function(r){ setTimeout(r,ms); }); }
+    async function run(){
+      while(true){
+        lines.forEach(function(l){ l.classList.add('pending'); var t=l.querySelector('.t'); if(t) t.textContent=''; });
+        for(var i=0;i<lines.length;i++){
+          var l=lines[i];
+          l.classList.remove('pending');
+          var t=l.querySelector('.t');
+          if(t){
+            t.after(cursor);
+            await wait(380);
+            for(var c=1;c<=cmds[i].length;c++){ t.textContent=cmds[i].slice(0,c); await wait(28+Math.random()*32); }
+            await wait(460);
+          } else {
+            l.appendChild(cursor);
+            await wait(120);
+          }
+        }
+        lines[lines.length-1].appendChild(cursor);
+        await wait(6000);
+      }
+    }
+    run();
+  })();
+
+  /* settings you can change */
+  var BOOKING_URL = "";  /* paste your Cal.com link here, for example "https://cal.com/yourname/30min" */
+  var bl=document.getElementById('bookLink');
+  if(BOOKING_URL){ bl.href=BOOKING_URL; bl.hidden=false; }
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* contact form, delivered by Web3Forms to the address the access key was created for */
+  (function(){
+    var ACCESS_KEY = "cc811bda-1648-4e5c-a225-526495a3e84e";
+    var form=document.getElementById('contactForm'), st=document.getElementById('cf-status'), send=document.getElementById('cf-send');
+    function fr(){ return root.getAttribute('data-lang')==='fr'; }
+    function say(cls,en,frT){ st.className='fstatus '+(cls||''); st.textContent = fr()?frT:en; }
+    document.querySelectorAll('a[href="#contact"]').forEach(function(a){
+      a.addEventListener('click',function(){ setTimeout(function(){ try{document.getElementById('cf-name').focus({preventScroll:true});}catch(e){} }, 650); });
+    });
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var bad=null;
+      ['cf-name','cf-email','cf-msg'].forEach(function(id){
+        var el=document.getElementById(id), v=el.value.trim();
+        var ok = v.length>0 && (id!=='cf-email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+        el.setAttribute('aria-invalid', String(!ok)); if(!ok && !bad) bad=el;
+      });
+      if(bad){ bad.focus(); say('err','Please add your name, a valid email and a short message.','Merci d’indiquer votre nom, un e-mail valide et un court message.'); return; }
+      if(ACCESS_KEY.indexOf('PASTE')===0){ say('err','The form is not connected yet. Please email contact@cictnardc.net directly.','Le formulaire n’est pas encore actif. Écrivez-nous directement à contact@cictnardc.net.'); return; }
+      send.disabled=true; say('','Sending…','Envoi en cours…');
+      var data={
+        access_key:ACCESS_KEY,
+        subject:'New message from cictnardc.net',
+        from_name:'CICTNA RDC website',
+        name:document.getElementById('cf-name').value.trim(),
+        email:document.getElementById('cf-email').value.trim(),
+        company:document.getElementById('cf-company').value.trim(),
+        message:document.getElementById('cf-msg').value.trim(),
+        botcheck:form.botcheck.checked
+      };
+      try{
+        var r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+        var j=await r.json().catch(function(){return {};});
+        if(r.ok && j.success){
+          form.reset();
+          say('ok','Thank you. Your message has been sent, and we will reply within one working day.','Merci. Votre message est bien parti, nous répondons sous un jour ouvré.');
+        } else { throw new Error('send'); }
+      }catch(err){
+        say('err','The message could not be sent. Please email contact@cictnardc.net directly.','Le message n’a pas pu partir. Écrivez-nous directement à contact@cictnardc.net.');
+      }
+      send.disabled=false;
+    });
+  })();
+
+  var cb=document.getElementById('copyBtn');
+  cb.addEventListener('click',function(){
+    var t=document.getElementById('addr').textContent, orig=cb.innerHTML;
+    function done(){ cb.textContent = root.getAttribute('data-lang')==='fr' ? 'Copiée' : 'Copied'; setTimeout(function(){cb.innerHTML=orig;},1500); }
+    try{ navigator.clipboard.writeText(t).then(done,function(){}); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

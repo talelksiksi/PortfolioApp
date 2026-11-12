@@ -63,18 +63,43 @@ app instead.
   Cal.com link later if you prefer self-service booking.
 - **Sound**: start-up chime and game sounds are synthesised with Web Audio (no
   files). The speaker in the taskbar mutes them; the choice is remembered.
-- **Analytics**: both pages load Vercel Web Analytics. It starts collecting once
-  Analytics is enabled for the project in the Vercel dashboard.
-- **Link previews**: `assets/og.png` (1200x630). The `og:image` tags use an
-  absolute URL, so update them in `index.html` and `quick.html` when the site
-  moves to its own domain.
+- **Analytics**: on cictnardc.net, turn on Cloudflare Web Analytics for the Pages
+  project (no code needed). The vercel.app copy loads Vercel Web Analytics.
+- **Use my mail app** opens a chooser: the device's mail program (mailto), Gmail
+  or Outlook.com in the browser with the message pre-filled, or copy the address.
+  A mailto link alone does nothing on computers without a mail program set up.
+- **Link previews**: `assets/og.png` (1200x630), referenced as
+  `https://cictnardc.net/portfolio/assets/og.png`.
 - **Project screenshots** live in `assets/shots/`; set `shot` on a project in
   `js/data.js` to show one.
 
 ## Deploy
 
-Static site: import the repo in Vercel with framework preset "Other", no build
-command, output directory `.`.
+### cictnardc.net (main home)
+
+The company website lives in `website/` (the same files as the Cloudflare
+Pages project, plus its README and setup guide). `scripts/build-cloudflare.sh`
+assembles `dist/` with the website at `/` and this portfolio at `/portfolio/`.
+
+```bash
+export CLOUDFLARE_API_TOKEN=...   # Account > Cloudflare Pages > Edit
+export CLOUDFLARE_ACCOUNT_ID=...
+scripts/deploy-cloudflare.sh              # preview deployment, own URL
+scripts/deploy-cloudflare.sh production   # live: cictnardc.net
+```
+
+A Direct Upload deployment replaces every file, so always deploy through the
+script: it ships the website and the portfolio together. Rollback: Cloudflare,
+Workers & Pages, the project, Deployments, pick the previous one, Rollback.
+
+The website and the portfolio share the `lang` setting in localStorage, so a
+language picked on one carries over to the other.
+
+### Vercel (backup copy)
+
+The repo is also connected to Vercel (`portfolioapp-pearl-theta.vercel.app`),
+which redeploys on every push. `.vercelignore` keeps the website and scripts
+out of it.
 
 ## Layout
 

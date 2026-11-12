@@ -13,6 +13,7 @@ window.SITE = {
   // Leave it "" and the form opens the visitor's own mail app instead.
   web3formsKey: "6ec4d65c-5286-4a3a-9db2-1b870d8a7333",
   github: "https://github.com/talelksiksi",
+  website: "https://cictnardc.net/",
   // CV files, relative to the site root. Leave a value "" to hide that language.
   cv: {
     en: "assets/cv/Talel-Ksiksi-CV-EN.pdf",

@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#3d6d78">
   <meta property="og:title" content="Talel Ksiksi · CICTNA RDC">
   <meta property="og:description" content="Industrial software, integrations and web apps. One-page overview.">
-  <meta property="og:image" content="https://portfolioapp-pearl-theta.vercel.app/assets/og.png">
+  <meta property="og:image" content="https://cictnardc.net/portfolio/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <style>
@@ -186,13 +186,13 @@
         </div></section>`;
       document.getElementById("foot").innerHTML =
         `<span>© ${new Date().getFullYear()} ${esc(SITE.studio)} · ${esc(SITE.owner)}</span>
-         <span>${esc(q.foot)}<a href="index.html${suffix}">${esc(q.desktop)}</a></span>`;
+         <span><a href="${SITE.website}">cictnardc.net</a> · ${esc(q.foot)}<a href="index.html${suffix}">${esc(q.desktop)}</a></span>`;
     }
     document.querySelectorAll(".langs button").forEach((b) => b.addEventListener("click", () => Lang.set(b.dataset.l)));
     window.addEventListener("lang:change", render);
     render();
   })();
   </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+  <script>if (/\.vercel\.app$/.test(location.hostname)) { var va = document.createElement("script"); va.defer = true; va.src = "/_vercel/insights/script.js"; document.head.appendChild(va); }</script>
 </body>
 </html>

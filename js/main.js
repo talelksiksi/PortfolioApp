@@ -86,6 +86,7 @@
       [t("smDisplay"), "display", Apps.openDisplay],
       [t("smLang"), ICONS.lang(other()), () => Lang.toggle()],
       [t("smHelp"), "help", Apps.openHelp],
+      ["cictnardc.net", "globe", () => { location.href = SITE.website; }],
       "-",
       [t("smShutdown"), "shutdown", Apps.openShutdown],
     ];
