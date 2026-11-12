@@ -351,11 +351,10 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
 .demos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:56px}
 @media (max-width:1100px){.demos{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .demo.demo-cta{background:linear-gradient(160deg,var(--deep-a),var(--deep-b));border-color:transparent;color:var(--deep-ink)}
-.demo.demo-cta{grid-column:span 2}
-.demo.demo-cta .demo-body{justify-content:center;padding:26px 28px}
-@media (max-width:1100px){.demo.demo-cta{grid-column:span 3}}
-@media (max-width:900px){.demo.demo-cta{grid-column:span 2}}
-@media (max-width:600px){.demo.demo-cta{grid-column:auto}}
+.demo.demo-cta .demo-body{justify-content:center;padding:26px 24px}
+.demo.demo-cta .demo-links .btn{white-space:nowrap;padding:10px 16px;font-size:.95rem}
+@media (max-width:1100px){.demo.demo-cta{grid-column:span 2}}
+@media (max-width:900px){.demo.demo-cta{grid-column:auto}}
 .demo.demo-cta h3{color:var(--deep-ink)}
 .demo.demo-cta p{color:var(--deep-stone)}
 .demo.demo-cta .case-kind{background:rgba(255,255,255,.12);color:var(--deep-ink)}
@@ -609,8 +608,8 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
     <div class="wrap">
       <div class="sec-head">
         <h2><span lang="en">Try the work, live</span><span lang="fr">Essayez nos réalisations, en direct</span></h2>
-        <p lang="en">Reading about software only goes so far. Our portfolio is a small retro desktop you can click through: six apps, all running live, and the engineering behind each one.</p>
-        <p lang="fr">Lire une description ne suffit pas. Notre portfolio est un petit bureau rétro à explorer : six applications, toutes en ligne, et l'ingénierie derrière chacune.</p>
+        <p lang="en">Reading about software only goes so far. Our portfolio is a small retro desktop you can click through: seven apps, all running live, and the engineering behind each one.</p>
+        <p lang="fr">Lire une description ne suffit pas. Notre portfolio est un petit bureau rétro à explorer : sept applications, toutes en ligne, et l'ingénierie derrière chacune.</p>
       </div>
       <div class="showcase">
         <a class="mock" href="/portfolio/">
@@ -624,7 +623,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
         <div class="showcase-side">
           <h3><span lang="en">What's inside</span><span lang="fr">Ce que vous y trouverez</span></h3>
           <ul class="inside">
-            <li><span lang="en"><b>Six apps</b>, all with a live demo you can use right now</span><span lang="fr"><b>Six applications</b>, toutes avec une démo utilisable tout de suite</span></li>
+            <li><span lang="en"><b>Seven apps</b>, all with a live demo you can use right now</span><span lang="fr"><b>Sept applications</b>, toutes avec une démo utilisable tout de suite</span></li>
             <li><span lang="en">A working PLC telegram encoder, straight from our tray store controller</span><span lang="fr">Un encodeur de télégrammes automate fonctionnel, tiré de notre contrôleur de magasin</span></li>
             <li><span lang="en">Our track record: ten years, seven live sites, three continents</span><span lang="fr">Nos références : dix ans, sept sites en exploitation, trois continents</span></li>
             <li><span lang="en">Book a call, our CV in English or French, and a small game</span><span lang="fr">Prise de rendez-vous, notre CV en français ou en anglais, et un petit jeu</span></li>
@@ -681,6 +680,15 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <h3>Warehouse Control Room</h3>
             <p lang="en">Fifty machines, live alarms you can acknowledge, stock and orders on one screen. Press Simulate a fault and watch it clear.</p><p lang="fr">Cinquante machines, des alarmes à acquitter, le stock et les commandes sur un écran. Simulez une panne et regardez-la se résoudre.</p>
             <div class="demo-links"><a href="https://warehouse-dashboard-umber.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/warehouse-dashboard"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
+          <a class="demo-img" href="https://gp-doctor-office.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/gp-office.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
+            <h3>Mon Cabinet</h3>
+            <p lang="en">Easy-to-read practice software for a GP: patient files, consultations, prescriptions and certificates to print. Demo code 1234.</p><p lang="fr">Un logiciel de cabinet lisible pour médecin généraliste : dossiers, consultations, ordonnances et certificats à imprimer. Code de démo 1234.</p>
+            <div class="demo-links"><a href="https://gp-doctor-office.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/gp-office"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
           </div>
         </article>
         <article class="demo">

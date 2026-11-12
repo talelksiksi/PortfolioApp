@@ -114,6 +114,11 @@
       <path fill="#e7a982" d="M11 7h4v4h-4zM10 12h6v3h-6z"/>
       <path fill="#3d6d78" d="M19 10h5v1h-5zM19 13h5v1h-5zM9 18h15v1H9zM9 21h15v1H9zM9 24h11v1H9z"/>
       <path fill="#c0392b" d="M18 26h8v4h-8z"/><path fill="#fff" d="M19 27h1v2h-1zM21 27h1v2h-1zM23 27h2v1h-2z"/>`),
+    medical: S(`
+      <path fill="${K}" d="M5 5h22v22H5z"/><path fill="#fff" d="M6 6h20v20H6z"/>
+      <path fill="#c0392b" d="M13 9h6v4h4v6h-4v4h-6v-4H9v-6h4z"/>
+      <path fill="#e74c3c" d="M14 10h4v4h4v4h-4v4h-4v-4h-4v-4h4z"/>
+      <path fill="#3d6d78" d="M6 6h20v2H6z"/>`),
     gauge: S(`
       <path fill="${K}" d="M3 6h26v22H3z"/><path fill="#fff" d="M4 7h24v20H4z"/>
       <path fill="#cfe8f0" d="M5 8h22v9H5z"/>

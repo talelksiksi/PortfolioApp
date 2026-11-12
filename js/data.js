@@ -256,6 +256,45 @@ window.PROJECTS = [
     shot: "assets/shots/warehouse-portal.jpg",
   },
   {
+    id: "gp-office",
+    name: "Mon Cabinet",
+    file: "MonCabinet.app",
+    icon: "medical",
+    category: { en: "Web app · GP practice", fr: "Application web · Cabinet médical" },
+    year: "2026",
+    summary: {
+      en: "Practice software for a general practitioner, in French and built to be easy to read: patient files, consultations, prescriptions and certificates to print, and the day's agenda. Demo code: 1234.",
+      fr: "Un logiciel de cabinet pour médecin généraliste, en français et pensé pour une lecture confortable : dossiers patients, consultations, ordonnances et certificats à imprimer, et l'agenda du jour. Code de démonstration : 1234.",
+    },
+    problem: {
+      en: "A doctor working on ageing desktop software with small text and slow screens, and years of patient history locked inside its database.",
+      fr: "Un médecin sur un logiciel vieillissant aux petits caractères et aux écrans lents, avec des années d'historique patient enfermées dans sa base.",
+    },
+    solution: {
+      en: "Large type and strong contrast with an adjustable text size, a 4-digit code on a big keypad, and everything one click from the patient file. It runs on the practice PC with daily backups and only listens locally; the old database is migrated in.",
+      fr: "De gros caractères et un fort contraste avec une taille de texte réglable, un code à 4 chiffres sur un grand pavé, et tout à un clic du dossier patient. Il tourne sur le PC du cabinet avec sauvegarde quotidienne et n'écoute qu'en local ; l'ancienne base est reprise.",
+    },
+    highlights: {
+      en: [
+        "Patient file: history by type, allergy alert, latest measurements with trend, past consultations",
+        "Consultation: reason, examination, blood pressure, pulse, weight, glucose, conclusion, private notes",
+        "Prescriptions with a medicine catalogue, templates, quick dosages and renew-last-prescription",
+        "A5 printing: prescriptions, rest and fitness certificates, referral letters",
+        "Agenda with free slots and waiting room; adjustable text size",
+      ],
+      fr: [
+        "Dossier patient : antécédents par type, alerte allergies, dernières mesures avec évolution, consultations passées",
+        "Consultation : motif, examen, tension, pouls, poids, glycémie, conclusion, notes privées",
+        "Ordonnances avec catalogue de médicaments, modèles, posologies rapides et reprise de la dernière",
+        "Impression A5 : ordonnances, certificats de repos et d'aptitude, lettres à un confrère",
+        "Agenda avec heures libres et salle d'attente ; taille du texte réglable",
+      ],
+    },
+    stack: ["JavaScript", "Node.js", "HTML", "CSS"],
+    live: "https://gp-doctor-office.vercel.app",
+    shot: "assets/shots/gp-office.jpg",
+  },
+  {
     id: "dental-clinic",
     name: "Dental Clinic Manager",
     file: "DentalClinic.app",

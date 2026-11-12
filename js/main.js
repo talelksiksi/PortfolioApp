@@ -88,7 +88,16 @@
           action(t("smContact"), "mail", () => Apps.openMail()))));
   }
   // Keep the showcase clear of the icon column, whatever its width.
-  const fitLauncher = () => document.documentElement.style.setProperty("--icons-w", iconList.offsetWidth + "px");
+  const fitLauncher = () => {
+    document.documentElement.style.setProperty("--icons-w", iconList.offsetWidth + "px");
+    // The closing tile fills whatever is left of the last row.
+    const grid = launcher.querySelector(".app-grid");
+    const cta = grid && grid.querySelector(".app-cta");
+    if (!cta) return;
+    const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+    const rest = PROJECTS.length % cols;
+    cta.style.gridColumn = `span ${rest ? cols - rest : cols}`;
+  };
   window.addEventListener("resize", fitLauncher);
   // The welcome note steps aside as soon as the visitor opens something.
   window.addEventListener("wm:change", () => {
