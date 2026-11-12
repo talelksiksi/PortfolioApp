@@ -92,6 +92,11 @@ From a computer with a Cloudflare token (Workers Scripts: Edit) you can also run
 `scripts/deploy-cloudflare.sh [upload|live|rollback]`. Rollback is also in the
 dashboard: Workers & Pages, cictnardc, Deployments.
 
+The website's "Try the work, live" section (`#portfolio`) shows
+`website/portfolio-desktop.jpg` and `website/portfolio-phone.jpg` and links each
+project card to `/portfolio/#project/<id>`. Retake those two screenshots when the
+portfolio's look changes.
+
 The website and the portfolio share the `lang` setting in localStorage, so a
 language picked on one carries over to the other.
 

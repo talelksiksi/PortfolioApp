@@ -39,7 +39,6 @@
       { label: t("track"), icon: "trophy", open: Apps.openTrack },
       { label: t("contact"), icon: "mail", open: () => Apps.openMail() },
       { label: t("book"), icon: "calendar", open: Apps.openBook },
-      ...PROJECTS.map((p) => ({ label: p.file, icon: p.icon, open: () => Apps.openProject(p.id), title: p.name })),
       { label: t("quick"), icon: "quick", open: () => { location.href = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : ""); } },
       { label: t("terminal"), icon: "terminal", open: Apps.openTerminal },
       { label: t("game"), icon: "game", open: Apps.openGame },
@@ -49,6 +48,46 @@
     iconList.replaceChildren(...items.map((d) =>
       h("li", {}, Apps.iconButton({ label: d.label, icon: d.icon, onOpen: d.open, title: d.title }))));
   }
+
+  // ---------------------------------------------------------------- App showcase
+  const launcher = document.getElementById("launcher");
+  function renderLauncher() {
+    const live = PROJECTS.filter((p) => p.live).length;
+    const tiles = PROJECTS.map((p) => {
+      const tile = h("article", { class: "app-tile" },
+        h("button", { class: "app-open", type: "button", "aria-label": `${p.name}: ${t("openApp")}`, onclick: () => Apps.openProject(p.id) },
+          h("span", { class: "app-thumb" + (p.shot ? "" : " noshot") },
+            p.shot ? h("img", { src: p.shot, alt: "", loading: "lazy", width: 1280, height: 800 }) : h("span", { class: "app-bigicon", html: ICONS[p.icon] }),
+            p.live ? h("span", { class: "app-live" }, t("liveBadge")) : null),
+          h("span", { class: "app-meta" },
+            h("span", { class: "app-icon", html: ICONS[p.icon] }),
+            h("span", { class: "app-text" }, h("b", {}, p.name), h("small", {}, L(p.category))))),
+        p.live ? h("a", { class: "app-demo", href: p.live, target: "_blank", rel: "noopener", title: t("openLive") }, t("demoShort")) : null);
+      return tile;
+    });
+    const action = (label, icon, fn) => h("button", { class: "btn app-action", type: "button", onclick: fn },
+      h("span", { html: ICONS[icon], style: "display:contents" }), label);
+    launcher.replaceChildren(
+      h("header", { class: "launcher-bar" },
+        h("span", { html: ICONS.folderOpen, style: "display:contents" }),
+        h("span", { class: "launcher-title" }, t("launcherTitle")),
+        h("span", { class: "launcher-sub" }, t("launcherSub", PROJECTS.length, live))),
+      h("div", { class: "launcher-body" },
+        h("div", { class: "app-grid" }, tiles),
+        h("div", { class: "launcher-actions" },
+          action(t("track").replace(/\.doc$/, "").replace(/_/g, " "), "trophy", Apps.openTrack),
+          action(t("book").replace(/\.exe$/, "").replace(/_/g, " "), "calendar", Apps.openBook),
+          action("CV", "cv", Apps.openCv),
+          action(t("smContact"), "mail", () => Apps.openMail()))));
+  }
+  // Keep the showcase clear of the icon column, whatever its width.
+  const fitLauncher = () => document.documentElement.style.setProperty("--icons-w", iconList.offsetWidth + "px");
+  window.addEventListener("resize", fitLauncher);
+  // The welcome note steps aside as soon as the visitor opens something.
+  window.addEventListener("wm:change", () => {
+    const note = document.getElementById("balloon");
+    if (note && WM.all().length) { note.classList.add("hide"); setTimeout(() => note.remove(), 250); }
+  });
 
   desktop.addEventListener("pointerdown", (e) => {
     if (!e.target.closest(".icon")) document.querySelectorAll(".icon.selected").forEach((i) => i.classList.remove("selected"));
@@ -142,6 +181,8 @@
 
   function renderShell() {
     renderDesktop();
+    renderLauncher();
+    requestAnimationFrame(fitLauncher);
     renderStart();
     langBtn.textContent = Lang.get().toUpperCase();
     langBtn.title = langBtn.ariaLabel = t("langTray");

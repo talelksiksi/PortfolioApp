@@ -9,7 +9,8 @@ rm -rf dist
 mkdir -p dist/portfolio
 # Company site, without the docs that live next to it.
 cp website/index.html website/favicon.svg website/favicon.png website/og-image.png \
-   website/email-logo.png website/talel.jpg dist/
+   website/email-logo.png website/talel.jpg \
+   website/portfolio-desktop.jpg website/portfolio-phone.jpg dist/
 # Portfolio.
 cp -r index.html quick.html css js assets dist/portfolio/
 echo "Built dist/: $(find dist -type f | wc -l) files, $(du -sh dist | cut -f1)"

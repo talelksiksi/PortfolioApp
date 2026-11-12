@@ -327,10 +327,45 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
 .foot-legal{grid-column:1 / -1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;border-top:1px solid var(--deep-rule);padding-top:20px;font-size:.84rem}
 .foot-legal p{margin:0}
 @media (max-width:860px){.foot{grid-template-columns:1fr}}
-.portfolio-cta{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;padding:24px 26px;border:1px solid var(--rule);border-radius:18px;background:var(--glass)}
-.portfolio-cta h3{margin:0 0 6px}
-.portfolio-cta p{margin:0;max-width:60ch}
-.portfolio-cta-links{display:flex;flex-wrap:wrap;gap:10px}
+.showcase{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:center}
+.mock{position:relative;display:block;color:inherit;text-decoration:none;padding:0 46px 34px 0}
+.mock-screen{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--rule);background:var(--mist);box-shadow:var(--shadow);transform:perspective(1600px) rotateY(-5deg) rotateX(2deg);transform-origin:left center;transition:transform .5s ease,box-shadow .5s ease}
+.mock:hover .mock-screen,.mock:focus-visible .mock-screen{transform:none}
+.mock-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--fog);border-bottom:1px solid var(--rule);font:12px var(--mono);color:var(--stone)}
+.mock-bar i{width:10px;height:10px;border-radius:50%;background:var(--rule)}
+.mock-bar i:first-child{background:var(--dawn)}
+.mock-bar span{margin-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-screen img{display:block;width:100%;height:auto}
+.mock-phone{position:absolute;right:0;bottom:0;width:23%;height:auto;border-radius:20px;border:6px solid #1f2e2f;box-shadow:var(--shadow);transition:transform .5s ease}
+.mock:hover .mock-phone{transform:translateY(-8px) rotate(2deg)}
+.mock-cta{position:absolute;left:18px;bottom:54px;display:inline-flex;align-items:center;gap:8px;background:var(--sea);color:var(--on-accent);font-weight:650;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.mock-cta svg{width:16px;height:16px}
+.mock:hover .mock-cta,.mock:focus-visible .mock-cta{opacity:1;transform:none}
+@media (hover:none){.mock-cta{opacity:1;transform:none}.mock-screen{transform:none}}
+.showcase-side h3{margin:0 0 14px;font-size:1.3rem}
+.inside{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.inside li{position:relative;padding-left:28px;color:var(--stone)}
+.inside li b{color:var(--ink)}
+.inside li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:2.5px solid var(--sea);border-bottom:2.5px solid var(--sea);transform:rotate(-45deg)}
+.showcase-side .cta-row{margin-top:24px}
+.demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:56px}
+.demo{display:flex;flex-direction:column;background:var(--mist);border:1px solid var(--rule);border-radius:18px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+.demo:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.demo-img{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--fog);border-bottom:1px solid var(--rule)}
+.demo-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .5s ease}
+.demo:hover .demo-img img{transform:scale(1.03)}
+.demo-live{position:absolute;left:10px;bottom:10px;font:700 10.5px/1 var(--mono);letter-spacing:.12em;padding:5px 8px;border-radius:999px;background:var(--pine);color:#fff}
+.demo-live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#7ee2a8;margin-right:6px;vertical-align:1px}
+.demo-body{display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
+.demo-body .case-kind{align-self:flex-start}
+.demo-body h3{margin:0;font-size:1.1rem}
+.demo-body p{margin:0;color:var(--stone);font-size:.95rem}
+.demo-links{display:flex;gap:18px;margin-top:auto;padding-top:8px;font-weight:650}
+.demo-links a,.svc-demo{color:var(--sea);text-decoration:none}
+.demo-links a:hover,.svc-demo:hover{text-decoration:underline}
+.svc-demo{margin-top:auto;font-weight:650;padding-top:2px}
+@media (max-width:900px){.showcase{grid-template-columns:1fr;gap:32px}.demos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.demos{grid-template-columns:1fr}.mock{padding:0 26px 26px 0}.mock-phone{width:28%;border-width:4px;border-radius:14px}.mock-cta{display:none}}
 </style>
 </head>
 <body>
@@ -341,7 +376,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
     <nav class="nav" aria-label="Main">
       <a class="link" href="#services"><span lang="en">Services</span><span lang="fr">Services</span></a>
       <a class="link" href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span></a>
-      <a class="link" href="/portfolio/"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span></a>
+      <a class="link" href="#portfolio"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span></a>
       <a class="link" href="#about"><span lang="en">About</span><span lang="fr">À propos</span></a>
       <a class="link" href="#faq">FAQ</a>
       <div class="langs" role="group" aria-label="Language">
@@ -406,6 +441,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
           <a class="btn btn-soft" href="#services"><span lang="en">See what we do</span><span lang="fr">Nos services</span></a>
+          <a class="btn btn-soft" href="#portfolio"><span lang="en">Try our live demos</span><span lang="fr">Essayer nos démos</span></a>
         </div>
         <ul class="facts">
           <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">Full stack, from browser to machine</span><span lang="fr">Full stack, du navigateur à la machine</span></li>
@@ -457,6 +493,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <dt lang="en">Format</dt><dd lang="en">Per feature, in blocks of days, or as a monthly retainer</dd>
             <dt lang="fr">Format</dt><dd lang="fr">Par fonctionnalité, par blocs de jours ou au mois</dd>
           </dl>
+          <a class="svc-demo" href="/portfolio/#project/warehouse-portal"><span lang="en">See it: Warehouse Management Portal →</span><span lang="fr">À voir : Warehouse Management Portal →</span></a>
         </article>
 
         <article class="svc">
@@ -472,6 +509,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <dt lang="en">Format</dt><dd lang="en">About one week</dd>
             <dt lang="fr">Format</dt><dd lang="fr">Environ une semaine</dd>
           </dl>
+          <a class="svc-demo" href="#work"><span lang="en">Read the rescue case →</span><span lang="fr">Lire le cas de remise en état →</span></a>
         </article>
 
         <article class="svc">
@@ -487,6 +525,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <dt lang="en">Format</dt><dd lang="en">Per interface, or by the day for repairs</dd>
             <dt lang="fr">Format</dt><dd lang="fr">Par interface, ou à la journée pour les corrections</dd>
           </dl>
+          <a class="svc-demo" href="/portfolio/#project/integration-toolkit"><span lang="en">See it: Integration Toolkit →</span><span lang="fr">À voir : Integration Toolkit →</span></a>
         </article>
 
         <article class="svc">
@@ -502,6 +541,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <dt lang="en">Format</dt><dd lang="en">Per integration</dd>
             <dt lang="fr">Format</dt><dd lang="fr">Par intégration</dd>
           </dl>
+          <a class="svc-demo" href="/portfolio/#project/tray-store-controller"><span lang="en">See it: Tray Store Controller →</span><span lang="fr">À voir : Tray Store Controller →</span></a>
         </article>
       </div>
 
@@ -551,20 +591,100 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
           <ul class="case-out"><li lang="en">Production, storage and shipping in one flow</li><li lang="fr">Production, stockage et expédition dans un seul flux</li><li lang="en">SAP IDoc in both directions</li><li lang="fr">IDoc SAP dans les deux sens</li></ul>
         </article>
       </div>
-      <div class="portfolio-cta">
-        <div>
-          <h3><span lang="en">See it running, not just described</span><span lang="fr">Voyez-le tourner, pas seulement décrit</span></h3>
-          <p lang="en">Our interactive portfolio is a retro desktop you can click through: live demos, a working PLC telegram encoder, our track record and a CV in English or French.</p>
-          <p lang="fr">Notre portfolio interactif est un bureau rétro à explorer : démos en ligne, un encodeur de télégrammes automate fonctionnel, nos références et un CV en français ou en anglais.</p>
+    </div>
+  </section>
+
+  <section id="portfolio" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="en">Try the work, live</span><span lang="fr">Essayez nos réalisations, en direct</span></h2>
+        <p lang="en">Reading about software only goes so far. Our portfolio is a small retro desktop you can click through: six apps, four of them running live, and the engineering behind each one.</p>
+        <p lang="fr">Lire une description ne suffit pas. Notre portfolio est un petit bureau rétro à explorer : six applications, dont quatre en ligne, et l'ingénierie derrière chacune.</p>
+      </div>
+      <div class="showcase">
+        <a class="mock" href="/portfolio/">
+          <span class="mock-screen">
+            <span class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>cictnardc.net/portfolio</span></span>
+            <img src="portfolio-desktop.jpg" alt="The CICTNA OS portfolio: a retro desktop showing our apps with live demos" width="1600" height="1000" loading="lazy">
+          </span>
+          <img class="mock-phone" src="portfolio-phone.jpg" alt="" width="780" height="1328" loading="lazy">
+          <span class="mock-cta"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <div class="showcase-side">
+          <h3><span lang="en">What's inside</span><span lang="fr">Ce que vous y trouverez</span></h3>
+          <ul class="inside">
+            <li><span lang="en"><b>Six apps</b>, four with a live demo you can use right now</span><span lang="fr"><b>Six applications</b>, dont quatre avec une démo utilisable tout de suite</span></li>
+            <li><span lang="en">A working PLC telegram encoder, straight from our tray store controller</span><span lang="fr">Un encodeur de télégrammes automate fonctionnel, tiré de notre contrôleur de magasin</span></li>
+            <li><span lang="en">Our track record: ten years, seven live sites, three continents</span><span lang="fr">Nos références : dix ans, sept sites en exploitation, trois continents</span></li>
+            <li><span lang="en">Book a call, our CV in English or French, and a small game</span><span lang="fr">Prise de rendez-vous, notre CV en français ou en anglais, et un petit jeu</span></li>
+            <li><span lang="en">In English and French, on desktop and phone</span><span lang="fr">En français et en anglais, sur ordinateur et sur mobile</span></li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn-main" href="/portfolio/"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            <a class="btn btn-soft" href="/portfolio/quick.html"><span lang="en">One-page version</span><span lang="fr">Version une page</span></a>
+          </div>
         </div>
-        <div class="portfolio-cta-links">
-          <a class="btn btn-main" href="/portfolio/"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <a class="btn btn-soft" href="/portfolio/quick.html"><span lang="en">One-page version</span><span lang="fr">Version une page</span></a>
-        </div>
+      </div>
+      <div class="demos">
+        <article class="demo">
+          <a class="demo-img" href="https://integration-toolkit-eight.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/integration-toolkit.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">WMS and ERP integration</span><span lang="fr">Intégration WMS et ERP</span></div>
+            <h3>Integration Toolkit</h3>
+            <p lang="en">Lay out how data moves between a WMS, PLCs, databases and APIs, watch it flow, then export the code.</p><p lang="fr">Dessinez la circulation des données entre WMS, automates, bases et API, regardez-la circuler, puis exportez le code.</p>
+            <div class="demo-links"><a href="https://integration-toolkit-eight.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/integration-toolkit"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
+          <a class="demo-img" href="https://tray-store-controller.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/tray-store-controller.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></div>
+            <h3>Tray Store Controller</h3>
+            <p lang="en">The controller of an automated tray store: retrieval planning, PLC telegrams and recovery that never runs a move twice.</p><p lang="fr">Le contrôleur d'un magasin automatisé à plateaux : planification des sorties, télégrammes automate et reprise qui n'exécute jamais deux fois un mouvement.</p>
+            <div class="demo-links"><a href="https://tray-store-controller.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/tray-store-controller"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
+          <a class="demo-img" href="https://warehouse-portal-demo.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/warehouse-portal.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Web applications and .NET</span><span lang="fr">Applications web et .NET</span></div>
+            <h3>Warehouse Management Portal</h3>
+            <p lang="en">Orders, stock per batch and location, storage costs and a full movement history. ASP.NET Core and PostgreSQL.</p><p lang="fr">Commandes, stock par lot et emplacement, coûts de stockage et historique complet des mouvements. ASP.NET Core et PostgreSQL.</p>
+            <div class="demo-links"><a href="https://warehouse-portal-demo.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/warehouse-portal"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
+          <a class="demo-img" href="https://warehouse-dashboard-umber.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/warehouse-dashboard.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
+            <h3>Warehouse Dashboard</h3>
+            <p lang="en">Fifty machines, stock and orders on one screen, updating live over WebSockets.</p><p lang="fr">Cinquante machines, le stock et les commandes sur un seul écran, mis à jour en direct par WebSocket.</p>
+            <div class="demo-links"><a href="https://warehouse-dashboard-umber.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/warehouse-dashboard"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
+          <a class="demo-img" href="/portfolio/#project/opcua-connector" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/opcua-connector-card.jpg" alt="" loading="lazy" width="1280" height="800"></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></div>
+            <h3>OPC UA Connector</h3>
+            <p lang="en">A C# OPC UA client with nine trigger types and a built-in simulator, verified against a real server.</p><p lang="fr">Un client OPC UA en C# avec neuf types de déclencheurs et un simulateur intégré, vérifié sur un vrai serveur.</p>
+            <div class="demo-links"><a href="/portfolio/#project/opcua-connector"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
+          <a class="demo-img" href="/portfolio/#project/dental-clinic" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/dental-clinic-card.jpg" alt="" loading="lazy" width="1280" height="800"></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
+            <h3>Dental Clinic Platform</h3>
+            <p lang="en">A clinic website that takes bookings, with screens for the front desk.</p><p lang="fr">Un site de cabinet qui prend les rendez-vous, avec des écrans pour l'accueil.</p>
+            <div class="demo-links"><a href="/portfolio/#project/dental-clinic"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
+
 
   <section id="why" style="padding-top:24px">
     <div class="wrap">

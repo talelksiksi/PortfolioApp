@@ -438,3 +438,78 @@ iframe.pdf { flex: 1; width: 100%; border: 0; background: #525659; }
 .sweep-tools small { color: #444; }
 .sweep-tools .btn.pressed { background: var(--teal-dark); color: #fff; }
 .sweep-msg p { margin: 10px 0 8px; }
+
+/* ---------- App showcase (centre of the desktop) ---------- */
+#windows, #pixel-wall { position: fixed; top: 0; left: 0; right: 0; bottom: var(--taskbar-h); }
+#launcher {
+  position: absolute; z-index: 1; top: 18px; bottom: 18px;
+  left: calc(var(--icons-w, 300px) + 28px); right: 24px; max-width: 1120px; margin: 0 auto;
+  display: flex; flex-direction: column; padding: 3px; height: fit-content; max-height: calc(100% - 36px);
+  background: var(--face);
+  box-shadow: inset -1px -1px var(--shadow), inset 1px 1px var(--hi), inset -2px -2px var(--lo), inset 2px 2px var(--face-light), 6px 8px 0 rgba(20,40,44,.18);
+}
+.launcher-bar { display: flex; align-items: center; gap: 8px; padding: 4px 8px; color: #fff; flex: none;
+  background: linear-gradient(90deg, var(--title-a), var(--title-b)); }
+.launcher-bar svg { width: 18px; height: 18px; }
+.launcher-title { font-weight: 800; font-size: 14px; }
+.launcher-sub { margin-left: auto; font-size: 12px; color: var(--mist); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.launcher-body { overflow: auto; padding: 12px; min-height: 0; }
+.app-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.app-tile { position: relative; background: #fff; box-shadow: inset -1px -1px var(--lo), inset 1px 1px var(--hi), 0 0 0 1px var(--lo); }
+.app-open { display: block; width: 100%; border: 0; padding: 6px; background: none; cursor: pointer; text-align: left; }
+.app-thumb { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--teal-dark);
+  box-shadow: inset 1px 1px var(--lo), inset -1px -1px var(--hi); }
+.app-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform .35s ease; }
+.app-thumb.noshot { display: grid; place-items: center;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 4px), radial-gradient(circle at 70% 120%, rgba(231,169,130,.55), transparent 60%), linear-gradient(160deg, var(--teal-deep), var(--teal)); }
+.app-bigicon svg { width: 72px; height: 72px; filter: drop-shadow(3px 4px 0 rgba(0,0,0,.35)); transition: transform .35s ease; }
+.app-live { position: absolute; bottom: 6px; left: 6px; font: 800 10px/1 var(--font); letter-spacing: .1em; padding: 4px 6px; background: #c0392b; color: #fff; box-shadow: 1px 1px 0 #000; }
+.app-live::before { content: "● "; animation: blink 1.4s steps(1) infinite; }
+.app-meta { display: flex; align-items: center; gap: 8px; padding: 8px 2px 2px; }
+.app-icon svg { width: 28px; height: 28px; flex: none; }
+.app-text { display: flex; flex-direction: column; min-width: 0; }
+.app-text b { font-size: 14px; line-height: 1.2; }
+.app-text small { font-size: 11.5px; color: #4a5a5e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-open:hover .app-thumb img, .app-open:focus-visible .app-thumb img { transform: scale(1.04); }
+.app-open:hover .app-bigicon svg, .app-open:focus-visible .app-bigicon svg { transform: translateY(-4px); }
+.app-tile:hover { box-shadow: inset -1px -1px var(--lo), inset 1px 1px var(--hi), 0 0 0 2px var(--teal); }
+.app-demo { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; text-decoration: none; padding: 3px 7px;
+  background: var(--sun); color: #1b1b1b; box-shadow: inset -1px -1px var(--shadow), inset 1px 1px var(--hi); opacity: 0; transition: opacity .2s; }
+.app-tile:hover .app-demo, .app-demo:focus-visible { opacity: 1; }
+.launcher-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.app-action svg { width: 20px; height: 20px; }
+@media (hover: none) { .app-demo { opacity: 1; } }
+@media (max-height: 760px) and (min-width: 721px) { .app-thumb { aspect-ratio: 16 / 8; } }
+@media (max-height: 640px) and (min-width: 721px) { .app-thumb { aspect-ratio: 16 / 6; } }
+@media (min-height: 1000px) and (min-width: 1500px) { #launcher { top: 8vh; } }
+
+/* ---------- Welcome balloon ---------- */
+.balloon { position: fixed; z-index: 1500; right: 10px; bottom: calc(var(--taskbar-h) + 12px); width: min(360px, calc(100vw - 20px));
+  padding: 12px 14px 10px; background: #ffffe1; color: var(--ink); border: 1px solid #1b1b1b; box-shadow: 4px 4px 0 rgba(0,0,0,.25);
+  font-size: 13px; animation: rise .35s ease-out; transition: opacity .25s, transform .25s; }
+.balloon.hide { opacity: 0; transform: translateY(8px); }
+.balloon::after { content: ""; position: absolute; right: 70px; bottom: -9px; width: 16px; height: 16px; background: #ffffe1;
+  border-right: 1px solid #1b1b1b; border-bottom: 1px solid #1b1b1b; transform: rotate(45deg); }
+.balloon-x { position: absolute; top: 4px; right: 6px; border: 0; background: none; font-size: 18px; cursor: pointer; line-height: 1; padding: 2px 6px; }
+.balloon-head { display: flex; align-items: center; gap: 8px; padding-right: 20px; }
+.balloon-head svg { width: 20px; height: 20px; }
+.balloon p { margin: 8px 0 0; }
+.balloon-tip { font-size: 12px; color: #444; }
+.balloon-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.balloon-links .btn { padding: 4px 10px; min-width: 0; font-size: 12px; }
+
+/* ---------- Phones: showcase first, then the icons ---------- */
+@media (max-width: 720px) {
+  #desktop { overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; }
+  #launcher { position: relative; order: -1; inset: auto; margin: 10px 8px 4px; max-width: none; max-height: none; flex: none; }
+  .launcher-sub { display: none; }
+  .launcher-body { padding: 8px; overflow: visible; }
+  .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .app-text b { font-size: 13px; }
+  .app-icon { display: none; }
+  .launcher-actions .btn { flex: 1 1 calc(50% - 8px); padding: 8px 6px; }
+  #icons { height: auto; flex: none; }
+  .balloon::after { display: none; }
+  .balloon { font-size: 12.5px; padding: 10px 12px 8px; }
+  .balloon-tip { display: none; }
+}

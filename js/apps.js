@@ -614,18 +614,22 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
     return win;
   }
 
+  /** Welcome note: a corner balloon, so the app showcase stays visible. */
   function openWelcome() {
+    document.getElementById("balloon")?.remove();
     const [a, b] = t("tipP");
-    return dialog({
-      id: "welcome", title: t("welcomeTitle"), icon: "info", width: 470,
-      text: [
-        h("h2", { style: "margin-top:0" }, t("welcomeH")),
-        h("p", {}, t("welcomeP", owner, studio, isTouch())),
-        h("div", { class: "tip" }, h("b", {}, t("tipH")), a, h("code", {}, "sudo"), b),
-        h("p", { style: "margin:10px 0 0" }, t("quickTip"), h("a", { href: "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : "") }, t("quickTipLink"))),
-      ],
-      buttons: [[t("showWork"), openProjects, true], [t("whoAreYou"), openNotepad], [t("close"), null]],
-    });
+    const quick = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : "");
+    const close = () => { box.classList.add("hide"); setTimeout(() => box.remove(), 250); };
+    const box = h("aside", { id: "balloon", class: "balloon", role: "status", "aria-label": t("welcomeTitle") },
+      h("button", { class: "balloon-x", type: "button", "aria-label": t("close"), onclick: close }, "×"),
+      h("div", { class: "balloon-head" }, svg("info"), h("b", {}, t("welcomeH"))),
+      h("p", {}, t("balloonP", owner, studio, isTouch())),
+      h("p", { class: "balloon-tip" }, h("b", {}, t("tipH")), a, h("code", {}, "sudo"), b),
+      h("p", { class: "balloon-links" },
+        h("button", { class: "btn", type: "button", onclick: () => { close(); openNotepad(); } }, t("whoAreYou")),
+        h("a", { class: "btn", href: quick }, t("quickTipLink"))));
+    document.body.append(box);
+    return box;
   }
 
   function openHelp() {
