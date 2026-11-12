@@ -348,7 +348,14 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
 .inside li b{color:var(--ink)}
 .inside li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:2.5px solid var(--sea);border-bottom:2.5px solid var(--sea);transform:rotate(-45deg)}
 .showcase-side .cta-row{margin-top:24px}
-.demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:56px}
+.demos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:56px}
+@media (max-width:1100px){.demos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.demo.demo-cta{background:linear-gradient(160deg,var(--deep-a),var(--deep-b));border-color:transparent;color:var(--deep-ink)}
+.demo.demo-cta .demo-body{justify-content:center;padding:26px 22px}
+.demo.demo-cta h3{color:var(--deep-ink)}
+.demo.demo-cta p{color:var(--deep-stone)}
+.demo.demo-cta .case-kind{background:rgba(255,255,255,.12);color:var(--deep-ink)}
+.demo-cta .demo-links .btn{color:var(--on-accent)}
 .demo{display:flex;flex-direction:column;background:var(--mist);border:1px solid var(--rule);border-radius:18px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
 .demo:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .demo-img{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--fog);border-bottom:1px solid var(--rule)}
@@ -541,7 +548,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
             <dt lang="en">Format</dt><dd lang="en">Per integration</dd>
             <dt lang="fr">Format</dt><dd lang="fr">Par intégration</dd>
           </dl>
-          <a class="svc-demo" href="/portfolio/#project/tray-store-controller"><span lang="en">See it: Tray Store Controller →</span><span lang="fr">À voir : Tray Store Controller →</span></a>
+          <a class="svc-demo" href="/portfolio/#project/plant-data-logger"><span lang="en">See it: Plant Data Logger →</span><span lang="fr">À voir : Plant Data Logger →</span></a>
         </article>
       </div>
 
@@ -598,8 +605,8 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
     <div class="wrap">
       <div class="sec-head">
         <h2><span lang="en">Try the work, live</span><span lang="fr">Essayez nos réalisations, en direct</span></h2>
-        <p lang="en">Reading about software only goes so far. Our portfolio is a small retro desktop you can click through: six apps, four of them running live, and the engineering behind each one.</p>
-        <p lang="fr">Lire une description ne suffit pas. Notre portfolio est un petit bureau rétro à explorer : six applications, dont quatre en ligne, et l'ingénierie derrière chacune.</p>
+        <p lang="en">Reading about software only goes so far. Our portfolio is a small retro desktop you can click through: seven apps, six of them running live, and the engineering behind each one.</p>
+        <p lang="fr">Lire une description ne suffit pas. Notre portfolio est un petit bureau rétro à explorer : sept applications, dont six en ligne, et l'ingénierie derrière chacune.</p>
       </div>
       <div class="showcase">
         <a class="mock" href="/portfolio/">
@@ -613,7 +620,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
         <div class="showcase-side">
           <h3><span lang="en">What's inside</span><span lang="fr">Ce que vous y trouverez</span></h3>
           <ul class="inside">
-            <li><span lang="en"><b>Six apps</b>, four with a live demo you can use right now</span><span lang="fr"><b>Six applications</b>, dont quatre avec une démo utilisable tout de suite</span></li>
+            <li><span lang="en"><b>Seven apps</b>, six with a live demo you can use right now</span><span lang="fr"><b>Sept applications</b>, dont six avec une démo utilisable tout de suite</span></li>
             <li><span lang="en">A working PLC telegram encoder, straight from our tray store controller</span><span lang="fr">Un encodeur de télégrammes automate fonctionnel, tiré de notre contrôleur de magasin</span></li>
             <li><span lang="en">Our track record: ten years, seven live sites, three continents</span><span lang="fr">Nos références : dix ans, sept sites en exploitation, trois continents</span></li>
             <li><span lang="en">Book a call, our CV in English or French, and a small game</span><span lang="fr">Prise de rendez-vous, notre CV en français ou en anglais, et un petit jeu</span></li>
@@ -646,6 +653,15 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
           </div>
         </article>
         <article class="demo">
+          <a class="demo-img" href="https://plant-data-logger.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/plant-data-logger.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></div>
+            <h3>Plant Data Logger</h3>
+            <p lang="en">Water treatment values from the PLCs into PostgreSQL: live trends, alarms, network-drop buffering and nightly reports, in English and Arabic.</p><p lang="fr">Les valeurs d'une station de traitement d'eau, des automates vers PostgreSQL : tendances, alarmes, tampon en cas de coupure et rapports nocturnes, en anglais et en arabe.</p>
+            <div class="demo-links"><a href="https://plant-data-logger.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/plant-data-logger"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo">
           <a class="demo-img" href="https://warehouse-portal-demo.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/warehouse-portal.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
           <div class="demo-body">
             <div class="case-kind"><span lang="en">Web applications and .NET</span><span lang="fr">Applications web et .NET</span></div>
@@ -673,12 +689,21 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
           </div>
         </article>
         <article class="demo">
-          <a class="demo-img" href="/portfolio/#project/dental-clinic" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/dental-clinic-card.jpg" alt="" loading="lazy" width="1280" height="800"></a>
+          <a class="demo-img" href="https://dental-clinic-demo-six-rouge.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/dental-clinic.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
           <div class="demo-body">
             <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
-            <h3>Dental Clinic Platform</h3>
-            <p lang="en">A clinic website that takes bookings, with screens for the front desk.</p><p lang="fr">Un site de cabinet qui prend les rendez-vous, avec des écrans pour l'accueil.</p>
-            <div class="demo-links"><a href="/portfolio/#project/dental-clinic"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+            <h3>Dental Clinic Manager</h3>
+            <p lang="en">Patients, appointments, treatments on a dental chart, payments and printable invoices for a dental practice.</p><p lang="fr">Patients, rendez-vous, soins sur schéma dentaire, paiements et factures imprimables pour un cabinet dentaire.</p>
+            <div class="demo-links"><a href="https://dental-clinic-demo-six-rouge.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/dental-clinic"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
+          </div>
+        </article>
+        <article class="demo demo-cta">
+          <div class="demo-body">
+            <div class="case-kind"><span lang="en">Your project</span><span lang="fr">Votre projet</span></div>
+            <h3><span lang="en">Your app could be next</span><span lang="fr">Votre application pourrait être la prochaine</span></h3>
+            <p lang="en">Tell us what slows your operation down. The first call is free, and you get a clickable proof early, like the ones above.</p>
+            <p lang="fr">Dites-nous ce qui freine votre activité. Le premier appel est gratuit, et vous recevez vite une preuve cliquable, comme celles ci-dessus.</p>
+            <div class="demo-links"><a class="btn btn-main" href="#contact"><span lang="en">Start a conversation</span><span lang="fr">Démarrer la discussion</span></a></div>
           </div>
         </article>
       </div>

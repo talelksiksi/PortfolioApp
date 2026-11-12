@@ -65,6 +65,15 @@
         p.live ? h("a", { class: "app-demo", href: p.live, target: "_blank", rel: "noopener", title: t("openLive") }, t("demoShort")) : null);
       return tile;
     });
+    // Closing tile: an invitation rather than a project.
+    tiles.push(h("article", { class: "app-tile app-cta" },
+      h("button", { class: "app-open", type: "button", onclick: Apps.openBook },
+        h("span", { class: "app-thumb noshot" },
+          h("span", { class: "app-bigicon", html: ICONS.briefcase }),
+          h("span", { class: "app-cta-text" }, t("ctaTileBig"))),
+        h("span", { class: "app-meta" },
+          h("span", { class: "app-icon", html: ICONS.calendar }),
+          h("span", { class: "app-text" }, h("b", {}, t("ctaTileTitle")), h("small", {}, t("ctaTileSub")))))));
     const action = (label, icon, fn) => h("button", { class: "btn app-action", type: "button", onclick: fn },
       h("span", { html: ICONS[icon], style: "display:contents" }), label);
     launcher.replaceChildren(

@@ -479,6 +479,11 @@ iframe.pdf { flex: 1; width: 100%; border: 0; background: #525659; }
 .launcher-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .app-action svg { width: 20px; height: 20px; }
 @media (hover: none) { .app-demo { opacity: 1; } }
+@media (min-width: 1280px) { .app-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.app-cta .app-thumb { flex-direction: column; gap: 8px; }
+.app-cta-text { color: #fff; font-weight: 800; font-size: 15px; letter-spacing: .02em; text-shadow: 2px 2px 0 rgba(0,0,0,.35); }
+.app-cta .app-bigicon svg { width: 56px; height: 56px; }
+.app-cta { box-shadow: inset -1px -1px var(--lo), inset 1px 1px var(--hi), 0 0 0 1px var(--lo); background: #fff8f2; }
 @media (max-height: 760px) and (min-width: 721px) { .app-thumb { aspect-ratio: 16 / 8; } }
 @media (max-height: 640px) and (min-width: 721px) { .app-thumb { aspect-ratio: 16 / 6; } }
 @media (min-height: 1000px) and (min-width: 1500px) { #launcher { top: 8vh; } }

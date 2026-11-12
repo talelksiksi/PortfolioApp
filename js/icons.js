@@ -114,6 +114,14 @@
       <path fill="#e7a982" d="M11 7h4v4h-4zM10 12h6v3h-6z"/>
       <path fill="#3d6d78" d="M19 10h5v1h-5zM19 13h5v1h-5zM9 18h15v1H9zM9 21h15v1H9zM9 24h11v1H9z"/>
       <path fill="#c0392b" d="M18 26h8v4h-8z"/><path fill="#fff" d="M19 27h1v2h-1zM21 27h1v2h-1zM23 27h2v1h-2z"/>`),
+    gauge: S(`
+      <path fill="${K}" d="M3 6h26v22H3z"/><path fill="#fff" d="M4 7h24v20H4z"/>
+      <path fill="#cfe8f0" d="M5 8h22v9H5z"/>
+      <path fill="#3d6d78" d="M5 15l3-2 3 1 3-4 3 2 3-3 3 1 4-3v2l-4 3-3-1-3 3-3-2-3 4-3-1-3 2z"/>
+      <path fill="#e7a982" d="M5 13l4 1 3-2 4 2 3-1 4 1 4-2v1l-4 2-4-1-3 1-4-2-3 2-4-1z"/>
+      <path fill="${K}" d="M5 18h22v1H5z"/>
+      <path fill="#58e08a" d="M6 21h3v3H6z"/><path fill="#f6d36b" d="M11 21h3v3h-3z"/><path fill="#c0392b" d="M16 21h3v3h-3z"/>
+      <path fill="#3d6d78" d="M21 21h6v1h-6zM21 23h4v1h-4z"/>`),
     trophy: S(`
       <path fill="${K}" d="M8 3h16v3h5v6l-4 4h-2l-3 3v4h4v3h2v3H8v-3h2v-3h4v-4l-3-3H9l-4-4V6h3z"/>
       <path fill="#f6d36b" d="M9 4h14v9l-3 4h-8l-3-4zM6 7h2v5H7l-1-1zM24 7h2v4l-1 1h-1z"/>
