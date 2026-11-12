@@ -1,0 +1,11 @@
+// Cloudflare Worker that serves cictnardc.net (static assets only).
+// Build dist/ with scripts/build-cloudflare.sh first; deploy with scripts/deploy-cloudflare.sh.
+{
+  "name": "cictnardc",
+  "compatibility_date": "2026-11-08",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

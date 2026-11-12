@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
-# Build and upload the site to the Cloudflare Pages project behind cictnardc.net.
-#   scripts/deploy-cloudflare.sh            -> preview deployment (safe, own URL)
-#   scripts/deploy-cloudflare.sh production -> live site (cictnardc.net)
-# Needs CLOUDFLARE_API_TOKEN (Account > Cloudflare Pages > Edit) and
-# CLOUDFLARE_ACCOUNT_ID in the environment. PROJECT defaults to "cictnardc".
+# Build and upload cictnardc.net (Cloudflare Worker "cictnardc", static assets).
+#   scripts/deploy-cloudflare.sh           -> upload a new version, NOT live yet
+#   scripts/deploy-cloudflare.sh live      -> build, upload and make it live
+#   scripts/deploy-cloudflare.sh rollback  -> go back to the previous version
+# Needs CLOUDFLARE_API_TOKEN (Workers Scripts: Edit) and CLOUDFLARE_ACCOUNT_ID.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-PROJECT="${PROJECT:-cictnardc}"
-TARGET="${1:-preview}"
-scripts/build-cloudflare.sh
-if [ "$TARGET" = "production" ]; then
-  BRANCH="${PRODUCTION_BRANCH:-main}"
-else
-  BRANCH="preview"
-fi
-npx --yes wrangler@3 pages deploy dist --project-name "$PROJECT" --branch "$BRANCH" --commit-dirty=true
+W="npx --yes wrangler@4"
+case "${1:-upload}" in
+  upload)   scripts/build-cloudflare.sh; $W versions upload ;;
+  live)     scripts/build-cloudflare.sh; $W deploy ;;
+  rollback) $W rollback ;;
+  *) echo "usage: $0 [upload|live|rollback]"; exit 1 ;;
+esac

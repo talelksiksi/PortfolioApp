@@ -77,20 +77,20 @@ app instead.
 
 ### cictnardc.net (main home)
 
-The company website lives in `website/` (the same files as the Cloudflare
-Pages project, plus its README and setup guide). `scripts/build-cloudflare.sh`
-assembles `dist/` with the website at `/` and this portfolio at `/portfolio/`.
+cictnardc.net and www.cictnardc.net are served by the Cloudflare Worker
+`cictnardc` (static assets only, configured in `wrangler.jsonc`). The company
+website lives in `website/`; `scripts/build-cloudflare.sh` assembles `dist/`
+with the website at `/` and this portfolio at `/portfolio/`.
 
-```bash
-export CLOUDFLARE_API_TOKEN=...   # Account > Cloudflare Pages > Edit
-export CLOUDFLARE_ACCOUNT_ID=...
-scripts/deploy-cloudflare.sh              # preview deployment, own URL
-scripts/deploy-cloudflare.sh production   # live: cictnardc.net
-```
+Deploys run through Cloudflare Workers Builds, connected to this repo:
 
-A Direct Upload deployment replaces every file, so always deploy through the
-script: it ships the website and the portfolio together. Rollback: Cloudflare,
-Workers & Pages, the project, Deployments, pick the previous one, Rollback.
+- Build command: `bash scripts/build-cloudflare.sh`
+- Deploy command: `npx wrangler deploy`
+- Every push to the production branch goes live.
+
+From a computer with a Cloudflare token (Workers Scripts: Edit) you can also run
+`scripts/deploy-cloudflare.sh [upload|live|rollback]`. Rollback is also in the
+dashboard: Workers & Pages, cictnardc, Deployments.
 
 The website and the portfolio share the `lang` setting in localStorage, so a
 language picked on one carries over to the other.
