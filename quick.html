@@ -104,7 +104,7 @@
         trkK: "Track record", trkH: "Systems running in production", trkNote: "Client names are left out on purpose; references available on request.",
         ctK: "Contact", ctH: "Tell us what's slowing your operation down.",
         ctP: "We reply within one business day. A 30-minute discovery call is free.",
-        mail: "Email us", foot: "Prefer something more playful? ",
+        foot: "Prefer something more playful? ",
       },
       fr: {
         nav: ["Services", "Projets", "Références", "Contact"],
@@ -117,7 +117,7 @@
         trkK: "Références", trkH: "Des systèmes en production", trkNote: "Les noms des clients sont volontairement omis ; références disponibles sur demande.",
         ctK: "Contact", ctH: "Dites-nous ce qui freine votre activité.",
         ctP: "Nous répondons sous un jour ouvré. Un appel découverte de 30 minutes est offert.",
-        mail: "Nous écrire", foot: "Envie de quelque chose de plus ludique ? ",
+        foot: "Envie de quelque chose de plus ludique ? ",
       },
     };
     const qs = new URLSearchParams(location.search).get("lang");
@@ -181,7 +181,7 @@
           <div class="ctas" style="display:flex;flex-wrap:wrap;gap:10px">
             <a class="btn primary" href="index.html${suffix}#contact">${esc(q.talk)}</a>
             <a class="btn" href="index.html${suffix}#book">${esc(q.call)}</a>
-            <a class="btn" href="mailto:${SITE.email}">${esc(q.mail)}: ${esc(SITE.email)}</a>
+            <a class="btn" href="mailto:${SITE.email}" >✉ ${esc(SITE.email)}</a>
           </div>
         </div></section>`;
       document.getElementById("foot").innerHTML =
