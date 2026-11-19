@@ -227,6 +227,37 @@ window.PROJECTS = [
     shot: "assets/shots/warehouse-dashboard.jpg",
   },
   {
+    id: "fabrication-suite",
+    name: "Fabrication Shop Suite",
+    file: "FabricationShop.app",
+    icon: "steel",
+    category: { en: "Web app · Fabrication workshops", fr: "Application web · Ateliers de fabrication", ar: "تطبيق ويب · ورش التصنيع" },
+    year: "2026",
+    summary: {
+      en: "An order, drawing and production system for stainless steel workshops that build commercial kitchens, food production units, mall kiosks and event stands, with a tracking page for each client and the workshop's public website. In English, French and Arabic.",
+      fr: "Un système de commandes, de plans et de production pour les ateliers inox qui réalisent cuisines professionnelles, unités de production alimentaire, kiosques et stands, avec une page de suivi par client et le site public de l'atelier. En anglais, en français et en arabe.",
+      ar: "نظام للطلبات والمخططات والإنتاج لورش الستانلس ستيل التي تنفّذ المطابخ التجارية ووحدات الإنتاج الغذائي والأكشاك وأجنحة المعارض، مع صفحة متابعة لكل عميل والموقع العام للورشة. بالعربية والفرنسية والإنجليزية.",
+    },
+    problem: {
+      en: "Custom one-off pieces built from drawings that keep changing: the workshop builds from an old revision, nobody knows which pieces are still in welding, material runs out mid-job, and the client calls every day to ask where their order is.",
+      fr: "Des pièces uniques fabriquées d'après des plans qui changent : l'atelier part d'une ancienne révision, personne ne sait quelles pièces sont encore à la soudure, la matière manque en plein chantier, et le client appelle chaque jour pour savoir où en est sa commande.",
+      ar: "قطع فريدة تُصنع وفق مخططات تتغير باستمرار: تعمل الورشة على مراجعة قديمة، ولا أحد يعرف أي القطع ما زالت في اللحام، وتنفد الخامات في منتصف العمل، ويتصل العميل كل يوم ليسأل عن طلبه.",
+    },
+    solution: {
+      en: "Every article carries its drawings and revisions, and only the client-approved revision reaches the workshop. Workers start and finish pieces on a tablet at each station, so progress per article and per order is always current. Material is reserved when a quote is accepted, and the client follows everything, approves drawings and sees the installation date from one private link.",
+      fr: "Chaque article porte ses plans et révisions, et seule la révision validée par le client arrive à l'atelier. Les ouvriers commencent et terminent les pièces sur tablette à chaque poste, l'avancement par article et par commande est donc toujours à jour. La matière est réservée à l'acceptation du devis, et le client suit tout, valide les plans et voit la date de pose depuis un lien privé.",
+      ar: "يحمل كل صنف مخططاته ومراجعاته، ولا يصل إلى الورشة إلا ما اعتمده العميل. ويبدأ العمال القطع وينهونها على جهاز لوحي في كل محطة، فيبقى تقدم كل صنف وكل طلب محدّثاً دائماً. وتُحجز الخامات عند قبول عرض السعر، ويتابع العميل كل شيء ويعتمد المخططات ويعرف موعد التركيب من رابط خاص واحد.",
+    },
+    highlights: {
+      en: ["Drawings with revisions; a new revision waits for client approval before cutting", "Workshop tablet per station: cutting, bending, welding, polishing, assembly, QC, packing, installation", "Quality check can send a piece back for rework with a note", "Material reserved on order and consumed at cutting, low-stock warnings", "Client tracking link and a public website whose quote form lands in the office"],
+      fr: ["Plans avec révisions ; une nouvelle révision attend la validation du client avant découpe", "Tablette atelier par poste : découpe, pliage, soudure, polissage, assemblage, contrôle, emballage, pose", "Le contrôle qualité peut renvoyer une pièce en reprise avec une note", "Matière réservée à la commande et consommée à la découpe, alertes de stock bas", "Lien de suivi client et site public dont le formulaire de devis arrive au bureau"],
+      ar: ["مخططات بمراجعاتها، والمراجعة الجديدة تنتظر اعتماد العميل قبل القص", "جهاز لوحي لكل محطة: القص والثني واللحام والتلميع والتجميع والفحص والتغليف والتركيب", "يستطيع فحص الجودة إعادة القطعة للإصلاح مع ملاحظة", "حجز الخامات عند الطلب واستهلاكها عند القص، وتنبيهات نقص المخزون", "رابط متابعة للعميل وموقع عام يصل طلب عرض السعر فيه إلى المكتب مباشرة"],
+    },
+    stack: ["JavaScript", "ASP.NET Core + SignalR", "PostgreSQL", "AutoCAD DWG / PDF"],
+    live: "https://cictnardc.net/portfolio/fabrication-suite/",
+    shot: "assets/shots/fabrication-suite.jpg",
+  },
+  {
     id: "warehouse-portal",
     name: "Warehouse Management Portal",
     file: "WarehousePortal.app",

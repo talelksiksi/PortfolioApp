@@ -92,6 +92,13 @@
       <path fill="#fff" d="M24 15h2l1 1v4l-1 1h-2z"/>
       <path fill="${K}" d="M4 27h23v2H4z"/>
       <path fill="#e7a982" d="M10 4h2v5h-2zM15 3h2v6h-2zM20 5h2v4h-2z"/>`),
+    steel: S(`
+      <path fill="${K}" d="M2 14h28v4H2zM4 18h3v11H4zM25 18h3v11h-3zM7 24h18v2H7z"/>
+      <path fill="#c9d3d6" d="M3 15h26v2H3z"/>
+      <path fill="#8fa3a8" d="M5 19h1v9H5zM26 19h1v9h-1z"/>
+      <path fill="${K}" d="M9 5h14v9H9z"/><path fill="#fff" d="M10 6h12v7H10z"/>
+      <path fill="#3d6d78" d="M11 8h10v1H11zM11 10h6v1h-6z"/>
+      <path fill="#e7a982" d="M24 3l3 3-2 2-3-3z"/>`),
     portal: S(`
       <path fill="${K}" d="M2 4h28v24H2z"/>
       <path fill="#fff" d="M3 9h26v18H3z"/>
