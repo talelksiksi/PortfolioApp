@@ -181,8 +181,40 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
 
 (Ce fichier est modifiable. Allez-y, personne ne regarde.)
 `,
+    ar: () => `نبذة_عني.TXT
+==============
+
+مرحباً، أنا طلال كسيكسي، وأدير ${studio}.
+
+أبني البرمجيات في النقطة التي يلتقي فيها الويب بأرض المصنع:
+متحكمات تتخاطب مع المتحكمات المنطقية (PLC)، وعملاء OPC UA
+يصمدون على شبكات حقيقية، ولوحات متابعة تتحدث في اللحظة
+نفسها التي يتغير فيها شيء في المصنع، وتطبيقات الويب التي
+يستخدمها العملاء فوق كل ذلك.
+
+ما أُتقنه
+- الربط الصناعي: بروتوكولات رسائل PLC، وOPC UA (C#/.NET)،
+  وأنظمة WMS وأتمتة المستودعات
+- الأنظمة اللحظية: WebSockets، وخوادم مبنية على الأحداث،
+  وتسلسل آمن من الأعطال (لا تُنفَّذ حركة مرتين)
+- تطبيقات الويب: React، وJavaScript بدون أطر حين يكون
+  الأنسب، وNode/Express، وBlazor
+- محاكيات تتيح اختبار منطق التحكم قبل وجود العتاد
+
+طريقتي في العمل
+- أنطلق من عمليتك أنت، لا من إطار عمل جاهز
+- أسلّم نسخة تجريبية تعمل مبكراً لتجرّبها بنفسك
+- اختبارات حيث يلزم، وتوثيق يجيب عن «كيف أشغّله؟»
+- تحديثات واضحة، ولا فواتير مفاجئة
+
+الخطوة التالية
+انقر مرتين على «تواصل.exe» على سطح المكتب، أو راسلني على
+${email}. أخبرني بما يبطئ عملك.
+
+(هذا الملف قابل للتعديل. تفضّل، لا أحد يراقب.)
+`,
   };
-  const aboutText = () => ABOUT[Lang.get()]();
+  const aboutText = () => (ABOUT[Lang.get()] || ABOUT.en)();
 
   function openNotepad() {
     const ta = h("textarea", { spellcheck: "false", "aria-label": t("smAbout") });
@@ -355,7 +387,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
 
   // ---------------------------------------------------------------- Terminal
   function openTerminal() {
-    const fr = Lang.get() === "fr";
+    const L3 = (en, fr, ar) => ({ en, fr, ar })[Lang.get()] ?? en;
     const out = h("div", {});
     const input = h("input", { "aria-label": "Command", autocomplete: "off", autocapitalize: "off", spellcheck: "false" });
     const promptText = "C:\\CICTNA> ";
@@ -366,22 +398,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
     const print = (text, cls) => { out.append(h("div", { class: "line " + (cls || "") }, text)); term.scrollTop = term.scrollHeight; };
     const printNode = (...nodes) => { out.append(h("div", { class: "line" }, ...nodes)); term.scrollTop = term.scrollHeight; };
 
-    const HELP = fr
-      ? `Commandes disponibles :
-  whoami            qui fait tourner cette machine
-  ls / dir          lister les projets
-  open <projet>     ouvrir un projet       (ex. open plant)
-  cat about.txt     afficher la bio
-  cv                ouvrir le CV
-  skills            ce que nous construisons
-  services          comment nous pouvons aider
-  contact           ouvrir la messagerie
-  lang en|fr        changer de langue
-  neofetch          infos système
-  theme <nom>       pixel | teal | sunset | classic | grid
-  clear / cls       effacer l'écran
-  exit              fermer le terminal`
-      : `Available commands:
+    const HELP = L3(`Available commands:
   whoami            who runs this machine
   ls / dir          list projects
   open <project>    open a project window   (e.g. open plant)
@@ -390,11 +407,37 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
   skills            what we build
   services          how we can help
   contact           open the mail client
-  lang en|fr        switch language
+  lang en|fr|ar     switch language
   neofetch          system info
   theme <name>      pixel | teal | sunset | classic | grid
   clear / cls       clear the screen
-  exit              close the terminal`;
+  exit              close the terminal`, `Commandes disponibles :
+  whoami            qui fait tourner cette machine
+  ls / dir          lister les projets
+  open <projet>     ouvrir un projet       (ex. open plant)
+  cat about.txt     afficher la bio
+  cv                ouvrir le CV
+  skills            ce que nous construisons
+  services          comment nous pouvons aider
+  contact           ouvrir la messagerie
+  lang en|fr|ar     changer de langue
+  neofetch          infos système
+  theme <nom>       pixel | teal | sunset | classic | grid
+  clear / cls       effacer l'écran
+  exit              fermer le terminal`, `الأوامر المتاحة:
+  whoami            من يشغّل هذا الجهاز
+  ls / dir          قائمة المشاريع
+  open <project>    فتح مشروع، مثلاً open plant
+  cat about.txt     عرض النبذة
+  cv                فتح السيرة الذاتية
+  skills            ما نبنيه
+  services          كيف نساعدك
+  contact           فتح نافذة المراسلة
+  lang en|fr|ar     تغيير اللغة
+  neofetch          معلومات النظام
+  theme <name>      pixel | teal | sunset | classic | grid
+  clear / cls       مسح الشاشة
+  exit              إغلاق الطرفية`);
 
     const cmds = {
       help: () => print(HELP, "mut"),
@@ -403,33 +446,34 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       ls: () => PROJECTS.forEach((p) => print(`  ${p.file.padEnd(24)} ${L(p.category)}`)),
       dir: () => cmds.ls(),
       open: (arg) => {
-        if (!arg) return print(fr ? "usage : open <projet>" : "usage: open <project>", "err");
+        if (!arg) return print(L3("usage: open <project>", "usage : open <projet>", "usage: open <project>"), "err");
         const q = arg.toLowerCase().replace(/[^a-z0-9]/g, "");
         const p = PROJECTS.find((x) => (x.id + x.name + x.file).toLowerCase().replace(/[^a-z0-9]/g, "").includes(q));
-        if (!p) return print(fr ? `'${arg}' introuvable. Essayez 'ls'.` : `'${arg}' not found. Try 'ls'.`, "err");
-        print((fr ? "Lancement de " : "Launching ") + p.file + "…", "ok");
+        if (!p) return print(L3(`'${arg}' not found. Try 'ls'.`, `'${arg}' introuvable. Essayez 'ls'.`, `'${arg}' غير موجود. جرّب 'ls'.`), "err");
+        print(L3("Launching ", "Lancement de ", "تشغيل ") + p.file + "…", "ok");
         openProject(p.id);
       },
       cat: (arg) => {
         if (/about|propos/i.test(arg || "")) return aboutText().split("\n").forEach((l) => print(l));
-        print(fr ? `cat : ${arg || ""} : fichier introuvable. Essayez 'cat about.txt'.` : `cat: ${arg || ""}: No such file. Try 'cat about.txt'.`, "err");
+        print(L3(`cat: ${arg || ""}: No such file. Try 'cat about.txt'.`, `cat : ${arg || ""} : fichier introuvable. Essayez 'cat about.txt'.`, `cat: ${arg || ""}: الملف غير موجود. جرّب 'cat about.txt'.`), "err");
       },
       type: (arg) => cmds.cat(arg),
       cv: () => openCv(),
-      skills: () => print(fr
-        ? `  Industriel   Télégrammes automate · OPC UA (.NET) · WMS · magasins à plateaux
-  Temps réel   WebSockets · Express · backends événementiels
-  Web          React · JavaScript natif · Blazor · Vercel
-  Qualité      xUnit · tests d'intégration · simulateurs`
-        : `  Industrial   PLC telegrams · OPC UA (.NET) · WMS · tray stores
+      skills: () => print(L3(`  Industrial   PLC telegrams · OPC UA (.NET) · WMS · tray stores
   Realtime     WebSockets · Express · event-driven backends
   Web          React · vanilla JS · Blazor · Vercel
-  Quality      xUnit · integration tests · simulators`),
+  Quality      xUnit · integration tests · simulators`, `  Industriel   Télégrammes automate · OPC UA (.NET) · WMS · magasins à plateaux
+  Temps réel   WebSockets · Express · backends événementiels
+  Web          React · JavaScript natif · Blazor · Vercel
+  Qualité      xUnit · tests d'intégration · simulateurs`, `  Industrial   PLC telegrams · OPC UA (.NET) · WMS · tray stores
+  Realtime     WebSockets · Express · event-driven backends
+  Web          React · vanilla JS · Blazor · Vercel
+  Quality      xUnit · integration tests · simulators`)),
       services: () => SERVICES.forEach((s) => print(`  ▸ ${L(s.title)} : ${L(s.text)}`)),
-      contact: () => { print((fr ? "Ouverture de " : "Opening ") + "Contact.exe…", "ok"); openMail(); },
+      contact: () => { print(L3("Opening ", "Ouverture de ", "فتح ") + "Contact.exe…", "ok"); openMail(); },
       lang: (arg) => {
         const v = (arg || "").toLowerCase().slice(0, 2);
-        if (v !== "en" && v !== "fr") return print("usage: lang en|fr", "err");
+        if (!Lang.list.includes(v)) return print("usage: lang en|fr|ar", "err");
         Lang.set(v);
       },
       neofetch: () => print(
@@ -437,26 +481,26 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
   /  ___  \\     ----------------------
  |  (   )  |    OS: CICTNA OS 95 (Industrial Edition)
  |~~~~~~~~~|    Host: ${location.host || "localhost"}
- |  ~~~~~  |    ${fr ? "Projets" : "Projects"}: ${PROJECTS.length}
+ |  ~~~~~  |    ${L3("Projects", "Projets", "المشاريع")}: ${PROJECTS.length}
   \\  ~~~  /     Shell: cictna-sh 1.0
    '-...-'      Uptime: ${Math.round(performance.now() / 1000)}s
                 Lang: ${Lang.get().toUpperCase()}
                 Contact: ${email}`, "acc"),
       theme: (arg) => {
         if (!Desktop.setWallpaper(arg)) return print("usage: theme pixel|teal|sunset|classic|grid", "err");
-        print((fr ? "Fond d'écran : " : "Wallpaper set to ") + arg + ".", "ok");
+        print(L3("Wallpaper set to ", "Fond d'écran : ", "الخلفية الآن: ") + arg + ".", "ok");
       },
       clear: () => out.replaceChildren(),
       cls: () => cmds.clear(),
       exit: () => WM.get("terminal").close(),
       sudo: (arg) => /hire|engag/i.test(arg || "")
-        ? (print(fr ? "[sudo] mot de passe pour client : ******** ✓" : "[sudo] password for client: ******** ✓", "ok"),
-           print(fr ? "Autorisation accordée. Ouverture de Contact.exe…" : "Permission granted. Opening Contact.exe…", "ok"),
+        ? (print(L3("[sudo] password for client: ******** ✓", "[sudo] mot de passe pour client : ******** ✓", "[sudo] كلمة مرور client: ******** ✓"), "ok"),
+           print(L3("Permission granted. Opening Contact.exe…", "Autorisation accordée. Ouverture de Contact.exe…", "تم منح الإذن. جارٍ فتح Contact.exe…"), "ok"),
            openMail(t("letsWork")))
-        : print(fr ? "Bien essayé. Vous vouliez dire 'sudo hire-me' ?" : "Nice try. Did you mean 'sudo hire-me'?", "err"),
+        : print(L3("Nice try. Did you mean 'sudo hire-me'?", "Bien essayé. Vous vouliez dire 'sudo hire-me' ?", "محاولة جيدة. هل تقصد 'sudo hire-me'؟"), "err"),
       "hire-me": () => cmds.sudo("hire"),
-      rm: () => print(fr ? "Accès refusé. Les expériences ratées vont dans la Corbeille." : "Access denied. Failed experiments belong in the Recycle Bin.", "err"),
-      date: () => print(new Date().toLocaleString(Lang.get())),
+      rm: () => print(L3("Access denied. Failed experiments belong in the Recycle Bin.", "Accès refusé. Les expériences ratées vont dans la Corbeille.", "تم رفض الوصول. التجارب الفاشلة مكانها سلة المحذوفات."), "err"),
+      date: () => print(new Date().toLocaleString(Lang.locale())),
       echo: (arg) => print(arg || ""),
       github: () => printNode("  ", h("a", { href: github, target: "_blank", rel: "noopener" }, github)),
     };
@@ -467,7 +511,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       if (!cmd) return;
       const fn = cmds[cmd.toLowerCase()];
       if (fn) fn(rest.join(" "));
-      else print(fr ? `'${cmd}' n'est pas reconnu comme une commande. Tapez 'help'.` : `'${cmd}' is not recognized as a command. Type 'help'.`, "err");
+      else print(L3(`'${cmd}' is not recognized as a command. Type 'help'.`, `'${cmd}' n'est pas reconnu comme une commande. Tapez 'help'.`, `'${cmd}' ليس أمراً معروفاً. اكتب 'help'.`), "err");
     }
 
     input.addEventListener("keydown", (e) => {
@@ -492,7 +536,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
       content: h("div", { class: "win-body sunken" }, term),
       onOpen: () => {
         print("CICTNA OS [Version 95.11.2026]", "mut");
-        print("(c) " + new Date().getFullYear() + " " + studio + (fr ? ". Tapez 'help' pour commencer." : ". Type 'help' to get started."), "mut");
+        print("(c) " + new Date().getFullYear() + " " + studio + L3(". Type 'help' to get started.", ". Tapez 'help' pour commencer.", ". اكتب 'help' للبدء."), "mut");
         print("");
         if (!isTouch()) setTimeout(() => input.focus(), 30);
         setHash("terminal");
@@ -537,7 +581,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
 
   // ---------------------------------------------------------------- CV
   const cvLangs = () => ["en", "fr"].filter((l) => SITE.cv && SITE.cv[l]);
-  const cvName = { en: "English", fr: "Français" };
+  const cvName = { en: "English", fr: "Français", ar: "English" };
 
   function openCv() {
     const langs = cvLangs();
@@ -618,7 +662,7 @@ Double-cliquez sur « Contact.exe » sur le bureau, ou
   function openWelcome() {
     document.getElementById("balloon")?.remove();
     const [a, b] = t("tipP");
-    const quick = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : "");
+    const quick = "quick.html?lang=" + Lang.get();
     const close = () => { box.classList.add("hide"); setTimeout(() => box.remove(), 250); };
     const box = h("aside", { id: "balloon", class: "balloon", role: "status", "aria-label": t("welcomeTitle") },
       h("button", { class: "balloon-x", type: "button", "aria-label": t("close"), onclick: close }, "×"),

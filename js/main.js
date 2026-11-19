@@ -28,7 +28,7 @@
 
   // ---------------------------------------------------------------- Desktop icons
   const iconList = document.getElementById("icons");
-  const other = () => (Lang.get() === "en" ? "FR" : "EN");
+  const other = () => Lang.next().toUpperCase();
 
   function renderDesktop() {
     const items = [
@@ -39,7 +39,7 @@
       { label: t("track"), icon: "trophy", open: Apps.openTrack },
       { label: t("contact"), icon: "mail", open: () => Apps.openMail() },
       { label: t("book"), icon: "calendar", open: Apps.openBook },
-      { label: t("quick"), icon: "quick", open: () => { location.href = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : ""); } },
+      { label: t("quick"), icon: "quick", open: () => { location.href = "quick.html?lang=" + Lang.get(); } },
       { label: t("terminal"), icon: "terminal", open: Apps.openTerminal },
       { label: t("game"), icon: "game", open: Apps.openGame },
       { label: t("langIcon"), icon: ICONS.lang(other()), open: () => Lang.toggle(), title: t("langTip") },
@@ -137,7 +137,7 @@
       [t("book").replace(/\.exe$/, "").replace(/_/g, " "), "calendar", Apps.openBook],
       [t("terminal"), "terminal", Apps.openTerminal],
       [t("game").replace(/\.exe$/, ""), "game", Apps.openGame],
-      [t("smQuick"), "quick", () => { location.href = "quick.html" + (Lang.get() === "fr" ? "?lang=fr" : ""); }],
+      [t("smQuick"), "quick", () => { location.href = "quick.html?lang=" + Lang.get(); }],
       [t("smDisplay"), "display", Apps.openDisplay],
       [t("smLang"), ICONS.lang(other()), () => Lang.toggle()],
       [t("smHelp"), "help", Apps.openHelp],
@@ -192,7 +192,7 @@
   mailBtn.addEventListener("click", () => Apps.openMail());
   langBtn.addEventListener("click", () => Lang.toggle());
   const clock = document.getElementById("clock");
-  const tick = () => { clock.textContent = new Date().toLocaleTimeString(Lang.get(), { hour: "2-digit", minute: "2-digit" }); };
+  const tick = () => { clock.textContent = new Date().toLocaleTimeString(Lang.locale(), { hour: "2-digit", minute: "2-digit" }); };
   setInterval(tick, 15000);
 
   function renderShell() {
@@ -215,7 +215,7 @@
 
   // ---------------------------------------------------------------- Deep links
   const qLang = new URLSearchParams(location.search).get("lang");
-  if ((qLang === "en" || qLang === "fr") && qLang !== Lang.get()) Lang.set(qLang);
+  if (Lang.list.includes(qLang) && qLang !== Lang.get()) Lang.set(qLang);
 
   function route() {
     const hash = decodeURIComponent(location.hash.slice(1));

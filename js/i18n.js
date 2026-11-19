@@ -1,12 +1,15 @@
-/* Language state and every interface string, in English and French. */
+/* Language state and every interface string, in English, French and Arabic. */
 (function () {
   const KEY = "lang";
   const read = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
   const write = (v) => { try { localStorage.setItem(KEY, v); } catch {} };
 
-  let lang = read() || ((navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en");
-  if (lang !== "en" && lang !== "fr") lang = "en";
-  document.documentElement.lang = lang;
+  const LANGS = ["en", "fr", "ar"];
+  const nav = (navigator.language || "en").toLowerCase().slice(0, 2);
+  let lang = read() || (LANGS.includes(nav) ? nav : "en");
+  if (!LANGS.includes(lang)) lang = "en";
+  const apply = () => { document.documentElement.lang = lang; document.documentElement.dir = lang === "ar" ? "rtl" : "ltr"; };
+  apply();
 
   const S = {
     en: {
@@ -21,7 +24,7 @@
       cv: "CV.pdf",
       langIcon: "Français",
       langTip: "Double-click to switch to French",
-      langTray: "Language: English. Click to switch to French.",
+      langTray: "Language: English. Click to switch to French (then Arabic).",
       contactTip: "Contact us",
       // Start menu
       smProjects: "Projects",
@@ -208,9 +211,9 @@
       terminal: "Invite de commandes",
       trash: "Corbeille",
       cv: "CV.pdf",
-      langIcon: "English",
-      langTip: "Double-cliquez pour passer en anglais",
-      langTray: "Langue : français. Cliquez pour passer en anglais.",
+      langIcon: "عربي",
+      langTip: "Double-cliquez pour passer en arabe",
+      langTray: "Langue : français. Cliquez pour passer en arabe.",
       contactTip: "Nous contacter",
       smProjects: "Projets",
       smAbout: "À propos",
@@ -219,7 +222,7 @@
       smCv: "CV",
       smDisplay: "Paramètres d'affichage",
       smHelp: "Aide",
-      smLang: "Switch to English",
+      smLang: "التحويل إلى العربية",
       smShutdown: "Arrêter…",
       boot: [
         "Processeur     : Cerveau industriel @ 2026 MHz",
@@ -368,18 +371,191 @@
       viaCopyFail: "Votre navigateur a bloqué la copie. Sélectionnez l'adresse et copiez-la : ",
       soundOff: "Son coupé. Cliquez pour l'activer.",
     },
+    ar: {
+      start: "ابدأ",
+      myProjects: "مشاريعي",
+      about: "نبذة_عني.txt",
+      hire: "اعمل_معنا.hlp",
+      contact: "تواصل.exe",
+      terminal: "موجّه الأوامر",
+      trash: "سلة المحذوفات",
+      cv: "السيرة_الذاتية.pdf",
+      langIcon: "English",
+      langTip: "انقر مرتين للتحويل إلى الإنجليزية",
+      langTray: "اللغة: العربية. انقر للتحويل إلى الإنجليزية.",
+      contactTip: "تواصل معنا",
+      smProjects: "المشاريع",
+      smAbout: "من أنا",
+      smServices: "الخدمات",
+      smContact: "تواصل",
+      smCv: "السيرة الذاتية",
+      smDisplay: "إعدادات العرض",
+      smHelp: "مساعدة",
+      smLang: "Switch to English",
+      smShutdown: "إيقاف التشغيل…",
+      boot: [
+        "Main Processor : Industrial-grade Brain @ 2026 MHz",
+        'Memory Test    : 640K OK <span class="mut">(should be enough for anybody)</span>',
+        "Detecting PLC link ........... ",
+        "Detecting OPC UA server ...... ",
+        "Detecting WebSocket .......... ",
+        "Loading projects ............. ",
+        "Checking Recycle Bin ......... ",
+        "Starting CICTNA OS...",
+      ],
+      found: (n) => n + " found",
+      lessons: (n) => n + " lessons learned",
+      splashHello: "أهلاً بك.",
+      splashSub: "دعنا نريك ما نستطيع فعله.",
+      splashLine: "برمجيات صناعية · ربط الأنظمة · تطبيقات ويب",
+      skip: "اضغط أي زر للتخطي",
+      ok: "موافق",
+      cancel: "إلغاء",
+      close: "إغلاق",
+      file: "ملف", edit: "تحرير", view: "عرض", format: "تنسيق", help: "مساعدة",
+      objects: (n) => `${n} عنصر`,
+      address: "العنوان",
+      openHint: (touch) => (touch ? "المس" : "انقر مرتين على") + " أي مشروع لفتحه",
+      tabOverview: "نظرة عامة",
+      tabHighlights: "أبرز النقاط",
+      tabStack: "التقنيات",
+      tabTry: "جرّبه",
+      problem: "المشكلة",
+      built: "ما بنيناه",
+      openLive: "افتح النسخة التجريبية",
+      tryHere: "جرّبه هنا",
+      buildLike: "ابنِ معنا شيئاً مشابهاً",
+      liveAvail: "نسخة تجريبية متاحة",
+      onRequest: "الكود المصدري متاح عند الطلب",
+      enquiry: (name) => `استفسار عن مشروع: ${name}`,
+      labIntro: ["ركّب رسالة MOV كما يفعل المتحكم. المجموع الاختباري هو ناتج XOR لكل البايتات بين ", " و ", ". تُرسل حركة واحدة في كل مرة، ولا تُرسل التالية إلا بعد وصول ACK."],
+      seq: "التسلسل", col: "العمود x", lvl: "المستوى y", from: "الدفع من", front: "الأمام", back: "الخلف", trays: "الصواني (1–12)",
+      toPlc: "المتحكم ← PLC", fromPlc: "PLC ← المتحكم",
+      notepadTitle: "نبذة_عني.txt - المفكرة",
+      notepadHint: "ملف: حفظ · تحرير: تحديد الكل · تنسيق: التفاف النص",
+      lnCol: (l, c) => `سطر ${l}، عمود ${c}`,
+      mailTitle: "رسالة جديدة - تواصل.exe",
+      mFrom: "من:", mReply: "الرد على:", mCompany: "الشركة:", mSubject: "الموضوع:", mBudget: "الميزانية:",
+      phName: "اسمك", phCompany: "اختياري", phMsg: "ماذا تبني، وما الذي يعيقك؟",
+      budgets: ["أقل من 5 آلاف €", "5 إلى 20 ألف €", "20 إلى 50 ألف €", "أكثر من 50 ألف €", "لست متأكداً بعد"],
+      defaultSubject: "مشروع جديد",
+      send: "إرسال",
+      useMailApp: "استخدم تطبيق البريد",
+      needs: (list) => "أضف من فضلك " + list.join("، ") + ".",
+      needName: "اسمك", needEmail: "بريداً إلكترونياً صحيحاً", needMsg: "رسالة",
+      sending: "جارٍ الإرسال…",
+      sent: ["وصلت رسالتك.", " شكراً، نرد خلال يوم عمل واحد."],
+      sendFail: ["تعذّر الوصول إلى خادم البريد. ", "أرسل عبر تطبيق البريد", " أو اكتب إلى "],
+      mailTo: (e) => "إلى: " + e,
+      replies: "نرد خلال يوم عمل واحد",
+      budgetLabel: "الميزانية",
+      trashIntro: "تجارب فاشلة احتفظنا بها عن قصد. كل واحدة منها غيّرت طريقة عملنا.",
+      lesson: "الدرس: ",
+      emptyTrash: "إفراغ سلة المحذوفات",
+      confirm: "تأكيد",
+      keepTrash: "نحتفظ بها عن قصد. كل خطأ هنا جعل المشروع الذي تلاه أفضل.",
+      fairEnough: "معك حق",
+      lessonsCount: (n) => "الدروس المستفادة: " + n,
+      svcH1: "برمجيات لعمليات لا تحتمل التوقف.",
+      svcP: "نبني الطبقة التي تربط آلاتك بفريقك: المتحكمات، وربط الأنظمة، ولوحات المتابعة، والبوابات التي يستخدمها عملاؤك. فريق صغير بخبرة طويلة، ونسخ تجريبية تعمل من الأيام الأولى.",
+      svcH2: "كيف يسير العمل معنا",
+      steps: [
+        ["مكالمة تعارف (مجانية، 30 دقيقة). ", "عمليتك وأنظمتك، وأين تكمن المشكلة."],
+        ["نموذج قابل للتجربة في الأسبوع الأول. ", "محاكي أو نموذج أولي تجرّبه بنفسك قبل أي استثمار كبير."],
+        ["تطوير على مراحل قصيرة. ", "نطاق محدد لكل مرحلة، وعرض تجريبي في آخر كل واحدة."],
+        ["تسليم يدوم. ", "اختبارات وتوثيق ودليل تشغيل يعتمد عليه فريقك فعلاً."],
+      ],
+      bookCall: "احجز مكالمة تعارف",
+      discovery: "مكالمة تعارف",
+      seeWork: "شاهد أعمالنا",
+      displayTitle: "خصائص العرض",
+      wallpaper: "الخلفية",
+      crt: "خطوط شاشة CRT",
+      walls: { pixel: "غروب CICTNA", teal: "بحيرة", sunset: "شروق", classic: "كلاسيكي", grid: "غرفة التحكم" },
+      welcomeTitle: "أهلاً بك",
+      welcomeH: "أهلاً بك في CICTNA OS",
+      tipH: "هل تعلم؟ ",
+      tipP: ["في مشروع مخزن الصواني مُرمّز رسائل يعمل فعلاً، وموجّه الأوامر يعرف أمراً سرياً هو ", "، وأيقونة اللغة تبدّل لغة سطح المكتب بالكامل."],
+      whoAreYou: "من أنت؟",
+      helpLines: [
+        ["انقر مرتين", " على أي أيقونة لفتحها (لمسة واحدة على الشاشات اللمسية)."],
+        ["اسحب", " شريط العنوان لتحريك النافذة، والزاوية لتغيير حجمها، وانقر مرتين على شريط العنوان لتكبيرها."],
+        ["", "لكل نافذة رابط خاص: انسخ شريط العنوان في المتصفح لمشاركة مشروع مباشرة."],
+      ],
+      shutdownTitle: "إيقاف تشغيل CICTNA OS",
+      shutdownQ: "قبل أن تغادر: ماذا تريد أن تفعل؟",
+      startProject: "ابدأ مشروعاً معنا",
+      letsWork: "لنعمل معاً",
+      restart: "إعادة التشغيل",
+      cvTitle: "السيرة الذاتية",
+      cvQ: "أي نسخة من السيرة الذاتية تريد فتحها؟",
+      cvWin: (l) => `السيرة الذاتية (${l}) - العارض`,
+      cvOpenTab: "افتح في علامة تبويب جديدة",
+      cvDownload: "تنزيل",
+      cvMissing: "السيرة الذاتية قيد التحديث. راسلنا ونرسلها إليك فوراً.",
+      track: "سجل_الإنجازات.doc",
+      trackH1: "أنظمة تعمل في بيئات إنتاج حقيقية، في ثلاث قارات.",
+      trackP: "ما صمّمه مؤسسنا وبناه ولا يزال يدعمه اليوم. حذفنا أسماء العملاء عن قصد، والمراجع متاحة عند الطلب.",
+      trackWork: "أعمال مختارة",
+      trackCta: "اطلب مراجع",
+      book: "احجز_مكالمة.exe",
+      bookTitle: "احجز مكالمة - المواعيد",
+      bookIntro: "اختر اليوم والفترة التي تناسبك، ونؤكد لك بالبريد خلال يوم عمل واحد مع رابط الاجتماع.",
+      bookDay: "اليوم", bookSlot: "الفترة", bookType: "نوع المكالمة", bookTopic: "ما الذي تريد مناقشته؟",
+      bookVideo: "مكالمة فيديو", bookPhone: "مكالمة هاتفية",
+      bookTz: (tz) => "الأوقات حسب منطقتك الزمنية (" + tz + ").",
+      bookSend: "اطلب هذا الموعد",
+      bookNeedDay: "يوماً", bookNeedSlot: "فترة زمنية",
+      bookSent: ["وصل طلبك.", " نؤكد لك بالبريد خلال يوم عمل واحد."],
+      bookSubject: (d, s) => `طلب مكالمة: ${d}، ${s}`,
+      game: "كاشف_الصواني.exe",
+      gameIntro: "اكتشف الصواني العالقة دون أن تفتح أياً منها. يبيّن كل رقم عدد الصواني العالقة المجاورة للخانة.",
+      gameFlagMode: "وضع العلامات",
+      gameNew: "وردية جديدة",
+      gameWin: "وجدت كل الصواني العالقة. تخيّل الآن ما نفعله بالحقيقية منها.",
+      gameLose: "فتحت صينية عالقة فتوقف الإنتاج. تحاول مرة أخرى؟",
+      gameHint: "انقر بالزر الأيمن أو اضغط مطولاً لوضع علامة",
+      gameCta: "تحدّث مع من يصلحون الحقيقية منها",
+      quick: "عرض_سريع.htm",
+      smQuick: "العرض السريع (صفحة واحدة)",
+      quickTipLink: "افتح العرض السريع في صفحة واحدة",
+      soundOn: "الصوت مفعّل. انقر لكتمه.",
+      launcherTitle: "تطبيقاتنا",
+      launcherSub: (n, live) => `${n} تطبيقات · ${live} نسخ تجريبية مباشرة · انقر على أي تطبيق لفتحه`,
+      liveBadge: "مباشر",
+      tryIt: "جرّبه ↗",
+      bookShort: "احجز",
+      launcherSubAll: (n) => `${n} تطبيقات، كلها تشتغل مباشرة · جرّب واحداً`,
+      ctaTileBig: "تطبيقك هنا",
+      ctaTileTitle: "مشروعك هو التالي",
+      ctaTileSub: "احجز مكالمة مجانية لمدة 30 دقيقة",
+      openApp: "فتح",
+      balloonP: (owner, studio, touch) => `هذا معرض أعمال طلال كسيكسي / ${studio}. ${touch ? "المس" : "انقر على"} أي تطبيق لفتحه، وتجد الباقي على سطح المكتب وفي قائمة ابدأ.`,
+      viaTitle: "اختر طريقة الإرسال",
+      viaText: "اختر طريقة إرسال رسالتك إلى contact@cictnardc.net، وما كتبته في النموذج سيُرفق بها.",
+      viaHint: "«تطبيق البريد» يفتح برنامج البريد المضبوط على جهازك (Outlook أو Apple Mail أو Thunderbird). إن لم يحدث شيء فليس على جهازك برنامج بريد: استخدم Gmail أو Outlook.com.",
+      viaApp: "تطبيق البريد",
+      viaCopy: "نسخ العنوان",
+      viaCopied: (e) => `تم نسخ ${e}. الصقه في أي رسالة بريد.`,
+      viaCopyFail: "المتصفح منع النسخ. حدّد العنوان وانسخه: ",
+      soundOff: "الصوت مكتوم. انقر لتفعيله.",
+    },
   };
 
   window.Lang = {
     get: () => lang,
     set(next) {
-      if (next !== "en" && next !== "fr") return;
+      if (!LANGS.includes(next)) return;
       lang = next;
       write(lang);
-      document.documentElement.lang = lang;
+      apply();
       window.dispatchEvent(new CustomEvent("lang:change", { detail: lang }));
     },
-    toggle() { Lang.set(lang === "en" ? "fr" : "en"); },
+    toggle() { Lang.set(LANGS[(LANGS.indexOf(lang) + 1) % LANGS.length]); },
+    next: () => LANGS[(LANGS.indexOf(lang) + 1) % LANGS.length],
+    list: LANGS,
+    /** Locale for dates and times; Tunisian Arabic keeps Western digits. */
+    locale: () => (lang === "ar" ? "ar-TN" : lang),
   };
 
   /** Interface string by key; functions are called with the extra arguments. */
@@ -388,6 +564,6 @@
     return typeof v === "function" ? v(...args) : v;
   };
 
-  /** Localise a content value: plain values pass through, {en, fr} objects resolve. */
+  /** Localise a content value: plain values pass through, {en, fr, ar} objects resolve. */
   window.L = (v) => (v && typeof v === "object" && !Array.isArray(v) && ("en" in v) ? (v[lang] ?? v.en) : v);
 })();

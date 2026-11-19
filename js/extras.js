@@ -79,7 +79,7 @@
       d.setDate(d.getDate() + 1);
       if (d.getDay() !== 0 && d.getDay() !== 6) days.push(new Date(d));
     }
-    const dayLabel = (x) => x.toLocaleDateString(lang, { weekday: "short", day: "numeric", month: "short" });
+    const dayLabel = (x) => x.toLocaleDateString(Lang.locale(), { weekday: "short", day: "numeric", month: "short" });
     const slots = ["09:00–11:00", "11:00–13:00", "14:00–16:00", "16:00–18:00"];
     const chip = (name, value, label, i) => h("label", { class: "chip" },
       h("input", { type: "radio", name, value, checked: i === 0 && name === "type" }), h("span", {}, label));
