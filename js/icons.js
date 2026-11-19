@@ -85,6 +85,13 @@
       <path fill="#fff" d="M3 4h26v24H3z"/>
       <path fill="#3d6d78" d="M6 18h4v8H6zM12 12h4v14h-4zM18 15h4v11h-4zM24 8h3v18h-3z"/>
       <path fill="#e7a982" d="M6 10l6-4 6 3 8-5v2l-8 5-6-3-6 4z"/>`),
+    cup: S(`
+      <path fill="${K}" d="M5 11h19v3h3l2 2v5l-2 2h-3.5l-1.5 3H9l-4-8z"/>
+      <path fill="#fff" d="M6 12h17v9l-2 4H10l-4-8z"/>
+      <path fill="#3d6d78" d="M6 12h17v3H6z"/>
+      <path fill="#fff" d="M24 15h2l1 1v4l-1 1h-2z"/>
+      <path fill="${K}" d="M4 27h23v2H4z"/>
+      <path fill="#e7a982" d="M10 4h2v5h-2zM15 3h2v6h-2zM20 5h2v4h-2z"/>`),
     portal: S(`
       <path fill="${K}" d="M2 4h28v24H2z"/>
       <path fill="#fff" d="M3 9h26v18H3z"/>

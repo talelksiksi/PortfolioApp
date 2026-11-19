@@ -23,6 +23,37 @@ window.SITE = {
 
 window.PROJECTS = [
   {
+    id: "restaurant-suite",
+    name: "Restaurant & Café Suite",
+    file: "RestaurantSuite.app",
+    icon: "cup",
+    category: { en: "Web app · Restaurants & cafés", fr: "Application web · Restaurants et cafés", ar: "تطبيق ويب · المطاعم والمقاهي" },
+    year: "2026",
+    summary: {
+      en: "An ordering suite for cafés, restaurants and bars: waiter tablets, a screen per station (kitchen, coffee bar, juice bar), QR ordering from the table and a cashier, all on one live order stream. In English, French and Arabic.",
+      fr: "Une suite de commande pour cafés, restaurants et bars : tablettes serveurs, un écran par poste (cuisine, bar à café, bar à jus), commande par QR code depuis la table et caisse, sur un seul flux de commandes en direct. En anglais, en français et en arabe.",
+      ar: "منظومة طلبات للمقاهي والمطاعم: أجهزة لوحية للنادل، وشاشة لكل قسم (المطبخ وركن القهوة وركن العصائر)، وطلب من الطاولة عبر رمز QR، وكاشير، كلها على مسار طلبات واحد مباشر. بالعربية والفرنسية والإنجليزية.",
+    },
+    problem: {
+      en: "Orders are shouted across the room or written on paper, the barista and the kitchen learn about them late, guests wait to catch a waiter's eye, and in Saudi Arabia every bill now has to meet ZATCA e-invoicing rules.",
+      fr: "Les commandes sont criées à travers la salle ou notées sur papier, le barista et la cuisine les découvrent tard, les clients attendent d'attirer un serveur, et en Arabie saoudite chaque addition doit désormais respecter la facturation électronique ZATCA.",
+      ar: "تُنقل الطلبات بالصوت أو على الورق، فيعلم بها ركن القهوة والمطبخ متأخرين، وينتظر الزبون حتى يلفت انتباه النادل، وفي السعودية صار على كل فاتورة أن تلتزم بقواعد الفوترة الإلكترونية لهيئة الزكاة والضريبة والجمارك.",
+    },
+    solution: {
+      en: "Every device works on the same live orders: the waiter sends, each station sees only its items and bumps them ready, the waiter is told when to serve, and guests can order and ask for the bill from their phone. The cashier closes bills beside the venue's existing register, through a compliance provider, or with ZATCA e-invoicing built in, on one data model so a venue can switch later.",
+      fr: "Tous les appareils travaillent sur les mêmes commandes en direct : le serveur envoie, chaque poste ne voit que ses articles et les passe à prêt, le serveur est prévenu quand servir, et les clients commandent et demandent l'addition depuis leur téléphone. La caisse clôture à côté de la caisse existante, via un prestataire de conformité ou avec la facturation ZATCA intégrée, sur un seul modèle de données pour pouvoir changer plus tard.",
+      ar: "كل الأجهزة تعمل على الطلبات نفسها مباشرة: يرسل النادل الطلب، ويرى كل قسم أصنافه فقط ويعلن جاهزيتها، ويُنبَّه النادل حين يحين التقديم، ويستطيع الزبون الطلب وطلب الحساب من هاتفه. ويغلق الكاشير الفاتورة بجانب نقطة البيع الحالية، أو عبر مزوّد امتثال، أو بالفوترة الإلكترونية المدمجة، على نموذج بيانات واحد يتيح التبديل لاحقاً.",
+    },
+    highlights: {
+      en: ["Waiter tablet with floor plan, modifiers, notes and ready alerts", "Kitchen, coffee and juice bar screens with timers that turn amber, then red", "QR menu: guests order, call a waiter or ask for the bill", "Split bills by item or equally, card or cash, day report", "ZATCA simplified invoices: counter, hash chain, signature, QR code and UBL 2.1 XML"],
+      fr: ["Tablette serveur avec plan de salle, options, notes et alertes « prêt »", "Écrans cuisine, bar à café et bar à jus avec minuteurs qui passent à l'orange puis au rouge", "Menu QR : les clients commandent, appellent un serveur ou demandent l'addition", "Addition partagée par article ou à parts égales, carte ou espèces, rapport du jour", "Factures simplifiées ZATCA : compteur, chaîne d'empreintes, signature, QR code et XML UBL 2.1"],
+      ar: ["جهاز النادل مع مخطط الصالة والإضافات والملاحظات وتنبيهات الجاهزية", "شاشات للمطبخ وركن القهوة وركن العصائر بمؤقتات تتحول إلى البرتقالي ثم الأحمر", "منيو QR: يطلب الزبون أو ينادي النادل أو يطلب الحساب", "تقسيم الفاتورة حسب الأصناف أو بالتساوي، بطاقة أو نقداً، وتقرير اليوم", "فواتير ضريبية مبسطة: عدّاد وسلسلة بصمات وتوقيع ورمز QR وملف XML بصيغة UBL 2.1"],
+    },
+    stack: ["JavaScript", "ASP.NET Core + SignalR", "PostgreSQL", "ZATCA Fatoora"],
+    live: "https://cictnardc.net/portfolio/restaurant-suite/",
+    shot: "assets/shots/restaurant-suite.jpg",
+  },
+  {
     id: "integration-toolkit",
     name: "Integration Toolkit",
     file: "IntegrationToolkit.exe",

@@ -19,6 +19,7 @@ APPS_ROOT="${APPS_ROOT:-$(dirname "$ROOT")}"
 
 # id | folder names to look for | kind | folder inside the repo to publish
 APPS="
+restaurant-suite|restaurant-suite|static|.
 warehouse-portal|warehouse-portal-demo|static|.
 dental-clinic|dental-clinic-demo dental-clinic|static|.
 gp-office|gp-doctor-office cabinet-medical|static|app
