@@ -10,8 +10,8 @@
  *   patterns: [ ['^Regex (\\d+) source$', { en, fr, ar }] ],  for text with
  *            numbers or names in it; $1, $2... are the captures, themselves
  *            translated when the dictionary knows them
- *   mount: 'css selector',             where to put the language switch
- *                                      (default: a small floating switch)
+ *   mount: 'css selector' or [selectors],  where to put the language switch
+ *                                      (one per selector; default: floating)
  *   skip: 'css selector',              parts of the page never to translate
  *   css: '...'                         extra rules, usually right-to-left fixes
  * }
@@ -55,7 +55,8 @@
     var e = DICT[core];
     return e && e[lang] != null ? e[lang] : null;
   }
-  function translateCore(core) {
+  function translateCore(core, depth) {
+    depth = depth || 0;
     if (lang === SOURCE || !core) return core;
     var hit = lookup(core);
     if (hit != null) return hit;
@@ -68,13 +69,14 @@
           var g = m[+d]; if (g == null) return '';
           var gh = lookup(norm(g));
           if (gh != null) return gh;
+          if (depth < 2 && /[A-Za-z]/.test(g)) { var sub = translateCore(norm(g), depth + 1); if (sub !== norm(g)) return sub; }
           if (g.indexOf(', ') > 0) return g.split(', ').map(function (x) { var y = lookup(norm(x)); return y != null ? y : x; }).join(lang === 'ar' ? '، ' : ', ');
           return g;
         });
         return hit;
       }
     }
-    if (/[A-Za-zÀ-ÿ\u0600-\u06FF]{2}/.test(core)) misses[core] = (misses[core] || 0) + 1;
+    if (!depth && /[A-Za-zÀ-ÿ\u0600-\u06FF]{2}/.test(core)) misses[core] = (misses[core] || 0) + 1;
     return core;
   }
   function t(s) {
@@ -82,6 +84,8 @@
     s = String(s);
     var m = s.match(/^(\s*)([\s\S]*?)(\s*)$/);
     var core = norm(m[2]);
+    // Phone numbers and other digit runs read left to right inside Arabic text.
+    if (lang === 'ar' && /^\+?\d[\d\s.\-()\/]{5,}$/.test(core) && /\s|\+/.test(core)) return m[1] + '\u2066' + core + '\u2069' + m[3];
     var out = translateCore(core);
     return out === core ? s : m[1] + out + m[3];
   }
@@ -107,7 +111,7 @@
     var cur = node.nodeValue;
     if (!origText.has(node) || written.get(node) !== cur) origText.set(node, cur);
     var src = origText.get(node);
-    if (!/[A-Za-zÀ-ÿ؀-ۿ]/.test(src)) return;
+    if (!/[A-Za-zÀ-ÿ\u0600-\u06FF]/.test(src) && !/\d[\s.\-]\d/.test(src)) return;
     var out = t(src);
     if (out !== cur) { written.set(node, out); node.nodeValue = out; }
     else written.set(node, cur);
@@ -216,11 +220,28 @@
       [].forEach.call(box.children, function (b) { b.setAttribute('aria-pressed', String(b.dataset.l === lang)); });
     });
   }
-  function mountSwitch() {
-    var host = C.mount && document.querySelector(C.mount);
+  function mountSwitch(sel) {
+    if (sel === undefined && Array.isArray(C.mount)) { C.mount.forEach(function (m) { mountSwitch(m); }); return; }
+    var mount = sel === undefined ? C.mount : sel;
     var box = makeSwitch();
-    if (host) host.appendChild(box);
-    else { box.classList.add('ci18n-float'); document.body.appendChild(box); }
+    function place(host) {
+      if (host) { box.classList.remove('ci18n-float'); host.appendChild(box); }
+      else { box.classList.add('ci18n-float'); document.body.appendChild(box); }
+    }
+    if (!mount) return place(null);
+    var host = document.querySelector(mount);
+    if (host) return place(host);
+    // The app may draw its header later (React, routers): wait for it, and float meanwhile.
+    place(null);
+    var waited = new MutationObserver(function () {
+      var h = document.querySelector(mount);
+      if (h) { waited.disconnect(); place(h); }
+    });
+    waited.observe(document.body, { childList: true, subtree: true });
+    // Re-mount if the app re-renders its header and drops the switch.
+    setInterval(function () {
+      if (!document.body.contains(box)) { var h2 = document.querySelector(mount); place(h2); }
+    }, 1500);
   }
 
   var listeners = [];
