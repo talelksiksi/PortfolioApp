@@ -10,8 +10,8 @@
   :root{--bg:#121a1c;--panel:#1a2427;--ink:#e3ebea;--muted:#9db0ae;--line:#2a3739;--sea:#86b8c1;--sea-deep:#a8cdd4;--sea-soft:rgba(134,184,193,.12);--pine:#86bea2;--on-accent:#0f181a;--td:#e8a97f;--td-ink:#0f181a;--ok:#86bea2;--err:#e08a73;--empty:#22302f;--empty-line:#3a4b4c;--belt:#9db0ae;--logbg:#0b1517}
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-code,.log,.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo","CI Arabic",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+code,.log,.mono{font-family:"JetBrains Mono","CI Arabic",ui-monospace,Menlo,monospace}
 h1{font-size:1.55rem;margin:0 0 .35rem;font-weight:700;letter-spacing:-.01em}
 h2{font-size:1rem;margin:0;font-weight:600}
 .badge{display:inline-block;vertical-align:middle;font-size:.72rem;font-weight:600;background:var(--td);color:var(--td-ink);border-radius:4px;padding:.1rem .45rem;margin-left:.35rem}
