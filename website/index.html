@@ -1,34 +1,41 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CICTNA RDC | Full-stack and industrial software engineering</title>
-<meta name="description" content="CICTNA RDC builds web applications, APIs and databases, connects business systems, and writes the software that talks to machines. Remote, in English, French and Arabic.">
+<meta name="description" content="CICTNA RDC builds web applications, business software and databases, connects business systems, and writes the software that talks to machines. Remote, in English, French and Arabic.">
 <link rel="canonical" href="https://cictnardc.net/">
+<link rel="alternate" hreflang="en" href="https://cictnardc.net/?lang=en">
+<link rel="alternate" hreflang="fr" href="https://cictnardc.net/?lang=fr">
+<link rel="alternate" hreflang="ar" href="https://cictnardc.net/?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://cictnardc.net/">
 <meta name="theme-color" content="#3d6d78">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CICTNA RDC">
 <meta property="og:url" content="https://cictnardc.net/">
 <meta property="og:title" content="CICTNA RDC | Web apps, APIs, databases. Right down to the machine.">
-<meta property="og:description" content="Full-stack engineering with tech lead experience: web applications, APIs, PostgreSQL, WMS and ERP integration, and software that talks to machines.">
+<meta property="og:description" content="Full-stack engineering with tech lead experience: web applications, business software, PostgreSQL, WMS and ERP integration, and software that talks to machines.">
 <meta property="og:image" content="https://cictnardc.net/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="CICTNA RDC logo: a sun rising over the sea">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="ar_AR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CICTNA RDC | Web apps, APIs, databases. Right down to the machine.">
 <meta name="twitter:description" content="Full-stack engineering with tech lead experience, from the browser down to the machine.">
 <meta name="twitter:image" content="https://cictnardc.net/og-image.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"CICTNA RDC","url":"https://cictnardc.net/","logo":"https://cictnardc.net/favicon.png","image":"https://cictnardc.net/og-image.png","email":"contact@cictnardc.net","telephone":"+33651287500","founder":{"@type":"Person","name":"Talel Ksiksi","jobTitle":"Founder and Lead Engineer","sameAs":["https://www.linkedin.com/in/ksiksi"]},"areaServed":["Europe","Middle East","North America"],"knowsLanguage":["en","fr","ar"],"sameAs":["https://www.linkedin.com/in/ksiksi"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"CICTNA RDC","url":"https://cictnardc.net/","logo":"https://cictnardc.net/favicon.png","image":"https://cictnardc.net/og-image.png","email":"contact@cictnardc.net","telephone":["+33651287500","+21652132142"],"founder":{"@type":"Person","name":"Talel Ksiksi","jobTitle":"Founder and Lead Engineer","sameAs":["https://www.linkedin.com/in/ksiksi"]},"areaServed":["Europe","Middle East","North America"],"knowsLanguage":["en","fr","ar"],"sameAs":["https://www.linkedin.com/in/ksiksi"]}
 </script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* Mood: a misty northern shoreline at dawn. Forest on one side, sea on the other, the sun coming up low. */
 :root{
@@ -76,71 +83,82 @@
   }
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:64px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--fog);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6}
+body{margin:0;background:var(--fog);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.55}
 a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
 :focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:4px}
-html[data-lang="en"] [lang="fr"]{display:none}
-html[data-lang="fr"] [lang="en"]{display:none}
+html[data-lang="en"] [lang]:not([lang="en"]),
+html[data-lang="fr"] [lang]:not([lang="fr"]),
+html[data-lang="ar"] [lang]:not([lang="ar"]){display:none}
+p{margin:0}
 
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
-@media (max-width:560px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+/* Arabic: its own typeface, looser lines, no tracking */
+html[data-lang="ar"]{--font:"IBM Plex Sans Arabic","Archivo",system-ui,"Segoe UI",Tahoma,sans-serif}
+html[data-lang="ar"] body{line-height:1.8}
+html[data-lang="ar"] h1,html[data-lang="ar"] h2,html[data-lang="ar"] h3,html[data-lang="ar"] .brand{letter-spacing:0}
+html[data-lang="ar"] .hero h1{line-height:1.32;font-weight:700}
+html[data-lang="ar"] h2{line-height:1.4}
+html[data-lang="ar"] h3{line-height:1.5}
+html[data-lang="ar"] .arrow{transform:scaleX(-1)}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+.wrap{max-width:1120px;margin:0 auto;padding-inline:max(24px,env(safe-area-inset-left,0px)) max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:560px){.wrap{padding-inline:16px}}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:0;z-index:20;background:var(--header);backdrop-filter:saturate(1.3) blur(12px);-webkit-backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--rule)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
-.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;flex:none;text-decoration:none;font-weight:760;font-variation-settings:"wdth" 116;letter-spacing:.01em;font-size:1.05rem}
-.mark{width:28px;height:28px;flex:none;display:block}
-.nav{display:flex;align-items:center;gap:22px}
-.nav a.link{text-decoration:none;font-size:.95rem;color:var(--stone);font-weight:520;transition:color .2s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:"Archivo",system-ui,sans-serif;font-weight:760;font-variation-settings:"wdth" 116;letter-spacing:.01em;font-size:1rem;direction:ltr}
+.mark{width:26px;height:26px;flex:none;display:block}
+.nav{display:flex;align-items:center;gap:20px}
+.nav a.link{text-decoration:none;font-size:.92rem;color:var(--stone);font-weight:520;transition:color .2s}
 .nav a.link:hover{color:var(--ink)}
-.langs{display:flex;gap:2px;border:1px solid var(--rule);border-radius:999px;padding:2px;background:var(--mist)}
-.langs button{font:inherit;font-size:.8rem;font-weight:620;color:var(--stone);background:none;border:0;padding:5px 10px;border-radius:999px;cursor:pointer}
+.langs{display:flex;gap:2px;border:1px solid var(--rule);border-radius:999px;padding:2px;background:var(--mist);direction:ltr}
+.langs button{font:inherit;font-size:.78rem;font-weight:620;line-height:1.3;color:var(--stone);background:none;border:0;padding:4px 9px;border-radius:999px;cursor:pointer}
+.langs button[data-set="ar"]{font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;font-weight:600}
 .langs button[aria-pressed="true"]{background:var(--ink);color:var(--fog)}
-.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:650;text-decoration:none;border-radius:999px;cursor:pointer;border:0;transition:transform .25s ease,box-shadow .25s ease,background .25s}
-.btn-main{background:var(--sea);color:var(--on-accent);padding:13px 24px;box-shadow:0 10px 24px -14px var(--sea)}
-.btn-main:hover{background:var(--sea-deep);transform:translateY(-2px);box-shadow:0 16px 28px -16px var(--sea)}
-.btn-soft{color:var(--ink);padding:12px 22px;border:1px solid var(--rule);background:var(--glass)}
+.btn{display:inline-flex;align-items:center;gap:9px;font:inherit;font-weight:650;text-decoration:none;border-radius:999px;cursor:pointer;border:0;transition:transform .25s ease,box-shadow .25s ease,background .25s}
+.btn-main{background:var(--sea);color:var(--on-accent);padding:11px 22px;box-shadow:0 10px 24px -14px var(--sea)}
+.btn-main:hover{background:var(--sea-deep);transform:translateY(-2px)}
+.btn-soft{color:var(--ink);padding:10px 20px;border:1px solid var(--rule);background:var(--glass)}
 .btn-soft:hover{border-color:var(--stone);transform:translateY(-2px)}
-.top .btn-main{padding:9px 18px;font-size:.93rem;white-space:nowrap}
+.top .btn-main{padding:7px 16px;font-size:.9rem}
 .btn svg{width:16px;height:16px;flex:none}
-@media (max-width:860px){.nav a.link{display:none}}
-@media (max-width:560px){.top .btn-main span.long{display:none}.nav{gap:8px}.top .wrap{gap:10px}.top .btn-main{padding:9px 16px}}
-@media (max-width:392px){.top .wrap{gap:8px}.brand{font-size:.88rem;gap:7px;font-variation-settings:"wdth" 104}.brand .mark{width:26px;height:26px}.nav{gap:6px}.langs button{padding:4px 7px;font-size:.76rem}.top .btn-main{padding:7px 12px;font-size:.84rem}}
+@media (max-width:860px){.nav a.link{display:none}.nav{gap:10px}}
+@media (max-width:480px){.top .btn-main{display:none}}
 
-/* ---------- hero: the shoreline ---------- */
+/* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 42%,var(--horizon) 82%,var(--sky-mid) 100%)}
-.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center;padding-block:80px 250px}
-.land{position:absolute;left:0;right:0;bottom:0;height:260px;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:44px;align-items:start;padding-block:44px clamp(130px,13.5vw,200px)}
+.land{position:absolute;left:0;right:0;bottom:0;height:clamp(150px,14vw,260px);z-index:0;pointer-events:none}
 .land svg{display:block;width:100%;height:100%}
 .fog{position:absolute;z-index:1;pointer-events:none;border-radius:50%;background:radial-gradient(ellipse at center,var(--fog-c),transparent 68%);filter:blur(6px)}
-.fog.a{width:70vw;height:140px;left:-10vw;bottom:70px;animation:drift 70s ease-in-out infinite alternate}
-.fog.b{width:60vw;height:120px;right:-12vw;bottom:120px;opacity:.8;animation:drift 90s ease-in-out infinite alternate-reverse}
+.fog.a{width:70vw;height:110px;left:-10vw;bottom:50px;animation:drift 70s ease-in-out infinite alternate}
+.fog.b{width:60vw;height:100px;right:-12vw;bottom:90px;opacity:.8;animation:drift 90s ease-in-out infinite alternate-reverse}
 @keyframes drift{from{transform:translateX(-6vw)}to{transform:translateX(8vw)}}
-.status{display:inline-flex;align-items:center;gap:9px;font-size:.9rem;color:var(--stone);border:1px solid var(--rule);border-radius:999px;padding:6px 14px 6px 10px;background:var(--glass)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--stone);border:1px solid var(--rule);border-radius:999px;padding:4px 12px 4px 9px;background:var(--glass)}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--pine);animation:breathe 3.4s ease-in-out infinite}
 @keyframes breathe{0%,100%{box-shadow:0 0 0 0 var(--pine-soft)}50%{box-shadow:0 0 0 6px var(--pine-soft)}}
-.hero h1{margin:22px 0 0;font-size:clamp(2.3rem,5.2vw,4rem);line-height:1.04;font-weight:740;font-variation-settings:"wdth" 116;letter-spacing:-.015em;text-wrap:balance}
+.hero h1{margin:16px 0 0;font-size:clamp(1.9rem,3.5vw,2.6rem);line-height:1.08;font-weight:740;font-variation-settings:"wdth" 116;letter-spacing:-.015em;text-wrap:balance}
 .hero h1 .line{display:block}
 .hero h1 .line.b{color:var(--sea);font-weight:520;font-variation-settings:"wdth" 108}
-.lede{margin:24px 0 0;max-width:52ch;font-size:1.15rem;color:var(--stone)}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin:34px 0 0;padding:0;list-style:none;font-size:.93rem;color:var(--stone)}
-.facts li{display:flex;align-items:center;gap:8px}
-.facts svg{width:16px;height:16px;color:var(--pine);flex:none}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:44px;padding-block:56px 200px}.land{height:190px}}
+.lede{margin:16px 0 0;max-width:54ch;font-size:1.06rem;color:var(--stone)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin:20px 0 0;padding:0;list-style:none;font-size:.9rem;color:var(--stone)}
+.facts li{display:flex;align-items:center;gap:7px}
+.facts svg{width:15px;height:15px;color:var(--pine);flex:none}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:32px}}
 
-/* terminal, frosted like glass in the fog */
-.panel{margin:0;position:relative;background:var(--glass);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid var(--glass-edge);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
-.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--rule);font-size:.84rem;color:var(--stone)}
-.lights{display:flex;gap:6px}
-.lights i{width:10px;height:10px;border-radius:50%;background:var(--rule)}
+.panel{margin:0;position:relative;background:var(--glass);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid var(--glass-edge);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--rule);font-size:.8rem;color:var(--stone)}
+.lights{display:flex;gap:6px;direction:ltr}
+.lights i{width:9px;height:9px;border-radius:50%;background:var(--rule)}
 .lights i:first-child{background:var(--dawn)}
 .panel-head .live{display:flex;align-items:center;gap:8px}
-.term{margin:0;padding:18px 20px 6px;font-family:var(--mono);font-size:.86rem;line-height:1.55;color:var(--ink);min-height:21.5em;background:none}
+.term{margin:0;padding:14px 16px 16px;font-family:var(--mono);font-size:.8rem;line-height:1.5;color:var(--ink);min-height:17.6em;background:none;direction:ltr;text-align:left}
 .ln{display:block;white-space:pre-wrap;overflow-wrap:anywhere}
-.ln.cmd{margin-top:10px}
+.ln.cmd{margin-top:7px}
 .ln.cmd:first-child{margin-top:0}
 .ln.cmd .p{color:var(--sea);user-select:none}
 .ln.out{color:var(--pine);padding-left:1.15em}
@@ -148,235 +166,141 @@ html[data-lang="fr"] [lang="en"]{display:none}
 .ln.pending{visibility:hidden}
 .cursor{display:inline-block;width:.55em;height:1.1em;margin-left:2px;vertical-align:-.18em;background:var(--sea);border-radius:1px;animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.panel figcaption{margin:0 20px;padding:14px 0 18px;border-top:1px dashed var(--rule);font-size:.92rem;color:var(--stone)}
-@media (max-width:480px){.term{font-size:.76rem;padding:14px 14px 4px;min-height:24em}.panel figcaption{margin:0 14px}}
+@media (max-width:700px){.panel{display:none}}
 @media (prefers-reduced-motion:reduce){.cursor,.dot,.fog{animation:none}}
 
-/* ---------- ticker ---------- */
-.ticker{background:var(--mist);color:var(--stone);overflow:hidden;border-block:1px solid var(--rule)}
-.ticker-track{display:flex;width:max-content;animation:scroll 60s linear infinite}
-.ticker:hover .ticker-track{animation-play-state:paused}
-.ticker ul{display:flex;margin:0;padding:14px 0;list-style:none;font-weight:560;font-variation-settings:"wdth" 108;font-size:.98rem}
-.ticker li{display:flex;align-items:center;white-space:nowrap;padding:0 20px}
-.ticker li::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--sea);opacity:.45;margin-left:40px}
-@keyframes scroll{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ticker-track{animation:none;width:auto;flex-wrap:wrap}.ticker ul[aria-hidden]{display:none}.ticker ul{flex-wrap:wrap;justify-content:center}}
-
 /* ---------- sections ---------- */
-section{padding-block:96px}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 56px;align-items:end;margin-bottom:44px}
-h2{margin:0;font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.08;font-weight:730;font-variation-settings:"wdth" 112;letter-spacing:-.01em;text-wrap:balance}
-.sec-head p{margin:0;color:var(--stone);max-width:52ch}
-@media (max-width:760px){.sec-head{grid-template-columns:1fr}section{padding-block:72px}}
-p{max-width:68ch}
+section{padding-block:52px}
+section + section{padding-top:8px}
+section.contact{padding-block:52px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 32px;margin-bottom:22px}
+h2{margin:0;font-size:clamp(1.5rem,2.7vw,2rem);line-height:1.12;font-weight:730;font-variation-settings:"wdth" 112;letter-spacing:-.01em}
+.sec-head p{color:var(--stone);max-width:58ch;font-size:.96rem}
+@media (max-width:760px){section{padding-block:40px}section.contact{padding-block:40px}}
+
+.card{background:var(--mist);border:1px solid var(--rule);border-radius:14px}
 
 /* services */
-.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.svc{position:relative;background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:28px 28px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
-.svc:hover{transform:translateY(-4px);border-color:var(--sea);box-shadow:var(--shadow)}
-.svc-top{display:flex;align-items:center;gap:14px}
-.icon{width:48px;height:48px;border-radius:50%;background:var(--sea-soft);color:var(--sea-deep);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.svc{background:var(--mist);border:1px solid var(--rule);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:9px;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.svc:hover{transform:translateY(-3px);border-color:var(--sea);box-shadow:var(--shadow)}
+.svc-top{display:flex;align-items:center;gap:11px}
+.icon{width:36px;height:36px;border-radius:50%;background:var(--sea-soft);color:var(--sea-deep);display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
 .svc:hover .icon{background:var(--sea);color:var(--on-accent)}
-.icon svg{width:23px;height:23px}
-.svc h3{margin:0;font-size:1.22rem;line-height:1.25;font-weight:690;font-variation-settings:"wdth" 104}
-.svc .what{margin:0;color:var(--stone)}
-.terms{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:auto 0 0;padding-top:16px;border-top:1px solid var(--rule);font-size:.93rem}
-.terms dt{color:var(--stone)}
-.terms dd{margin:0;font-weight:540}
-@media (max-width:760px){.services{grid-template-columns:1fr}.svc{padding:22px}}
+.icon svg{width:19px;height:19px}
+.svc h3{margin:0;font-size:1.02rem;line-height:1.25;font-weight:690;font-variation-settings:"wdth" 104}
+.svc p{color:var(--stone);font-size:.93rem}
+@media (max-width:980px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.services{grid-template-columns:1fr}.svc{padding:15px}}
 
-/* range note */
-.note{margin-top:26px;border-radius:18px;background:linear-gradient(100deg,var(--sea-soft),var(--dawn-soft));border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px 24px;padding:24px 28px}
-.note .sun{width:48px;height:48px;flex:none;display:block}
-.note p{margin:0;font-size:1.06rem;max-width:none}
-.note strong{color:var(--sea-deep);font-weight:680}
-.note .btn{white-space:nowrap}
-@media (max-width:760px){.note{grid-template-columns:auto 1fr;padding:20px}.note .btn{grid-column:1 / -1;justify-self:start}}
+/* process strip */
+.flow{margin-top:12px;border-radius:14px;background:linear-gradient(100deg,var(--sea-soft),var(--dawn-soft));border:1px solid var(--rule);padding:16px 18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 26px;align-items:start}
+.flow-title{font-weight:700;font-variation-settings:"wdth" 108;font-size:1rem;max-width:9em;line-height:1.3;padding-top:2px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 20px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:9px;align-items:baseline}
+.steps li::before{content:counter(s);grid-row:1 / span 2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--sea);color:var(--sea-deep);font-weight:700;font-size:.8rem;line-height:1;align-self:start;margin-top:1px;font-family:"Archivo",system-ui,sans-serif}
+.steps h3{margin:0;font-size:.95rem;font-weight:680}
+.steps p{font-size:.86rem;color:var(--stone)}
+@media (max-width:900px){.flow{grid-template-columns:1fr}.flow-title{max-width:none}.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.steps{grid-template-columns:1fr}}
 
-/* why us */
-.why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.why{background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:26px;position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
-.why::before{content:"";position:absolute;left:26px;top:0;width:44px;height:4px;border-radius:0 0 4px 4px;background:var(--pine)}
-.why:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.why h3{margin:6px 0 10px;font-size:1.18rem;font-weight:700;font-variation-settings:"wdth" 106;line-height:1.25}
-.why p{margin:0;color:var(--stone);font-size:.98rem}
-.why .stack-line{margin-top:14px;font-family:var(--mono);font-size:.78rem;color:var(--sea-deep)}
-@media (max-width:860px){.why-grid{grid-template-columns:1fr}}
-
-/* process */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s;position:relative}
-.steps::before{content:"";position:absolute;left:24px;right:24px;top:23px;height:2px;background:repeating-linear-gradient(90deg,var(--rule) 0 6px,transparent 6px 12px)}
-.steps li{counter-increment:s;position:relative}
-.steps li::before{content:counter(s);display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--fog);border:1.5px solid var(--sea);color:var(--sea-deep);font-weight:700;font-size:1.1rem;margin-bottom:16px;position:relative;transition:background .3s,color .3s}
-.steps li:hover::before{background:var(--sea);color:var(--on-accent)}
-.steps h3{margin:0 0 6px;font-size:1.06rem;font-weight:680}
-.steps p{margin:0;font-size:.95rem;color:var(--stone)}
-@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:32px}.steps::before{display:none}}
-@media (max-width:480px){.steps{grid-template-columns:1fr}}
-
-/* background */
-.bg-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:start}
-.bg-grid p{color:var(--stone);margin:0 0 1em}
-.bg-grid p:first-of-type{color:var(--ink);font-size:1.15rem}
-.stack{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.stack li{font-size:.9rem;font-weight:560;padding:7px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--fog);transition:border-color .2s,background .2s}
-.stack li:hover{border-color:var(--sea);background:var(--sea-soft)}
-.side-card{background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:24px}
-.side-card h3{margin:0 0 14px;font-size:1rem;font-weight:680}
-.side-card .oss{margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);font-size:.95rem;color:var(--stone)}
-.side-card .oss a{color:var(--sea-deep);font-weight:620}
-@media (max-width:860px){.bg-grid{grid-template-columns:1fr}}
-
-/* contact band: deep water at first light */
-.contact{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,var(--deep-a),var(--deep-b));color:var(--deep-ink)}
-.contact::before{content:"";position:absolute;z-index:-1;width:560px;height:560px;right:-120px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(231,169,130,.28),transparent 65%)}
-.contact .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
-#contactForm{display:flex;flex-direction:column;gap:14px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.frow.end{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:4px}
-.field{display:flex;flex-direction:column;gap:6px;min-width:0}
-.field label{font-size:.85rem;color:var(--deep-stone);font-weight:550}
-.field .opt{font-weight:400;opacity:.8}
-.field input,.field textarea{font:inherit;font-size:1rem;color:var(--deep-ink);background:rgba(255,255,255,.07);border:1px solid var(--deep-rule);border-radius:12px;padding:11px 14px;width:100%;transition:border-color .2s,background .2s}
-.field textarea{resize:vertical;min-height:120px;line-height:1.5}
-.field input:focus,.field textarea:focus{outline:none;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
-.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#e7a982}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.fstatus{margin:0;font-size:.92rem;color:var(--deep-stone);max-width:none}
-.fstatus.ok{color:#bfe3cf}
-.fstatus.err{color:#f1c09b}
-.contact-card .meta a{color:var(--deep-ink);font-weight:600}
-.contact-card .meta .copy{padding:4px 10px;font-size:.8rem;margin-left:6px}
-@media (max-width:560px){.frow{grid-template-columns:1fr}}
-.contact h2{font-size:clamp(2rem,4.2vw,3rem)}
-.contact p{color:var(--deep-stone);margin:18px 0 0;max-width:46ch}
-.contact-card{background:rgba(255,255,255,.06);border:1px solid var(--deep-rule);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.contact-card .lbl{font-size:.85rem;color:var(--deep-stone)}
-.contact-card .addr{font-family:var(--mono);font-size:1.02rem;word-break:break-all}
-.contact-card .row{display:flex;flex-wrap:wrap;gap:10px}
-.contact .btn-main{background:var(--deep-ink);color:var(--deep-a);box-shadow:none}
-.contact .btn-main:hover{background:#ffffff}
-.copy{font:inherit;font-size:.9rem;font-weight:600;color:var(--deep-ink);background:transparent;border:1px solid var(--deep-rule);border-radius:999px;padding:10px 16px;cursor:pointer;transition:border-color .2s}
-.copy:hover{border-color:var(--deep-stone)}
-.contact-card .meta{font-size:.85rem;color:var(--deep-stone);border-top:1px solid var(--deep-rule);padding-top:14px}
-@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
-
-
-/* selected work */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.case{background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:transform .3s ease,box-shadow .3s ease}
-.case:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.case-kind{align-self:flex-start;font-size:.8rem;font-weight:620;color:var(--sea-deep);background:var(--sea-soft);border-radius:999px;padding:4px 12px}
-.case h3{margin:2px 0 0;font-size:1.2rem;line-height:1.3;font-weight:700;font-variation-settings:"wdth" 104}
-.case p{margin:0;color:var(--stone);font-size:.98rem}
-.case-out{list-style:none;margin:auto 0 0;padding:14px 0 0;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:6px;font-size:.93rem;font-weight:540}
-.case-out li{display:flex;gap:10px;align-items:baseline}
-.case-out li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--pine);transform:translateY(-1px)}
-@media (max-width:760px){.cases{grid-template-columns:1fr}.case{padding:22px}}
+/* work */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.case{background:var(--mist);border:1px solid var(--rule);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:7px;transition:transform .3s ease,box-shadow .3s ease}
+.case:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.case-kind{align-self:flex-start;font-size:.75rem;font-weight:620;color:var(--sea-deep);background:var(--sea-soft);border-radius:999px;padding:2px 10px}
+.case h3{margin:0;font-size:1.05rem;line-height:1.3;font-weight:700;font-variation-settings:"wdth" 104}
+.case p{color:var(--stone);font-size:.93rem}
+.case-out{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule);font-size:.88rem;font-weight:560;display:flex;gap:9px;align-items:baseline}
+.case-out::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--pine);transform:translateY(-1px)}
+@media (max-width:760px){.cases{grid-template-columns:1fr}.case{padding:15px}}
 
 /* about */
-.about{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:48px;align-items:start}
-.person{background:var(--mist);border:1px solid var(--rule);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:16px;position:sticky;top:90px}
-.person img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:14px;display:block;max-width:100%}
-.who-name{font-size:1.3rem;font-weight:720;font-variation-settings:"wdth" 108}
-.who-role{color:var(--stone);font-size:.95rem}
-.who-links{display:flex;flex-wrap:wrap;gap:8px}
-.btn.small{padding:9px 14px;font-size:.9rem;gap:8px}
-.btn.small svg{width:16px;height:16px}
-.bio p{color:var(--stone);margin:0 0 1em}
-.bio .bio-lead{color:var(--ink);font-size:1.2rem;line-height:1.5}
-.bio .stack{margin:22px 0 18px}
-.bio .oss{font-size:.95rem}
-.bio .oss a{color:var(--sea-deep);font-weight:620}
-@media (max-width:860px){.about{grid-template-columns:1fr}.person{position:static;max-width:420px}}
+.about{background:var(--mist);border:1px solid var(--rule);border-radius:14px;padding:20px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:start}
+.person{display:flex;flex-direction:column;gap:8px}
+.person img{width:150px;height:150px;object-fit:cover;border-radius:12px;display:block}
+.who-name{font-size:1.02rem;font-weight:720;font-variation-settings:"wdth" 108;line-height:1.25;font-family:"Archivo",system-ui,sans-serif}
+.who-role{color:var(--stone);font-size:.85rem;line-height:1.35}
+.who-link{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:var(--sea-deep);text-decoration:none}
+.who-link svg{width:15px;height:15px}
+.bio p{color:var(--stone);margin:0 0 .7em;max-width:74ch;font-size:.96rem}
+.bio .bio-lead{color:var(--ink);font-size:1.08rem;line-height:1.5}
+html[data-lang="ar"] .bio .bio-lead{line-height:1.75}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none;direction:ltr}
+html[data-lang="ar"] .stack{justify-content:flex-end}
+.stack li{font-family:"Archivo",system-ui,sans-serif;font-size:.8rem;font-weight:560;line-height:1.4;padding:3px 11px;border:1px solid var(--rule);border-radius:999px;background:var(--fog)}
+@media (max-width:620px){.about{grid-template-columns:1fr;padding:15px}.person{flex-direction:row;align-items:center;gap:14px}.person img{width:76px;height:76px}.person > div{display:flex;flex-direction:column;gap:3px}}
 
 /* faq */
-.faq{display:flex;flex-direction:column;gap:10px;max-width:860px}
-.faq details{background:var(--mist);border:1px solid var(--rule);border-radius:16px;padding:0 22px;transition:border-color .25s}
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;align-items:start}
+.faq details{background:var(--mist);border:1px solid var(--rule);border-radius:12px;padding:0 16px;transition:border-color .25s}
 .faq details[open]{border-color:var(--sea)}
-.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:640;font-size:1.04rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary{cursor:pointer;list-style:none;padding:12px 0;font-weight:640;font-size:.97rem;display:flex;justify-content:space-between;align-items:center;gap:14px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid var(--sea);border-bottom:2px solid var(--sea);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
+.faq summary::after{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--sea);border-bottom:2px solid var(--sea);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
 .faq details[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
-.faq details p{margin:0 0 18px;color:var(--stone)}
+.faq details p{margin:0 0 14px;color:var(--stone);font-size:.93rem}
+@media (max-width:800px){.faq{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.faq summary::after{transition:none}}
 
-/* contact extras */
-.trust{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;color:var(--deep-ink);font-size:.97rem}
-.trust li{display:flex;gap:12px;align-items:baseline}
-.trust li::before{content:"";flex:none;width:16px;height:9px;border-left:2px solid #bfe3cf;border-bottom:2px solid #bfe3cf;transform:rotate(-45deg) translateY(-3px)}
-.quick{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.btn-ghost-light{color:var(--deep-ink);border:1px solid var(--deep-rule);background:rgba(255,255,255,.05);padding:11px 18px;font-size:.95rem}
+/* contact */
+.contact{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,var(--deep-a),var(--deep-b));color:var(--deep-ink);margin-top:44px}
+.contact::before{content:"";position:absolute;z-index:-1;width:520px;height:520px;right:-120px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(231,169,130,.28),transparent 65%)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:36px;align-items:center}
+.contact h2{font-size:clamp(1.6rem,3.2vw,2.3rem)}
+.contact .intro{color:var(--deep-stone);margin-top:12px;max-width:46ch}
+.trust{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+.trust li{display:flex;gap:11px;align-items:baseline}
+.trust li::before{content:"";flex:none;width:14px;height:8px;border-left:2px solid #bfe3cf;border-bottom:2px solid #bfe3cf;transform:rotate(-45deg) translateY(-3px)}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.btn-ghost-light{color:var(--deep-ink);border:1px solid var(--deep-rule);background:rgba(255,255,255,.05);padding:9px 16px;font-size:.92rem}
 .btn-ghost-light:hover{border-color:var(--deep-stone);transform:translateY(-2px)}
 .btn-ghost-light svg{width:18px;height:18px}
 .btn-ghost-light .num{color:var(--deep-stone);font-weight:500}
 .btn-ghost-light[hidden]{display:none}
-.privacy{margin:2px 0 0;font-size:.82rem;color:var(--deep-stone);max-width:none}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid var(--deep-rule);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#contactForm{display:flex;flex-direction:column;gap:10px}
+.frow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.frow.end{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:.82rem;color:var(--deep-stone);font-weight:550}
+.field .opt{font-weight:400;opacity:.8}
+.field input,.field textarea{font:inherit;font-size:1rem;color:var(--deep-ink);background:rgba(255,255,255,.07);border:1px solid var(--deep-rule);border-radius:10px;padding:8px 12px;width:100%;transition:border-color .2s,background .2s}
+.field input[type="email"]{direction:ltr}
+html[data-lang="ar"] .field input[type="email"]{text-align:right}
+.field textarea{resize:vertical;min-height:92px;line-height:1.5}
+.field input:focus,.field textarea:focus{outline:none;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#e7a982}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fstatus{font-size:.9rem;color:var(--deep-stone)}
+.fstatus.ok{color:#bfe3cf}
+.fstatus.err{color:#f1c09b}
+.contact .btn-main{background:var(--deep-ink);color:var(--deep-a);box-shadow:none}
+.contact .btn-main:hover{background:#ffffff}
+.copy{font:inherit;font-size:.78rem;font-weight:600;color:var(--deep-ink);background:transparent;border:1px solid var(--deep-rule);border-radius:999px;padding:2px 10px;cursor:pointer;margin-inline-start:6px;transition:border-color .2s}
+.copy:hover{border-color:var(--deep-stone)}
+.meta{font-size:.82rem;color:var(--deep-stone);border-top:1px solid var(--deep-rule);padding-top:11px}
+.meta a{color:var(--deep-ink);font-weight:600}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr;gap:24px}}
+@media (max-width:620px){.frow{grid-template-columns:1fr}}
 
 /* footer */
-footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var(--deep-rule);font-size:.9rem}
-.foot{display:grid;grid-template-columns:minmax(0,1.3fr) auto auto;gap:28px 40px;align-items:center;padding-block:40px 32px}
-.foot-brand{display:flex;align-items:center;gap:14px}
-.foot-brand .mark{width:40px;height:40px}
-.foot-name{color:var(--deep-ink);font-weight:720;font-variation-settings:"wdth" 114;font-size:1.05rem}
-.foot-tag{font-size:.85rem}
-.foot-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var(--deep-rule);font-size:.85rem}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px;padding-block:18px}
+.foot-brand{display:flex;align-items:center;gap:10px;color:var(--deep-ink);font-family:"Archivo",system-ui,sans-serif;font-weight:720;font-variation-settings:"wdth" 114;direction:ltr}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 18px}
 .foot-links a,.foot-social a{color:var(--deep-stone);text-decoration:none;transition:color .2s}
 .foot-links a:hover,.foot-social a:hover{color:var(--deep-ink)}
 .foot-social{display:flex;gap:14px}
-.foot-social svg{width:20px;height:20px;display:block}
-.foot-legal{grid-column:1 / -1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;border-top:1px solid var(--deep-rule);padding-top:20px;font-size:.84rem}
-.foot-legal p{margin:0}
-@media (max-width:860px){.foot{grid-template-columns:1fr}}
-.showcase{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:center}
-.mock{position:relative;display:block;color:inherit;text-decoration:none;padding:0 46px 34px 0}
-.mock-screen{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--rule);background:var(--mist);box-shadow:var(--shadow);transform:perspective(1600px) rotateY(-5deg) rotateX(2deg);transform-origin:left center;transition:transform .5s ease,box-shadow .5s ease}
-.mock:hover .mock-screen,.mock:focus-visible .mock-screen{transform:none}
-.mock-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--fog);border-bottom:1px solid var(--rule);font:12px var(--mono);color:var(--stone)}
-.mock-bar i{width:10px;height:10px;border-radius:50%;background:var(--rule)}
-.mock-bar i:first-child{background:var(--dawn)}
-.mock-bar span{margin-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mock-screen img{display:block;width:100%;height:auto}
-.mock-phone{position:absolute;right:0;bottom:0;width:23%;height:auto;border-radius:20px;border:6px solid #1f2e2f;box-shadow:var(--shadow);transition:transform .5s ease}
-.mock:hover .mock-phone{transform:translateY(-8px) rotate(2deg)}
-.mock-cta{position:absolute;left:18px;bottom:54px;display:inline-flex;align-items:center;gap:8px;background:var(--sea);color:var(--on-accent);font-weight:650;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
-.mock-cta svg{width:16px;height:16px}
-.mock:hover .mock-cta,.mock:focus-visible .mock-cta{opacity:1;transform:none}
-@media (hover:none){.mock-cta{opacity:1;transform:none}.mock-screen{transform:none}}
-.showcase-side h3{margin:0 0 14px;font-size:1.3rem}
-.inside{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.inside li{position:relative;padding-left:28px;color:var(--stone)}
-.inside li b{color:var(--ink)}
-.inside li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:2.5px solid var(--sea);border-bottom:2.5px solid var(--sea);transform:rotate(-45deg)}
-.showcase-side .cta-row{margin-top:24px}
-.demos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:56px}
-@media (max-width:1100px){.demos{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.demo.demo-cta{background:linear-gradient(160deg,var(--deep-a),var(--deep-b));border-color:transparent;color:var(--deep-ink)}
-.demo.demo-cta .demo-body{justify-content:center;padding:26px 24px}
-.demo.demo-cta .demo-links .btn{white-space:nowrap;padding:10px 16px;font-size:.95rem}
-@media (max-width:1100px){.demo.demo-cta{grid-column:span 2}}
-@media (max-width:900px){.demo.demo-cta{grid-column:auto}}
-.demo.demo-cta h3{color:var(--deep-ink)}
-.demo.demo-cta p{color:var(--deep-stone)}
-.demo.demo-cta .case-kind{background:rgba(255,255,255,.12);color:var(--deep-ink)}
-.demo-cta .demo-links .btn{color:var(--on-accent)}
-.demo{display:flex;flex-direction:column;background:var(--mist);border:1px solid var(--rule);border-radius:18px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
-.demo:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.demo-img{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--fog);border-bottom:1px solid var(--rule)}
-.demo-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .5s ease}
-.demo:hover .demo-img img{transform:scale(1.03)}
-.demo-live{position:absolute;left:10px;bottom:10px;font:700 10.5px/1 var(--mono);letter-spacing:.12em;padding:5px 8px;border-radius:999px;background:var(--pine);color:#fff}
-.demo-live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#7ee2a8;margin-right:6px;vertical-align:1px}
-.demo-body{display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
-.demo-body .case-kind{align-self:flex-start}
-.demo-body h3{margin:0;font-size:1.1rem}
-.demo-body p{margin:0;color:var(--stone);font-size:.95rem}
-.demo-links{display:flex;gap:18px;margin-top:auto;padding-top:8px;font-weight:650}
-.demo-links a,.svc-demo{color:var(--sea);text-decoration:none}
-.demo-links a:hover,.svc-demo:hover{text-decoration:underline}
-.svc-demo{margin-top:auto;font-weight:650;padding-top:2px}
-@media (max-width:900px){.showcase{grid-template-columns:1fr;gap:32px}.demos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.demos{grid-template-columns:1fr}.mock{padding:0 26px 26px 0}.mock-phone{width:28%;border-width:4px;border-radius:14px}.mock-cta{display:none}}
+.foot-social svg{width:18px;height:18px;display:block}
+.foot-legal{flex-basis:100%;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;border-top:1px solid var(--deep-rule);padding-top:12px;font-size:.8rem}
+.nb{white-space:nowrap}
+.pf{margin-top:12px;border-radius:14px;background:linear-gradient(100deg,var(--sea-soft),var(--dawn-soft));border:1px solid var(--rule);padding:14px 18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
+.pf p{font-size:.98rem;max-width:62ch}
+.pf b{color:var(--sea-deep);font-weight:680}
+.who-name{font-family:var(--font)}
+.btn-ghost-light .num{color:var(--deep-ink);font-weight:600}
+@media (max-width:1020px){.nav a.link{display:none}.nav{gap:10px}}
 </style>
 </head>
 <body>
@@ -385,16 +309,17 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
   <div class="wrap">
     <a class="brand" href="#top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="mark" aria-hidden="true" focusable="false"><defs><clipPath id="hm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#hm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g><g stroke="#ffffff" stroke-opacity=".38" stroke-linecap="round" fill="none" stroke-width="2.2"><path d="M75 66h13M12 74h11M70 85h9"/></g></g></svg>CICTNA RDC</a>
     <nav class="nav" aria-label="Main">
-      <a class="link" href="#services"><span lang="en">Services</span><span lang="fr">Services</span></a>
-      <a class="link" href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span></a>
-      <a class="link" href="#portfolio"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span></a>
-      <a class="link" href="#about"><span lang="en">About</span><span lang="fr">À propos</span></a>
-      <a class="link" href="#faq">FAQ</a>
+      <a class="link" href="#services"><span lang="en">Services</span><span lang="fr">Services</span><span lang="ar">الخدمات</span></a>
+      <a class="link" href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span><span lang="ar">مشاريعنا</span></a>
+      <a class="link" href="/portfolio/"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span><span lang="ar">معرض الأعمال</span></a>
+      <a class="link" href="#about"><span lang="en">About</span><span lang="fr">À propos</span><span lang="ar">من نحن</span></a>
+      <a class="link" href="#faq"><span lang="en">FAQ</span><span lang="fr">FAQ</span><span lang="ar">أسئلة شائعة</span></a>
       <div class="langs" role="group" aria-label="Language">
         <button type="button" data-set="en" aria-pressed="true">EN</button>
         <button type="button" data-set="fr" aria-pressed="false">FR</button>
+        <button type="button" data-set="ar" aria-pressed="false" aria-label="العربية">عربي</button>
       </div>
-      <a class="btn btn-main" href="#contact"><span lang="en">Contact <span class="long">us</span></span><span lang="fr">Contact</span></a>
+      <a class="btn btn-main" href="#contact"><span lang="en">Contact</span><span lang="fr">Contact</span><span lang="ar">تواصل معنا</span></a>
     </nav>
   </div>
 </header>
@@ -441,419 +366,151 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
 
     <div class="wrap">
       <div>
-        <div class="status"><span class="dot" aria-hidden="true"></span><span lang="en">Taking on new projects</span><span lang="fr">Disponible pour de nouveaux projets</span></div>
-        <h1 lang="en"><span class="line">Web apps, APIs, databases.</span><span class="line b">Right down to the machine.</span></h1>
-        <h1 lang="fr"><span class="line">Applis web, API, bases de données.</span><span class="line b">Jusqu'à la machine.</span></h1>
-        <p class="lede" lang="en">Full-stack engineering with tech lead experience. We build web applications and APIs, fix the databases behind them and connect the business systems around them. Our home ground is the hardest layer of all: software that talks to machines on the warehouse floor.</p>
-        <p class="lede" lang="fr">De l'ingénierie full stack, avec une expérience de tech lead. Nous développons des applications web et des API, remettons en état les bases de données qui les portent et connectons les systèmes de gestion qui les entourent. Notre terrain de prédilection, c'est la couche la plus exigeante : le logiciel qui dialogue avec les machines sur le terrain.</p>
+        <div class="status"><span class="dot" aria-hidden="true"></span><span lang="en">Taking on new projects</span><span lang="fr">Disponible pour de nouveaux projets</span><span lang="ar">متاحون لمشاريع جديدة</span></div>
+        <h1>
+          <span lang="en"><span class="line">Web apps, APIs, databases.</span><span class="line b">Right down to the machine.</span></span>
+          <span lang="fr"><span class="line">Applis web, API, bases de données.</span><span class="line b">Jusqu'à la machine.</span></span>
+          <span lang="ar"><span class="line">تطبيقات ويب وقواعد بيانات وربط أنظمة</span><span class="line b">من المتصفح حتى الآلة</span></span>
+        </h1>
+        <p class="lede"><span lang="en">We build web applications, business software and the databases behind them, and connect them to the systems around them. Our home ground is the hardest layer of all: software that talks to machines on the warehouse floor.</span><span lang="fr">Nous développons des applications web, des logiciels de gestion et les bases de données qui les portent, et nous les connectons aux systèmes qui les entourent. Notre terrain de prédilection, c'est la couche la plus exigeante : le logiciel qui dialogue avec les machines sur le terrain.</span><span lang="ar">شركة برمجيات تطوّر تطبيقات الويب وبرامج الإدارة، وتصلح قواعد البيانات المتعبة، وتربط الأنظمة ببعضها. وخبرتنا الأعمق في البرمجيات الصناعية التي تتعامل مباشرة مع الآلات في المستودعات والمصانع.</span></p>
         <div class="cta-row">
-          <a class="btn btn-main" href="#contact">
-            <span lang="en">Tell us about your project</span><span lang="fr">Parlez-nous de votre projet</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <a class="btn btn-soft" href="#services"><span lang="en">See what we do</span><span lang="fr">Nos services</span></a>
-          <a class="btn btn-soft" href="#portfolio"><span lang="en">Try our live demos</span><span lang="fr">Essayer nos démos</span></a>
+          <a class="btn btn-main" href="#contact"><span lang="en">Tell us about your project</span><span lang="fr">Parlez-nous de votre projet</span><span lang="ar">أخبرنا عن مشروعك</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="btn btn-soft" href="/portfolio/"><span lang="en">Try our live demos</span><span lang="fr">Essayer nos démos</span><span lang="ar">جرّب تطبيقاتنا</span></a>
         </div>
         <ul class="facts">
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">Full stack, from browser to machine</span><span lang="fr">Full stack, du navigateur à la machine</span></li>
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">Tech lead experience</span><span lang="fr">Expérience de tech lead</span></li>
-          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">10 years on production systems</span><span lang="fr">10 ans sur des systèmes en production</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">Full stack, from browser to machine</span><span lang="fr">Full stack, du navigateur à la machine</span><span lang="ar">من الواجهة إلى قاعدة البيانات إلى الآلة</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">10 years on production systems</span><span lang="fr">10 ans sur des systèmes en production</span><span lang="ar">خبرة 10 سنوات مع أنظمة تعمل على مدار الساعة</span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span lang="en">English, French and Arabic</span><span lang="fr">Français, anglais et arabe</span><span lang="ar">نعمل بالعربية والفرنسية والإنجليزية</span></li>
         </ul>
       </div>
 
-      <figure class="panel" aria-labelledby="termcap">
+      <figure class="panel" aria-label="Example terminal session">
         <div class="panel-head">
           <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="live"><span class="dot" aria-hidden="true"></span><span lang="en">From browser to machine</span><span lang="fr">Du navigateur à la machine</span></div>
+          <div class="live"><span class="dot" aria-hidden="true"></span><span lang="en">From browser to machine</span><span lang="fr">Du navigateur à la machine</span><span lang="ar">من المتصفح حتى الآلة</span></div>
         </div>
-        <pre class="term" id="term" aria-label="Example terminal session"><span class="ln cmd"><span class="p">$ </span><span class="t">npm run build --prefix customer-portal</span></span><span class="ln out">✓ React build ready in 9.8 s</span><span class="ln cmd"><span class="p">$ </span><span class="t">dotnet test Api.Orders</span></span><span class="ln out">✓ 212 passed <span class="tag">·</span> 0 failed</span><span class="ln cmd"><span class="p">$ </span><span class="t">psql orders -f slow_queries.sql</span></span><span class="ln out">✓ 2 indexes added <span class="tag">·</span> 4.2 s → 38 ms</span><span class="ln cmd"><span class="p">$ </span><span class="t">send-idoc ORDERS05 --to wms</span></span><span class="ln out">✓ 36 orders acknowledged by the WMS</span><span class="ln cmd"><span class="p">$ </span><span class="t">opcua connect opc.tcp://plc-07:4840</span></span><span class="ln out">✓ 312 tags live <span class="tag">·</span> machine online</span></pre>
-        <figcaption id="termcap">
-          <span lang="en">Front end, APIs, databases, business systems, and finally the machines. We work every layer, and the closer it gets to the machine, the more at home we are.</span>
-          <span lang="fr">Front end, API, bases de données, systèmes de gestion, et enfin les machines. Nous travaillons à chaque niveau, et plus on s'approche de la machine, plus nous sommes chez nous.</span>
-        </figcaption>
+        <pre class="term" id="term" dir="ltr"><span class="ln cmd"><span class="p">$ </span><span class="t">npm run build --prefix customer-portal</span></span><span class="ln out">✓ React build ready in 9.8 s</span><span class="ln cmd"><span class="p">$ </span><span class="t">dotnet test Api.Orders</span></span><span class="ln out">✓ 212 passed <span class="tag">·</span> 0 failed</span><span class="ln cmd"><span class="p">$ </span><span class="t">psql orders -f slow_queries.sql</span></span><span class="ln out">✓ 2 indexes added <span class="tag">·</span> 4.2 s → 38 ms</span><span class="ln cmd"><span class="p">$ </span><span class="t">send-idoc ORDERS05 --to wms</span></span><span class="ln out">✓ 36 orders acknowledged by the WMS</span><span class="ln cmd"><span class="p">$ </span><span class="t">opcua connect opc.tcp://plc-07:4840</span></span><span class="ln out">✓ 312 tags live <span class="tag">·</span> machine online</span></pre>
       </figure>
-    </div>
-  </div>
-
-  <div class="ticker" aria-label="Technologies">
-    <div class="ticker-track">
-      <ul><li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>XML and JSON</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC telegrams</li></ul>
-      <ul aria-hidden="true"><li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>XML and JSON</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC telegrams</li></ul>
     </div>
   </div>
 
   <section id="services">
     <div class="wrap">
       <div class="sec-head">
-        <h2><span lang="en">What we take on</span><span lang="fr">Ce que nous prenons en charge</span></h2>
-        <p lang="en">Four kinds of work, from the browser down to the machine. Each one starts with a clear scope we agree on together, so you know what you get before anything begins.</p>
-        <p lang="fr">Quatre types de missions, du navigateur jusqu'à la machine. Chacune commence par un périmètre clair, défini ensemble, pour savoir ce que vous obtenez avant de démarrer.</p>
+        <h2><span lang="en">What we take on</span><span lang="fr">Ce que nous prenons en charge</span><span lang="ar">خدماتنا</span></h2>
+        <p><span lang="en">Six kinds of work. Each starts with a written scope and price, so you know what you get before anything begins.</span><span lang="fr">Six types de missions. Chacune démarre avec un périmètre et un prix écrits, pour savoir ce que vous obtenez avant de commencer.</span><span lang="ar">نتفق معك كتابةً على المطلوب والسعر قبل أن نبدأ، فلا مفاجآت بعد ذلك.</span></p>
       </div>
-
       <div class="services">
         <article class="svc">
-          <div class="svc-top">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/><path d="M13.5 5l-3 14"/></svg></div>
-            <h3><span lang="en">Web applications, APIs and .NET</span><span lang="fr">Applications web, API et .NET</span></h3>
-          </div>
-          <p class="what" lang="en">New web applications and APIs in ASP.NET Core with JavaScript and React front ends, and care for older .NET Framework applications whose original developers have moved on: stabilised, documented, fixed and extended.</p>
-          <p class="what" lang="fr">Nouvelles applications web et API en ASP.NET Core avec des interfaces JavaScript et React, et reprise d'applications .NET Framework dont les développeurs d'origine sont partis : stabilisées, documentées, corrigées et enrichies.</p>
-          <dl class="terms">
-            <dt lang="en">You get</dt><dd lang="en">Working, tested features and code your team can take over</dd>
-            <dt lang="fr">Livrable</dt><dd lang="fr">Des fonctionnalités testées et un code que votre équipe peut reprendre</dd>
-            <dt lang="en">Format</dt><dd lang="en">Per feature, in blocks of days, or as a monthly retainer</dd>
-            <dt lang="fr">Format</dt><dd lang="fr">Par fonctionnalité, par blocs de jours ou au mois</dd>
-          </dl>
-          <a class="svc-demo" href="/portfolio/#project/warehouse-portal"><span lang="en">See it: Warehouse Management Portal →</span><span lang="fr">À voir : Warehouse Management Portal →</span></a>
+          <div class="svc-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/><path d="M13.5 5l-3 14"/></svg></div><h3><span lang="en">Web applications and APIs</span><span lang="fr">Applications web et API</span><span lang="ar">تطبيقات ويب وواجهات برمجية (API)</span></h3></div>
+          <p><span lang="en">New applications in ASP.NET Core with React front ends, and older .NET software stabilised, documented and extended.</span><span lang="fr">Nouvelles applications en ASP.NET Core avec interfaces React, et logiciels .NET anciens stabilisés, documentés et enrichis.</span><span lang="ar">نبني تطبيقات جديدة بـ <bdi class="nb">ASP.NET Core</bdi> و React، ونستلم تطبيقات دوت نت القديمة التي تركها مطوّروها، فنصلحها ونوثّقها ونضيف إليها ما تحتاجه.</span></p>
         </article>
-
         <article class="svc">
-          <div class="svc-top">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V5.5"/><path d="M4.5 12v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V12"/></svg></div>
-            <h3><span lang="en">PostgreSQL health check and rescue</span><span lang="fr">Audit et remise en état PostgreSQL</span></h3>
-          </div>
-          <p class="what" lang="en">Slow queries, bloated tables, a legacy database nobody wants to touch. We review configuration, indexes, queries, backups and access rights, then fix what matters most.</p>
-          <p class="what" lang="fr">Requêtes lentes, tables qui gonflent, une base historique que personne n'ose toucher. Nous passons en revue configuration, index, requêtes, sauvegardes et droits d'accès, puis nous corrigeons l'essentiel.</p>
-          <dl class="terms">
-            <dt lang="en">You get</dt><dd lang="en">A written report and the three highest-impact fixes, applied</dd>
-            <dt lang="fr">Livrable</dt><dd lang="fr">Un rapport écrit et les trois corrections les plus utiles, appliquées</dd>
-            <dt lang="en">Format</dt><dd lang="en">About one week</dd>
-            <dt lang="fr">Format</dt><dd lang="fr">Environ une semaine</dd>
-          </dl>
-          <a class="svc-demo" href="#work"><span lang="en">Read the rescue case →</span><span lang="fr">Lire le cas de remise en état →</span></a>
+          <div class="svc-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><path d="M14 17h6M17 14v6"/></svg></div><h3><span lang="en">Business management software</span><span lang="fr">Logiciels de gestion sur mesure</span><span lang="ar">برامج إدارة حسب الطلب</span></h3></div>
+          <p><span lang="en">Tools shaped around how you work, for clinics, shops, warehouses and restaurants: appointments, stock, orders and invoices on any screen.</span><span lang="fr">Des outils pensés pour votre façon de travailler, pour cabinets, commerces, entrepôts et restaurants : rendez-vous, stock, commandes et factures sur tous les écrans.</span><span lang="ar">برنامج مصمّم لطريقة عملك أنت: عيادة، متجر، مستودع أو مطعم. مواعيد ومخزون وطلبات وفواتير، ويعمل على الحاسوب والجوال.</span></p>
         </article>
-
         <article class="svc">
-          <div class="svc-top">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M10 7h4a3 3 0 0 1 3 3v4"/><path d="M14 17h-4a3 3 0 0 1-3-3v-4"/><path d="M15 12l2 2 2-2"/><path d="M5 12l2-2 2 2"/></svg></div>
-            <h3><span lang="en">WMS and ERP integration</span><span lang="fr">Intégration WMS et ERP</span></h3>
-          </div>
-          <p class="what" lang="en">Keeping orders, stock and movements in step between a warehouse management system, an ERP and the equipment on the floor. New interfaces over REST, XML and JSON, SAP IDoc or file exchange, and repairs to existing ones that keep breaking.</p>
-          <p class="what" lang="fr">Garder commandes, stocks et mouvements cohérents entre un WMS, un ERP et les équipements du site. Nouvelles interfaces en REST, XML et JSON, SAP IDoc ou échange de fichiers, et remise en état d'interfaces qui cassent régulièrement.</p>
-          <dl class="terms">
-            <dt lang="en">You get</dt><dd lang="en">A working interface with error handling, logging and documentation</dd>
-            <dt lang="fr">Livrable</dt><dd lang="fr">Une interface opérationnelle, avec gestion des erreurs, journalisation et documentation</dd>
-            <dt lang="en">Format</dt><dd lang="en">Per interface, or by the day for repairs</dd>
-            <dt lang="fr">Format</dt><dd lang="fr">Par interface, ou à la journée pour les corrections</dd>
-          </dl>
-          <a class="svc-demo" href="/portfolio/#project/integration-toolkit"><span lang="en">See it: Integration Toolkit →</span><span lang="fr">À voir : Integration Toolkit →</span></a>
+          <div class="svc-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M3 9h18"/><path d="M6.5 6.8h.01M9.5 6.8h.01"/><path d="M7 13h6M7 16h10"/></svg></div><h3><span lang="en">Websites for businesses and professionals</span><span lang="fr">Sites web pour entreprises et professionnels</span><span lang="ar">مواقع إلكترونية</span></h3></div>
+          <p><span lang="en">Fast, multilingual sites with booking and contact built in, ready to grow into a full application later.</span><span lang="fr">Des sites rapides et multilingues, avec prise de rendez-vous et contact intégrés, prêts à évoluer vers une application complète.</span><span lang="ar">مواقع سريعة وواضحة للشركات والعيادات وأصحاب المهن، بأكثر من لغة، مع حجز المواعيد ونموذج للتواصل.</span></p>
         </article>
-
         <article class="svc">
-          <div class="svc-top">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="12" rx="1.5"/><path d="M6 10h4M6 14h2"/><path d="M13 9h3M13 15h3"/><circle cx="18.5" cy="9" r="2"/><circle cx="18.5" cy="15" r="2"/></svg></div>
-            <h3><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></h3>
-          </div>
-          <p class="what" lang="en">Reading data from PLCs and OPC UA servers and getting it reliably into a database, a dashboard or a business system. OPC UA subscriptions and events, socket telegram protocols, and logging that tells you when a signal stops arriving.</p>
-          <p class="what" lang="fr">Lire les données des automates et des serveurs OPC UA et les acheminer de façon fiable vers une base, un tableau de bord ou un système de gestion. Abonnements et événements OPC UA, télégrammes sur socket, et une journalisation qui signale quand une donnée cesse d'arriver.</p>
-          <dl class="terms">
-            <dt lang="en">You get</dt><dd lang="en">A tested connector, deployed and documented</dd>
-            <dt lang="fr">Livrable</dt><dd lang="fr">Un connecteur testé, déployé et documenté</dd>
-            <dt lang="en">Format</dt><dd lang="en">Per integration</dd>
-            <dt lang="fr">Format</dt><dd lang="fr">Par intégration</dd>
-          </dl>
-          <a class="svc-demo" href="/portfolio/#project/plant-data-logger"><span lang="en">See it: Plant Data Logger →</span><span lang="fr">À voir : Plant Data Logger →</span></a>
+          <div class="svc-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V5.5"/><path d="M4.5 12v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V12"/></svg></div><h3><span lang="en">PostgreSQL health check and rescue</span><span lang="fr">Audit et remise en état PostgreSQL</span><span lang="ar">صيانة قواعد بيانات PostgreSQL</span></h3></div>
+          <p><span lang="en">Slow queries, bloated tables, a legacy database nobody dares touch. You get a written report and the highest-impact fixes, applied.</span><span lang="fr">Requêtes lentes, tables qui gonflent, base historique que personne n'ose toucher. Vous recevez un rapport écrit et les corrections les plus utiles, appliquées.</span><span lang="ar">قاعدة بياناتك بطيئة، أو تتضخم، أو يخشى الجميع الاقتراب منها؟ نفحصها ونكتب لك تقريراً واضحاً ونصلح أهم المشاكل.</span></p>
+        </article>
+        <article class="svc">
+          <div class="svc-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M10 7h4a3 3 0 0 1 3 3v4"/><path d="M14 17h-4a3 3 0 0 1-3-3v-4"/><path d="M15 12l2 2 2-2"/><path d="M5 12l2-2 2 2"/></svg></div><h3><span lang="en">WMS and ERP integration</span><span lang="fr">Intégration WMS et ERP</span><span lang="ar">ربط أنظمة المستودعات و ERP</span></h3></div>
+          <p><span lang="en">Orders, stock and movements kept in step between warehouse, ERP and equipment, over REST, XML, JSON, SAP IDoc or file exchange.</span><span lang="fr">Commandes, stocks et mouvements cohérents entre entrepôt, ERP et équipements, en REST, XML, JSON, SAP IDoc ou échange de fichiers.</span><span lang="ar">نربط نظام المستودع بنظام ERP وبالمعدات حتى تتطابق الطلبات والمخزون في كل مكان، عبر REST أو XML أو JSON أو <bdi class="nb">SAP IDoc</bdi> أو الملفات.</span></p>
+        </article>
+        <article class="svc">
+          <div class="svc-top"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="12" rx="1.5"/><path d="M6 10h4M6 14h2"/><path d="M13 9h3M13 15h3"/><circle cx="18.5" cy="9" r="2"/><circle cx="18.5" cy="15" r="2"/></svg></div><h3><span lang="en">Industrial data and control</span><span lang="fr">Données et pilotage industriels</span><span lang="ar">البرمجيات الصناعية</span></h3></div>
+          <p><span lang="en">PLC and OPC UA data delivered reliably to a database, a dashboard or a business system, with an alert when a signal stops. SCADA work when needed.</span><span lang="fr">Les données des automates et serveurs OPC UA acheminées de façon fiable vers une base, un tableau de bord ou un système de gestion, avec une alerte dès qu'une donnée manque. SCADA si besoin.</span><span lang="ar">نقرأ بيانات أجهزة PLC وخوادم <bdi class="nb">OPC UA</bdi> ونحفظها في قاعدة بيانات أو نعرضها على لوحة متابعة، وننبّهك فور انقطاع أي إشارة. ونعمل على أنظمة SCADA أيضاً.</span></p>
         </article>
       </div>
-
-      <div class="note">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="sun" aria-hidden="true" focusable="false"><defs><clipPath id="nm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#nm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g><g stroke="#ffffff" stroke-opacity=".38" stroke-linecap="round" fill="none" stroke-width="2.2"><path d="M75 66h13M12 74h11M70 85h9"/></g></g></svg>
-        <p lang="en"><strong>From a single slow query to a complete platform.</strong> A stubborn interface, a signal that stopped arriving, a feature your team has no time for: every piece of work gets the same care and the same written scope.</p>
-        <p lang="fr"><strong>D'une requête lente à une plateforme complète.</strong> Une interface capricieuse, une donnée qui ne remonte plus, une fonctionnalité que votre équipe n'a pas le temps de faire : chaque mission reçoit le même soin et le même périmètre écrit.</p>
-        <a class="btn btn-main" href="#contact"><span lang="en">Tell us what you need</span><span lang="fr">Dites-nous ce qu'il vous faut</span></a>
+      <div class="flow">
+        <div class="flow-title"><span lang="en">How a project runs</span><span lang="fr">Déroulement d'un projet</span><span lang="ar">خطوات العمل</span></div>
+        <ol class="steps">
+        <li><h3><span lang="en">A short call</span><span lang="fr">Un court échange</span><span lang="ar">مكالمة قصيرة</span></h3><p><span lang="en">Thirty minutes to understand the problem.</span><span lang="fr">Trente minutes pour comprendre le besoin.</span><span lang="ar">نصف ساعة نفهم فيها ما تحتاجه.</span></p></li>
+        <li><h3><span lang="en">A clear proposal</span><span lang="fr">Une proposition claire</span><span lang="ar">عرض مكتوب</span></h3><p><span lang="en">Scope, price and delivery date, in writing.</span><span lang="fr">Périmètre, prix et date de livraison, par écrit.</span><span lang="ar">المطلوب والسعر وموعد التسليم.</span></p></li>
+        <li><h3><span lang="en">The work</span><span lang="fr">La réalisation</span><span lang="ar">التنفيذ</span></h3><p><span lang="en">Short progress notes as it moves.</span><span lang="fr">De courts points d'avancement.</span><span lang="ar">نبقيك على اطلاع بما أُنجز.</span></p></li>
+        <li><h3><span lang="en">Handover</span><span lang="fr">La remise</span><span lang="ar">التسليم</span></h3><p><span lang="en">Documentation your team can use, and support if you want it.</span><span lang="fr">Une documentation exploitable, et un support si besoin.</span><span lang="ar">مع توثيق واضح، ودعم إن احتجت.</span></p></li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <section id="work" style="padding-top:24px">
+  <section id="work">
     <div class="wrap">
       <div class="sec-head">
-        <h2><span lang="en">Selected work</span><span lang="fr">Réalisations</span></h2>
-        <p lang="en">A few projects from the last ten years. Client names stay private, the work speaks for itself.</p>
-        <p lang="fr">Quelques projets des dix dernières années. Les noms des clients restent confidentiels, le travail parle de lui-même.</p>
+        <h2><span lang="en">Selected work</span><span lang="fr">Réalisations</span><span lang="ar">مشاريع أنجزناها</span></h2>
+        <p><span lang="en">Client names stay private. The work speaks for itself.</span><span lang="fr">Les noms des clients restent confidentiels. Le travail parle de lui-même.</span><span lang="ar">نحتفظ بأسماء عملائنا لأنفسنا، وهذه نماذج مما عملنا عليه.</span></p>
       </div>
       <div class="cases">
         <article class="case">
-          <div class="case-kind"><span lang="en">Industrial software</span><span lang="fr">Logiciel industriel</span></div>
-          <h3><span lang="en">Control software for automated storage machines</span><span lang="fr">Logiciel de pilotage de machines de stockage automatisées</span></h3>
-          <p lang="en">Designed and built the full control software for a vertical automated storage system, from an empty whiteboard to live sites: the machine model, PLC telegrams over TCP, OPC UA events, storage and retrieval strategies per client, recovery from machine faults, and the interface to each site's WMS.</p>
-          <p lang="fr">Conception et développement de tout le logiciel de pilotage d'un système de stockage vertical automatisé, du tableau blanc vide jusqu'aux sites en production : modèle de la machine, télégrammes automate sur TCP, événements OPC UA, stratégies de stockage et de sortie par client, reprise sur incident machine et interface avec le WMS de chaque site.</p>
-          <ul class="case-out"><li lang="en">Running on sites in Europe, the US and China</li><li lang="fr">En service en Europe, aux États-Unis et en Chine</li><li lang="en">7 sites supported today, up to 6 machines each</li><li lang="fr">7 sites suivis aujourd'hui, jusqu'à 6 machines chacun</li></ul>
+          <div class="case-kind"><span lang="en">Industrial software</span><span lang="fr">Logiciel industriel</span><span lang="ar">برمجيات صناعية</span></div>
+          <h3><span lang="en">Control software for automated storage machines</span><span lang="fr">Logiciel de pilotage de machines de stockage automatisées</span><span lang="ar">برنامج تشغيل آلات التخزين الآلي</span></h3>
+          <p><span lang="en">Built from a blank page to live sites: the machine model, PLC telegrams over TCP, OPC UA events, storage strategies and the link to each site's WMS.</span><span lang="fr">Développé de la page blanche aux sites en production : modèle de la machine, télégrammes automate sur TCP, événements OPC UA, stratégies de stockage et lien avec le WMS de chaque site.</span><span lang="ar">كتبنا البرنامج كاملاً من أول سطر: التواصل مع أجهزة PLC، أحداث <bdi class="nb">OPC UA</bdi>، خطط التخزين والاسترجاع، والربط مع نظام المستودع في كل موقع.</span></p>
+          <div class="case-out"><span lang="en">Running in Europe, the US and China</span><span lang="fr">En service en Europe, aux États-Unis et en Chine</span><span lang="ar">يعمل اليوم في أوروبا وأمريكا والصين</span></div>
         </article>
         <article class="case">
-          <div class="case-kind"><span lang="en">PostgreSQL rescue</span><span lang="fr">Remise en état PostgreSQL</span></div>
-          <h3><span lang="en">Bringing a failing logistics database back to health</span><span lang="fr">Remettre sur pied la base d'un logisticien</span></h3>
-          <p lang="en">A warehouse system was losing stock accuracy and leaving orders stuck. A forensic review found a missing search path in 125 of 128 database functions, a wrong table reference, out-of-sync sequences and stale stock reservations. Every fix was made backup first and verified after.</p>
-          <p lang="fr">Un système d'entrepôt perdait la justesse de ses stocks et laissait des commandes bloquées. Une analyse approfondie a révélé un search path manquant dans 125 des 128 fonctions, une mauvaise référence de table, des séquences désynchronisées et des réservations obsolètes. Chaque correction a été faite sauvegarde d'abord, vérification ensuite.</p>
-          <ul class="case-out"><li lang="en">Stuck orders cleared, stock back in line</li><li lang="fr">Commandes débloquées, stocks remis d'aplomb</li><li lang="en">Led to the client commissioning a new system</li><li lang="fr">A conduit le client à commander un nouveau système</li></ul>
+          <div class="case-kind"><span lang="en">PostgreSQL rescue</span><span lang="fr">Remise en état PostgreSQL</span><span lang="ar">قواعد بيانات</span></div>
+          <h3><span lang="en">Bringing a failing logistics database back to health</span><span lang="fr">Remettre sur pied la base d'un logisticien</span><span lang="ar">إنقاذ قاعدة بيانات شركة لوجستية</span></h3>
+          <p><span lang="en">A forensic review found a missing search path in 125 of 128 functions, out-of-sync sequences and stale stock reservations. Every fix was made backup first and verified after.</span><span lang="fr">Une analyse approfondie a révélé un search path manquant dans 125 des 128 fonctions, des séquences désynchronisées et des réservations obsolètes. Chaque correction : sauvegarde d'abord, vérification ensuite.</span><span lang="ar">كان المخزون غير دقيق والطلبات تتوقف دون سبب واضح. وجدنا الخلل في 125 دالة من أصل 128 وأصلحناه خطوة خطوة، مع نسخة احتياطية قبل كل تعديل وتحقق بعده.</span></p>
+          <div class="case-out"><span lang="en">Stuck orders cleared, stock back in line</span><span lang="fr">Commandes débloquées, stocks remis d'aplomb</span><span lang="ar">عادت الطلبات إلى مسارها والمخزون إلى دقته</span></div>
         </article>
         <article class="case">
-          <div class="case-kind"><span lang="en">Web application</span><span lang="fr">Application web</span></div>
-          <h3><span lang="en">A new warehouse management web application</span><span lang="fr">Une nouvelle application web de gestion d'entrepôt</span></h3>
-          <p lang="en">After the rescue, we proposed a replacement, built the mock-ups and presentations that won the client over, then wrote the specification and the application: ASP.NET Core, Entity Framework Core and PostgreSQL, with historised stock movements per product, batch and location.</p>
-          <p lang="fr">Après le sauvetage, nous avons proposé un remplaçant, réalisé les maquettes et les présentations qui ont convaincu le client, puis rédigé la spécification et développé l'application : ASP.NET Core, Entity Framework Core et PostgreSQL, avec des mouvements de stock historisés par produit, lot et emplacement.</p>
-          <ul class="case-out"><li lang="en">From idea to delivery by one engineer</li><li lang="fr">De l'idée à la livraison par un seul ingénieur</li><li lang="en">Client change requests handled through a written spec</li><li lang="fr">Demandes d'évolution gérées par une spécification écrite</li></ul>
+          <div class="case-kind"><span lang="en">Web application</span><span lang="fr">Application web</span><span lang="ar">تطبيق ويب</span></div>
+          <h3><span lang="en">A new warehouse management web application</span><span lang="fr">Une nouvelle application web de gestion d'entrepôt</span><span lang="ar">نظام جديد لإدارة المستودعات</span></h3>
+          <p><span lang="en">After the rescue we proposed a replacement, won the client over with mock-ups, then wrote the specification and the application in ASP.NET Core and PostgreSQL.</span><span lang="fr">Après le sauvetage, nous avons proposé un remplaçant, convaincu le client avec des maquettes, puis rédigé la spécification et développé l'application en ASP.NET Core et PostgreSQL.</span><span lang="ar">بعد إصلاح القاعدة القديمة اقترحنا على العميل نظاماً جديداً، وعرضنا عليه نماذج أولية فوافق، ثم كتبنا المواصفات وبنينا التطبيق بـ <bdi class="nb">ASP.NET Core</bdi> و PostgreSQL.</span></p>
+          <div class="case-out"><span lang="en">From idea to delivery by one engineer</span><span lang="fr">De l'idée à la livraison par un seul ingénieur</span><span lang="ar">من الفكرة إلى التسليم بمهندس واحد</span></div>
         </article>
         <article class="case">
-          <div class="case-kind"><span lang="en">ERP integration</span><span lang="fr">Intégration ERP</span></div>
-          <h3><span lang="en">SAP to warehouse floor for a beverage producer</span><span lang="fr">De SAP au terrain pour un producteur de boissons</span></h3>
-          <p lang="en">Site warehouse software following pallets of bottles from production to storage to shipping, with SAP acting as the WMS. Orders and confirmations travel between SAP and the floor as IDocs, so planners and operators always see the same stock.</p>
-          <p lang="fr">Logiciel d'entrepôt de site qui suit les palettes de bouteilles de la production au stockage puis à l'expédition, avec SAP dans le rôle du WMS. Ordres et confirmations circulent entre SAP et le terrain sous forme d'IDocs, pour que planificateurs et opérateurs voient le même stock.</p>
-          <ul class="case-out"><li lang="en">Production, storage and shipping in one flow</li><li lang="fr">Production, stockage et expédition dans un seul flux</li><li lang="en">SAP IDoc in both directions</li><li lang="fr">IDoc SAP dans les deux sens</li></ul>
+          <div class="case-kind"><span lang="en">ERP integration</span><span lang="fr">Intégration ERP</span><span lang="ar">ربط مع SAP</span></div>
+          <h3><span lang="en">SAP to warehouse floor for a manufacturer</span><span lang="fr">De SAP au terrain pour un industriel</span><span lang="ar">ربط خطوط الإنتاج بنظام SAP</span></h3>
+          <p><span lang="en">Site software following pallets from production to storage to shipping, with orders and confirmations travelling between SAP and the floor as IDocs.</span><span lang="fr">Logiciel de site qui suit les palettes de la production au stockage puis à l'expédition, avec ordres et confirmations échangés entre SAP et le terrain sous forme d'IDocs.</span><span lang="ar">برنامج يتابع المنصّات من الإنتاج إلى التخزين ثم الشحن، ويتبادل الأوامر والتأكيدات مع SAP عبر IDoc، فيرى المخطِّط والعامل الأرقام نفسها.</span></p>
+          <div class="case-out"><span lang="en">SAP IDoc in both directions</span><span lang="fr">IDoc SAP dans les deux sens</span><span lang="ar">تبادل في الاتجاهين مع SAP</span></div>
         </article>
+      </div>
+      <div class="pf">
+        <p><span lang="en"><b>Seven apps you can try right now.</b> Warehouse, industrial, clinic and integration tools, all running live in our portfolio.</span><span lang="fr"><b>Sept applications à essayer tout de suite.</b> Entrepôt, industrie, cabinet médical et intégration, toutes en ligne dans notre portfolio.</span><span lang="ar"><b>سبعة تطبيقات يمكنك تجربتها الآن.</b> للمستودعات والمصانع والعيادات وربط الأنظمة، وكلها تعمل مباشرة في معرض أعمالنا.</span></p>
+        <a class="btn btn-main" href="/portfolio/"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span><span lang="ar">افتح معرض الأعمال</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
     </div>
   </section>
 
-  <section id="portfolio" style="padding-top:24px">
+  <section id="about">
     <div class="wrap">
       <div class="sec-head">
-        <h2><span lang="en">Try the work, live</span><span lang="fr">Essayez nos réalisations, en direct</span></h2>
-        <p lang="en">Reading about software only goes so far. Our portfolio is a small retro desktop you can click through: seven apps, all running live, and the engineering behind each one.</p>
-        <p lang="fr">Lire une description ne suffit pas. Notre portfolio est un petit bureau rétro à explorer : sept applications, toutes en ligne, et l'ingénierie derrière chacune.</p>
-      </div>
-      <div class="showcase">
-        <a class="mock" href="/portfolio/">
-          <span class="mock-screen">
-            <span class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>cictnardc.net/portfolio</span></span>
-            <img src="portfolio-desktop.jpg" alt="The CICTNA OS portfolio: a retro desktop showing our apps with live demos" width="1600" height="1000" loading="lazy">
-          </span>
-          <img class="mock-phone" src="portfolio-phone.jpg" alt="" width="780" height="1328" loading="lazy">
-          <span class="mock-cta"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-        </a>
-        <div class="showcase-side">
-          <h3><span lang="en">What's inside</span><span lang="fr">Ce que vous y trouverez</span></h3>
-          <ul class="inside">
-            <li><span lang="en"><b>Seven apps</b>, all with a live demo you can use right now</span><span lang="fr"><b>Sept applications</b>, toutes avec une démo utilisable tout de suite</span></li>
-            <li><span lang="en">A working PLC telegram encoder, straight from our tray store controller</span><span lang="fr">Un encodeur de télégrammes automate fonctionnel, tiré de notre contrôleur de magasin</span></li>
-            <li><span lang="en">Our track record: ten years, seven live sites, three continents</span><span lang="fr">Nos références : dix ans, sept sites en exploitation, trois continents</span></li>
-            <li><span lang="en">Book a call, our CV in English or French, and a small game</span><span lang="fr">Prise de rendez-vous, notre CV en français ou en anglais, et un petit jeu</span></li>
-            <li><span lang="en">In English and French, on desktop and phone</span><span lang="fr">En français et en anglais, sur ordinateur et sur mobile</span></li>
-          </ul>
-          <div class="cta-row">
-            <a class="btn btn-main" href="/portfolio/"><span lang="en">Open the portfolio</span><span lang="fr">Ouvrir le portfolio</span>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            <a class="btn btn-soft" href="/portfolio/quick.html"><span lang="en">One-page version</span><span lang="fr">Version une page</span></a>
-          </div>
-        </div>
-      </div>
-      <div class="demos">
-        <article class="demo">
-          <a class="demo-img" href="https://integration-toolkit-eight.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/integration-toolkit.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">WMS and ERP integration</span><span lang="fr">Intégration WMS et ERP</span></div>
-            <h3>Integration Toolkit</h3>
-            <p lang="en">Map how your ERP, WMS, PLCs and partners exchange data, cut a link to see what gets lost, fix weak spots in one click, and export a spec and starter code.</p><p lang="fr">Cartographiez les échanges entre ERP, WMS, automates et partenaires, coupez un lien pour voir ce qui se perd, corrigez les points faibles en un clic, et exportez spécification et code.</p>
-            <div class="demo-links"><a href="https://integration-toolkit-eight.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/integration-toolkit"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo">
-          <a class="demo-img" href="https://tray-store-controller.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/tray-store-controller.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></div>
-            <h3>Tray Store Controller</h3>
-            <p lang="en">The controller of an automated tray store: retrieval planning, PLC telegrams and recovery that never runs a move twice.</p><p lang="fr">Le contrôleur d'un magasin automatisé à plateaux : planification des sorties, télégrammes automate et reprise qui n'exécute jamais deux fois un mouvement.</p>
-            <div class="demo-links"><a href="https://tray-store-controller.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/tray-store-controller"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo">
-          <a class="demo-img" href="https://plant-data-logger.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/plant-data-logger.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Industrial data connectors</span><span lang="fr">Connecteurs de données industrielles</span></div>
-            <h3>Plant Data Logger</h3>
-            <p lang="en">Water treatment values from the PLCs into PostgreSQL: live trends, alarms, network-drop buffering and nightly reports, in English and Arabic.</p><p lang="fr">Les valeurs d'une station de traitement d'eau, des automates vers PostgreSQL : tendances, alarmes, tampon en cas de coupure et rapports nocturnes, en anglais et en arabe.</p>
-            <div class="demo-links"><a href="https://plant-data-logger.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/plant-data-logger"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo">
-          <a class="demo-img" href="https://warehouse-portal-demo.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/warehouse-portal.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Web applications and .NET</span><span lang="fr">Applications web et .NET</span></div>
-            <h3>Warehouse Management Portal</h3>
-            <p lang="en">Orders, stock per batch and location, storage costs and a full movement history. ASP.NET Core and PostgreSQL.</p><p lang="fr">Commandes, stock par lot et emplacement, coûts de stockage et historique complet des mouvements. ASP.NET Core et PostgreSQL.</p>
-            <div class="demo-links"><a href="https://warehouse-portal-demo.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/warehouse-portal"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo">
-          <a class="demo-img" href="https://warehouse-dashboard-umber.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/warehouse-dashboard.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
-            <h3>Warehouse Control Room</h3>
-            <p lang="en">Fifty machines, live alarms you can acknowledge, stock and orders on one screen. Press Simulate a fault and watch it clear.</p><p lang="fr">Cinquante machines, des alarmes à acquitter, le stock et les commandes sur un écran. Simulez une panne et regardez-la se résoudre.</p>
-            <div class="demo-links"><a href="https://warehouse-dashboard-umber.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/warehouse-dashboard"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo">
-          <a class="demo-img" href="https://gp-doctor-office.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/gp-office.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
-            <h3>Mon Cabinet</h3>
-            <p lang="en">Easy-to-read practice software for a GP: patient files, consultations, prescriptions and certificates to print. Demo code 1234.</p><p lang="fr">Un logiciel de cabinet lisible pour médecin généraliste : dossiers, consultations, ordonnances et certificats à imprimer. Code de démo 1234.</p>
-            <div class="demo-links"><a href="https://gp-doctor-office.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/gp-office"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo">
-          <a class="demo-img" href="https://dental-clinic-demo-six-rouge.vercel.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="/portfolio/assets/shots/dental-clinic.jpg" alt="" loading="lazy" width="1280" height="800"><span class="demo-live">LIVE</span></a>
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Web applications</span><span lang="fr">Applications web</span></div>
-            <h3>Dental Clinic Manager</h3>
-            <p lang="en">Patients, appointments, treatments on a dental chart, payments and printable invoices for a dental practice.</p><p lang="fr">Patients, rendez-vous, soins sur schéma dentaire, paiements et factures imprimables pour un cabinet dentaire.</p>
-            <div class="demo-links"><a href="https://dental-clinic-demo-six-rouge.vercel.app" target="_blank" rel="noopener"><span lang="en">Live demo ↗</span><span lang="fr">Démo en ligne ↗</span></a><a href="/portfolio/#project/dental-clinic"><span lang="en">Details</span><span lang="fr">Détails</span></a></div>
-          </div>
-        </article>
-        <article class="demo demo-cta">
-          <div class="demo-body">
-            <div class="case-kind"><span lang="en">Your project</span><span lang="fr">Votre projet</span></div>
-            <h3><span lang="en">Your app could be next</span><span lang="fr">Votre application pourrait être la prochaine</span></h3>
-            <p lang="en">Tell us what slows your operation down. The first call is free, and you get a clickable proof early, like the ones above.</p>
-            <p lang="fr">Dites-nous ce qui freine votre activité. Le premier appel est gratuit, et vous recevez vite une preuve cliquable, comme celles ci-dessus.</p>
-            <div class="demo-links"><a class="btn btn-main" href="#contact"><span lang="en">Start a conversation</span><span lang="fr">Démarrer la discussion</span></a></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="why" style="padding-top:24px">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2><span lang="en">Why teams bring us in</span><span lang="fr">Pourquoi on fait appel à nous</span></h2>
-        <p lang="en">Most projects stall at the seams between systems, where no single specialist feels at home. That is where we spend most of our time.</p>
-        <p lang="fr">La plupart des projets bloquent à la jonction entre deux systèmes, là où aucun spécialiste ne se sent chez lui. C'est là que nous passons l'essentiel de notre temps.</p>
-      </div>
-      <div class="why-grid">
-        <article class="why">
-          <h3><span lang="en">Full stack, end to end</span><span lang="fr">Full stack, de bout en bout</span></h3>
-          <p lang="en">From JavaScript and React front ends, through C# services, APIs and PostgreSQL, down to PLC protocols. One person who sees the whole chain instead of one layer of it.</p>
-          <p lang="fr">Des interfaces JavaScript et React, en passant par les services C#, les API et PostgreSQL, jusqu'aux protocoles automates. Une seule personne qui voit toute la chaîne, pas une seule couche.</p>
-          <div class="stack-line">React · REST · C# · .NET · PostgreSQL · OPC UA · PLC</div>
-        </article>
-        <article class="why">
-          <h3><span lang="en">Tech lead experience</span><span lang="fr">Expérience de tech lead</span></h3>
-          <p lang="en">Years of owning architecture, setting standards, reviewing code and leading support for sites that run around the clock. We can lead a piece of work, not only carry it out.</p>
-          <p lang="fr">Des années à porter l'architecture, fixer les standards, relire le code et piloter le support de sites qui tournent jour et nuit. Nous pouvons mener un chantier, pas seulement l'exécuter.</p>
-          <div class="stack-line"><span lang="en">architecture · code review · support lead</span><span lang="fr">architecture · revue de code · pilotage du support</span></div>
-        </article>
-        <article class="why">
-          <h3><span lang="en">The complicated stuff</span><span lang="fr">Les sujets compliqués</span></h3>
-          <p lang="en">Undocumented legacy code, systems that cannot stop for maintenance, bugs that only show up under load. The problems other people have given up on are usually the ones we like best.</p>
-          <p lang="fr">Du code historique sans documentation, des systèmes qu'on ne peut pas arrêter, des bugs qui n'apparaissent qu'en charge. Les problèmes que d'autres ont abandonnés sont souvent ceux que nous préférons.</p>
-          <div class="stack-line"><span lang="en">legacy · 24/7 sites · hard bugs</span><span lang="fr">legacy · sites 24/7 · bugs difficiles</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="how" style="padding-top:24px">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2><span lang="en">How a project runs</span><span lang="fr">Déroulement d'un projet</span></h2>
-        <p lang="en">No open-ended hours and no surprises. You see the scope and the price in writing before any work begins.</p>
-        <p lang="fr">Pas d'heures sans fin ni de surprises. Vous voyez le périmètre et le prix par écrit avant que le travail commence.</p>
-      </div>
-      <ol class="steps">
-        <li>
-          <h3><span lang="en">A short call</span><span lang="fr">Un court échange</span></h3>
-          <p lang="en">Thirty minutes to understand the problem and what done looks like.</p>
-          <p lang="fr">Trente minutes pour comprendre le problème et le résultat attendu.</p>
-        </li>
-        <li>
-          <h3><span lang="en">A clear proposal</span><span lang="fr">Une proposition claire</span></h3>
-          <p lang="en">A written scope, a price and a delivery date.</p>
-          <p lang="fr">Un périmètre écrit, un prix et une date de livraison.</p>
-        </li>
-        <li>
-          <h3><span lang="en">The work</span><span lang="fr">La réalisation</span></h3>
-          <p lang="en">Short progress notes as it moves, so you are never guessing.</p>
-          <p lang="fr">De courts points d'avancement, pour que vous ne soyez jamais dans le flou.</p>
-        </li>
-        <li>
-          <h3><span lang="en">Handover</span><span lang="fr">La remise</span></h3>
-          <p lang="en">Documentation your team can use, and support afterwards if you want it.</p>
-          <p lang="fr">Une documentation exploitable par votre équipe, et un support ensuite si besoin.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="about" style="padding-top:24px">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2><span lang="en">About</span><span lang="fr">À propos</span></h2>
+        <h2><span lang="en">About</span><span lang="fr">À propos</span><span lang="ar">من نحن</span></h2>
       </div>
       <div class="about">
         <div class="person">
-          <img src="talel.jpg" width="320" height="320" alt="Talel Ksiksi">
-          <div class="who">
-            <div class="who-name">Talel Ksiksi</div>
-            <div class="who-role"><span lang="en">Founder and lead engineer</span><span lang="fr">Fondateur et ingénieur principal</span></div>
-          </div>
-          <div class="who-links">
-            <a class="btn btn-soft small" href="https://www.linkedin.com/in/ksiksi" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.55 4.77 5.86v5.59h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.61v5.05h-4v-11z"/></svg>
-              LinkedIn
-            </a>
+          <img src="talel.jpg" width="150" height="150" alt="Talel Ksiksi">
+          <div>
+            <div class="who-name"><span lang="en">Talel Ksiksi</span><span lang="fr">Talel Ksiksi</span><span lang="ar">طلال كسيكسي</span></div>
+            <div class="who-role"><span lang="en">Founder and lead engineer</span><span lang="fr">Fondateur et ingénieur principal</span><span lang="ar">المؤسس والمسؤول التقني</span></div>
+            <a class="who-link" href="https://www.linkedin.com/in/ksiksi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.55 4.77 5.86v5.59h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.61v5.05h-4v-11z"/></svg>LinkedIn</a>
           </div>
         </div>
         <div class="bio">
-          <p class="bio-lead" lang="en">CICTNA RDC is the company of Talel Ksiksi, a software engineer who has spent ten years building and running the software behind automated warehouses.</p>
-          <p class="bio-lead" lang="fr">CICTNA RDC est la société de Talel Ksiksi, ingénieur logiciel qui conçoit et fait tourner depuis dix ans le logiciel d'entrepôts automatisés.</p>
-          <p lang="en">He joined a Dutch automation company when its flagship control software was only a name on a whiteboard, and took it all the way to live sites in Europe, the United States and China as its architect, developer and support lead. Along the way came the web portals operators use, the statistics pages managers read, the WMS and SAP interfaces, and the PostgreSQL databases underneath.</p>
-          <p lang="fr">Il a rejoint une société néerlandaise d'automatisation quand son logiciel de pilotage phare n'était encore qu'un nom sur un tableau blanc, et l'a mené jusqu'aux sites en production en Europe, aux États-Unis et en Chine, comme architecte, développeur et responsable du support. En chemin sont venus les portails web des opérateurs, les pages de statistiques des responsables, les interfaces WMS et SAP, et les bases PostgreSQL qui portent le tout.</p>
-          <p lang="en">That background shapes how every job is handled: when a site runs around the clock, software has to keep working when nobody is watching. He works in English, French and Arabic, with clients across Europe, the Gulf and North America.</p>
-          <p lang="fr">C'est ce qui guide chaque mission : quand un site tourne jour et nuit, le logiciel doit tenir sans surveillance. Il travaille en français, en anglais et en arabe, avec des clients en Europe, dans le Golfe et en Amérique du Nord.</p>
-          <ul class="stack">
-            <li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC</li>
-          </ul>
+          <p class="bio-lead"><span lang="en">CICTNA RDC is the company of Talel Ksiksi, a software engineer who has spent ten years building and running the software behind automated warehouses.</span><span lang="fr">CICTNA RDC est la société de Talel Ksiksi, ingénieur logiciel qui conçoit et fait tourner depuis dix ans le logiciel d'entrepôts automatisés.</span><span lang="ar">CICTNA RDC هي شركة طلال كسيكسي، الذي يعمل منذ عشر سنوات على تطوير برمجيات المستودعات الآلية وتشغيلها.</span></p>
+          <p><span lang="en">He took a Dutch automation company's control software from a name on a whiteboard to live sites on three continents, as its architect, developer and support lead. That shapes every job: when a site runs around the clock, software has to keep working when nobody is watching.</span><span lang="fr">Il a mené le logiciel de pilotage d'une société néerlandaise d'automatisation d'un simple nom sur un tableau blanc à des sites en production sur trois continents, comme architecte, développeur et responsable du support. C'est ce qui guide chaque mission : quand un site tourne jour et nuit, le logiciel doit tenir sans surveillance.</span><span lang="ar">بدأ مع شركة أتمتة هولندية حين كان برنامج التحكم الرئيسي لديها مجرد فكرة، وبقي معه حتى صار يعمل في مواقع بثلاث قارات، وكان مصمّمه ومطوّره والمسؤول عن دعمه. لذلك نعرف جيداً أن البرنامج الذي يعمل ليل نهار يجب أن يُكتب بحيث لا يحتاج إلى من يراقبه.</span></p>
+          <ul class="stack"><li>JavaScript</li><li>React</li><li>ASP.NET Core</li><li>C#</li><li>.NET</li><li>REST</li><li>PostgreSQL</li><li>Docker</li><li>SAP IDoc</li><li>ERP</li><li>WMS</li><li>OPC UA</li><li>PLC</li><li>SCADA</li></ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="faq" style="padding-top:24px">
+  <section id="faq">
     <div class="wrap">
       <div class="sec-head">
-        <h2><span lang="en">Questions clients ask</span><span lang="fr">Questions fréquentes</span></h2>
-        <p lang="en">The practical side, answered up front.</p>
-        <p lang="fr">Le côté pratique, répondu d'avance.</p>
+        <h2><span lang="en">Questions clients ask</span><span lang="fr">Questions fréquentes</span><span lang="ar">أسئلة شائعة</span></h2>
       </div>
       <div class="faq">
-        <details>
-          <summary><span lang="en">How do you charge?</span><span lang="fr">Comment facturez-vous ?</span></summary>
-          <p lang="en">Whichever way suits you. A well-defined task gets one agreed price before we start. Larger projects are split into phases, each priced up front and invoiced when you accept it, so you only ever pay for work you have seen. For ongoing help we work at a day rate or a monthly block of days, invoiced at the end of each month with a short summary of the time spent.</p>
-          <p lang="fr">Comme cela vous arrange. Une tâche bien définie a un prix convenu avant de commencer. Les projets plus larges sont découpés en phases, chacune chiffrée d'avance et facturée à sa validation, pour ne payer que ce que vous avez vu livré. Pour un accompagnement continu, nous travaillons au tarif journalier ou par bloc de jours mensuel, facturé en fin de mois avec un court récapitulatif du temps passé.</p>
-        </details>
-        <details>
-          <summary><span lang="en">How do invoices and payment work?</span><span lang="fr">Comment se passent la facturation et le paiement ?</span></summary>
-          <p lang="en">Invoices are issued in euros by CICTNA RDC and paid by bank transfer. Payment terms are agreed with you at the start, usually 14 days.</p>
-          <p lang="fr">Les factures sont émises en euros par CICTNA RDC et réglées par virement bancaire. Le délai de paiement est convenu avec vous au départ, généralement 14 jours.</p>
-        </details>
-        <details>
-          <summary><span lang="en">How soon can you start?</span><span lang="fr">Sous quel délai pouvez-vous commencer ?</span></summary>
-          <p lang="en">Usually straight away. Once the scope is agreed, work can begin within days.</p>
-          <p lang="fr">En général tout de suite. Une fois le périmètre validé, le travail peut démarrer sous quelques jours.</p>
-        </details>
-        <details>
-          <summary><span lang="en">Will you sign an NDA?</span><span lang="fr">Signez-vous un accord de confidentialité ?</span></summary>
-          <p lang="en">Yes, gladly, and before we see any of your code or data. Client names never appear on this site or anywhere else without permission.</p>
-          <p lang="fr">Oui, volontiers, et avant de voir votre code ou vos données. Les noms de nos clients n'apparaissent jamais, ici ou ailleurs, sans leur accord.</p>
-        </details>
-        <details>
-          <summary><span lang="en">Which time zone and hours do you work?</span><span lang="fr">Quel fuseau horaire et quels horaires ?</span></summary>
-          <p lang="en">Central European time (UTC+1), which overlaps comfortably with business hours in Europe and the Gulf. For live systems that cannot wait, we are reachable around the clock.</p>
-          <p lang="fr">Heure d'Europe centrale (UTC+1), ce qui recoupe largement les horaires de bureau en Europe et dans le Golfe. Pour les systèmes en production qui ne peuvent pas attendre, nous sommes joignables jour et nuit.</p>
-        </details>
-        <details>
-          <summary><span lang="en">Which languages do you work in?</span><span lang="fr">Dans quelles langues travaillez-vous ?</span></summary>
-          <p lang="en">English, French and Arabic, for calls, documentation and code comments alike.</p>
-          <p lang="fr">Français, anglais et arabe, pour les échanges, la documentation comme les commentaires de code.</p>
-        </details>
-        <details>
-          <summary><span lang="en">How do you work on our systems remotely?</span><span lang="fr">Comment travaillez-vous à distance sur nos systèmes ?</span></summary>
-          <p lang="en">Through whatever access you already use: your VPN, remote desktop, your Git repositories and ticketing. Changes to production go through your approval, with backups taken first.</p>
-          <p lang="fr">Avec les accès que vous utilisez déjà : votre VPN, le bureau à distance, vos dépôts Git et votre outil de tickets. Les changements en production passent par votre validation, sauvegarde faite au préalable.</p>
-        </details>
+        <details><summary><span lang="en">How do you charge?</span><span lang="fr">Comment facturez-vous ?</span><span lang="ar">كيف تحدّدون السعر؟</span></summary><p><span lang="en">A well-defined task gets one agreed price before we start. Larger projects are split into phases, each priced up front and invoiced once you accept it. Ongoing help runs at an agreed rate, invoiced monthly with a summary of the time spent. Invoices are in euros, paid by bank transfer.</span><span lang="fr">Une tâche bien définie a un prix convenu avant de commencer. Les projets plus larges sont découpés en phases, chacune chiffrée d'avance et facturée à sa validation. L'accompagnement continu se fait à un tarif convenu, facturé chaque mois avec un récapitulatif du temps passé. Factures en euros, réglées par virement.</span><span lang="ar">إذا كانت المهمة واضحة نتفق على سعر ثابت قبل البدء. المشاريع الكبيرة نقسّمها إلى مراحل، ولكل مرحلة سعرها، ولا تدفع إلا بعد استلامها والموافقة عليها. أما الدعم المستمر فبسعر نتفق عليه، ونرسل فاتورته آخر كل شهر مع بيان بما تم. الفواتير باليورو والدفع بتحويل بنكي.</span></p></details>
+        <details><summary><span lang="en">How soon can you start?</span><span lang="fr">Sous quel délai pouvez-vous commencer ?</span><span lang="ar">متى تستطيعون البدء؟</span></summary><p><span lang="en">Usually straight away. Once the scope is agreed, work can begin within days.</span><span lang="fr">En général tout de suite. Une fois le périmètre validé, le travail peut démarrer sous quelques jours.</span><span lang="ar">غالباً فوراً. بعد الاتفاق على المطلوب نبدأ خلال أيام.</span></p></details>
+        <details><summary><span lang="en">Will you sign an NDA?</span><span lang="fr">Signez-vous un accord de confidentialité ?</span><span lang="ar">هل توقّعون اتفاقية عدم إفشاء (NDA)؟</span></summary><p><span lang="en">Yes, gladly, and before we see any of your code or data. Client names never appear on this site or anywhere else without permission.</span><span lang="fr">Oui, volontiers, et avant de voir votre code ou vos données. Les noms de nos clients n'apparaissent jamais, ici ou ailleurs, sans leur accord.</span><span lang="ar">نعم، ونوقّعها قبل أن نطّلع على أي كود أو بيانات. ولا نذكر اسم أي عميل دون إذنه.</span></p></details>
+        <details><summary><span lang="en">Which time zone and hours do you work?</span><span lang="fr">Quel fuseau horaire et quels horaires ?</span><span lang="ar">ما هي ساعات عملكم؟</span></summary><p><span lang="en">Central European time (UTC+1), which overlaps comfortably with business hours in Europe and the Gulf. For live systems that cannot wait, we are reachable around the clock.</span><span lang="fr">Heure d'Europe centrale (UTC+1), ce qui recoupe largement les horaires de bureau en Europe et dans le Golfe. Pour les systèmes en production qui ne peuvent pas attendre, nous sommes joignables jour et nuit.</span><span lang="ar">نعمل بتوقيت وسط أوروبا (UTC+1)، وهو قريب من أوقات الدوام في أوروبا والخليج. وإذا تعطّل نظام لا يحتمل الانتظار فنحن متاحون في أي وقت.</span></p></details>
+        <details><summary><span lang="en">How do you work on our systems remotely?</span><span lang="fr">Comment travaillez-vous à distance sur nos systèmes ?</span><span lang="ar">كيف تعملون على أنظمتنا عن بُعد؟</span></summary><p><span lang="en">Through whatever access you already use: your VPN, remote desktop, your Git repositories and ticketing. Changes to production go through your approval, with backups taken first.</span><span lang="fr">Avec les accès que vous utilisez déjà : votre VPN, le bureau à distance, vos dépôts Git et votre outil de tickets. Les changements en production passent par votre validation, sauvegarde faite au préalable.</span><span lang="ar">بالطريقة التي تعتمدونها أنتم: VPN، سطح المكتب البعيد، مستودعات Git ونظام التذاكر عندكم. وأي تعديل على النظام الفعلي لا يتم إلا بموافقتكم وبعد أخذ نسخة احتياطية.</span></p></details>
       </div>
     </div>
   </section>
@@ -861,23 +518,19 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
   <section class="contact" id="contact">
     <div class="wrap">
       <div>
-        <h2><span lang="en">Tell us what is broken, or what you need built.</span><span lang="fr">Dites-nous ce qui ne fonctionne pas, ou ce qu'il faut construire.</span></h2>
-        <p lang="en">A few lines are enough to start. We reply within one working day with questions or a first estimate.</p>
-        <p lang="fr">Quelques lignes suffisent pour commencer. Nous répondons sous un jour ouvré avec des questions ou une première estimation.</p>
+        <h2><span lang="en">Tell us what is broken, or what you need built.</span><span lang="fr">Dites-nous ce qui ne fonctionne pas, ou ce qu'il faut construire.</span><span lang="ar">عندك مشكلة في نظامك، أو فكرة تريد تنفيذها؟</span></h2>
+        <p class="intro"><span lang="en">A few lines are enough. We reply within one working day with questions or a first estimate.</span><span lang="fr">Quelques lignes suffisent. Nous répondons sous un jour ouvré avec des questions ou une première estimation.</span><span lang="ar">اكتب لنا بضعة أسطر، وسنردّ عليك خلال يوم عمل بأسئلة أو بتقدير أولي للتكلفة.</span></p>
         <ul class="trust">
-          <li><span lang="en">NDA before we see your code</span><span lang="fr">Confidentialité signée avant d'accéder à votre code</span></li>
-          <li><span lang="en">Reply within one working day</span><span lang="fr">Réponse sous un jour ouvré</span></li>
-          <li><span lang="en">Invoices in euros from our company</span><span lang="fr">Factures en euros émises par notre société</span></li>
-          <li><span lang="en">Reachable around the clock for live systems</span><span lang="fr">Joignables jour et nuit pour les systèmes en production</span></li>
+          <li><span lang="en">NDA before we see your code</span><span lang="fr">Confidentialité signée avant d'accéder à votre code</span><span lang="ar">نوقّع اتفاقية السرّية قبل الاطلاع على أي شيء</span></li>
+          <li><span lang="en">Invoices in euros from our company</span><span lang="fr">Factures en euros émises par notre société</span><span lang="ar">فواتير رسمية باليورو باسم الشركة</span></li>
+          <li><span lang="en">Reachable around the clock for live systems</span><span lang="fr">Joignables jour et nuit pour les systèmes en production</span><span lang="ar">متاحون في أي وقت للأنظمة التي لا تتوقف</span></li>
         </ul>
         <div class="quick">
-          <a class="btn btn-ghost-light" href="https://wa.me/33651287500" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.13-1.35A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.04.8.81-2.97-.2-.3a8.2 8.2 0 1 1 6.91 3.8zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62 1.52.66 2.12.71 2.88.6.46-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/></svg>
-            WhatsApp <span class="num">+33 6 51 28 75 00</span>
-          </a>
+          <a class="btn btn-ghost-light" href="https://wa.me/33651287500" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.13-1.35A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.04.8.81-2.97-.2-.3a8.2 8.2 0 1 1 6.91 3.8zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62 1.52.66 2.12.71 2.88.6.46-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/></svg><span class="num ltr">+33 6 51 28 75 00</span></a>
+          <a class="btn btn-ghost-light" href="https://wa.me/21652132142" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.13-1.35A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.04.8.81-2.97-.2-.3a8.2 8.2 0 1 1 6.91 3.8zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62 1.52.66 2.12.71 2.88.6.46-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/></svg><span class="num ltr">+216 52 132 142</span></a>
           <a class="btn btn-ghost-light" id="bookLink" href="#" target="_blank" rel="noopener" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
-            <span lang="en">Book a 30-minute call</span><span lang="fr">Réserver un appel de 30 minutes</span>
+            <span lang="en">Book a 30-minute call</span><span lang="fr">Réserver un appel de 30 minutes</span><span lang="ar">احجز مكالمة لمدة 30 دقيقة</span>
           </a>
         </div>
       </div>
@@ -885,38 +538,33 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
         <form id="contactForm" novalidate>
           <div class="frow">
             <div class="field">
-              <label for="cf-name"><span lang="en">Your name</span><span lang="fr">Votre nom</span></label>
+              <label for="cf-name"><span lang="en">Your name</span><span lang="fr">Votre nom</span><span lang="ar">الاسم</span></label>
               <input id="cf-name" name="name" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="cf-email"><span lang="en">Your email</span><span lang="fr">Votre e-mail</span></label>
+              <label for="cf-email"><span lang="en">Your email</span><span lang="fr">Votre e-mail</span><span lang="ar">البريد الإلكتروني</span></label>
               <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="cf-company"><span lang="en">Company</span><span lang="fr">Entreprise</span><span lang="ar">الشركة</span> <span class="opt"><span lang="en">(optional)</span><span lang="fr">(facultatif)</span><span lang="ar">(اختياري)</span></span></label>
+              <input id="cf-company" name="company" type="text" autocomplete="organization">
             </div>
           </div>
           <div class="field">
-            <label for="cf-company"><span lang="en">Company</span><span lang="fr">Entreprise</span> <span class="opt"><span lang="en">(optional)</span><span lang="fr">(facultatif)</span></span></label>
-            <input id="cf-company" name="company" type="text" autocomplete="organization">
-          </div>
-          <div class="field">
-            <label for="cf-msg"><span lang="en">What do you need?</span><span lang="fr">De quoi avez-vous besoin ?</span></label>
-            <textarea id="cf-msg" name="message" rows="5" required></textarea>
+            <label for="cf-msg"><span lang="en">What do you need?</span><span lang="fr">De quoi avez-vous besoin ?</span><span lang="ar">كيف يمكننا مساعدتك؟</span></label>
+            <textarea id="cf-msg" name="message" rows="4" required></textarea>
           </div>
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="frow end">
-            <button class="btn btn-main" type="submit" id="cf-send">
-              <span lang="en">Send message</span><span lang="fr">Envoyer le message</span>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
+            <button class="btn btn-main" type="submit" id="cf-send"><span lang="en">Send message</span><span lang="fr">Envoyer le message</span><span lang="ar">إرسال</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
             <p class="fstatus" id="cf-status" role="status" aria-live="polite"></p>
           </div>
-          <p class="privacy" lang="en">We use your details only to reply to your message. They are never shared, sold or added to a mailing list.</p>
-          <p class="privacy" lang="fr">Vos coordonnées servent uniquement à répondre à votre message. Elles ne sont jamais partagées, vendues ni ajoutées à une liste de diffusion.</p>
         </form>
         <div class="meta">
-          <span lang="en">Or write to us directly at</span><span lang="fr">Ou écrivez-nous directement à</span>
-          <a href="mailto:contact@cictnardc.net" id="addr">contact@cictnardc.net</a>
-          <button class="copy" type="button" id="copyBtn"><span lang="en">Copy</span><span lang="fr">Copier</span></button>
-          <br><span lang="en">Central European time (UTC+1). English, French and Arabic.</span><span lang="fr">Heure d'Europe centrale (UTC+1). Français, anglais et arabe.</span>
+          <span lang="en">Or write to us directly at</span><span lang="fr">Ou écrivez-nous directement à</span><span lang="ar">أو راسلنا مباشرة على</span>
+          <a href="mailto:contact@cictnardc.net" id="addr" class="ltr">contact@cictnardc.net</a>
+          <button class="copy" type="button" id="copyBtn"><span lang="en">Copy</span><span lang="fr">Copier</span><span lang="ar">نسخ</span></button>
+          <br><span lang="en">Your details are used only to reply to you. Central European time (UTC+1).</span><span lang="fr">Vos coordonnées servent uniquement à vous répondre. Heure d'Europe centrale (UTC+1).</span><span lang="ar">نستخدم بياناتك للرد عليك فقط. توقيتنا وسط أوروبا (UTC+1).</span>
         </div>
       </div>
     </div>
@@ -925,20 +573,14 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
 
 <footer>
   <div class="wrap foot">
-    <div class="foot-brand">
-      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><clipPath id="fm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#fm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g></g></svg>
-      <div>
-        <div class="foot-name">CICTNA RDC</div>
-        <div class="foot-tag"><span lang="en">Web apps, APIs, databases. Right down to the machine.</span><span lang="fr">Applis web, API, bases de données. Jusqu'à la machine.</span></div>
-      </div>
-    </div>
+    <div class="foot-brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="mark" aria-hidden="true" focusable="false"><defs><clipPath id="fm"><circle cx="50" cy="50" r="50"/></clipPath></defs><g clip-path="url(#fm)"><rect width="100" height="100" fill="#d6e2e5"/><circle cx="50" cy="54" r="25" fill="#e7a982"/><rect y="52" width="100" height="48" fill="#3d6d78"/><g stroke="#f1c09b" stroke-linecap="round" fill="none"><path d="M33 63h34" stroke-width="3.6"/><path d="M39 71.5h22" stroke-width="3.2"/><path d="M44.5 79.5h11" stroke-width="2.8"/></g><g stroke="#ffffff" stroke-opacity=".38" stroke-linecap="round" fill="none" stroke-width="2.2"><path d="M75 66h13M12 74h11M70 85h9"/></g></g></svg>CICTNA RDC</div>
     <nav class="foot-links" aria-label="Footer">
-      <a href="#services"><span lang="en">Services</span><span lang="fr">Services</span></a>
-      <a href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span></a>
-      <a href="/portfolio/"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span></a>
-      <a href="#about"><span lang="en">About</span><span lang="fr">À propos</span></a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact"><span lang="en">Contact</span><span lang="fr">Contact</span></a>
+      <a href="#services"><span lang="en">Services</span><span lang="fr">Services</span><span lang="ar">الخدمات</span></a>
+      <a href="#work"><span lang="en">Work</span><span lang="fr">Réalisations</span><span lang="ar">مشاريعنا</span></a>
+      <a href="/portfolio/"><span lang="en">Portfolio</span><span lang="fr">Portfolio</span><span lang="ar">معرض الأعمال</span></a>
+      <a href="#about"><span lang="en">About</span><span lang="fr">À propos</span><span lang="ar">من نحن</span></a>
+      <a href="#faq"><span lang="en">FAQ</span><span lang="fr">FAQ</span><span lang="ar">أسئلة شائعة</span></a>
+      <a href="#contact"><span lang="en">Contact</span><span lang="fr">Contact</span><span lang="ar">تواصل معنا</span></a>
     </nav>
     <div class="foot-social">
       <a href="https://www.linkedin.com/in/ksiksi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.55 4.77 5.86v5.59h-4v-4.96c0-1.18-.02-2.7-1.7-2.7-1.7 0-1.96 1.28-1.96 2.61v5.05h-4v-11z"/></svg></a>
@@ -946,9 +588,8 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
       <a href="mailto:contact@cictnardc.net" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></a>
     </div>
     <div class="foot-legal">
-      <p>&copy; <span id="yr">2026</span> CICTNA RDC. <span lang="en">All rights reserved.</span><span lang="fr">Tous droits réservés.</span></p>
-      <p lang="en">Working with clients in Europe, the Gulf and North America.</p>
-      <p lang="fr">Avec des clients en Europe, dans le Golfe et en Amérique du Nord.</p>
+      <span><span class="ltr">&copy; <span id="yr">2026</span> CICTNA RDC.</span> <span lang="en">All rights reserved.</span><span lang="fr">Tous droits réservés.</span><span lang="ar">جميع الحقوق محفوظة.</span></span>
+      <span><span lang="en">Working with clients in Europe, the Gulf and North America.</span><span lang="fr">Avec des clients en Europe, dans le Golfe et en Amérique du Nord.</span><span lang="ar">عملاؤنا في أوروبا والخليج وأمريكا الشمالية.</span></span>
     </div>
   </div>
 </footer>
@@ -956,20 +597,36 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
 <script>
 (function(){
   var root=document.documentElement, btns=document.querySelectorAll('.langs button');
-  function set(l){
+  var LANGS=['en','fr','ar'];
+  var TITLES={
+    en:'CICTNA RDC | Full-stack and industrial software engineering',
+    fr:'CICTNA RDC | Ingénierie logicielle full stack et industrielle',
+    ar:'CICTNA RDC | تطوير برمجيات وأنظمة صناعية'
+  };
+  function lang(){ return root.getAttribute('data-lang'); }
+  function pick(o){ return o[lang()] || o.en; }
+  function set(l, remember){
+    if(LANGS.indexOf(l)<0) l='en';
     root.setAttribute('data-lang',l); root.setAttribute('lang',l);
+    root.setAttribute('dir', l==='ar' ? 'rtl' : 'ltr');
+    document.title=TITLES[l];
     btns.forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.set===l));});
-    try{localStorage.setItem('lang',l);}catch(e){}
+    if(remember){ try{localStorage.setItem('lang',l);}catch(e){} }
   }
+  /* order: ?lang= in the address, then the visitor's last choice, then the browser language */
+  var asked=null; try{asked=new URLSearchParams(location.search).get('lang');}catch(e){}
   var saved=null; try{saved=localStorage.getItem('lang');}catch(e){}
-  set(saved || ((navigator.language||'').toLowerCase().indexOf('fr')===0 ? 'fr' : 'en'));
-  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set);});});
+  var nav=(navigator.language||'').toLowerCase().slice(0,2);
+  if(asked && LANGS.indexOf(asked)>=0) set(asked,true);
+  else set(saved || (LANGS.indexOf(nav)>=0 ? nav : 'en'), false);
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set,true);});});
 
   /* terminal typing loop */
   (function(){
     var term=document.getElementById('term');
     if(!term) return;
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(term.offsetParent===null) return;
     var lines=[].slice.call(term.querySelectorAll('.ln'));
     var cmds=lines.map(function(l){ var t=l.querySelector('.t'); return t ? t.textContent : null; });
     var cursor=document.createElement('span'); cursor.className='cursor'; cursor.setAttribute('aria-hidden','true');
@@ -1008,8 +665,14 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
   (function(){
     var ACCESS_KEY = "cc811bda-1648-4e5c-a225-526495a3e84e";
     var form=document.getElementById('contactForm'), st=document.getElementById('cf-status'), send=document.getElementById('cf-send');
-    function fr(){ return root.getAttribute('data-lang')==='fr'; }
-    function say(cls,en,frT){ st.className='fstatus '+(cls||''); st.textContent = fr()?frT:en; }
+    var MSG={
+      missing:{en:'Please add your name, a valid email and a short message.',fr:'Merci d’indiquer votre nom, un e-mail valide et un court message.',ar:'الرجاء كتابة اسمك وبريدك الإلكتروني ورسالة قصيرة.'},
+      off:{en:'The form is not connected yet. Please email contact@cictnardc.net directly.',fr:'Le formulaire n’est pas encore actif. Écrivez-nous directement à contact@cictnardc.net.',ar:'النموذج غير مفعّل بعد. راسلنا مباشرة على contact@cictnardc.net.'},
+      sending:{en:'Sending…',fr:'Envoi en cours…',ar:'جارٍ الإرسال…'},
+      ok:{en:'Thank you. Your message has been sent, and we will reply within one working day.',fr:'Merci. Votre message est bien parti, nous répondons sous un jour ouvré.',ar:'شكراً لك، وصلتنا رسالتك وسنردّ عليك خلال يوم عمل.'},
+      fail:{en:'The message could not be sent. Please email contact@cictnardc.net directly.',fr:'Le message n’a pas pu partir. Écrivez-nous directement à contact@cictnardc.net.',ar:'لم نتمكن من إرسال الرسالة. راسلنا مباشرة على contact@cictnardc.net.'}
+    };
+    function say(cls,key){ st.className='fstatus '+(cls||''); st.textContent=pick(MSG[key]); }
     document.querySelectorAll('a[href="#contact"]').forEach(function(a){
       a.addEventListener('click',function(){ setTimeout(function(){ try{document.getElementById('cf-name').focus({preventScroll:true});}catch(e){} }, 650); });
     });
@@ -1021,12 +684,12 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
         var ok = v.length>0 && (id!=='cf-email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
         el.setAttribute('aria-invalid', String(!ok)); if(!ok && !bad) bad=el;
       });
-      if(bad){ bad.focus(); say('err','Please add your name, a valid email and a short message.','Merci d’indiquer votre nom, un e-mail valide et un court message.'); return; }
-      if(ACCESS_KEY.indexOf('PASTE')===0){ say('err','The form is not connected yet. Please email contact@cictnardc.net directly.','Le formulaire n’est pas encore actif. Écrivez-nous directement à contact@cictnardc.net.'); return; }
-      send.disabled=true; say('','Sending…','Envoi en cours…');
+      if(bad){ bad.focus(); say('err','missing'); return; }
+      if(ACCESS_KEY.indexOf('PASTE')===0){ say('err','off'); return; }
+      send.disabled=true; say('','sending');
       var data={
         access_key:ACCESS_KEY,
-        subject:'New message from cictnardc.net',
+        subject:'New message from cictnardc.net ('+lang()+')',
         from_name:'CICTNA RDC website',
         name:document.getElementById('cf-name').value.trim(),
         email:document.getElementById('cf-email').value.trim(),
@@ -1037,13 +700,9 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
       try{
         var r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
         var j=await r.json().catch(function(){return {};});
-        if(r.ok && j.success){
-          form.reset();
-          say('ok','Thank you. Your message has been sent, and we will reply within one working day.','Merci. Votre message est bien parti, nous répondons sous un jour ouvré.');
-        } else { throw new Error('send'); }
-      }catch(err){
-        say('err','The message could not be sent. Please email contact@cictnardc.net directly.','Le message n’a pas pu partir. Écrivez-nous directement à contact@cictnardc.net.');
-      }
+        if(r.ok && j.success){ form.reset(); say('ok','ok'); }
+        else { throw new Error('send'); }
+      }catch(err){ say('err','fail'); }
       send.disabled=false;
     });
   })();
@@ -1051,7 +710,7 @@ footer{background:var(--deep-b);color:var(--deep-stone);border-top:1px solid var
   var cb=document.getElementById('copyBtn');
   cb.addEventListener('click',function(){
     var t=document.getElementById('addr').textContent, orig=cb.innerHTML;
-    function done(){ cb.textContent = root.getAttribute('data-lang')==='fr' ? 'Copiée' : 'Copied'; setTimeout(function(){cb.innerHTML=orig;},1500); }
+    function done(){ cb.textContent=pick({en:'Copied',fr:'Copiée',ar:'تم النسخ'}); setTimeout(function(){cb.innerHTML=orig;},1500); }
     try{ navigator.clipboard.writeText(t).then(done,function(){}); }catch(e){}
   });
 })();
