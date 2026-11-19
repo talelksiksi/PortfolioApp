@@ -58,7 +58,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["React", "SVG", "Node.js codegen", "OPC UA · Modbus · IDoc · Kafka"],
-    live: "https://integration-toolkit-eight.vercel.app",
+    live: "https://cictnardc.net/portfolio/integration-toolkit/",
     shot: "assets/shots/integration-toolkit.jpg",
   },
   {
@@ -98,7 +98,7 @@ window.PROJECTS = [
     },
     stack: ["JavaScript", "HTML5", "CSS", { en: "PLC protocol design", fr: "Conception de protocole automate" }],
     demo: "telegram",
-    live: "https://tray-store-controller.vercel.app",
+    live: "https://cictnardc.net/portfolio/tray-store-controller/",
     shot: "assets/shots/tray-store-controller.jpg",
   },
   {
@@ -137,7 +137,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["JavaScript", "Chart.js", "PostgreSQL", "Modbus TCP · OPC UA · S7"],
-    live: "https://plant-data-logger.vercel.app",
+    live: "https://cictnardc.net/portfolio/plant-data-logger/",
     shot: "assets/shots/plant-data-logger.jpg",
   },
   {
@@ -176,7 +176,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["React", "WebSockets", "Express.js", "PostgreSQL"],
-    live: "https://warehouse-dashboard-umber.vercel.app",
+    live: "https://cictnardc.net/portfolio/warehouse-dashboard/",
     shot: "assets/shots/warehouse-dashboard.jpg",
   },
   {
@@ -215,7 +215,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["ASP.NET Core", "Entity Framework Core", "PostgreSQL", "Bootstrap"],
-    live: "https://warehouse-portal-demo.vercel.app",
+    live: "https://cictnardc.net/portfolio/warehouse-portal/",
     shot: "assets/shots/warehouse-portal.jpg",
   },
   {
@@ -254,7 +254,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["JavaScript", "Node.js", "HTML", "CSS"],
-    live: "https://gp-doctor-office.vercel.app",
+    live: "https://cictnardc.net/portfolio/gp-office/",
     shot: "assets/shots/gp-office.jpg",
   },
   {
@@ -293,7 +293,7 @@ window.PROJECTS = [
       ],
     },
     stack: ["JavaScript", "Chart.js", "HTML", "CSS"],
-    live: "https://dental-clinic-demo-six-rouge.vercel.app",
+    live: "https://cictnardc.net/portfolio/dental-clinic/",
     shot: "assets/shots/dental-clinic.jpg",
   },
 ];

@@ -1,4 +1,36 @@
-# CICTNA OS — portfolio
+# cictnardc.net: website, portfolio and live demos
+
+| Address | What | Source |
+| --- | --- | --- |
+| `/` | Company website, in English, French and Arabic | `website/` |
+| `/portfolio/` | Portfolio: the seven apps as simple cards, in three languages | `portfolio/` |
+| `/portfolio/<app>/` | Each live demo app | `apps/<app>/`, refreshed by `scripts/sync-apps.sh` |
+| `/portfolio/desktop/` | The retro desktop below ("CICTNA OS"), linked from the portfolio as the playful version | repo root |
+
+The demo apps used to run on Vercel. They are now served from cictnardc.net.
+Each app keeps its own repo as the source; `scripts/sync-apps.sh` copies the
+ready-to-serve files into `apps/` (building the two React apps for their
+sub-path). Then commit and push. Cloudflare only copies files, it never builds.
+
+| App | Repo | Address |
+| --- | --- | --- |
+| Warehouse Management Portal | warehouse-portal-demo | /portfolio/warehouse-portal/ |
+| Dental Clinic Manager | dental-clinic-demo | /portfolio/dental-clinic/ |
+| Mon Cabinet | gp-doctor-office | /portfolio/gp-office/ |
+| Warehouse Control Room | warehouse-dashboard | /portfolio/warehouse-dashboard/ |
+| Plant Data Logger | plant-data-logger-demo | /portfolio/plant-data-logger/ |
+| Integration Toolkit | integration-toolkit | /portfolio/integration-toolkit/ |
+| Tray Store Controller | tray-store-controller | /portfolio/tray-store-controller/ |
+
+Old links keep working: `/portfolio/#project/<id>` scrolls to that app's card,
+`/portfolio/#about`, `#terminal` and the other desktop links open the retro
+desktop, `/portfolio/#contact` goes to the website's contact form, and
+`/portfolio/quick.html` goes to the new portfolio page.
+
+The website, portfolio page, retro desktop and Integration Toolkit share the
+`lang` setting in the browser, so a language picked on one carries over.
+
+# CICTNA OS (retro desktop)
 
 The portfolio and landing page for Talel Ksiksi / CICTNA RDC, built as a retro
 desktop. Visitors boot the machine, open project folders, read the bio in
@@ -13,7 +45,8 @@ Plain HTML, CSS and JavaScript. No build step, no dependencies.
 python3 -m http.server 4173   # or: npx serve .
 ```
 
-Open http://localhost:4173. Add `?noboot` to skip the boot sequence.
+Open http://localhost:4173 for the retro desktop on its own. Add `?noboot` to skip the boot sequence.
+To see the whole site as it goes live, run `scripts/build-cloudflare.sh` and serve `dist/` instead.
 
 ## Deep links
 
@@ -95,19 +128,16 @@ From a computer with a Cloudflare token (Workers Scripts: Edit) you can also run
 `scripts/deploy-cloudflare.sh [upload|live|rollback]`. Rollback is also in the
 dashboard: Workers & Pages, cictnardc, Deployments.
 
-The website's "Try the work, live" section (`#portfolio`) shows
-`website/portfolio-desktop.jpg` and `website/portfolio-phone.jpg` and links each
-project card to `/portfolio/#project/<id>`. Retake those two screenshots when the
-portfolio's look changes.
-
 The website and the portfolio share the `lang` setting in localStorage, so a
 language picked on one carries over to the other.
 
-### Vercel (backup copy)
+### Vercel (old copies)
 
 The repo is also connected to Vercel (`portfolioapp-pearl-theta.vercel.app`),
-which redeploys on every push. `.vercelignore` keeps the website and scripts
-out of it.
+and each demo app still has its old vercel.app address. Nothing links to them
+any more. Keep them until every platform profile, gig and proposal points at
+cictnardc.net (the gig images under `/portfolio/warehouse-portal/previews/` are
+now served from cictnardc.net too), then delete the Vercel projects.
 
 ## Layout
 
@@ -125,6 +155,8 @@ js/extras.js             sound, Track Record, Book a Call, TraySweeper
 js/main.js               boot, desktop icons, apps showcase, start menu, deep links
 assets/                  logo, link preview, CVs, project screenshots
 website/                 the cictnardc.net company website (served at /)
-scripts/                 build and deploy for cictnardc.net
+portfolio/               the portfolio page (served at /portfolio/)
+apps/                    the demo apps, as served (refresh with scripts/sync-apps.sh)
+scripts/                 sync the apps, build and deploy cictnardc.net
 wrangler.jsonc           the cictnardc Cloudflare Worker
 ```

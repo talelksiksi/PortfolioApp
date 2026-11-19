@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tray Store Controller | Simulation</title>
+<meta name="description" content="Simulation of a controller that turns a product request into machine moves for an automated tray store, sends them to the PLC one by one and waits for each confirmation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <a class="brand" href="https://cictnardc.net" style="text-decoration:none"><img src="cictna-logo-mark.svg" alt=""> CICTNA RDC</a>
+      <h1>Tray Store Controller <span class="badge">Simulation</span></h1>
+      <p class="lede">Ask for a product. The controller finds its tray, plans the moves to get it out, then sends them to the PLC one at a time and waits for each confirmation before sending the next.</p>
+    </div>
+    <div class="status">
+      <span class="pill" id="linkPill"><i></i><b>PLC link</b> <span id="linkText">OK</span></span>
+      <span class="pill neutral"><b>Transfer devices at</b> <span id="tdText">x0 y1</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="panel store-panel">
+    <div class="panel-head">
+      <h2>Store, front view</h2>
+      <span class="hint">Each cell is a channel of 12 trays, front end on the left</span>
+    </div>
+    <div class="grid-wrap">
+      <div class="ylabels" id="ylabels"></div>
+      <div class="grid" id="grid">
+        <div class="td-mark td-mark-f" id="markF"></div>
+        <div class="td-mark td-mark-b" id="markB"></div>
+      </div>
+    </div>
+    <div class="xlabels" id="xlabels"></div>
+
+    <div class="lane-head">
+      <h2 id="laneTitle">Channel x0 y1, infeed</h2>
+      <span class="hint" id="laneHint">Front transfer device, 12 tray positions, back transfer device</span>
+    </div>
+    <div class="lane" id="lane">
+      <div class="td-box td-f"><span>Front TD</span></div>
+      <div class="chan-box" id="chanBox"></div>
+      <div class="td-box td-b"><span>Back TD</span></div>
+    </div>
+    <div class="pos-scale" id="posScale"></div>
+
+    <div class="pick" id="pick">
+      <b>Pick station</b> <span id="pickText">Idle</span>
+    </div>
+  </section>
+
+  <section class="panel products-panel">
+    <div class="panel-head">
+      <h2>Stock</h2>
+      <span class="hint">Shared with the parent system</span>
+    </div>
+    <ul class="products" id="products"></ul>
+    <div class="controls">
+      <div class="speed" role="group" aria-label="Speed">
+        <span>Speed</span>
+        <button data-speed="0.5">0.5×</button>
+        <button data-speed="1" class="on">1×</button>
+        <button data-speed="2">2×</button>
+        <button data-speed="4">4×</button>
+      </div>
+      <button class="fault" id="faultBtn" title="The next confirmation from the PLC will be lost">Drop PLC link</button>
+    </div>
+    <p class="queue" id="queue"></p>
+  </section>
+
+  <section class="panel plan-panel">
+    <div class="panel-head">
+      <h2>Move plan</h2>
+      <span class="hint" id="planHint">Request a product to see the plan</span>
+    </div>
+    <ol class="plan" id="plan"></ol>
+  </section>
+
+  <section class="panel log-panel">
+    <div class="panel-head">
+      <h2>PLC messages</h2>
+      <span class="hint"><code>$</code> start, <code>*</code> field separator, <code>CS</code> XOR checksum, <code>#</code> end</span>
+    </div>
+    <div class="log" id="log" aria-live="polite"></div>
+  </section>
+
+  <details class="panel how">
+    <summary>How the store works</summary>
+    <ul>
+      <li>The store is a grid of channels, addressed by column x and level y. Every channel holds 12 trays on plain rollers. Some trays carry product, others are empty.</li>
+      <li>Two transfer devices, one at the front face and one at the back, always travel together to the same channel. Only they have powered rollers.</li>
+      <li>When one transfer device pushes trays into a channel, the same number of trays comes out at the other end onto the other transfer device. Between them they always hold 2 trays.</li>
+      <li>To reach a tray, the controller works from the nearer end. Blocking trays are cycled through the nearest channel until the target comes out, then it goes to the outfeed belt at x0 y2. After picking it comes back through the infeed at x0 y1.</li>
+    </ul>
+  </details>
+</main>
+
+<footer class="foot">Built by Talel Ksiksi, <a href="https://cictnardc.net">CICTNA RDC</a>. All data is simulated.</footer>
+<script src="app.js"></script>
+</body>
+</html>

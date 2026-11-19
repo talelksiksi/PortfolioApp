@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/portfolio/integration-toolkit/static/css/main.ed2fe28c.css",
+    "main.js": "/portfolio/integration-toolkit/static/js/main.e3c0df97.js",
+    "index.html": "/portfolio/integration-toolkit/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.ed2fe28c.css",
+    "static/js/main.e3c0df97.js"
+  ]
+}
