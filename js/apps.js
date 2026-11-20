@@ -459,13 +459,13 @@ ${email}. أخبرني بما يبطئ عملك.
       },
       type: (arg) => cmds.cat(arg),
       cv: () => openCv(),
-      skills: () => print(L3(`  Industrial   PLC telegrams · OPC UA (.NET) · WMS · tray stores
+      skills: () => print(L3(`  Industrial   PLC telegrams · OPC UA (.NET) · Modbus TCP · batching
   Realtime     WebSockets · Express · event-driven backends
   Web          React · vanilla JS · Blazor · Vercel
-  Quality      xUnit · integration tests · simulators`, `  Industriel   Télégrammes automate · OPC UA (.NET) · WMS · magasins à plateaux
+  Quality      xUnit · integration tests · simulators`, `  Industriel   Télégrammes automate · OPC UA (.NET) · Modbus TCP · dosage
   Temps réel   WebSockets · Express · backends événementiels
   Web          React · JavaScript natif · Blazor · Vercel
-  Qualité      xUnit · tests d'intégration · simulateurs`, `  Industrial   PLC telegrams · OPC UA (.NET) · WMS · tray stores
+  Qualité      xUnit · tests d'intégration · simulateurs`, `  Industrial   PLC telegrams · OPC UA (.NET) · Modbus TCP · batching
   Realtime     WebSockets · Express · event-driven backends
   Web          React · vanilla JS · Blazor · Vercel
   Quality      xUnit · integration tests · simulators`)),

@@ -129,7 +129,7 @@
       welcomeTitle: "Welcome",
       welcomeH: "Welcome to CICTNA OS",
       tipH: "Did you know? ",
-      tipP: ["The Tray Store project has a working telegram encoder, the Command Prompt knows a secret ", " command, and the language icon switches the whole desktop to French or Arabic."],
+      tipP: ["The Batch Dosing Gateway lets you pull the PLC cable mid-batch, the Command Prompt knows a secret ", " command, and the language icon switches the whole desktop to French or Arabic."],
       whoAreYou: "Who are you?",
       helpLines: [
         ["Double-click", " an icon to open it (single tap on touch screens)."],
@@ -306,7 +306,7 @@
       welcomeTitle: "Bienvenue",
       welcomeH: "Bienvenue sur CICTNA OS",
       tipH: "Le saviez-vous ? ",
-      tipP: ["Le projet Tray Store contient un vrai encodeur de télégrammes, l'invite de commandes connaît une commande secrète ", ", et l'icône de langue bascule tout le bureau en arabe ou en anglais."],
+      tipP: ["La passerelle de dosage vous laisse débrancher l'automate en plein lot, l'invite de commandes connaît une commande secrète ", ", et l'icône de langue bascule tout le bureau en arabe ou en anglais."],
       whoAreYou: "Qui êtes-vous ?",
       helpLines: [
         ["Double-cliquez", " sur une icône pour l'ouvrir (un simple toucher sur écran tactile)."],
@@ -475,7 +475,7 @@
       welcomeTitle: "أهلاً بك",
       welcomeH: "أهلاً بك في CICTNA OS",
       tipH: "هل تعلم؟ ",
-      tipP: ["في مشروع مخزن الصواني مُرمّز رسائل يعمل فعلاً، وموجّه الأوامر يعرف أمراً سرياً هو ", "، وأيقونة اللغة تبدّل لغة سطح المكتب بالكامل."],
+      tipP: ["في بوابة التجريع يمكنك فصل كابل PLC في منتصف الدفعة، وموجّه الأوامر يعرف أمراً سرياً هو ", "، وأيقونة اللغة تبدّل لغة سطح المكتب بالكامل."],
       whoAreYou: "من أنت؟",
       helpLines: [
         ["انقر مرتين", " على أي أيقونة لفتحها (لمسة واحدة على الشاشات اللمسية)."],

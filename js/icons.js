@@ -99,6 +99,18 @@
       <path fill="${K}" d="M9 5h14v9H9z"/><path fill="#fff" d="M10 6h12v7H10z"/>
       <path fill="#3d6d78" d="M11 8h10v1H11zM11 10h6v1h-6z"/>
       <path fill="#e7a982" d="M24 3l3 3-2 2-3-3z"/>`),
+    silo: S(`
+      <path fill="${K}" d="M4 3h10v14l-3 4H7l-3-4zM18 3h10v14l-3 4h-4l-3-4zM8 21h2v3h12v-3h2v5H8zM11 26h10v4H11z"/>
+      <path fill="#cfd8dc" d="M5 4h8v12l-2.5 3.5h-3L5 16zM19 4h8v12l-2.5 3.5h-3L19 16z"/>
+      <path fill="#d9c49a" d="M5 9h8v7l-2.5 3.5h-3L5 16zM19 12h8v4l-2.5 3.5h-3L19 16z"/>
+      <path fill="#e7a982" d="M12 27h8v2h-8z"/><path fill="#58e08a" d="M14 27h2v2h-2z"/>`),
+    bins: S(`
+      <path fill="${K}" d="M2 3h28v26H2z"/>
+      <path fill="#cfd8dc" d="M3 4h26v24H3z"/>
+      <path fill="${K}" d="M3 12h26v1H3zM3 20h26v1H3zM15 4h1v24h-1z"/>
+      <path fill="#3d6d78" d="M5 7h8v4H5zM18 15h9v4h-9z"/>
+      <path fill="#e7a982" d="M18 7h6v4h-6zM5 23h7v4H5z"/>
+      <path fill="#f6d36b" d="M6 15h5v4H6zM19 23h8v4h-8z"/>`),
     portal: S(`
       <path fill="${K}" d="M2 4h28v24H2z"/>
       <path fill="#fff" d="M3 9h26v18H3z"/>

@@ -14,13 +14,25 @@ sub-path). Then commit and push. Cloudflare only copies files, it never builds.
 
 | App | Repo | Address |
 | --- | --- | --- |
-| Warehouse Management Portal | warehouse-portal-demo | /portfolio/warehouse-portal/ |
+| Plant Spare Parts Store | this repo, `apps/spare-parts-store` | /portfolio/spare-parts-store/ |
 | Dental Clinic Manager | dental-clinic-demo | /portfolio/dental-clinic/ |
 | Mon Cabinet | gp-doctor-office | /portfolio/gp-office/ |
-| Warehouse Control Room | warehouse-dashboard | /portfolio/warehouse-dashboard/ |
 | Plant Data Logger | plant-data-logger-demo | /portfolio/plant-data-logger/ |
 | Integration Toolkit | integration-toolkit | /portfolio/integration-toolkit/ |
+| Batch Dosing Gateway | this repo, `apps/batch-dosing-gateway` | /portfolio/batch-dosing-gateway/ |
+
+Unlisted, online for direct links only (not on the portfolio page or the
+desktop, and sent with `X-Robots-Tag: noindex`):
+
+| App | Repo | Address |
+| --- | --- | --- |
+| Warehouse Management Portal | warehouse-portal-demo | /portfolio/warehouse-portal/ |
+| Warehouse Control Room | warehouse-dashboard | /portfolio/warehouse-dashboard/ |
 | Tray Store Controller | tray-store-controller | /portfolio/tray-store-controller/ |
+
+The spare parts store and the dosing gateway have no build step and live
+directly in `apps/`. They share `css/kit.css` and `js/kit.js` (languages,
+tables, dialogs, small charts); keep the two copies the same.
 
 Old links keep working: `/portfolio/#project/<id>` scrolls to that app's card,
 `/portfolio/#about`, `#terminal` and the other desktop links open the retro
@@ -55,7 +67,7 @@ Every window has a shareable URL, handy for proposals and outreach emails:
 | Link | Opens |
 | --- | --- |
 | `/#projects` | Projects folder |
-| `/#project/<id>` | One project (`integration-toolkit`, `tray-store-controller`, `plant-data-logger`, `warehouse-dashboard`, `warehouse-portal`, `gp-office`, `dental-clinic`) |
+| `/#project/<id>` | One project (`integration-toolkit`, `batch-dosing-gateway`, `plant-data-logger`, `spare-parts-store`, `gp-office`, `dental-clinic`) |
 | `/#about` | About_Me.txt |
 | `/#services` | Hire_Us.hlp |
 | `/#contact` | Contact form |

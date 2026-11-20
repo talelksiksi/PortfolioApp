@@ -33,12 +33,19 @@ for d in apps/*/; do
 done
 
 # Headers: the screenshot folders are used as images by other sites (gig and profile pages).
+# The three unlisted demos stay online for direct links but are kept out of search engines.
 cat > dist/_headers <<'EOF'
 /portfolio/*/previews/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
 /portfolio/assets/*
   Cache-Control: public, max-age=86400
+/portfolio/warehouse-portal/*
+  X-Robots-Tag: noindex
+/portfolio/warehouse-dashboard/*
+  X-Robots-Tag: noindex
+/portfolio/tray-store-controller/*
+  X-Robots-Tag: noindex
 EOF
 
 echo "Built dist/: $(find dist -type f | wc -l) files, $(du -sh dist | cut -f1)"
