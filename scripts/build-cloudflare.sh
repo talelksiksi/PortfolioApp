@@ -49,6 +49,7 @@ cat > dist/_headers <<'EOF'
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
 /portfolio/assets/*
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
 /portfolio/warehouse-portal/*
   X-Robots-Tag: noindex
