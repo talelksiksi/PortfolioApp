@@ -33,9 +33,19 @@ for d in apps/*/; do
 done
 
 # Headers: the screenshot folders are used as images by other sites (gig and profile pages).
+# One rule per folder: Cloudflare allows a single * per path.
 # The two unlisted demos stay online for direct links but are kept out of search engines.
 cat > dist/_headers <<'EOF'
-/portfolio/*/previews/*
+/portfolio/warehouse-portal/previews/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+/portfolio/spare-parts-store/previews/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+/portfolio/batch-dosing-gateway/previews/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+/portfolio/plant-data-logger/previews/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
 /portfolio/assets/*
