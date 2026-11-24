@@ -455,6 +455,19 @@ html[data-lang="ar"] .pf-hero h1{line-height:1.35}
             <a class="btn btn-main try" href="/portfolio/spare-parts-store/" target="_blank" rel="noopener"><span lang="en">Try it</span><span lang="fr">Essayer</span><span lang="ar">جرّب التطبيق</span><span class="sr">: Plant Spare Parts Store</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           </div>
         </article>
+        <article class="app" id="sheet-to-database">
+          <a class="app-img" href="/portfolio/sheet-to-database/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img src="/portfolio/assets/shots/sheet-to-database.jpg" alt="" width="1280" height="800" loading="lazy">
+          </a>
+          <div class="app-body">
+            <div class="case-kind"><span lang="en">Data migration</span><span lang="fr">Migration de données</span><span lang="ar">نقل البيانات</span></div>
+            <h3 dir="ltr">Sheet to Database</h3>
+            <p><span lang="en">An untidy workbook of clients, items and a year of orders goes into a real database: cleaned by written rules, duplicates merged, and the doubtful rows left for you to decide.</span><span lang="fr">Un classeur désordonné de clients, d'articles et d'un an de commandes passe dans une vraie base de données : nettoyé par des règles écrites, doublons fusionnés, et les lignes douteuses laissées à votre décision.</span><span lang="ar">ملف Excel غير مرتب فيه عملاء وأصناف وطلبات سنة كاملة ينتقل إلى قاعدة بيانات حقيقية: تنظيف بقواعد مكتوبة، ودمج للتكرارات، وترك الصفوف المشكوك فيها لقرارك.</span></p>
+            <ul class="pts"><li><span lang="en">Every corrected cell logged, old value and new</span><span lang="fr">Chaque cellule corrigée tracée, ancienne et nouvelle valeur</span><span lang="ar">كل خلية صُحِّحت مسجَّلة بقيمتها القديمة والجديدة</span></li><li><span lang="en">Wrong totals and unknown clients wait for your answer</span><span lang="fr">Totaux faux et clients inconnus attendent votre réponse</span><span lang="ar">المجاميع الخاطئة والعملاء غير المعروفين ينتظرون جوابك</span></li><li><span lang="en">Row counts and totals checked against the sheet</span><span lang="fr">Nombres de lignes et totaux contrôlés par rapport à la feuille</span><span lang="ar">مطابقة أعداد الصفوف والمجاميع مع الورقة الأصلية</span></li></ul>
+            <p class="hint"><span lang="en">Answer the open questions and watch the checks balance</span><span lang="fr">Tranchez les questions ouvertes et regardez les contrôles s'équilibrer</span><span lang="ar">أجب عن الأسئلة المفتوحة وراقب المطابقة تكتمل</span></p>
+            <a class="btn btn-main try" href="/portfolio/sheet-to-database/" target="_blank" rel="noopener"><span lang="en">Try it</span><span lang="fr">Essayer</span><span lang="ar">جرّب التطبيق</span><span class="sr">: Sheet to Database</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
         <article class="app" id="dental-clinic">
           <a class="app-img" href="/portfolio/dental-clinic/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
             <img src="/portfolio/assets/shots/dental-clinic.jpg" alt="" width="1280" height="800" loading="lazy">
@@ -604,7 +617,7 @@ html[data-lang="ar"] .pf-hero h1{line-height:1.35}
 
   /* filter chips */
   var chips=document.querySelectorAll('.chips button'), cards=document.querySelectorAll('.app');
-  var GROUP={'spare-parts-store':'biz','dental-clinic':'biz','gp-office':'biz','warehouse-dashboard':'biz','plant-data-logger':'ind','integration-toolkit':'ind','batch-dosing-gateway':'ind'};
+  var GROUP={'spare-parts-store':'biz','sheet-to-database':'biz','dental-clinic':'biz','gp-office':'biz','warehouse-dashboard':'biz','plant-data-logger':'ind','integration-toolkit':'ind','batch-dosing-gateway':'ind'};
   chips.forEach(function(c){ c.addEventListener('click',function(){
     var f=c.dataset.f;
     chips.forEach(function(x){ x.setAttribute('aria-pressed', String(x===c)); });

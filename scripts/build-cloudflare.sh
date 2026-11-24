@@ -45,6 +45,9 @@ cat > dist/_headers <<'EOF'
 /portfolio/batch-dosing-gateway/previews/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
+/portfolio/sheet-to-database/previews/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
 /portfolio/plant-data-logger/previews/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400

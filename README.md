@@ -3,7 +3,7 @@
 | Address | What | Source |
 | --- | --- | --- |
 | `/` | Company website, in English, French and Arabic | `website/` |
-| `/portfolio/` | Portfolio: the seven apps as simple cards, in three languages | `portfolio/` |
+| `/portfolio/` | Portfolio: the apps as simple cards, in three languages | `portfolio/` |
 | `/portfolio/<app>/` | Each live demo app | `apps/<app>/`, refreshed by `scripts/sync-apps.sh` |
 | `/portfolio/desktop/` | The retro desktop below ("CICTNA OS"), linked from the portfolio as the playful version | repo root |
 
@@ -21,6 +21,7 @@ sub-path). Then commit and push. Cloudflare only copies files, it never builds.
 | Plant Data Logger | plant-data-logger-demo | /portfolio/plant-data-logger/ |
 | Integration Toolkit | integration-toolkit | /portfolio/integration-toolkit/ |
 | Batch Dosing Gateway | this repo, `apps/batch-dosing-gateway` | /portfolio/batch-dosing-gateway/ |
+| Sheet to Database | this repo, `apps/sheet-to-database` | /portfolio/sheet-to-database/ |
 
 Unlisted, online for direct links only (not on the portfolio page or the
 desktop, and sent with `X-Robots-Tag: noindex`):
@@ -30,9 +31,9 @@ desktop, and sent with `X-Robots-Tag: noindex`):
 | Warehouse Management Portal | warehouse-portal-demo | /portfolio/warehouse-portal/ |
 | Tray Store Controller | tray-store-controller | /portfolio/tray-store-controller/ |
 
-The spare parts store and the dosing gateway have no build step and live
-directly in `apps/`. They share `css/kit.css` and `js/kit.js` (languages,
-tables, dialogs, small charts); keep the two copies the same.
+The spare parts store, the dosing gateway and Sheet to Database have no build
+step and live directly in `apps/`. They share `css/kit.css` and `js/kit.js`
+(languages, tables, dialogs, small charts); keep the copies the same.
 
 Old links keep working: `/portfolio/#project/<id>` scrolls to that app's card,
 `/portfolio/#about`, `#terminal` and the other desktop links open the retro
