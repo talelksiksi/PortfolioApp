@@ -128,6 +128,37 @@ window.PROJECTS = [
     shot: "assets/shots/batch-dosing-gateway.jpg",
   },
   {
+    id: "opcua-explorer",
+    name: "OPC UA Explorer",
+    file: "OpcUaExplorer.exe",
+    icon: "plug",
+    category: { en: "Industrial automation · Engineering tool", fr: "Automatisme industriel · Outil d'ingénierie", ar: "أتمتة صناعية · أداة هندسية" },
+    year: "2026",
+    summary: {
+      en: "A tool for finding out what an OPC UA server really offers: browse its address space, list every tag under a branch in one go, read and write values with the right data type, and watch them change live. The online demo runs on a simulated plant.",
+      fr: "Un outil pour savoir ce qu'un serveur OPC UA propose vraiment : parcourir son espace d'adressage, lister d'un coup toutes les variables d'une branche, lire et écrire des valeurs au bon type, et les suivre en direct. La démo en ligne tourne sur une usine simulée.",
+      ar: "أداة لمعرفة ما يتيحه خادم OPC UA فعلاً: تصفّح فضاء العناوين، واسرد كل متغيرات فرع كامل دفعة واحدة، واقرأ القيم واكتبها بالنوع الصحيح، وراقب تغيّرها مباشرة. العرض على الإنترنت يعمل على مصنع محاكى.",
+    },
+    problem: {
+      en: "The variable list that comes with a machine is often out of date: names changed, tags missing, types wrong. Integration work then starts on guesses, and the errors show up on site, at the worst moment.",
+      fr: "La liste de variables livrée avec une machine est souvent périmée : noms changés, variables manquantes, types faux. Le travail d'intégration démarre alors sur des suppositions, et les erreurs apparaissent sur site, au pire moment.",
+      ar: "قائمة المتغيرات التي تُسلَّم مع الآلة كثيراً ما تكون قديمة: أسماء تغيّرت ومتغيرات ناقصة وأنواع خاطئة. فيبدأ عمل الربط على التخمين، وتظهر الأخطاء في الموقع وفي أسوأ وقت.",
+    },
+    solution: {
+      en: "Ask the controller itself. The tool connects to the server, walks a whole branch in a few requests and lists every variable with its path, NodeId, data type, access rights, value and quality. Tags can be filtered, exported to CSV, written for a test behind a write lock, and watched on a subscription that survives a lost connection.",
+      fr: "Demander à l'automate lui-même. L'outil se connecte au serveur, parcourt une branche entière en quelques requêtes et liste chaque variable avec son chemin, son NodeId, son type, ses droits d'accès, sa valeur et sa qualité. Les variables se filtrent, s'exportent en CSV, s'écrivent pour un essai derrière un verrou, et se suivent par un abonnement qui survit à une coupure.",
+      ar: "اسأل المتحكم نفسه. تتصل الأداة بالخادم وتمسح فرعاً كاملاً ببضعة طلبات وتسرد كل متغير بمساره و NodeId ونوعه وصلاحيات الوصول وقيمته وجودته. يمكن تصفية المتغيرات وتصديرها إلى CSV، والكتابة عليها للتجربة خلف قفل، ومراقبتها باشتراك يصمد عند انقطاع الاتصال.",
+    },
+    highlights: {
+      en: ["Bulk scan: a thousand tags with type, access and value in seconds", "Filter, sort and export the list to CSV", "Typed writes for scalars and arrays, locked until you unlock them", "Live watch list on an OPC UA subscription, with automatic reconnect", "English, French and Arabic"],
+      fr: ["Parcours en masse : mille variables avec type, accès et valeur en quelques secondes", "Filtre, tri et export CSV de la liste", "Écritures typées, scalaires et tableaux, verrouillées jusqu'à déverrouillage", "Suivi en direct par abonnement OPC UA, avec reconnexion automatique", "Anglais, français et arabe"],
+      ar: ["مسح شامل: ألف متغير بالنوع والوصول والقيمة في ثوانٍ", "تصفية القائمة وترتيبها وتصديرها إلى CSV", "كتابة بالنوع الصحيح للقيم المفردة والمصفوفات، مقفلة حتى تفتحها", "مراقبة مباشرة باشتراك OPC UA مع إعادة اتصال تلقائية", "بالعربية والإنجليزية والفرنسية"],
+    },
+    stack: ["C# / .NET", "ASP.NET Core", "OPC UA", "JavaScript"],
+    live: "https://cictnardc.net/portfolio/opcua-explorer/",
+    shot: "assets/shots/opcua-explorer.jpg",
+  },
+  {
     id: "plant-data-logger",
     name: "Plant Data Logger",
     file: "PlantLogger.exe",

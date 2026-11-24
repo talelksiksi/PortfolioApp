@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OPC UA Explorer</title>
+  <meta name="description" content="Browse an OPC UA server, list every tag under a branch in one go, read and write values and watch them change live. By CICTNA RDC.">
+  <meta name="theme-color" content="#2c5560">
+  <meta property="og:title" content="OPC UA Explorer, by CICTNA RDC">
+  <meta property="og:description" content="Find out what a controller really offers: browse it, list its tags in bulk, read, write and watch values live.">
+  <meta property="og:image" content="https://cictnardc.net/portfolio/assets/shots/opcua-explorer.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="7" fill="#3d6d78"/>
+        <path d="M16 7v6M16 13H9v5M16 13h7v5M9 18v0M23 18v0" stroke="#f8faf9" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="16" cy="7" r="2.2" fill="#e7a982"/>
+        <circle cx="9" cy="21" r="2.6" fill="#f8faf9"/>
+        <circle cx="23" cy="21" r="2.6" fill="#f8faf9"/>
+        <circle cx="16" cy="21" r="2.6" fill="#f1c09b"/>
+        <path d="M16 13v5" stroke="#f8faf9" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="brand-name">OPC UA Explorer</div>
+        <div class="brand-sub">CICTNA RDC</div>
+      </div>
+    </div>
+
+    <div class="conn" id="conn">
+      <span class="pill" id="statePill"><span class="dot"></span><span id="stateText">Not connected</span></span>
+      <span class="conn-url mono" id="connUrl" dir="ltr"></span>
+      <span class="conn-sec" id="connSec"></span>
+    </div>
+
+    <div class="top-actions">
+      <div class="langs" id="langs" role="group" aria-label="Language"></div>
+      <button class="btn lock" id="lockBtn" hidden title="Writing is locked. Click to unlock.">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path id="lockIcon" d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3.5 7h9v6.5h-9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span id="lockText">Writing locked</span>
+      </button>
+      <button class="btn ghost" id="disconnectBtn" hidden data-t>Disconnect</button>
+    </div>
+  </header>
+
+  <!-- Shown only by the hosted demo, where a simulated plant stands in for the tool's service -->
+  <div class="demo-banner" id="demoBanner" hidden>
+    <span data-t>Online demo on a simulated plant. The real tool runs on your PC and connects to your own controllers.</span>
+    <span class="demo-links"><span data-t>Built by</span> <a href="https://cictnardc.net/" target="_blank" rel="noopener">CICTNA RDC</a> · <a href="https://cictnardc.net/portfolio/" target="_blank" rel="noopener" data-t>More apps</a></span>
+  </div>
+
+  <!-- Shown while there is no connection -->
+  <main class="welcome" id="welcome">
+    <section class="card connect-card">
+      <h1 data-t>Connect to a server</h1>
+      <p class="lead" data-t>Enter the address of the controller or OPC UA server. The tool asks it what it offers, then you choose how to connect.</p>
+
+      <form id="connectForm" autocomplete="off">
+        <label class="field">
+          <span data-t>Server address</span>
+          <div class="row">
+            <input class="mono grow" id="urlInput" type="text" dir="ltr" spellcheck="false" placeholder="opc.tcp://192.168.0.10:4840" list="recentServers">
+            <datalist id="recentServers"></datalist>
+            <button class="btn" type="button" id="endpointsBtn" data-t>Look up</button>
+          </div>
+        </label>
+
+        <div class="endpoints" id="endpoints" hidden></div>
+
+        <div class="grid2">
+          <label class="field">
+            <span><span data-t>User name</span> <em data-t>(leave empty for anonymous)</em></span>
+            <input id="userInput" type="text" autocomplete="off">
+          </label>
+          <label class="field">
+            <span data-t>Password</span>
+            <input id="passInput" type="password" autocomplete="new-password">
+          </label>
+        </div>
+
+        <label class="check" id="acceptRow" hidden>
+          <input type="checkbox" id="acceptInput">
+          <span data-t>Accept the server's certificate without checking it. Compare the thumbprint above with the one on the server first.</span>
+        </label>
+
+        <div class="form-actions">
+          <button class="btn primary" type="submit" id="connectBtn" data-t>Connect</button>
+          <span class="form-error" id="connectError" role="alert"></span>
+        </div>
+      </form>
+    </section>
+
+    <aside class="card demo-card">
+      <h2 class="live-only" data-t>No controller at hand?</h2>
+      <h2 class="demo-only" data-t>A simulated plant</h2>
+      <p class="live-only" data-t>The tool comes with a small invented plant: two tanks, a packaging line, utilities and a thousand sensors. Values move and set points can be written.</p>
+      <p class="demo-only" data-t>The simulated plant is ready. Its address is filled in: choose Connect.</p>
+      <h2 class="spaced demo-only" data-t>Things to try</h2>
+      <p class="demo-only" data-t>List the tags of the whole plant, filter them, watch a tank level, then unlock writing and change its set point.</p>
+      <div class="row live-only">
+        <button class="btn" id="demoBtn">Start the demo plant</button>
+        <span class="muted" id="demoState"></span>
+      </div>
+      <h2 class="spaced live-only" data-t>Encrypted connections</h2>
+      <p class="live-only" data-t>For Sign or Sign and Encrypt the server has to trust this tool's certificate. Download it and add it to the server's trusted clients.</p>
+      <a class="btn ghost live-only" href="api/certificate" download data-t>Download the certificate</a>
+      <p class="about" id="about"></p>
+    </aside>
+  </main>
+
+  <!-- Shown while connected -->
+  <main class="workspace" id="workspace" hidden>
+    <section class="pane tree-pane">
+      <div class="pane-head">
+        <h2 data-t>Address space</h2>
+        <div class="row tight">
+          <button class="btn tiny ghost" id="treeRootBtn" title="Switch between the Objects folder and the full root" data-t-title>Objects</button>
+          <button class="btn tiny ghost" id="treeReloadBtn" title="Read the tree again" data-t-title data-t>Reload</button>
+        </div>
+      </div>
+      <div class="tree" id="tree" role="tree" tabindex="0"></div>
+      <div class="pane-foot muted"><span data-t>Select a node to see it.</span> <b data-t>List tags</b> <span data-t>scans everything under it.</span></div>
+    </section>
+
+    <section class="pane main-pane">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="tags" role="tab"><span data-t>Tags</span> <span class="count" id="tagCount"></span></button>
+        <button class="tab" data-tab="watch" role="tab"><span data-t>Watch</span> <span class="count" id="watchCount"></span></button>
+      </div>
+
+      <div class="tabpanel" id="tab-tags">
+        <div class="toolbar">
+          <input class="grow" id="filterInput" type="search" placeholder="Filter by name, path, NodeId, type or value" data-t-placeholder spellcheck="false">
+          <label class="check small"><input type="checkbox" id="hidePropsInput" checked><span data-t>Hide properties</span></label>
+          <button class="btn tiny" id="refreshBtn" disabled data-t>Refresh values</button>
+          <button class="btn tiny" id="watchSelBtn" disabled data-t>Watch selected</button>
+          <a class="btn tiny" id="exportBtn" href="api/scan/export.csv" aria-disabled="true" data-t>Export CSV</a>
+        </div>
+        <div class="scanbar" id="scanbar">
+          <span id="scanText">Pick a folder in the address space and choose List tags.</span>
+          <button class="btn tiny danger" id="scanStopBtn" hidden data-t>Stop</button>
+          <details class="scanopts">
+            <summary data-t>Scan options</summary>
+            <div class="scanopts-body">
+              <label><span data-t>Depth</span> <input type="number" id="optDepth" min="1" max="64" value="12"></label>
+              <label><span data-t>Node limit</span> <input type="number" id="optNodes" min="100" max="500000" step="1000" value="50000"></label>
+              <label class="check small"><input type="checkbox" id="optValues" checked><span data-t>Read values</span></label>
+              <label class="check small"><input type="checkbox" id="optServer"><span data-t>Include the Server object</span></label>
+            </div>
+          </details>
+        </div>
+        <div class="grid tags-grid" id="tagsGrid">
+          <div class="grid-head">
+            <div class="c-check"><input type="checkbox" id="selectAll" title="Select all shown" data-t-title></div>
+            <div data-sort="name" data-t>Name</div>
+            <div data-sort="path" data-t>Path</div>
+            <div data-sort="nodeId">NodeId</div>
+            <div data-sort="dataType" data-t>Type</div>
+            <div data-sort="access" data-t>Access</div>
+            <div data-sort="value" data-t>Value</div>
+            <div data-sort="status" data-t>Quality</div>
+          </div>
+          <div class="grid-body" id="tagsBody"><div class="grid-spacer" id="tagsSpacer"></div></div>
+        </div>
+      </div>
+
+      <div class="tabpanel" id="tab-watch" hidden>
+        <div class="toolbar">
+          <span class="muted grow" id="watchHint" data-t>Values arrive as the server reports changes. Nothing is polled.</span>
+          <button class="btn tiny" id="watchClearBtn" disabled data-t>Remove all</button>
+        </div>
+        <div class="grid watch-grid">
+          <div class="grid-head">
+            <div data-t>Name</div><div>NodeId</div><div data-t>Value</div><div data-t>Type</div><div data-t>Quality</div><div data-t>Source time</div><div class="num" data-t>Updates</div><div></div>
+          </div>
+          <div class="grid-body" id="watchBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pane detail-pane">
+      <div class="pane-head"><h2 data-t>Selected node</h2></div>
+      <div class="detail" id="detail">
+        <p class="muted pad" data-t>Nothing selected.</p>
+      </div>
+      <div class="activity">
+        <div class="pane-head sub"><h2 data-t>Activity</h2><button class="btn tiny ghost" id="activityClearBtn" data-t>Clear</button></div>
+        <ul id="activity"></ul>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="confirmDialog">
+    <form method="dialog">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText"></p>
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel" data-t>Cancel</button>
+        <button class="btn primary" id="confirmOk" value="ok">OK</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

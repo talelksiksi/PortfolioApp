@@ -22,6 +22,10 @@ sub-path). Then commit and push. Cloudflare only copies files, it never builds.
 | Integration Toolkit | integration-toolkit | /portfolio/integration-toolkit/ |
 | Batch Dosing Gateway | this repo, `apps/batch-dosing-gateway` | /portfolio/batch-dosing-gateway/ |
 | Sheet to Database | this repo, `apps/sheet-to-database` | /portfolio/sheet-to-database/ |
+| OPC UA Explorer | opcua-explorer (its `src/OpcUaExplorer/wwwroot` folder; the page runs on a simulated plant when served without its service) | /portfolio/opcua-explorer/ |
+
+OPC UA Explorer is synced from the page folder of its own repo, so its listing
+screenshots are kept here instead, in `assets/previews/opcua-explorer/`.
 
 Unlisted, online for direct links only (not on the portfolio page or the
 desktop, and sent with `X-Robots-Tag: noindex`):
@@ -68,7 +72,7 @@ Every window has a shareable URL, handy for proposals and outreach emails:
 | Link | Opens |
 | --- | --- |
 | `/#projects` | Projects folder |
-| `/#project/<id>` | One project (`integration-toolkit`, `batch-dosing-gateway`, `plant-data-logger`, `warehouse-dashboard`, `spare-parts-store`, `gp-office`, `dental-clinic`) |
+| `/#project/<id>` | One project (`integration-toolkit`, `batch-dosing-gateway`, `opcua-explorer`, `plant-data-logger`, `warehouse-dashboard`, `spare-parts-store`, `gp-office`, `dental-clinic`) |
 | `/#about` | About_Me.txt |
 | `/#services` | Hire_Us.hlp |
 | `/#contact` | Contact form |

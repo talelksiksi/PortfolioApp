@@ -28,6 +28,7 @@ warehouse-dashboard|warehouse-dashboard|react|build
 plant-data-logger|plant-data-logger-demo plant-data-logger|static|.
 integration-toolkit|integration-toolkit|react|build
 tray-store-controller|tray-store-controller|static|.
+opcua-explorer|opcua-explorer|static|src/OpcUaExplorer/wwwroot
 "
 
 # Never published: repo plumbing, notes and the GP app's local installers.
